@@ -1,0 +1,46 @@
+roles:
+  sde:
+    label: Software Development Engineering
+    competencies:
+      algorithms: {weight: 0.16, description: "Data structures, algorithms and problem solving"}
+      competitive_programming: {weight: 0.10, description: "Competitive programming evidence"}
+      software_engineering: {weight: 0.18, description: "Building maintainable software systems"}
+      programming: {weight: 0.12, description: "Strong programming language proficiency"}
+      projects: {weight: 0.14, description: "Substantive technical projects"}
+      open_source: {weight: 0.08, description: "Open source/GSoC contribution"}
+      impact: {weight: 0.10, description: "Quantified engineering impact"}
+      internships: {weight: 0.07, description: "Relevant software internships"}
+      communication: {weight: 0.05, description: "Clear concise evidence"}
+  quant:
+    label: Quantitative Finance
+    competencies:
+      academic_strength: {weight: 0.16, description: "High academic performance/CPI"}
+      mathematics: {weight: 0.18, description: "Rigorous mathematics"}
+      probability: {weight: 0.14, description: "Probability and stochastic reasoning"}
+      statistics: {weight: 0.12, description: "Statistics and modelling"}
+      algorithms: {weight: 0.12, description: "Algorithmic proficiency"}
+      programming: {weight: 0.08, description: "Programming for quantitative work"}
+      research: {weight: 0.10, description: "Math/stat/ML research evidence"}
+      quantitative_projects: {weight: 0.10, description: "Applied quantitative projects"}
+  consulting:
+    label: Management Consulting
+    competencies:
+      leadership: {weight: 0.22, description: "Leadership and high-impact PoRs"}
+      organizational_impact: {weight: 0.16, description: "Institutional or organizational impact"}
+      business_impact: {weight: 0.16, description: "Quantified business/outcome impact"}
+      communication: {weight: 0.14, description: "Sharp, structured bullet communication"}
+      academic_strength: {weight: 0.10, description: "Solid academic baseline"}
+      breadth: {weight: 0.10, description: "Spikes across academics, leadership, sports/culture"}
+      problem_solving: {weight: 0.07, description: "Analytical problem solving"}
+      teamwork: {weight: 0.05, description: "Team-based execution"}
+  core:
+    label: Core Engineering
+    competencies:
+      technical_depth: {weight: 0.20, description: "Core-domain technical depth"}
+      research: {weight: 0.16, description: "Research/SURGE/UGP evidence"}
+      core_projects: {weight: 0.16, description: "Relevant core engineering projects"}
+      core_tools: {weight: 0.14, description: "CAD/MATLAB/domain tools"}
+      coursework: {weight: 0.12, description: "Relevant core electives/coursework"}
+      publications: {weight: 0.08, description: "Research publications"}
+      impact: {weight: 0.08, description: "Measured technical outcomes"}
+      internships: {weight: 0.06, description: "Relevant core internships"}

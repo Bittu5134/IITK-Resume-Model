@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iitk-resume-engine"
+version = "0.2.0"
+description = "IITK context-aware resume diagnostic engine"
+requires-python = ">=3.10"
+dependencies = [
+  "pymupdf>=1.24",
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+  "numpy>=1.26",
+  "scikit-learn>=1.4",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+ml = [
+  "sentence-transformers>=3.0"
+]
+
+dev = [
+  "pytest>=8.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["resume_engine*"]
+exclude = [
+  "tests*",
+  "outputs*",
+  "examples*",
+  "docs*",
+]
+
+[tool.setuptools.package-data]
+resume_engine = [
+  "config/*.yaml",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

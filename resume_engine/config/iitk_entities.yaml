@@ -1,0 +1,185 @@
+# IITK Entity Ontology v2
+# Each entity maps to underlying semantic competency signals.
+# Role-conditioned relevance is computed downstream; these are priors only.
+# schema: canonical, aliases[], category, competencies{name: 0-1}, version
+version: "2.0"
+entities:
+  SURGE:
+    canonical: SURGE
+    aliases: ["surge", "summer undergraduate research grant", "summer undergraduate research grant for excellence"]
+    category: research_program
+    competencies: {research: 0.95, technical_depth: 0.75, faculty_guided_work: 0.85}
+
+  CPI:
+    canonical: CPI
+    aliases: ["cpi", "cumulative performance index", "cgpa", "cgpa:"]
+    category: academic_metric
+    competencies: {academic_strength: 1.0}
+
+  SPI:
+    canonical: SPI
+    aliases: ["spi", "semester performance index"]
+    category: academic_metric
+    competencies: {academic_strength: 0.8}
+
+  AnC:
+    canonical: Academics and Career Council
+    aliases: ["anc", "an&c", "a&c", "academics and career council", "anc council", "academics & career council"]
+    category: student_governance
+    competencies: {leadership: 0.75, organizational_impact: 0.75}
+
+  SnT:
+    canonical: Science and Technology Council
+    aliases: ["snt", "snt council", "science and technology council", "science & technology council"]
+    category: student_governance
+    competencies: {leadership: 0.65, technical_community: 0.8}
+
+  StudentsGymkhana:
+    canonical: Students Gymkhana
+    aliases: ["students gymkhana", "gymkhana", "students' gymkhana", "iitk gymkhana"]
+    category: student_governance
+    competencies: {leadership: 0.8, organizational_impact: 0.8}
+
+  SPO:
+    canonical: Students Placement Office
+    aliases: ["spo", "students placement office", "student placement office", "students' placement office"]
+    category: institute_office
+    competencies: {professional_exposure: 0.5}
+
+  HEC:
+    canonical: Hall Executive Committee
+    aliases: ["hec", "hall executive committee", "hall executive"]
+    category: student_governance
+    competencies: {leadership: 0.7, organizational_impact: 0.65}
+
+  Senate:
+    canonical: Senate
+    aliases: ["senate", "student senate", "senate nominee", "students senate"]
+    category: institute_governance
+    competencies: {leadership: 0.85, organizational_impact: 0.8}
+
+  HostelAffairs:
+    canonical: Council of Students Hostel Affairs
+    aliases: ["council of students hostel affairs", "hostel affairs", "students hostel affairs", "hostel affairs council"]
+    category: student_governance
+    competencies: {leadership: 0.9, organizational_impact: 0.85}
+
+  Inter-IIT:
+    canonical: Inter IIT
+    aliases: ["inter iit", "inter-iit", "inter iit tech meet", "inter-iit tech meet", "inter iit aquatics", "inter iit sports"]
+    category: competition
+    competencies: {competitive_achievement: 0.85, teamwork: 0.65}
+
+  Techkriti:
+    canonical: Techkriti
+    aliases: ["techkriti"]
+    category: festival
+    competencies: {leadership: 0.55, organizational_impact: 0.65}
+
+  Antaragni:
+    canonical: Antaragni
+    aliases: ["antaragni"]
+    category: festival
+    competencies: {leadership: 0.55, organizational_impact: 0.65, cultural_achievement: 0.6}
+
+  Udghosh:
+    canonical: Udghosh
+    aliases: ["udghosh"]
+    category: festival
+    competencies: {leadership: 0.55, organizational_impact: 0.65}
+
+  Galaxy:
+    canonical: Galaxy
+    aliases: ["galaxy", "hall galaxy", "galaxy inter-hall", "inter-hall general championship", "inter hall gc"]
+    category: intra_iitk_competition
+    competencies: {leadership: 0.5, teamwork: 0.6}
+
+  Takneek:
+    canonical: Takneek
+    aliases: ["takneek", "takneek'25", "takneek'24", "takneek 25", "freshers technical event"]
+    category: intra_iitk_competition
+    competencies: {technical_depth: 0.65, teamwork: 0.55}
+
+  Inferno:
+    canonical: Inferno
+    aliases: ["inferno", "inferno'24", "inferno'25"]
+    category: intra_iitk_competition
+    competencies: {cultural_achievement: 0.6, teamwork: 0.5}
+
+  PoR:
+    canonical: Position of Responsibility
+    aliases: ["por", "position of responsibility", "positions of responsibility"]
+    category: leadership_signal
+    competencies: {leadership: 0.9, organizational_impact: 0.8}
+
+  UGP:
+    canonical: Undergraduate Project
+    aliases: ["ugp", "undergraduate project", "b.tech project", "btp"]
+    category: academic_project
+    competencies: {research: 0.75, technical_depth: 0.75}
+
+  Codeforces:
+    canonical: Codeforces
+    aliases: ["codeforces", "cf rating", "cf rated", "codeforces specialist", "codeforces expert"]
+    category: competitive_programming
+    competencies: {algorithms: 0.95, problem_solving: 0.9, competitive_programming: 1.0}
+
+  LeetCode:
+    canonical: LeetCode
+    aliases: ["leetcode", "leet code"]
+    category: competitive_programming
+    competencies: {algorithms: 0.8, problem_solving: 0.75, competitive_programming: 0.7}
+
+  IITKanpur:
+    canonical: IIT Kanpur
+    aliases: ["iit kanpur", "iitk", "indian institute of technology kanpur", "iit-kanpur"]
+    category: institute
+    competencies: {academic_strength: 0.7}
+
+  MobileNetV2:
+    canonical: MobileNetV2
+    aliases: ["mobilenetv2", "mobilenet v2", "mobilenet-v2", "mobilenet"]
+    category: ml_model
+    competencies: {ml_engineering: 0.85, technical_depth: 0.8}
+
+  ROC_AUC:
+    canonical: ROC-AUC
+    aliases: ["roc-auc", "roc auc", "auc", "area under curve", "area under the curve"]
+    category: ml_metric
+    competencies: {ml_engineering: 0.75, statistics: 0.7}
+
+  Convener:
+    canonical: Convener
+    aliases: ["convener", "co-convener", "co convener"]
+    category: por_title
+    competencies: {leadership: 0.85, organizational_impact: 0.8}
+
+  FogVisibility:
+    canonical: Fog Visibility Detection
+    aliases: ["fog visibility", "fog visibility detection", "fog detection"]
+    category: research_project
+    competencies: {research: 0.85, ml_engineering: 0.8, technical_depth: 0.8}
+
+  BusinessAnalyst:
+    canonical: Business Analyst
+    aliases: ["business analyst", "business analysis", "ba intern", "business analyst intern"]
+    category: professional_role
+    competencies: {business_impact: 0.8, problem_solving: 0.75, communication: 0.6}
+
+  NavikraTech:
+    canonical: Navikra Tech Solutions
+    aliases: ["navikra", "navikra tech", "navikra tech solutions"]
+    category: organization
+    competencies: {professional_exposure: 0.7, business_impact: 0.65}
+
+  SQL_DB:
+    canonical: SQL
+    aliases: ["sql", "mysql", "postgresql", "sqlite", "database", "relational database"]
+    category: technical_skill
+    competencies: {software_engineering: 0.7, data_engineering: 0.75}
+
+  DataAnalysis:
+    canonical: Data Analysis
+    aliases: ["data analysis", "data analytics", "data-driven", "data driven"]
+    category: technical_skill
+    competencies: {statistics: 0.7, business_impact: 0.6, ml_engineering: 0.5}
