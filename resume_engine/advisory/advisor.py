@@ -71,7 +71,9 @@ _STRONG_VERBS = {
     "automated", "mentored", "managed", "won", "secured", "achieved", "deployed",
     "published", "researched", "formulated", "benchmarked", "delivered", "curated",
     "calibrated", "identified", "proposed", "oversaw", "facilitated", "established",
-    "guided", "piloted", "chaired",
+    "guided", "piloted", "chaired", "received", "awarded", "ranked", "selected",
+    "served", "organized", "coordinated", "headed", "presented", "qualified",
+    "annotated", "installed", "configured", "simulated", "implemented"
 }
 
 _BULLET_RE = re.compile(r"^\s*(?:[•●▪◦‣·\-–—]|\d+[.)]\s?)\s*")
@@ -93,9 +95,23 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
     suggestions: list[str] = []
     severity = "info"
 
-    first = _first_word(text)
     section_name = claim.section or "Section"
-    entry_title = claim.entry_id or "Item"
+    
+    # Ignore Education table headers or certificate metadata lines
+    if section_name.lower() in ("education", "academics") or any(k in text.lower() for k in ["year", "degree/certificate", "cpi/%", "institute"]):
+        return BulletDiagnostic(
+            claim_id=claim.claim_id,
+            bullet_id=claim.bullet_id or claim.claim_id,
+            section=section_name,
+            entry_id=claim.entry_id,
+            page=claim.page,
+            text_snippet=snippet,
+            issues=[],
+            suggestions=[],
+            severity="info"
+        )
+
+    first = _first_word(text)
 
     # Action verb check
     if not first:
@@ -142,15 +158,11 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
     non_date_text = _DATE_RE.sub("", text)
     if len(non_date_text.strip().split()) < 3 and word_count > 0:
         issues.append("Bullet appears to contain mostly dates with little substantive content.")
-        severity = "warning"
-
-    if not issues:
-        issues.append("No obvious formatting issues detected.")
 
     return BulletDiagnostic(
         claim_id=claim.claim_id,
-        bullet_id=claim.bullet_id,
-        section=claim.section,
+        bullet_id=claim.bullet_id or claim.claim_id,
+        section=section_name,
         entry_id=claim.entry_id,
         page=claim.page,
         text_snippet=snippet,
@@ -177,6 +189,7 @@ class CounterfactualAdvisor:
                 "competency": c.competency,
                 "strength": c.strength,
                 "claims": c.supporting_claims,
+                "reason": f"Strong benchmark performance in {c.competency.replace('_', ' ').title()} with {len(c.supporting_claims)} verified claim(s).",
             }
             for c in ranked if c.strength >= 0.45
         ][:3]
@@ -193,6 +206,7 @@ class CounterfactualAdvisor:
                 "strength": c.strength,
                 "missing_weighted_signal": round((1 - c.strength) * c.weight, 4),
                 "weight": c.weight,
+                "diagnosis": f"Missing explicit evidence or project work in {c.competency.replace('_', ' ').title()} for target role.",
             }
             for c in gaps[:3]
         ]
