@@ -183,9 +183,11 @@ def api_client():
     try:
         from fastapi.testclient import TestClient
         from resume_engine.api.app import app
-        return TestClient(app)
+        with TestClient(app) as client:
+            yield client
     except ImportError:
         pytest.skip("fastapi[testclient] or httpx not available")
+
 
 
 def test_api_health(api_client):
@@ -390,3 +392,30 @@ def test_golden_api_response(api_client):
     data = resp.json()
     for field in ["role", "document", "evidence", "score", "advisory"]:
         assert field in data
+
+
+def test_api_dashboard_html(api_client):
+    """GET / must serve the Web Advisory Dashboard HTML page."""
+    resp = api_client.get("/")
+    assert resp.status_code == 200
+    assert "text/html" in resp.headers["content-type"]
+    assert "IITK Context-Aware Resume Diagnostic Engine" in resp.text
+
+
+def test_api_analyze_all(api_client):
+    """POST /analyze-all must evaluate PDF across all 4 roles."""
+    pdf_bytes = _make_minimal_pdf("Projects", [
+        "Developed Python REST API with 99.9% uptime serving 100k users",
+        "Ranked Codeforces Candidate Master 1900 rating",
+    ])
+    resp = api_client.post(
+        "/analyze-all",
+        files={"file": ("resume.pdf", pdf_bytes, "application/pdf")},
+    )
+    assert resp.status_code == 200
+    data = resp.json()
+    for role_id in ["sde", "quant", "consulting", "core"]:
+        assert role_id in data
+        assert "score" in data[role_id]
+        assert "advisory" in data[role_id]
+

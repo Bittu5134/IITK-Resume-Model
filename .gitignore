@@ -10,6 +10,7 @@ dist/
 build/
 .eggs/
 *.whl
+
 # Virtual environments
 .venv/
 venv/
@@ -21,9 +22,14 @@ ENV/
 .coverage
 htmlcov/
 .tox/
-*.md
+
 # Outputs and temporary files
 outputs/
+temp/
+scratch/
+temp_*.txt
+debug_*.py
+PoR-Handbook.pdf
 *.json
 !tests/fixtures/**/*.json
 
