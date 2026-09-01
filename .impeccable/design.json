@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-02T03:21:00Z",
+  "title": "Design System: IITK Context-Aware Resume Diagnostic Engine",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "IITK Engine Blue", "canonical": "#2563eb" },
+      "iitk-navy": { "role": "primary", "displayName": "IITK Brand Navy", "canonical": "#002147" },
+      "iitk-gold": { "role": "accent", "displayName": "IITK Accent Gold", "canonical": "#FFC72C" },
+      "bg-dark": { "role": "neutral", "displayName": "Deep Slate Canvas", "canonical": "#020617" },
+      "surface-card": { "role": "neutral", "displayName": "Surface Dark Slate", "canonical": "#0f172a" },
+      "border-stroke": { "role": "neutral", "displayName": "Stroke Border Slate", "canonical": "#1e293b" },
+      "signal-strong": { "role": "accent", "displayName": "Signal Strong Emerald", "canonical": "#10b981" },
+      "signal-warning": { "role": "accent", "displayName": "Signal Warning Amber", "canonical": "#f59e0b" },
+      "signal-critical": { "role": "accent", "displayName": "Signal Critical Red", "canonical": "#ef4444" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Header title and main brand titles." },
+      "headline": { "displayName": "Headline", "purpose": "Card titles and auto-detection banner." },
+      "title": { "displayName": "Title", "purpose": "Competency headings and column headers." },
+      "body": { "displayName": "Body", "purpose": "Diagnostic recommendations and descriptions." },
+      "label": { "displayName": "Monospace Label", "purpose": "Location tags, severity badges, bullet snippets." }
+    },
+    "shadows": [
+      { "name": "ambient-glow", "value": "0 10px 25px -5px rgba(59, 130, 246, 0.25)", "purpose": "Glow under primary buttons and active indicators." },
+      { "name": "card-depth", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.5)", "purpose": "Card separation from deep canvas." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main submission button to launch resume analysis.",
+      "html": "<button class=\"ds-btn-primary\"><i class=\"fa-solid fa-microchip\"></i><span>Diagnose Resume</span></button>",
+      "css": ".ds-btn-primary { background: linear-gradient(to right, #2563eb, #4f46e5); color: #ffffff; padding: 12px 24px; font-weight: 600; border-radius: 12px; border: none; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.25); transition: opacity 0.2s; } .ds-btn-primary:hover { opacity: 0.9; }"
+    },
+    {
+      "name": "Track Selector Pill",
+      "kind": "button",
+      "refersTo": "button-role",
+      "description": "Target industry track selector button (SDE, Quant, Consulting, Core).",
+      "html": "<button class=\"ds-role-pill ds-active\"><span>SDE</span><i class=\"fa-solid fa-circle-check\"></i></button>",
+      "css": ".ds-role-pill { background: #020617; border: 1px solid #1e293b; color: #94a3b8; padding: 10px 14px; border-radius: 12px; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; cursor: pointer; } .ds-role-pill.ds-active { border-color: #3b82f6; background: rgba(37, 99, 235, 0.2); color: #93c5fd; }"
+    },
+    {
+      "name": "Auto-Detect Banner",
+      "kind": "custom",
+      "refersTo": "banner-autodetect",
+      "description": "Gradient notification banner displaying the auto-detected best-fit track.",
+      "html": "<div class=\"ds-banner\"><div class=\"ds-icon\"><i class=\"fa-solid fa-wand-magic-sparkles\"></i></div><div><h3>Best Fit: <span>Software Engineering (78/100)</span></h3></div></div>",
+      "css": ".ds-banner { background: linear-gradient(to right, rgba(6, 78, 59, 0.8), #0f172a, rgba(30, 58, 138, 0.8)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 14px; color: #fff; } .ds-banner h3 { font-size: 14px; font-weight: 800; margin: 0; } .ds-banner span { color: #34d399; text-decoration: underline; } .ds-icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(16, 185, 129, 0.2); color: #34d399; display: flex; align-items: center; justify-content: center; font-size: 18px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The SPO Academic Command Center",
+    "overview": "The SPO Academic Command Center is a high-density, authoritative dark-mode interface designed for IIT Kanpur placement advising. Built to handle complex, multi-column LaTeX resume data, the aesthetic balances academic rigor with modern tech command-center precision.",
+    "keyCharacteristics": [
+      "High-Density Data Framing",
+      "Color-Coded Diagnostic Signals",
+      "Dual-Font Hierarchy",
+      "Instant Role-Switching Affordance"
+    ],
+    "rules": [
+      { "name": "The Rarity of Blue Accent Rule", "body": "Primary blue fill (#2563eb) is strictly reserved for primary CTA buttons and active track selection. Neutral slate dominates 90% of the viewport.", "section": "colors" },
+      { "name": "The Monospace Provenance Rule", "body": "Any text representing extracted resume data (bullet snippets, page numbers, line identifiers, parsed URLs) must use the monospaced font family.", "section": "typography" },
+      { "name": "The Stroke-First Layering Rule", "body": "Surfaces rely on 1px subtle slate borders (#1e293b) for visual boundary separation. Heavy box-shadows are strictly forbidden.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use JetBrains Mono monospace font for all bullet snippets, line IDs, page numbers, and hyperlinks.",
+      "Do highlight the highest-scoring track automatically upon PDF upload with the Auto-Detect Best Fit banner.",
+      "Do use 1px slate borders (#1e293b) for structural division across cards and tables."
+    ],
+    "donts": [
+      "Don't use light or white backgrounds for card containers; keep the UI in the dark slate palette.",
+      "Don't fabricate metrics or experience when suggesting bullet point rewrites.",
+      "Don't use heavy drop-shadows or multi-colored gradients on body text."
+    ]
+  }
+}
