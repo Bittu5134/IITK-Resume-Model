@@ -180,5 +180,18 @@
     ],
     "incorrect_diagnostics": [],
     "comments": "Accurate assessment"
+  },
+  {
+    "id": "8ea9c755",
+    "timestamp": "2026-09-01T23:33:22.535518+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
   }
 ]
