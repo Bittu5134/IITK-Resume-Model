@@ -37,7 +37,9 @@ PoR-Handbook.pdf
 *.bin
 *.pt
 *.safetensors
-models/
+/models/
+!resume_engine/models/
+!resume_engine/models/**
 
 # IDE
 .vscode/

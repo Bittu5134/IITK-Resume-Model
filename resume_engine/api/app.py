@@ -37,9 +37,42 @@ def index():
     return HTMLResponse(content=DASHBOARD_HTML)
 
 
+from resume_engine.feedback.store import FeedbackStore, FeedbackEntry
+from resume_engine.feedback.learner import FeedbackLearner
+from resume_engine.models import get_all_models, list_models
+from scripts.benchmark import run_benchmark
+
+feedback_store = FeedbackStore()
+feedback_learner = FeedbackLearner(feedback_store)
+
+
 @app.get("/health")
 def health():
     return {"status": "ok", "roles": sorted(engine.roles), "version": "0.2.0"}
+
+
+@app.get("/api/v1/benchmark")
+def get_benchmark_results():
+    """Run live multi-model benchmark evaluation across sample resumes."""
+    metrics = run_benchmark("temp")
+    return {
+        "models_count": len(metrics),
+        "models_registered": list_models(),
+        "benchmark_results": [m.model_dump() for m in metrics],
+    }
+
+
+@app.post("/api/v1/feedback")
+def submit_feedback(entry: FeedbackEntry):
+    """Receive and record student/coordinator feedback for engine learning."""
+    feedback_store.add_feedback(entry)
+    learning_result = feedback_learner.process_and_learn()
+    return {
+        "status": "success",
+        "message": "Feedback recorded and learning weights updated successfully.",
+        "entry_id": entry.id,
+        "learning_result": learning_result,
+    }
 
 
 @app.get("/api/v1/analytics/summary")
