@@ -86,7 +86,7 @@ def _first_word(text: str) -> str:
 
 
 def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
-    """Run per-bullet quality checks and return a diagnostic."""
+    """Run per-bullet quality checks and return a diagnostic with hyper-specific feedback."""
     text = claim.text
     snippet = text[:120]
     issues: list[str] = []
@@ -94,47 +94,51 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
     severity = "info"
 
     first = _first_word(text)
+    section_name = claim.section or "Section"
+    entry_title = claim.entry_id or "Item"
 
     # Action verb check
     if not first:
         issues.append("Bullet appears empty or has no action verb.")
         severity = "warning"
     elif first in _WEAK_VERBS:
-        issues.append(f"Weak action verb '{first}' — minimal ownership signal.")
+        issues.append(f"Weak action verb '{first}' in {section_name}.")
         suggestions.append(
-            f"Replace '{first}' with a stronger ownership verb "
-            f"(e.g. 'Developed', 'Engineered', 'Led') if factually accurate."
+            f"Replace '{first}' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in '{section_name}'."
         )
         severity = "warning"
     elif first not in _STRONG_VERBS and claim.action_strength < 0.50:
-        issues.append(f"Unrecognized action verb '{first}' — unclear ownership.")
+        issues.append(f"Unrecognized action verb '{first}' in {section_name}.")
         suggestions.append(
-            "Start with a recognized strong action verb to clearly signal ownership."
+            f"Start bullet in '{section_name}' with a strong action verb to signal ownership."
         )
 
-    # Metric / quantification check
+    # Metric / quantification check — Hyper-Specific Suggestions
     if not claim.metrics:
         issues.append("No quantifiable metric detected.")
-        suggestions.append(
-            "If a truthful metric exists (%, count, revenue, users, rank), add it. "
-            "Do not invent numbers."
-        )
+        if "project" in section_name.lower() or "research" in section_name.lower():
+            suggestions.append(f"Quantify user base growth, accuracy (%), or speedup (x) in {section_name} ({snippet[:35]}...).")
+        elif "position" in section_name.lower() or "por" in section_name.lower() or "responsibility" in section_name.lower():
+            suggestions.append(f"Quantify team size, budget managed, or participant reach in {section_name} leadership bullet.")
+        elif "codeforces" in text.lower() or "competitive" in text.lower():
+            suggestions.append("Quantify max rating or global rank (e.g., 'Codeforces Candidate Master 1900+ rating').")
+        else:
+            suggestions.append(f"Quantify the performance improvement or scale metric in bullet: '{snippet[:40]}...'.")
     elif not claim.impact_metrics:
         issues.append("Numbers present but none classified as outcome/impact metrics.")
         suggestions.append(
-            "Ensure at least one number communicates scale, outcome, or impact "
-            "(e.g. 'reduced by 20%', 'served 500 students')."
+            f"Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
         )
 
     # Length check
     word_count = len(text.split())
     if word_count > 40:
-        issues.append(f"Bullet is long ({word_count} words) — consider splitting or trimming.")
+        issues.append(f"Bullet is long ({word_count} words) — consider splitting into 2 focused lines.")
         severity = max(severity, "warning", key=lambda x: ["info", "warning", "critical"].index(x))
     elif word_count < 5:
-        issues.append("Bullet is very short — may lack context.")
+        issues.append("Bullet is very short — add technical stack context.")
 
-    # Date-only check (no actual content)
+    # Date-only check
     non_date_text = _DATE_RE.sub("", text)
     if len(non_date_text.strip().split()) < 3 and word_count > 0:
         issues.append("Bullet appears to contain mostly dates with little substantive content.")

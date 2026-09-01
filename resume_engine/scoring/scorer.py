@@ -139,8 +139,27 @@ class RoleScorer:
         # ── Role-specific penalties ──────────────────────────────────────
         penalties: list[dict] = []
 
+        # ── Rubric-aligned Role-Specific Bonuses & Penalties ─────────────
+        bonus_total = 0.0
+
+        # Extract all detected entity canonicals across all claims
+        detected_entity_canonicals = set()
+        for cl in evidence.claims:
+            for ent in getattr(cl, 'entities', []):
+                if hasattr(ent, 'canonical'):
+                    detected_entity_canonicals.add(ent.canonical)
+
+        has_gsoc = any(e in detected_entity_canonicals for e in ["GSoC"])
+        has_codeforces = any(e in detected_entity_canonicals for e in ["Codeforces"])
+        has_surge = any(e in detected_entity_canonicals for e in ["SURGE"])
+        has_pub = any(e in detected_entity_canonicals for e in ["Research Publication"])
+        has_por_spike = any(e in detected_entity_canonicals for e in [
+            "Academia and Career Council", "Academics and Career Council", "Students Gymkhana",
+            "Hall Executive Committee", "Senate", "Inter-IIT Sports", "Cultural Leadership"
+        ])
+
         if role.role_id == "sde":
-            # Project penalty: only if no accepted match in Projects section (E5 fix)
+            # Project penalty: only if no accepted match in Projects section
             has_project_match = any(
                 m.competency == "projects" and m.final_score >= 0.20
                 for m in matches
@@ -152,46 +171,45 @@ class RoleScorer:
                     "code": "weak_projects",
                 })
 
-            # GitHub penalty: REMOVED - unfair for private repos/GitLab users
-            # Many strong candidates use private repos or company GitLab
-            # if not has_github and not has_git_skill:
-            #     penalties.append({
-            #         "reason": "No Git/GitHub evidence detected",
-            #         "points": 2.0,
-            #         "code": "missing_github",
-            #     })
+            if has_gsoc:
+                bonus_total += 5.0
+            if has_codeforces:
+                bonus_total += 4.0
 
         elif role.role_id == "quant":
-            # Low CPI penalty for Quant - use data-driven threshold (E4)
-            # Data shows: Quant avg CPI = 9.33, use 8.0 (80th percentile) as threshold
-            if cpi_value is not None and (cpi_value / cpi_scale) < 0.80:
-                penalties.append({
-                    "reason": f"CPI {cpi_value}/{cpi_scale:.0f} is below typical Quant profile (8.0+/10)",
-                    "points": 3.0,
-                    "code": "low_cpi",
-                })
+            # High CPI boost & Low CPI penalty
+            if cpi_value is not None:
+                cpi_ratio = cpi_value / cpi_scale
+                if cpi_ratio >= 0.90:  # 9.0+ CPI
+                    bonus_total += 6.0
+                elif cpi_ratio < 0.80:
+                    penalties.append({
+                        "reason": f"CPI {cpi_value}/{cpi_scale:.0f} is below typical Quant profile (8.0+/10)",
+                        "points": 3.0,
+                        "code": "low_cpi",
+                    })
 
         elif role.role_id == "consulting":
-            # No leadership/PoR evidence - soften threshold
             lead_strength = next(
                 (c.strength for c in comps if c.competency == "leadership"), 0.0
             )
-            if lead_strength < 0.20:
+            # Rubric edge-case: High CPI but ZERO PoRs/Leadership spike gets heavy penalty
+            if lead_strength < 0.20 and not has_por_spike:
                 penalties.append({
-                    "reason": "Consider adding leadership/PoR evidence to strengthen consulting profile",
-                    "points": 3.0,
-                    "code": "weak_leadership",
+                    "reason": "Management Consulting requires explicit PoR leadership spikes or extracurricular achievements",
+                    "points": 10.0,
+                    "code": "missing_por_spike",
                 })
+            elif has_por_spike or lead_strength >= 0.60:
+                bonus_total += 6.0
 
         elif role.role_id == "core":
-            # CAD/MATLAB penalty REMOVED - many core branches don't use these tools
-            # Different core engineering branches use different tools
-            # Penalizing for missing MATLAB/CAD is unfair and biased
-            pass
+            if has_surge or has_pub:
+                bonus_total += 6.0
 
         # ── Final score ────────────────────────────────────────────────────
         penalty_total = sum(p["points"] for p in penalties)
-        total = round(max(0.0, min(100.0, raw_score - penalty_total)), 2)
+        total = round(max(0.0, min(100.0, raw_score + bonus_total - penalty_total)), 2)
 
         # Coverage: fraction of competencies with at least one accepted match
         n_comps = len(role.competencies)

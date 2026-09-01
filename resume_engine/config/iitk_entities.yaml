@@ -4,9 +4,39 @@
 # schema: canonical, aliases[], category, competencies{name: 0-1}, version
 version: "2.0"
 entities:
+  GSoC:
+    canonical: GSoC
+    aliases: ["gsoc", "google summer of code", "outreachy", "lfx mentorship"]
+    category: open_source_fellowship
+    competencies: {open_source: 1.0, software_engineering: 0.9, technical_depth: 0.85}
+
+  Codeforces:
+    canonical: Codeforces
+    aliases: ["codeforces", "codeforces candidate master", "codeforces master", "codeforces grandmaster", "codeforces specialist", "codeforces expert"]
+    category: competitive_programming
+    competencies: {competitive_programming: 1.0, algorithms: 0.95}
+
+  ResearchPublication:
+    canonical: Research Publication
+    aliases: ["ieee", "acm", "arxiv", "springer", "elsevier", "nature", "research publication", "conference paper", "journal article"]
+    category: research_publication
+    competencies: {research: 1.0, technical_depth: 0.9}
+
+  InterIIT_Sports:
+    canonical: Inter-IIT Sports
+    aliases: ["inter-iit sports", "inter iit sports", "sports captain", "athletics team", "aquatics team", "badminton team", "basketball team"]
+    category: sports_leadership
+    competencies: {leadership: 0.85, extracurricular_spike: 0.95}
+
+  Cultural_Leadership:
+    canonical: Cultural Leadership
+    aliases: ["cultural festival", "music club", "dance club", "dramatics club", "vox populi", "antaragni coordinator"]
+    category: cultural_leadership
+    competencies: {leadership: 0.8, extracurricular_spike: 0.85}
+
   SURGE:
     canonical: SURGE
-    aliases: ["surge", "summer undergraduate research grant", "summer undergraduate research grant for excellence"]
+    aliases: ["surge", "surge intern", "summer undergraduate research grant", "summer undergraduate research grant for excellence"]
     category: research_program
     competencies: {research: 0.95, technical_depth: 0.75, faculty_guided_work: 0.85}
 

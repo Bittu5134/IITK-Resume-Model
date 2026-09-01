@@ -35,13 +35,28 @@ _STRONG_ACTION_VERBS = {
     "supervised", "trained", "transformed", "utilized", "validated"
 }
 
-# IITK Campus Jargon terms for EntityRuler / Regex dictionary
+# IITK Campus Jargon, SDE, Quant, Consulting & Core terms for EntityRuler / Regex dictionary
 _IITK_CAMPUS_JARGON = [
+    # IITK Leadership & PoRs
     "SURGE", "SURGE Intern", "AnC Council", "Academics & Career Council",
     "Gymkhana", "Students Gymkhana", "PoR", "Position of Responsibility",
     "TnP", "SPO", "Student Placement Office", "Techkriti", "Antaragni",
     "Udghosh", "Counseling Service", "HEC", "Hall Executive Committee",
-    "Presidential PoR", "UGPEC", "SUGC", "DPGC", "CPI", "SPI"
+    "Presidential PoR", "UGPEC", "SUGC", "DPGC", "CPI", "SPI",
+    "Convener", "Coordinator", "General Secretary", "Hall President", "Team Captain",
+
+    # SDE Specifics
+    "GSoC", "Google Summer of Code", "Outreachy", "LFX Mentorship",
+    "Codeforces", "CodeChef", "AtCoder", "LeetCode", "ICPC", "IOI",
+    "Candidate Master", "Grandmaster", "Master", "Specialist", "Expert",
+
+    # Core Eng Research & Publications
+    "IEEE", "ACM", "arXiv", "Springer", "Elsevier", "Nature",
+    "Research Publication", "Conference Paper", "Journal Article",
+
+    # Consulting Leadership & Sports/Culture
+    "Inter-IIT Sports", "Cultural Festival", "General Secretary Academics",
+    "Music Club", "Dance Club", "Dramatics Club", "Vox Populi"
 ]
 
 
