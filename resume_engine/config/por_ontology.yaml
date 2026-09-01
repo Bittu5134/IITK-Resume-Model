@@ -1,0 +1,1299 @@
+# PoR Ontology - Extracted from PoR Handbook
+# Role-specific weights: 0-1 scale
+
+pors:
+  - title: "Chairperson, Students' Senate"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Senators"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Finance Convener"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Ad hoc Subcommittees and their Conveners"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Senate Nominees to Students' Senate Standing Committees/Councils"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Office of the Students' Senate (Chairperson's Office):"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Chief Secretary, Students' Senate"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Secretary, Students' Senate"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "President's Office"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "President, Students' Gymkhana"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Chief Secretary, President's Office"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Chief President's Nominee"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "President's Nominees to Institute Committees"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Web Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Secretary/Marketing Officer"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Gymkhana Councils"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "General Secretary"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Associate Head"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Club Coordinator(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Society Leader(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Club/Society/Wing Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Council Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Media and Cultural Council"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Academics and Career Council"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Wing Manager(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Academic Departmental Mentors"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Career Departmental Mentors"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Games and Sports Council"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "<Sport> Coordinator(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "<Sport> Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "<Specialized Work> Coordinator(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Science and Technology Council"
+    role_weights:
+      sde: 0.9
+      quant: 0.5
+      consulting: 0.6
+      core: 0.9
+
+  - title: "Managers(Web, Outreach&Connect)"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.75
+      core: 0.4
+
+  - title: "Festivals"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Festival Coordinator(s)"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Head(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Cells"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Entrepreneurship Cell (E-Cell)"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Overall Coordinator"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Manager(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Outreach Cell"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.75
+      core: 0.4
+
+  - title: "Community Welfare Cell (CWC)"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.75
+      core: 0.4
+
+  - title: "Public Policy & Opinion Cell (PPOC)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Institute SnT Teams"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Team Structure"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Team Head(s)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Institute Sports Teams and SPEC"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Team Captain"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "President"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Maintenance Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Mess Secretary"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Media and Culture Secretary"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Finance/Accounts Secretary"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Sports Secretary"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Science and Technology Secretary"
+    role_weights:
+      sde: 0.9
+      quant: 0.5
+      consulting: 0.6
+      core: 0.9
+
+  - title: "Common Rooms Secretary"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Coordinators"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Operations Core Team"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Academics Core Team"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Academic Mentors"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "PG Core Team"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Orientation Team Members (PG)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Overall Placement Coordinator"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Assistant Placement Coordinator"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Department Placement Coordinator"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Company Coordinator"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Web Team"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Committees of Festival Affairs (Udghosh, Antaragni and Techkriti)."
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Standing Councils and their Conveners"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "The Students' Senate has various standing councils, pertaining to various purposes. The"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "The Standing Councils are as follows:-"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "The Council of Students for Hostel Affairs (CoSHA)"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "The Council of Festival Affairs (CoFA)"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "The Undergraduate Students' Affairs Council (UG-SAC)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "The Postgraduate Students' Affairs Council (PG-SAC)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "and outside committee meetings. The various standing committees/councils are:"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Responsible for assisting the Chairperson in steering the meetings of the Senate"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Cells Affairs Committee (CAC)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "of the cells of Students' Gymkhana"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Council of Students for Hostel Affairs (CoSHA)"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Council of Festival Affairs (CoFA)"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "festivals of the Students' Gymkhana, governed by the Appendix E of the"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "and assist the Chairperson in the discharge of their duties."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "The Secretary, Students' Senate shall be divided into two verticals -"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Chairperson in ensuring the smooth conduction of the meetings."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Secretary, Media and Publicity: The Secretary is responsible for coordinating the outreach"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "committees, executing the agendas directed to the President's office concerning external affairs"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "ad hoc tasks as per the discretion of the President."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Women's Cell"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Animal Welfare Cell"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Cell For Differently Abled"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "There are four Councils under the Students' Gymkhana -"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "conduct of the council lies with the General Secretary."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Associate Head, Films and Media, MnC Council"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Associate Head, Non-performing Arts, MnC Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, Performing Arts, MnC Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, Teams, SnT Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, Technical, SnT Council"
+    role_weights:
+      sde: 0.9
+      quant: 0.5
+      consulting: 0.6
+      core: 0.9
+
+  - title: "Associate Head, Research and Development, SnT Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, Teams, GnS Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, Clubs & Societies, GnS Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, Events, GnS Council"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Associate Head, Career Development, AnC Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Associate Head, UG Academics, AnC Council"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Associate Head, PG Academics, AnC Council"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Associate Head, Research, AnC Council"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "recruitment of secretaries etc., in coordination with the General Secretary."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Managers :"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Mentors"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "students, and maintain the career portal on AnC council website."
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "the corresponding Associate Head and the General Secretaries."
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "They also assist the Institute Sports Teams."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Constitution. These festivals are -"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Antaragni, The Media and Cultural Festival"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Techkriti, The Science, Technology and Entrepreneurial Festival"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Udghosh, The Games and Sports Festival"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "pertaining to their festival."
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Students' Gymkhana, Chairperson, Students' Senate and Festival Chairman, for each festival."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "Head, Events (Major Events and Competitions)"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "festival; preparing the pre conduct and post conduct reports of the events"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Head, Finance"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Responsible for all finance and accounting related concerns of the festivals,"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Head, Marketing"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Responsible for the marketing of the festival, hence, arranging sufficient funds and"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Head, Media and Publicity"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Responsible for the publicizing and outreach of the festival, both inside and"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.75
+      core: 0.4
+
+  - title: "Head, Public Relations"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "professionals for participating in the festival"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Head, Security"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Responsible for security arrangements of the festival and preparing security plans"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Head, Show Management"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Responsible for ensuring the smooth conduction of shows during the festival"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Head, Design"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Responsible for all the design related requirements of the festival"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Head, Web"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Responsible for the management of the festival's website related logistics"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "the festival and managing the other officers in the security vertical."
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "The Overall Coordinator, Entrepreneurship Cell, is responsible for overseeing the Cell's work,"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "that specific division. The various Managers in the Entrepreneurship Cell are:"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Manager, Business Development"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Manager, Events"
+    role_weights:
+      sde: 0.5
+      quant: 0.5
+      consulting: 0.85
+      core: 0.5
+
+  - title: "Manager, Media and Publicity"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Manager, Design"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Startup Development"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Marketing"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Manager, Finance & Logistics"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Manager, Start-Up Internship Programme (SIP)"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Web"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "the Outreach Cell:"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.75
+      core: 0.4
+
+  - title: "Manager, Vivekananda Samiti"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Unmukt"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Prakriti"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Prayas"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Raktarpan"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "The secretary aids the Managers and Overall Coordinators at the fundamental level."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 1.0
+      core: 0.4
+
+  - title: "The managers function under the following wings:"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "and constituting the logistics team of the cell"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "policy making competitions, mentoring and publishing content on the same lines"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "They manage the functioning of the cell under the following verticals:"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Logistics"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Manager, Publicity - UG"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Manager, Publicity - PG"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.85
+      core: 0.4
+
+  - title: "Manager, Auditing and Finance"
+    role_weights:
+      sde: 0.6
+      quant: 0.7
+      consulting: 0.9
+      core: 0.5
+
+  - title: "Responsible for leading design/creatives team members and related logistics"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "of the team for various projects."
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "teams, as and when necessary. These teams are -"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Team Aerial Robotics"
+    role_weights:
+      sde: 0.9
+      quant: 0.5
+      consulting: 0.6
+      core: 0.9
+
+  - title: "Team AUV"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Team Humanoid"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Team IITK Motorsports"
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "Team ERA"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Team VISION"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "position of team head."
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Teams, GnS Council, oversees the activities and coordinates with the sports teams."
+    role_weights:
+      sde: 0.4
+      quant: 0.4
+      consulting: 0.7
+      core: 0.4
+
+  - title: "team practices daily and their requirements, planning contingent-related innovative activities,"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "outdoor teams to conduct practice matches and friendly tournaments. The selection process"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "Coordinators supervise the overall functioning of the Undergraduate Students' Wing of the"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "The Academics Core Team is responsible for ensuring academic welfare, through organizing"
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Academic Mentors and organize sessions e.g. the Technical Terminology Classes."
+    role_weights:
+      sde: 0.9
+      quant: 0.5
+      consulting: 0.6
+      core: 0.9
+
+  - title: "classes and provide one to one mentoring to students."
+    role_weights:
+      sde: 0.5
+      quant: 0.7
+      consulting: 0.8
+      core: 0.5
+
+  - title: "Orientation Team Members help in conduction of Orientation for Post Graduate Freshmen."
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "organize Career Awareness Sessions/Workshops by inviting alumni/company representatives"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "They assist the Overall Placement Coordinator, sometimes by directly coordinating with the"
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+
+  - title: "They handle the web related logistics of the Students' Placement Team."
+    role_weights:
+      sde: 0.3
+      quant: 0.3
+      consulting: 0.5
+      core: 0.3
+

@@ -54,6 +54,7 @@ class AtomicClaim(BaseModel):
     impact_metrics: list[Metric] = Field(default_factory=list)  # only impact-relevant subset
     entities: list[EntityMention] = Field(default_factory=list)
     skills: list[str] = Field(default_factory=list)
+    courses: list[dict] = Field(default_factory=list)  # Extracted courses from coursework ontology
     hyperlinks: list[str] = Field(default_factory=list)
     subsection_label: str | None = None
     signals: dict[str, float] = Field(default_factory=dict)

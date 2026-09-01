@@ -17,7 +17,7 @@ import re
 import yaml
 from pathlib import Path
 
-from resume_engine.parser.models import ResumeAST, Bullet, Section
+from resume_engine.parser.models import ResumeAST, Bullet, Section, BBox
 from .models import (
     AcademicMetric, AtomicClaim, EntityMention, EvidenceDocument, Metric,
     EvidenceType, ProjectType, ImpactType
@@ -384,6 +384,15 @@ class EvidenceExtractor:
         self.skills: dict[str, list[str]] = yaml.safe_load(
             (root / "skills.yaml").read_text()
         )["skills"]
+        
+        # Load coursework ontology for course extraction
+        try:
+            coursework_data = yaml.safe_load((root / "coursework.yaml").read_text())
+            self.course_codes = coursework_data.get("course_codes", [])
+            self.courses = coursework_data.get("courses", [])
+        except FileNotFoundError:
+            self.course_codes = []
+            self.courses = []
 
     def _normalize_iitk_entity(self, surface_text: str) -> str:
         """Normalize IITK entity variants to canonical form."""
@@ -442,6 +451,49 @@ class EvidenceExtractor:
                     seen.add(canonical)
                     break
         return out
+
+    def _extract_courses(self, text: str) -> list[dict]:
+        """Extract course names and codes from text using coursework ontology."""
+        found_courses = []
+        text_lower = text.lower()
+        seen_courses = set()
+        
+        # Extract course codes (ESC101, MTH101, CS220, etc.)
+        for course_code in self.course_codes:
+            code = course_code['code']
+            if code in seen_courses:
+                continue
+            for alias in course_code.get('aliases', []):
+                # Word boundary aware matching
+                pattern = r'\b' + re.escape(alias) + r'\b'
+                if re.search(pattern, text_lower):
+                    found_courses.append({
+                        'type': 'course_code',
+                        'code': code,
+                        'name': course_code['name'],
+                        'competencies': course_code.get('competencies', [])
+                    })
+                    seen_courses.add(code)
+                    break
+        
+        # Extract course names (Linear Algebra, Algorithms, etc.)
+        for course in self.courses:
+            name = course['name']
+            if name in seen_courses:
+                continue
+            for alias in course.get('aliases', []):
+                # More flexible matching for course names
+                if alias.lower() in text_lower:
+                    found_courses.append({
+                        'type': 'course_name',
+                        'name': name,
+                        'competencies': course.get('competencies', []),
+                        'role_relevance': course.get('role_relevance', {})
+                    })
+                    seen_courses.add(name)
+                    break
+        
+        return found_courses
 
     def _classify_evidence_types(
         self, 
@@ -942,6 +994,52 @@ class EvidenceExtractor:
         claim_idx = 0
         for section in ast.sections:
             entry_type = _SECTION_ENTRY_TYPE.get(section.name, "unknown")
+            
+            # ── SPECIAL: Extract courses from raw_lines in Coursework sections ──
+            # Many resumes list courses as plain text, not bullets
+            if section.name in {"Coursework", "Education"} or "course" in section.name.lower():
+                if section.raw_lines and not section.bullets:
+                    # Process raw_lines to extract courses
+                    combined_text = " ".join(section.raw_lines)
+                    extracted_courses = self._extract_courses(combined_text)
+                    
+                    if extracted_courses:
+                        # Create a synthetic claim for coursework
+                        claim_idx += 1
+                        # Use first entry bbox if available, else section default
+                        bbox = section.entries[0].bbox if section.entries else BBox(x0=0, y0=0, x1=100, y1=10)
+                        page = section.entries[0].page_start if section.entries else 1
+                        
+                        claims.append(AtomicClaim(
+                            claim_id=f"c{claim_idx:04d}",
+                            bullet_id=f"synthetic_coursework_{section.name}",
+                            entry_id=None,
+                            text=combined_text[:200],  # Truncate for brevity
+                            raw_text=combined_text[:200],
+                            section=section.name,
+                            entry_type="coursework",
+                            entry_context="Relevant Coursework",
+                            page=page,
+                            bbox=bbox,
+                            action_verb=None,
+                            action_strength=0.0,
+                            action_confidence=0.0,
+                            metrics=[],
+                            impact_metrics=[],
+                            entities=[],
+                            skills=[],
+                            courses=extracted_courses,
+                            hyperlinks=[],
+                            subsection_label=None,
+                            signals={"coursework": min(0.85, 0.40 + 0.15 * min(len(extracted_courses), 3))},
+                            evidence_strength=0.70,  # Moderate strength for coursework
+                            evidence_types=[EvidenceType.COURSEWORK],
+                            project_types=[],
+                            impact_types=[],
+                            domain_relevance={"sde": 0.7, "quant": 0.8, "consulting": 0.4, "core": 0.8},
+                            presence_score=0.70,
+                            role_relevance_score={"sde": 0.49, "quant": 0.56, "consulting": 0.28, "core": 0.56},
+                        ))
 
             for bullet in section.bullets:
                 claim_idx += 1
@@ -970,6 +1068,12 @@ class EvidenceExtractor:
                 impact_metrics = [m for m in all_metrics if m.is_impact_relevant]
                 entities = self._entities(text)
                 skills = self._skills(text)
+                
+                # Extract courses from coursework sections - need full entry context
+                combined_text_for_courses = f"{entry_context} {text}".strip()
+                courses = []
+                if section.name in {"Coursework", "Education"} or "course" in section.name.lower():
+                    courses = self._extract_courses(combined_text_for_courses)
 
                 # Collect for document-level convenience
                 all_skills_set.update(skills)
@@ -1012,6 +1116,14 @@ class EvidenceExtractor:
                     signals["algorithms"] = max(signals.get("algorithms", 0), 0.70)
                 if skills:
                     signals["programming"] = max(signals.get("programming", 0), 0.50)
+                
+                # Coursework-based signals - add competency signals from extracted courses
+                if courses:
+                    signals["coursework"] = min(0.85, 0.40 + 0.15 * min(len(courses), 3))
+                    for course in courses:
+                        # Add signals from course competencies
+                        for comp in course.get('competencies', []):
+                            signals[comp] = max(signals.get(comp, 0), 0.55)
 
                 evidence_str = self._evidence_strength(
                     action_str, action_conf, impact_metrics, all_metrics,
@@ -1051,6 +1163,7 @@ class EvidenceExtractor:
                     impact_metrics=impact_metrics,
                     entities=entities,
                     skills=skills,
+                    courses=courses,
                     hyperlinks=bullet.hyperlinks,
                     subsection_label=bullet.subsection_label,
                     signals=signals,

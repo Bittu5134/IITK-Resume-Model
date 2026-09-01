@@ -1,0 +1,383 @@
+# Data-Driven Coursework Ontology
+# Built from analysis of 81 IITK resumes across 4 roles
+# Each course maps to competencies and has role-specific relevance scores
+
+# IITK Course Codes (common patterns)
+course_codes:
+  # Computer Science
+  - code: "ESC101"
+    name: "Introduction to Computing"
+    aliases: ["esc101", "esc 101", "intro to computing"]
+    competencies: ["programming"]
+    
+  - code: "CS220"
+    name: "Data Structures and Algorithms"
+    aliases: ["cs220", "cs 220", "dsa"]
+    competencies: ["algorithms", "programming"]
+    
+  - code: "CS203"
+    name: "Abstract Algebra"
+    aliases: ["cs203", "cs 203"]
+    competencies: ["mathematics"]
+    
+  - code: "CS253"
+    name: "Compiler Design"
+    aliases: ["cs253", "cs 253", "compiler"]
+    competencies: ["software_engineering"]
+    
+  - code: "CS202"
+    name: "Logic for Computer Science"
+    aliases: ["cs202", "cs 202", "logic"]
+    competencies: ["algorithms"]
+    
+  # Mathematics
+  - code: "MTH101"
+    name: "Mathematics I (Calculus)"
+    aliases: ["mth101", "mth 101", "calculus", "mathematics i"]
+    competencies: ["mathematics"]
+    
+  - code: "MTH102"
+    name: "Mathematics II (Linear Algebra)"
+    aliases: ["mth102", "mth 102", "linear algebra", "mathematics ii"]
+    competencies: ["mathematics", "probability"]
+    
+  - code: "ESO207"
+    name: "Data Structures and Algorithms"
+    aliases: ["eso207", "eso 207"]
+    competencies: ["algorithms"]
+    
+  # Physics
+  - code: "PHY103"
+    name: "Physics I"
+    aliases: ["phy103", "phy 103", "physics i"]
+    competencies: ["technical_depth"]
+    
+  - code: "PHY102"
+    name: "Physics II"
+    aliases: ["phy102", "phy 102", "physics ii"]
+    competencies: ["technical_depth"]
+    
+  # Electronics
+  - code: "ESC201"
+    name: "Introduction to Electronics"
+    aliases: ["esc201", "esc 201", "intro to electronics"]
+    competencies: ["core_tools", "technical_depth"]
+
+# Common Course Names (extracted from 81 resumes)
+# Frequency data from resume_database_analysis.json
+courses:
+  # Top courses across all roles
+  - name: "Linear Algebra"
+    aliases: ["linear algebra", "matrix theory", "matrix algebra", "matrices"]
+    competencies: ["mathematics"]
+    role_relevance:
+      sde: 0.6
+      quant: 0.9
+      core: 0.7
+      consulting: 0.3
+    frequency:
+      software: 33
+      quant: 17
+      core: 11
+      consulting: 2
+      
+  - name: "Probability"
+    aliases: ["probability", "probability theory", "probability and statistics"]
+    competencies: ["probability", "mathematics", "statistics"]
+    role_relevance:
+      sde: 0.5
+      quant: 0.95
+      core: 0.6
+      consulting: 0.3
+    frequency:
+      software: 28
+      quant: 16
+      core: 10
+      consulting: 1
+      
+  - name: "Algorithms"
+    aliases: ["algorithms", "algorithm design", "design and analysis of algorithms", "algorithmic"]
+    competencies: ["algorithms"]
+    role_relevance:
+      sde: 0.95
+      quant: 0.85
+      core: 0.5
+      consulting: 0.4
+    frequency:
+      software: 28
+      quant: 16
+      core: 8
+      consulting: 2
+      
+  - name: "Data Structures"
+    aliases: ["data structures", "data structures and algorithms", "dsa"]
+    competencies: ["algorithms", "programming"]
+    role_relevance:
+      sde: 0.95
+      quant: 0.75
+      core: 0.4
+      consulting: 0.3
+    frequency:
+      software: 19
+      quant: 12
+      core: 4
+      consulting: 1
+      
+  - name: "Electronics"
+    aliases: ["electronics", "electronic circuits", "analog electronics", "digital electronics"]
+    competencies: ["core_tools", "technical_depth"]
+    role_relevance:
+      sde: 0.3
+      quant: 0.3
+      core: 0.85
+      consulting: 0.2
+    frequency:
+      software: 25
+      quant: 8
+      core: 8
+      consulting: 1
+      
+  - name: "Differential Equations"
+    aliases: ["differential equations", "ode", "pde", "ordinary differential equations", "partial differential equations"]
+    competencies: ["mathematics"]
+    role_relevance:
+      sde: 0.3
+      quant: 0.7
+      core: 0.8
+      consulting: 0.2
+    frequency:
+      software: 20
+      quant: 4
+      core: 5
+      consulting: 0
+      
+  - name: "Discrete Mathematics"
+    aliases: ["discrete mathematics", "discrete math", "discrete structures"]
+    competencies: ["algorithms", "mathematics"]
+    role_relevance:
+      sde: 0.85
+      quant: 0.75
+      core: 0.4
+      consulting: 0.3
+    frequency:
+      software: 16
+      quant: 11
+      core: 3
+      consulting: 0
+      
+  - name: "Statistics"
+    aliases: ["statistics", "statistical methods", "statistical inference", "applied statistics"]
+    competencies: ["statistics", "probability"]
+    role_relevance:
+      sde: 0.5
+      quant: 0.9
+      core: 0.5
+      consulting: 0.6
+    frequency:
+      software: 13
+      quant: 5
+      core: 3
+      consulting: 1
+      
+  - name: "Machine Learning"
+    aliases: ["machine learning", "ml", "intro to machine learning", "statistical learning"]
+    competencies: ["ml_engineering", "algorithms", "statistics"]
+    role_relevance:
+      sde: 0.85
+      quant: 0.75
+      core: 0.5
+      consulting: 0.4
+    frequency:
+      software: 12
+      quant: 5
+      core: 2
+      consulting: 1
+      
+  - name: "Calculus"
+    aliases: ["calculus", "integral calculus", "differential calculus", "multivariable calculus"]
+    competencies: ["mathematics"]
+    role_relevance:
+      sde: 0.3
+      quant: 0.8
+      core: 0.7
+      consulting: 0.2
+    frequency:
+      software: 7
+      quant: 5
+      core: 4
+      consulting: 0
+      
+  - name: "Operating Systems"
+    aliases: ["operating systems", "os", "operating system design"]
+    competencies: ["software_engineering", "programming"]
+    role_relevance:
+      sde: 0.9
+      quant: 0.4
+      core: 0.5
+      consulting: 0.2
+    frequency:
+      software: 5
+      quant: 2
+      core: 1
+      consulting: 0
+      
+  - name: "Computer Networks"
+    aliases: ["computer networks", "networks", "data communication"]
+    competencies: ["software_engineering"]
+    role_relevance:
+      sde: 0.8
+      quant: 0.3
+      core: 0.6
+      consulting: 0.2
+      
+  - name: "Database Management Systems"
+    aliases: ["database", "dbms", "database management", "rdbms", "databases"]
+    competencies: ["software_engineering", "programming"]
+    role_relevance:
+      sde: 0.85
+      quant: 0.5
+      core: 0.4
+      consulting: 0.3
+      
+  - name: "Theory of Computation"
+    aliases: ["theory of computation", "toc", "automata theory", "formal languages"]
+    competencies: ["algorithms", "mathematics"]
+    role_relevance:
+      sde: 0.75
+      quant: 0.6
+      core: 0.3
+      consulting: 0.2
+    frequency:
+      software: 3
+      quant: 2
+      core: 0
+      consulting: 0
+      
+  - name: "Computer Architecture"
+    aliases: ["computer architecture", "computer organization", "computer systems"]
+    competencies: ["software_engineering", "technical_depth"]
+    role_relevance:
+      sde: 0.7
+      quant: 0.4
+      core: 0.8
+      consulting: 0.2
+    frequency:
+      software: 2
+      quant: 0
+      core: 1
+      consulting: 0
+      
+  - name: "Deep Learning"
+    aliases: ["deep learning", "dl", "neural networks", "deep neural networks"]
+    competencies: ["ml_engineering", "algorithms"]
+    role_relevance:
+      sde: 0.8
+      quant: 0.7
+      core: 0.4
+      consulting: 0.3
+    frequency:
+      software: 2
+      quant: 3
+      core: 0
+      consulting: 0
+      
+  - name: "Signals and Systems"
+    aliases: ["signals", "signals and systems", "signal processing"]
+    competencies: ["core_tools", "technical_depth"]
+    role_relevance:
+      sde: 0.4
+      quant: 0.5
+      core: 0.85
+      consulting: 0.2
+    frequency:
+      software: 6
+      quant: 0
+      core: 3
+      consulting: 0
+      
+  - name: "Control Systems"
+    aliases: ["control", "control systems", "control theory", "feedback control"]
+    competencies: ["core_tools", "technical_depth"]
+    role_relevance:
+      sde: 0.3
+      quant: 0.4
+      core: 0.9
+      consulting: 0.2
+    frequency:
+      software: 7
+      quant: 0
+      core: 4
+      consulting: 0
+      
+  - name: "Fluid Mechanics"
+    aliases: ["fluid mechanics", "fluids", "fluid dynamics"]
+    competencies: ["technical_depth", "core_engineering"]
+    role_relevance:
+      sde: 0.2
+      quant: 0.3
+      core: 0.9
+      consulting: 0.2
+    frequency:
+      software: 3
+      quant: 0
+      core: 4
+      consulting: 0
+      
+  - name: "Thermodynamics"
+    aliases: ["thermodynamics", "thermo", "heat transfer"]
+    competencies: ["technical_depth", "core_engineering"]
+    role_relevance:
+      sde: 0.2
+      quant: 0.3
+      core: 0.9
+      consulting: 0.2
+    frequency:
+      software: 2
+      quant: 0
+      core: 3
+      consulting: 0
+      
+  - name: "Mechanics"
+    aliases: ["mechanics", "classical mechanics", "engineering mechanics"]
+    competencies: ["technical_depth", "mathematics"]
+    role_relevance:
+      sde: 0.2
+      quant: 0.4
+      core: 0.85
+      consulting: 0.2
+    frequency:
+      software: 4
+      quant: 0
+      core: 3
+      consulting: 0
+      
+  - name: "Stochastic Processes"
+    aliases: ["stochastic", "stochastic processes", "stochastic calculus", "random processes"]
+    competencies: ["probability", "mathematics", "statistics"]
+    role_relevance:
+      sde: 0.4
+      quant: 0.95
+      core: 0.4
+      consulting: 0.3
+      
+  - name: "Optimization"
+    aliases: ["optimization", "convex optimization", "mathematical optimization", "linear programming", "nonlinear optimization"]
+    competencies: ["mathematics", "algorithms"]
+    role_relevance:
+      sde: 0.6
+      quant: 0.85
+      core: 0.6
+      consulting: 0.5
+
+# Mapping: competencies to match with role competencies in roles.yaml
+competency_mapping:
+  programming: ["programming", "software_engineering"]
+  algorithms: ["algorithms"]
+  mathematics: ["mathematics", "academic_strength"]
+  probability: ["probability", "statistics"]
+  statistics: ["statistics"]
+  ml_engineering: ["programming", "algorithms"]
+  software_engineering: ["software_engineering"]
+  technical_depth: ["technical_depth", "core_engineering"]
+  core_tools: ["core_tools"]
+  core_engineering: ["technical_depth"]

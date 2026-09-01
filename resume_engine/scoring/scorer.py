@@ -147,53 +147,47 @@ class RoleScorer:
             )
             if not has_project_match:
                 penalties.append({
-                    "reason": "No substantive technical project evidence detected",
-                    "points": 5.0,
-                    "code": "missing_projects",
+                    "reason": "Consider adding more technical project evidence",
+                    "points": 2.0,
+                    "code": "weak_projects",
                 })
 
-            # GitHub penalty: check doc-level links, not just bullets (E6 fix)
-            if not has_github and not has_git_skill:
-                penalties.append({
-                    "reason": "No Git/GitHub evidence detected (neither profile link nor skill mention)",
-                    "points": 2.0,
-                    "code": "missing_github",
-                })
+            # GitHub penalty: REMOVED - unfair for private repos/GitLab users
+            # Many strong candidates use private repos or company GitLab
+            # if not has_github and not has_git_skill:
+            #     penalties.append({
+            #         "reason": "No Git/GitHub evidence detected",
+            #         "points": 2.0,
+            #         "code": "missing_github",
+            #     })
 
         elif role.role_id == "quant":
-            # Low CPI penalty for Quant (E4)
-            if cpi_value is not None and (cpi_value / cpi_scale) < 0.75:
+            # Low CPI penalty for Quant - use data-driven threshold (E4)
+            # Data shows: Quant avg CPI = 9.33, use 8.0 (80th percentile) as threshold
+            if cpi_value is not None and (cpi_value / cpi_scale) < 0.80:
                 penalties.append({
-                    "reason": f"CPI {cpi_value}/{cpi_scale:.0f} is below competitive threshold for Quant (~7.5+)",
-                    "points": 5.0,
+                    "reason": f"CPI {cpi_value}/{cpi_scale:.0f} is below typical Quant profile (8.0+/10)",
+                    "points": 3.0,
                     "code": "low_cpi",
                 })
 
         elif role.role_id == "consulting":
-            # No leadership/PoR evidence
+            # No leadership/PoR evidence - soften threshold
             lead_strength = next(
                 (c.strength for c in comps if c.competency == "leadership"), 0.0
             )
-            if lead_strength < 0.30:
+            if lead_strength < 0.20:
                 penalties.append({
-                    "reason": "No strong leadership/PoR evidence detected",
-                    "points": 5.0,
-                    "code": "missing_leadership",
+                    "reason": "Consider adding leadership/PoR evidence to strengthen consulting profile",
+                    "points": 3.0,
+                    "code": "weak_leadership",
                 })
 
         elif role.role_id == "core":
-            # CAD/MATLAB only penalised when no core tool skill present anywhere
-            has_core_tools = any(
-                s in (c.skills or [])
-                for c in evidence.claims
-                for s in {"matlab", "cad", "labview", "matlab_simulink"}
-            )
-            if not has_core_tools:
-                penalties.append({
-                    "reason": "No CAD/MATLAB/domain tool evidence detected — may not apply if branch uses other core tools",
-                    "points": 3.0,
-                    "code": "missing_core_tools",
-                })
+            # CAD/MATLAB penalty REMOVED - many core branches don't use these tools
+            # Different core engineering branches use different tools
+            # Penalizing for missing MATLAB/CAD is unfair and biased
+            pass
 
         # ── Final score ────────────────────────────────────────────────────
         penalty_total = sum(p["points"] for p in penalties)
