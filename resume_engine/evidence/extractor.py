@@ -634,11 +634,14 @@ class EvidenceExtractor:
         if re.search(teamwork_patterns, text_lower):
             evidence_types.append(EvidenceType.TEAMWORK)
             
-        # ── OPEN SOURCE EVIDENCE ──────────────────────────────────────────
-        os_patterns = r"\b(open.?source|pull request|pr|fork|contribute|gsoc|package|github.*contribute)\b"
+        # ── OPEN SOURCE EVIDENCE (ENHANCED WITH GITHUB REPO LINKS) ──────────────────────────
+        os_patterns = r"\b(open.?source|pull request|pr|fork|contribute|gsoc|package|github.*contribute|repo|repository)\b"
+        is_github_profile_only = "github profile" in text_lower or (text_lower.startswith("github profile available at") or "github.com/username" in text_lower)
+        has_github_repo_link = "github.com/" in text_lower and not is_github_profile_only and "github.com/in/" not in text_lower
         
-        if re.search(os_patterns, text_lower):
-            evidence_types.append(EvidenceType.OPEN_SOURCE)
+        if re.search(os_patterns, text_lower) or (has_github_repo_link and "profile" not in text_lower):
+            if EvidenceType.OPEN_SOURCE not in evidence_types:
+                evidence_types.append(EvidenceType.OPEN_SOURCE)
             
         # ── COMPETITIVE PROGRAMMING EVIDENCE ──────────────────────────────────────────
         cp_patterns = r"\b(codeforces|codechef|leetcode|competitive programming|contest|algorithmic|icpc)\b"
@@ -657,16 +660,28 @@ class EvidenceExtractor:
         # ── COURSEWORK EVIDENCE ──────────────────────────────────────────
         coursework_patterns = r"\b(course|coursework|elective|subject|grade|semester|academic)\b"
         
-        if (section == "Education" or section == "Coursework" or
+        if (section in {"Education", "Coursework"} or
             re.search(coursework_patterns, text_lower)):
             evidence_types.append(EvidenceType.COURSEWORK)
             
         # ── PUBLICATION EVIDENCE (HARDENED) ──────────────────────────────────────────
-        # "Research" section alone != publication
         pub_patterns = r"\b(published|publication|paper|journal|conference|proceedings|doi|cite|author|accepted|arxiv|peer.?review)\b"
         
         if re.search(pub_patterns, text_lower):
             evidence_types.append(EvidenceType.PUBLICATION)
+
+        # ── EXCLUSION RULE: Entrance Exam Ranks & CP stats must NEVER trigger Business Analysis/Impact ──
+        is_academic_rank_or_cp = any(k in text_lower for k in [
+            "jee", "jee advanced", "jee mains", "kvpy", "air ", "all india rank", 
+            "olympiad", "codeforces", "codechef", "leetcode", "takneek", "kvpy sa",
+            "kvpy sx", "kvpy sb", "kvpy fellow", "academic excellence award", "kvpy rank"
+        ]) or section in {"Achievements", "Scholastic Achievements"}
+
+        if is_academic_rank_or_cp:
+            if EvidenceType.BUSINESS_ANALYSIS in evidence_types:
+                evidence_types.remove(EvidenceType.BUSINESS_ANALYSIS)
+            if ImpactType.BUSINESS_IMPACT in impact_types:
+                impact_types.remove(ImpactType.BUSINESS_IMPACT)
             
         # ── PROJECT TYPE CLASSIFICATION ──────────────────────────────────────────
         if section in {"Projects", "Research"}:
@@ -688,21 +703,14 @@ class EvidenceExtractor:
                 
         # ── IMPACT TYPE CLASSIFICATION (REFINED) ──────────────────────────────────────────
         if impact_metrics:
-            # Technical Impact: accuracy, recall, latency, performance metrics in technical contexts
             technical_contexts = r"\b(accuracy|recall|precision|f1|auc|latency|performance|efficiency|api.*reduced|system.*improved|sql.*optimized)\b"
-            
-            # Business Impact: revenue, profit, cost, growth metrics
             business_contexts = r"\b(revenue.*growth|profit|cost.*reduction|market|customer|pricing.*optimization|business.*impact)\b"
-            
-            # Research Impact: experimental/validation metrics
             research_contexts = r"\b(dataset|model.*accuracy|experiment|validation|methodology|research|recall.*87)\b"
-            
-            # Organizational Impact: people, hostels, students, community metrics  
             org_contexts = r"\b(students|members|teams|hostels|organization|community|served.*students|hostel.*affairs)\b"
             
             if re.search(technical_contexts, text_lower):
                 impact_types.append(ImpactType.TECHNICAL_IMPACT)
-            if re.search(business_contexts, text_lower):
+            if re.search(business_contexts, text_lower) and not is_academic_rank_or_cp:
                 impact_types.append(ImpactType.BUSINESS_IMPACT)
             if re.search(research_contexts, text_lower):
                 impact_types.append(ImpactType.RESEARCH_IMPACT)
@@ -711,11 +719,7 @@ class EvidenceExtractor:
                 
             # Default assignment based on section if no specific context matches
             if not impact_types:
-                if section == "Experience" and EvidenceType.BUSINESS_ANALYSIS in evidence_types:
-                    impact_types.append(ImpactType.BUSINESS_IMPACT)
-                elif section in {"Research", "Projects"} and EvidenceType.TECHNICAL_RESEARCH in evidence_types:
-                    impact_types.append(ImpactType.RESEARCH_IMPACT)
-                elif section in {"Positions of Responsibility", "Social Impact"}:
+                if section in {"Positions of Responsibility", "Social Impact"}:
                     impact_types.append(ImpactType.ORGANIZATIONAL_IMPACT)
                 else:
                     impact_types.append(ImpactType.TECHNICAL_IMPACT)

@@ -176,6 +176,12 @@ class RoleScorer:
             if has_codeforces:
                 bonus_total += 4.0
 
+            # Open Source GitHub Link integration
+            has_github = any("github.com" in getattr(l, "uri", "").lower() for l in getattr(evidence, "links", [])) or \
+                         any("github.com" in getattr(cl, "text", "").lower() for cl in evidence.claims)
+            if has_github:
+                bonus_total += 3.0
+
         elif role.role_id == "quant":
             # High CPI boost & Low CPI penalty
             if cpi_value is not None:
@@ -204,7 +210,11 @@ class RoleScorer:
                 bonus_total += 6.0
 
         elif role.role_id == "core":
-            if has_surge or has_pub:
+            has_hardware_research = any(
+                any(k in cl.text.lower() for k in ["lna", "28nm", "cad", "matlab", "circuit", "verilog", "vlsi", "surge", "takneek"])
+                for cl in evidence.claims
+            )
+            if has_surge or has_pub or has_hardware_research:
                 bonus_total += 6.0
 
         # Multi-page SPO resume violation penalty
