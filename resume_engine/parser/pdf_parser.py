@@ -552,7 +552,9 @@ def parse_pdf(path: str | Path) -> ResumeAST:
     _associate_links(all_link_objects, sections)
 
     # ── Parser sanity checks / warnings ──────────────────────────────────
-    _emit_warnings(sections, all_link_objects, warnings, bullet_counter)
+    page_count = len(doc)
+    layout_diagnostics["page_count"] = page_count
+    _emit_warnings(sections, all_link_objects, warnings, bullet_counter, page_count=page_count)
 
     return ResumeAST(
         source_file=str(path),
@@ -688,8 +690,14 @@ def _emit_warnings(
     link_objects: list[LinkObject],
     warnings: list[str],
     bullet_counter: int,
+    page_count: int = 1,
 ) -> None:
     """Emit sanity-check warnings for anomalous parse results (B13 fix)."""
+    if page_count > 1:
+        warnings.append(
+            f"CRITICAL SPO NON-COMPLIANCE: Resume spans {page_count} pages. IITK SPO guidelines strictly require a 1-page single-sheet LaTeX resume. Multi-page resumes are disqualified by SPO screening."
+        )
+
     if bullet_counter == 0:
         warnings.append("WARN: No bullet glyphs detected — resume may use table rows or custom markers.")
 

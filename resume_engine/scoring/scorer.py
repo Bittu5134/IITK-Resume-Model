@@ -207,6 +207,16 @@ class RoleScorer:
             if has_surge or has_pub:
                 bonus_total += 6.0
 
+        # Multi-page SPO resume violation penalty
+        for cl in evidence.claims:
+            if getattr(cl, 'page', 1) > 1:
+                penalties.append({
+                    "reason": "CRITICAL SPO NON-COMPLIANCE: Multi-page resume violates 1-page single-sheet SPO LaTeX guideline",
+                    "points": 15.0,
+                    "code": "multi_page_overflow",
+                })
+                break
+
         # ── Final score ────────────────────────────────────────────────────
         penalty_total = sum(p["points"] for p in penalties)
         total = round(max(0.0, min(100.0, raw_score + bonus_total - penalty_total)), 2)
