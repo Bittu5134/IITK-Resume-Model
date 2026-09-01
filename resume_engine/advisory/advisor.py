@@ -73,7 +73,9 @@ _STRONG_VERBS = {
     "calibrated", "identified", "proposed", "oversaw", "facilitated", "established",
     "guided", "piloted", "chaired", "received", "awarded", "ranked", "selected",
     "served", "organized", "coordinated", "headed", "presented", "qualified",
-    "annotated", "installed", "configured", "simulated", "implemented"
+    "annotated", "installed", "configured", "simulated", "implemented", "boosted",
+    "fostered", "authored", "validated", "demonstrated", "applied", "digitalized",
+    "created", "scaled"
 }
 
 _BULLET_RE = re.compile(r"^\s*(?:[•●▪◦‣·\-–—]|\d+[.)]\s?)\s*")
@@ -84,6 +86,11 @@ def _first_word(text: str) -> str:
     clean = _BULLET_RE.sub("", text).strip()
     if not clean:
         return ""
+    # Strip project title prefix before colon if present (e.g., "Text-to-Image Generation: Trained...")
+    if ":" in clean and len(clean.split(":")[0].split()) <= 4:
+        parts = clean.split(":", 1)
+        if len(parts) > 1 and parts[1].strip():
+            clean = parts[1].strip()
     return clean.split()[0].lower().rstrip(".,;:")
 
 
@@ -97,8 +104,8 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
 
     section_name = claim.section or "Section"
     
-    # Ignore Education table headers or certificate metadata lines
-    if section_name.lower() in ("education", "academics") or any(k in text.lower() for k in ["year", "degree/certificate", "cpi/%", "institute"]):
+    # Ignore Education & Coursework sections from action verb & metric checks
+    if section_name.lower() in ("education", "academics", "coursework", "courses", "relevant coursework", "key courses") or any(k in text.lower() for k in ["year", "degree/certificate", "cpi/%", "institute"]):
         return BulletDiagnostic(
             claim_id=claim.claim_id,
             bullet_id=claim.bullet_id or claim.claim_id,
@@ -130,7 +137,8 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
         )
 
     # Metric / quantification check — Hyper-Specific Suggestions
-    if not claim.metrics:
+    has_rank_or_medal = any(k in text.lower() for k in ["air", "rank", "medalist", "medal", "stars", "top", "percentile", "cleared", "qualified"])
+    if not claim.metrics and not has_rank_or_medal:
         issues.append("No quantifiable metric detected.")
         if "project" in section_name.lower() or "research" in section_name.lower():
             suggestions.append(f"Quantify user base growth, accuracy (%), or speedup (x) in {section_name} ({snippet[:35]}...).")
@@ -140,7 +148,7 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
             suggestions.append("Quantify max rating or global rank (e.g., 'Codeforces Candidate Master 1900+ rating').")
         else:
             suggestions.append(f"Quantify the performance improvement or scale metric in bullet: '{snippet[:40]}...'.")
-    elif not claim.impact_metrics:
+    elif not claim.impact_metrics and not has_rank_or_medal:
         issues.append("Numbers present but none classified as outcome/impact metrics.")
         suggestions.append(
             f"Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
