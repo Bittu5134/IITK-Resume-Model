@@ -9,6 +9,7 @@ def main():
     ap.add_argument("--role", choices=["sde", "quant", "consulting", "core"], help="Target industry track")
     ap.add_argument("-o", "--output", help="Save analysis JSON output to file")
     ap.add_argument("--serve", action="store_true", help="Launch the Web Advisory Dashboard server")
+    ap.add_argument("--reload", action="store_true", default=True, help="Enable auto hot reload for development")
     ap.add_argument("--host", default="0.0.0.0", help="Host address for server (default: 0.0.0.0)")
     ap.add_argument("--port", type=int, default=8000, help="Port for web server (default: 8000)")
 
@@ -16,8 +17,8 @@ def main():
 
     if args.serve:
         import uvicorn
-        print(f"🚀 Starting IITK Resume Diagnostic Web Engine on http://localhost:{args.port}")
-        uvicorn.run("resume_engine.api.app:app", host=args.host, port=args.port, reload=False)
+        print(f"🚀 Starting IITK Resume Diagnostic Web Engine on http://localhost:{args.port} (hot reload: {args.reload})")
+        uvicorn.run("resume_engine.api.app:app", host=args.host, port=args.port, reload=args.reload)
         return
 
     if not args.pdf:
