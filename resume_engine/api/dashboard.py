@@ -33,12 +33,13 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; border: 1px solid #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::selection { background-color: rgba(37, 99, 235, 0.3); color: #f8fafc; }
     </style>
 </head>
-<body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+<body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased">
 
     <!-- Header / Navbar -->
     <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
@@ -91,7 +92,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                                 <p id="fileName" class="text-sm font-semibold text-slate-200 truncate">resume.pdf</p>
                                 <p id="fileSize" class="text-xs text-slate-400">0 KB</p>
                             </div>
-                            <button type="button" id="removeFileBtn" class="text-slate-400 hover:text-red-400 text-sm p-1">
+                            <button type="button" id="removeFileBtn" aria-label="Remove uploaded PDF resume" class="text-slate-400 hover:text-red-400 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
@@ -102,20 +103,20 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">2. Target Industry Track</label>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button type="button" data-role="sde" class="role-btn active px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-blue-500 bg-blue-600/20 text-blue-300 shadow-sm">
+                        <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-2 gap-2">
+                            <button type="button" role="tab" id="role-tab-sde" aria-selected="true" aria-controls="resultsDashboard" data-role="sde" class="role-btn active px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-blue-500 bg-blue-600/20 text-blue-300 shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <span><i class="fa-solid fa-code mr-1.5"></i>SDE</span>
                                 <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
                             </button>
-                            <button type="button" data-role="quant" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700">
+                            <button type="button" role="tab" id="role-tab-quant" aria-selected="false" aria-controls="resultsDashboard" data-role="quant" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <span><i class="fa-solid fa-chart-line mr-1.5"></i>Quant Fin</span>
                                 <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
                             </button>
-                            <button type="button" data-role="consulting" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700">
+                            <button type="button" role="tab" id="role-tab-consulting" aria-selected="false" aria-controls="resultsDashboard" data-role="consulting" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <span><i class="fa-solid fa-briefcase mr-1.5"></i>Consulting</span>
                                 <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
                             </button>
-                            <button type="button" data-role="core" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700">
+                            <button type="button" role="tab" id="role-tab-core" aria-selected="false" aria-controls="resultsDashboard" data-role="core" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <span><i class="fa-solid fa-gear mr-1.5"></i>Core Eng.</span>
                                 <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
                             </button>
@@ -251,24 +252,24 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             <!-- Tabbed Main Advisory Panel -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden">
                 <!-- Navigation Tabs -->
-                <div class="flex border-b border-slate-800 bg-slate-950/70 overflow-x-auto custom-scrollbar">
-                    <button class="nav-tab active px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-blue-500 text-blue-400 bg-slate-900/50 whitespace-nowrap transition" data-tab="advisory">
+                <div role="tablist" aria-label="Advisory Dashboard Views" class="flex border-b border-slate-800 bg-slate-950/70 overflow-x-auto custom-scrollbar">
+                    <button type="button" role="tab" id="tab-btn-advisory" aria-selected="true" aria-controls="tab-advisory" class="nav-tab active px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-blue-500 text-blue-400 bg-slate-900/50 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="advisory">
                         <i class="fa-solid fa-bullseye text-sm"></i>
                         Advisory & Gap Analysis
                     </button>
-                    <button class="nav-tab px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition" data-tab="formatting">
+                    <button type="button" role="tab" id="tab-btn-formatting" aria-selected="false" aria-controls="tab-formatting" class="nav-tab px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="formatting">
                         <i class="fa-solid fa-list-check text-sm"></i>
                         Line-by-Line Formatting Fixes
                         <span id="formattingFixCountBadge" class="bg-amber-500/20 text-amber-300 text-[10px] px-2 py-0.5 rounded-full font-bold">0</span>
                     </button>
-                    <button class="nav-tab px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition" data-tab="entities">
+                    <button type="button" role="tab" id="tab-btn-entities" aria-selected="false" aria-controls="tab-entities" class="nav-tab px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="entities">
                         <i class="fa-solid fa-cubes text-sm"></i>
                         IITK Jargon & Evidence
                     </button>
                 </div>
 
                 <!-- TAB 1: Advisory & Gap Analysis -->
-                <div id="tab-advisory" class="tab-content p-6 space-y-6">
+                <div id="tab-advisory" role="tabpanel" aria-labelledby="tab-btn-advisory" class="tab-content p-6 space-y-6">
 
                     <!-- Strengths vs Critical Gaps -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -315,7 +316,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 </div>
 
                 <!-- TAB 2: Line-by-Line Formatting Fixes -->
-                <div id="tab-formatting" class="tab-content hidden p-6 space-y-4">
+                <div id="tab-formatting" role="tabpanel" aria-labelledby="tab-btn-formatting" class="tab-content hidden p-6 space-y-4">
 
                     <!-- Filter buttons -->
                     <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
@@ -350,7 +351,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 </div>
 
                 <!-- TAB 3: IITK Jargon & Evidence -->
-                <div id="tab-entities" class="tab-content hidden p-6 space-y-6">
+                <div id="tab-entities" role="tabpanel" aria-labelledby="tab-btn-entities" class="tab-content hidden p-6 space-y-6">
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -483,10 +484,12 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 document.querySelectorAll('.role-btn').forEach(b => {
                     b.classList.remove('border-blue-500', 'bg-blue-600/20', 'text-blue-300');
                     b.classList.add('border-slate-800', 'bg-slate-950', 'text-slate-400');
+                    b.setAttribute('aria-selected', 'false');
                     b.querySelector('.fa-circle-check')?.classList.add('hidden');
                 });
                 btn.classList.remove('border-slate-800', 'bg-slate-950', 'text-slate-400');
                 btn.classList.add('border-blue-500', 'bg-blue-600/20', 'text-blue-300');
+                btn.setAttribute('aria-selected', 'true');
                 btn.querySelector('.fa-circle-check')?.classList.remove('hidden');
 
                 selectedRole = btn.dataset.role;
@@ -503,9 +506,11 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 document.querySelectorAll('.nav-tab').forEach(t => {
                     t.classList.remove('border-blue-500', 'text-blue-400', 'bg-slate-900/50');
                     t.classList.add('border-transparent', 'text-slate-400');
+                    t.setAttribute('aria-selected', 'false');
                 });
                 tab.classList.remove('border-transparent', 'text-slate-400');
                 tab.classList.add('border-blue-500', 'text-blue-400', 'bg-slate-900/50');
+                tab.setAttribute('aria-selected', 'true');
 
                 const targetTab = tab.dataset.tab;
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
@@ -746,7 +751,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 flex items-start justify-between gap-3">
                     <div class="space-y-1">
                         <p class="text-xs font-bold text-slate-200 uppercase tracking-tight">${s.competency.replace(/_/g, ' ')}</p>
-                        <p class="text-[11px] text-slate-400">${(s.claims || []).length} supporting evidence claim(s) found in resume.</p>
+                        <p class="text-xs text-slate-400">${(s.claims || []).length} supporting evidence claim(s) found in resume.</p>
                     </div>
                     <span class="text-xs font-extrabold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20">
                         +${(s.strength * 100).toFixed(0)}%
@@ -766,7 +771,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 flex items-start justify-between gap-3">
                     <div class="space-y-1">
                         <p class="text-xs font-bold text-slate-200 uppercase tracking-tight">${g.competency.replace(/_/g, ' ')}</p>
-                        <p class="text-[11px] text-slate-400">Role weight: ${(g.weight * 100).toFixed(0)}% | Current Signal: ${(g.strength * 100).toFixed(0)}%</p>
+                        <p class="text-xs text-slate-400">Role weight: ${(g.weight * 100).toFixed(0)}% | Current Signal: ${(g.strength * 100).toFixed(0)}%</p>
                     </div>
                     <span class="text-xs font-extrabold text-amber-400 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20">
                         Gap: -${(g.missing_weighted_signal * 100).toFixed(1)} pt
@@ -843,16 +848,16 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 return `
                     <tr class="hover:bg-slate-800/40 transition">
                         <td class="p-3.5">${sevBadge}</td>
-                        <td class="p-3.5 font-mono text-[11px] text-slate-400">
+                        <td class="p-3.5 font-mono text-xs text-slate-400">
                             <span class="block font-semibold text-slate-300">${d.section}</span>
                             <span>Pg ${d.page}</span>
                         </td>
-                        <td class="p-3.5 text-slate-300 italic font-mono text-[11px] leading-relaxed">
+                        <td class="p-3.5 text-slate-300 italic font-mono text-xs leading-relaxed">
                             "${d.text_snippet}"
                         </td>
                         <td class="p-3.5 space-y-1">
                             ${d.issues.map(iss => `<div class="text-amber-300 font-medium"><i class="fa-solid fa-circle-exclamation mr-1"></i>${iss}</div>`).join('')}
-                            ${d.suggestions.map(sug => `<div class="text-slate-400 text-[11px]"><i class="fa-solid fa-angles-right text-blue-400 mr-1"></i>${sug}</div>`).join('')}
+                            ${d.suggestions.map(sug => `<div class="text-slate-400 text-xs"><i class="fa-solid fa-angles-right text-blue-400 mr-1"></i>${sug}</div>`).join('')}
                         </td>
                     </tr>
                 `;
