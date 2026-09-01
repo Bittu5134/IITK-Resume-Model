@@ -40,6 +40,14 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     </style>
 </head>
 <body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased">
+    <!--
+    THESIS: Batch Student Placement Analytics Deck providing macro-level placement readiness intelligence for SPO Chairs and coordinators.
+    OWN-WORLD: Deep Slate (#020617 / #0f172a), IITK Navy (#002147), IITK Gold (#FFC72C), Emerald (#10b981).
+    STORY: SPO leadership views aggregate batch KPIs, department-to-track heatmap matrix, formatting non-compliance rates, and student readiness roster.
+    FIRST VIEWPORT: Navigation bar with Batch Analytics toggle button, top 4 KPI cards, and dynamic view containers.
+    FORM: Surface Extension inside The SPO Academic Command Center (DESIGN.md).
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
 
     <!-- Header / Navbar -->
     <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
@@ -58,10 +66,14 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             </div>
             
             <div class="flex items-center gap-3">
-                <a href="/docs" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900">
+                <button type="button" id="toggleViewBtn" onclick="toggleMainView()" class="text-xs font-bold text-blue-300 bg-blue-600/20 hover:bg-blue-600/30 transition px-3.5 py-1.5 rounded-lg border border-blue-500/40 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                    <i class="fa-solid fa-chart-pie text-blue-400"></i>
+                    <span id="toggleViewBtnText">Switch to SPO Batch Analytics</span>
+                </button>
+                <a href="/docs" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-solid fa-code text-blue-400 mr-1.5"></i>API Specs
                 </a>
-                <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900">
+                <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-brands fa-github text-slate-300 mr-1.5"></i>Repo
                 </a>
             </div>
@@ -392,6 +404,166 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
                 </div>
 
+            </div>
+
+        <!-- SPO Batch Placement Analytics View (Hidden by default, toggled via Header) -->
+        <div id="batchAnalyticsDashboard" class="hidden space-y-6">
+
+            <!-- Batch Header Banner -->
+            <div class="bg-gradient-to-r from-blue-950/80 via-slate-900 to-indigo-950/80 border border-blue-500/30 rounded-2xl p-6 shadow-xl flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded-full border border-blue-500/30">Placement Season 2026</span>
+                        <span class="text-xs text-slate-400">SPO Executive Macro Intelligence</span>
+                    </div>
+                    <h2 class="text-xl font-extrabold text-white">Batch Placement Readiness & Track Analytics</h2>
+                    <p class="text-xs text-slate-300 max-w-2xl mt-1">Aggregate resume diagnostic insights across all IITK departments and 4 core industry placement tracks.</p>
+                </div>
+                <button type="button" onclick="fetchBatchAnalyticsData()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <span>Refresh Batch Metrics</span>
+                </button>
+            </div>
+
+            <!-- Macro 4 KPI Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Total SPO Uploads</span>
+                        <h3 id="kpiTotalResumes" class="text-2xl font-extrabold text-white mt-1">1,240</h3>
+                        <p class="text-[10px] text-emerald-400 mt-1 font-semibold"><i class="fa-solid fa-arrow-trend-up mr-1"></i>+14% vs last season</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl border border-blue-500/20">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Batch Mean Score</span>
+                        <h3 id="kpiMeanScore" class="text-2xl font-extrabold text-emerald-400 mt-1">74.2 <span class="text-xs text-slate-500">/ 100</span></h3>
+                        <p class="text-[10px] text-emerald-400 mt-1 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>Strong Batch Baseline</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl border border-emerald-500/20">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Top Track Preference</span>
+                        <h3 id="kpiTopTrack" class="text-2xl font-extrabold text-blue-400 mt-1">58% <span class="text-xs text-slate-400">SDE</span></h3>
+                        <p class="text-[10px] text-slate-400 mt-1">719 Students applying SDE</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/20">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Formatting Alert Rate</span>
+                        <h3 id="kpiAlertRate" class="text-2xl font-extrabold text-amber-400 mt-1">18%</h3>
+                        <p class="text-[10px] text-amber-400 mt-1 font-semibold"><i class="fa-solid fa-triangle-exclamation mr-1"></i>223 Resumes need link fixes</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl border border-amber-500/20">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heatmap Matrix: Department vs Track Match -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-table-cells text-blue-400"></i>
+                            Department vs Track Readiness Heatmap Matrix
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Average match scores across departments and target industry roles.</p>
+                    </div>
+                    <div class="flex items-center gap-3 text-[10px] font-bold">
+                        <span class="flex items-center gap-1 text-emerald-400"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500/40"></span> 75+ Strong</span>
+                        <span class="flex items-center gap-1 text-blue-400"><span class="w-2.5 h-2.5 rounded-full bg-blue-500/40"></span> 60-74 Moderate</span>
+                        <span class="flex items-center gap-1 text-amber-400"><span class="w-2.5 h-2.5 rounded-full bg-amber-500/40"></span> &lt;60 Gaps</span>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-800 custom-scrollbar">
+                    <table class="w-full text-left text-xs text-slate-200">
+                        <thead class="bg-slate-950 uppercase text-slate-400 font-bold border-b border-slate-800">
+                            <tr>
+                                <th class="p-3.5">Department</th>
+                                <th class="p-3.5 text-center">Batch Size</th>
+                                <th class="p-3.5 text-center">SDE Match</th>
+                                <th class="p-3.5 text-center">Quant Fin</th>
+                                <th class="p-3.5 text-center">Consulting</th>
+                                <th class="p-3.5 text-center">Core Eng.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="batchDeptMatrixBody" class="divide-y divide-slate-800/60 bg-slate-900/60 font-mono text-xs">
+                            <!-- Dynamic Heatmap Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2-Column Section: Top Format Alerts & Recognized IITK Jargon -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Common Formatting Non-Compliance Alerts -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-list-check text-amber-400"></i>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Top Batch Formatting Non-Compliance</h3>
+                    </div>
+                    <div id="batchFormatIssuesList" class="space-y-3">
+                        <!-- Dynamic issues -->
+                    </div>
+                </div>
+
+                <!-- Recognized IITK Jargon & Skill Clusters -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-tags text-blue-400"></i>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Top Recognized IITK Jargon & Skills</h3>
+                    </div>
+                    <div id="batchJargonContainer" class="flex flex-wrap gap-2.5">
+                        <!-- Dynamic jargon tags -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Readiness Roster -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-users text-blue-400"></i>
+                            Anonymized Student Readiness Roster
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Sample candidate profiles diagnostic overview.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="rosterSearchInput" oninput="filterRosterTable()" placeholder="Filter roll or dept..." class="bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-lg px-3 py-1.5 focus:border-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-800 custom-scrollbar">
+                    <table class="w-full text-left text-xs text-slate-200">
+                        <thead class="bg-slate-950 uppercase text-slate-400 font-bold border-b border-slate-800">
+                            <tr>
+                                <th class="p-3.5">Roll ID</th>
+                                <th class="p-3.5">Department</th>
+                                <th class="p-3.5">Auto-Detected Best Fit</th>
+                                <th class="p-3.5 text-center">Score</th>
+                                <th class="p-3.5 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentRosterTableBody" class="divide-y divide-slate-800/60 bg-slate-900/60 font-mono text-xs">
+                            <!-- Dynamic Roster Rows -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
@@ -913,6 +1085,134 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <span class="text-lg font-extrabold text-white">${m.value}</span>
                 </div>
             `).join('');
+        }
+
+        // --- SPO Batch Placement Analytics View Logic ---
+        let currentBatchData = null;
+        let isBatchView = false;
+
+        function toggleMainView() {
+            isBatchView = !isBatchView;
+            const mainSection = document.querySelector('main > section');
+            const resultsDash = document.getElementById('resultsDashboard');
+            const batchDash = document.getElementById('batchAnalyticsDashboard');
+            const btnText = document.getElementById('toggleViewBtnText');
+
+            if (isBatchView) {
+                if (mainSection) mainSection.classList.add('hidden');
+                if (resultsDash) resultsDash.classList.add('hidden');
+                if (batchDash) batchDash.classList.remove('hidden');
+                if (btnText) btnText.textContent = 'Switch to Individual Advisor';
+                if (!currentBatchData) fetchBatchAnalyticsData();
+            } else {
+                if (mainSection) mainSection.classList.remove('hidden');
+                if (multiRoleResults && multiRoleResults.best_fit_role) {
+                    if (resultsDash) resultsDash.classList.remove('hidden');
+                }
+                if (batchDash) batchDash.classList.add('hidden');
+                if (btnText) btnText.textContent = 'Switch to SPO Batch Analytics';
+            }
+        }
+
+        async function fetchBatchAnalyticsData() {
+            try {
+                const res = await fetch('/api/v1/analytics/summary');
+                if (!res.ok) throw new Error('Failed to load analytics.');
+                currentBatchData = await res.json();
+                renderBatchAnalytics(currentBatchData);
+            } catch (err) {
+                console.error('Analytics load error:', err);
+            }
+        }
+
+        function renderBatchAnalytics(data) {
+            if (!data) return;
+
+            // KPIs
+            if (data.total_diagnosed) document.getElementById('kpiTotalResumes').textContent = data.total_diagnosed.toLocaleString();
+            if (data.batch_mean_score) document.getElementById('kpiMeanScore').innerHTML = `${data.batch_mean_score.toFixed(1)} <span class="text-xs text-slate-500">/ 100</span>`;
+
+            // Department Heatmap Matrix
+            const matrixBody = document.getElementById('batchDeptMatrixBody');
+            if (matrixBody && data.department_matrix) {
+                matrixBody.innerHTML = data.department_matrix.map(row => {
+                    const getScoreClass = (score) => {
+                        if (score >= 75) return 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30';
+                        if (score >= 60) return 'bg-blue-500/20 text-blue-300 font-bold border border-blue-500/30';
+                        return 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30';
+                    };
+
+                    return `
+                        <tr class="hover:bg-slate-800/40 transition">
+                            <td class="p-3.5 font-bold text-slate-200">${row.dept}</td>
+                            <td class="p-3.5 text-center text-slate-400 font-semibold">${row.total}</td>
+                            <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-lg ${getScoreClass(row.sde)}">${row.sde.toFixed(1)}</span></td>
+                            <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-lg ${getScoreClass(row.quant)}">${row.quant.toFixed(1)}</span></td>
+                            <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-lg ${getScoreClass(row.consulting)}">${row.consulting.toFixed(1)}</span></td>
+                            <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-lg ${getScoreClass(row.core)}">${row.core.toFixed(1)}</span></td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            // Top Formatting Issues
+            const formatList = document.getElementById('batchFormatIssuesList');
+            if (formatList && data.top_formatting_issues) {
+                formatList.innerHTML = data.top_formatting_issues.map(iss => `
+                    <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${iss.severity}</span>
+                            <span class="text-xs text-slate-300 font-semibold">${iss.issue}</span>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 bg-slate-900 px-2 py-1 rounded border border-slate-800">${iss.count} Resumes</span>
+                    </div>
+                `).join('');
+            }
+
+            // Jargon & Skills Tags
+            const jargonContainer = document.getElementById('batchJargonContainer');
+            if (jargonContainer && data.top_jargon_tags) {
+                jargonContainer.innerHTML = data.top_jargon_tags.map(tag => `
+                    <span class="bg-blue-500/10 text-blue-300 border border-blue-500/20 text-xs px-3 py-1.5 rounded-xl font-semibold shadow-sm flex items-center gap-1.5">
+                        <i class="fa-solid fa-tag text-blue-400 text-xs"></i>
+                        ${tag}
+                    </span>
+                `).join('');
+            }
+
+            // Anonymized Roster Table
+            renderRosterTable(data.recent_roster || []);
+        }
+
+        function renderRosterTable(roster) {
+            const tbody = document.getElementById('studentRosterTableBody');
+            if (!tbody) return;
+
+            const roleNames = {
+                'sde': 'Software Engineering',
+                'quant': 'Quantitative Finance',
+                'consulting': 'Management Consulting',
+                'core': 'Core Engineering'
+            };
+
+            tbody.innerHTML = roster.map(r => `
+                <tr class="hover:bg-slate-800/40 transition">
+                    <td class="p-3.5 font-bold text-slate-200">#${r.roll}</td>
+                    <td class="p-3.5 text-slate-300">${r.dept}</td>
+                    <td class="p-3.5 text-blue-400 font-semibold">${roleNames[r.best_track] || r.best_track}</td>
+                    <td class="p-3.5 text-center font-extrabold text-emerald-400">${r.score.toFixed(1)}</td>
+                    <td class="p-3.5 text-center"><span class="bg-emerald-500/10 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/20">${r.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function filterRosterTable() {
+            if (!currentBatchData || !currentBatchData.recent_roster) return;
+            const query = (document.getElementById('rosterSearchInput')?.value || '').toLowerCase().trim();
+            const filtered = currentBatchData.recent_roster.filter(r => 
+                r.roll.toLowerCase().includes(query) || r.dept.toLowerCase().includes(query) || r.best_track.toLowerCase().includes(query)
+            );
+            renderRosterTable(filtered);
         }
     </script>
 </body>

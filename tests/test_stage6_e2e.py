@@ -419,3 +419,17 @@ def test_api_analyze_all(api_client):
         assert "score" in data[role_id]
         assert "advisory" in data[role_id]
 
+
+def test_api_batch_analytics_summary(api_client):
+    """GET /api/v1/analytics/summary must return aggregate batch readiness metrics."""
+    resp = api_client.get("/api/v1/analytics/summary")
+    assert resp.status_code == 200
+    data = resp.json()
+    assert "total_diagnosed" in data
+    assert "batch_mean_score" in data
+    assert "track_distribution" in data
+    assert "department_matrix" in data
+    assert data["total_diagnosed"] > 0
+    assert len(data["department_matrix"]) > 0
+
+

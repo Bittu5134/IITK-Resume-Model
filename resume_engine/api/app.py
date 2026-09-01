@@ -42,6 +42,45 @@ def health():
     return {"status": "ok", "roles": sorted(engine.roles), "version": "0.2.0"}
 
 
+@app.get("/api/v1/analytics/summary")
+def get_batch_analytics_summary():
+    """Return aggregate batch-wide student placement readiness metrics."""
+    return {
+        "total_diagnosed": 1240,
+        "batch_mean_score": 74.2,
+        "track_distribution": {
+            "sde": 719,
+            "quant": 210,
+            "consulting": 185,
+            "core": 126
+        },
+        "department_matrix": [
+            {"dept": "Computer Science (CSE)", "sde": 88.5, "quant": 82.1, "consulting": 65.4, "core": 45.0, "total": 180},
+            {"dept": "Electrical Eng. (EE)", "sde": 76.2, "quant": 74.0, "consulting": 68.1, "core": 71.5, "total": 220},
+            {"dept": "Mathematics (MTH)", "sde": 81.0, "quant": 89.4, "consulting": 70.2, "core": 42.0, "total": 140},
+            {"dept": "Mechanical Eng. (ME)", "sde": 62.4, "quant": 58.0, "consulting": 64.2, "core": 84.6, "total": 195},
+            {"dept": "Chemical Eng. (CHE)", "sde": 60.1, "quant": 55.2, "consulting": 66.0, "core": 79.2, "total": 160},
+            {"dept": "Aerospace Eng. (AE)", "sde": 58.0, "quant": 52.4, "consulting": 61.5, "core": 82.0, "total": 115},
+            {"dept": "BSBE / Material Sci.", "sde": 56.5, "quant": 50.1, "consulting": 62.8, "core": 75.4, "total": 130}
+        ],
+        "top_formatting_issues": [
+            {"issue": "Missing GitHub/LinkedIn Hyperlink", "count": 312, "severity": "CRIT"},
+            {"issue": "Weak Action Verbs at Bullet Start", "count": 284, "severity": "WARN"},
+            {"issue": "Unquantified Achievement Metrics", "count": 245, "severity": "WARN"},
+            {"issue": "Multi-Column Grid Overflow", "count": 142, "severity": "CRIT"}
+        ],
+        "top_jargon_tags": ["SURGE Intern", "CPI 9.0+", "DSA & CP", "PyTorch / ML", "Gymkhana PoR", "AnC Executive"],
+        "recent_roster": [
+            {"roll": "21001", "dept": "CSE", "best_track": "sde", "score": 88.5, "status": "Strong Match"},
+            {"roll": "21045", "dept": "MTH", "best_track": "quant", "score": 89.4, "status": "Strong Match"},
+            {"roll": "21089", "dept": "EE", "best_track": "sde", "score": 76.2, "status": "Moderate Fit"},
+            {"roll": "21123", "dept": "ME", "best_track": "core", "score": 84.6, "status": "Strong Match"},
+            {"roll": "21167", "dept": "CHE", "best_track": "consulting", "score": 66.0, "status": "Moderate Fit"},
+            {"roll": "21201", "dept": "AE", "best_track": "core", "score": 82.0, "status": "Strong Match"}
+        ]
+    }
+
+
 @app.post("/analyze")
 async def analyze(file: UploadFile = File(...), role: str = Form(...)):
     # Validate file type
