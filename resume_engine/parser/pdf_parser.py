@@ -91,6 +91,9 @@ _SECTION_ALIASES: dict[str, str] = {
     "extra-curricular activities": "Extracurricular",
     "extra curricular activities": "Extracurricular",
     "extracurricular activities": "Extracurricular",
+    "extra curricular achievements": "Extracurricular",
+    "extracurricular achievements": "Extracurricular",
+    "extra-curricular achievements": "Extracurricular",
     "extracurricular": "Extracurricular",
     "co-curricular activities": "Extracurricular",
     "co curricular activities": "Extracurricular",
@@ -520,8 +523,7 @@ def parse_pdf(path: str | Path) -> ResumeAST:
                 current_section.bullets.append(bullet)
 
             else:
-                # Non-bullet line: could be entry title, metadata, or continuation
-                # Check if it looks like an entry title
+                # Non-bullet line: could be entry title, metadata, or standalone table row
                 if _is_title_row(norm_text, span_objs):
                     # Start a new entry
                     entry_counter += 1
@@ -539,10 +541,60 @@ def parse_pdf(path: str | Path) -> ResumeAST:
                     if dm:
                         current_entry.dates = dm.group(0)
                     current_section.entries.append(current_entry)
-                else:
-                    # Could be a continuation or standalone metadata line
-                    # We preserve it in raw_lines (already done above)
-                    pass
+
+                    # Also populate Bullet for standalone achievement/event title rows
+                    if current_section.name in {"Extracurricular", "Achievements", "Social Impact", "Positions of Responsibility", "Projects", "Skills"}:
+                        bullet_counter += 1
+                        bid = _stable_id("b", pno, line.bbox[1], norm_text)
+                        t_bullet = Bullet(
+                            id=bid,
+                            text=norm_text,
+                            raw_text=text,
+                            normalized_text=norm_text,
+                            section=current_section.name,
+                            entry_id=eid,
+                            page=pno,
+                            bbox=line_bbox,
+                            spans=span_objs,
+                            hyperlinks=bullet_links,
+                        )
+                        current_entry.bullets.append(t_bullet)
+                        current_section.bullets.append(t_bullet)
+                elif len(norm_text) >= 5 and current_section.name not in {"Header", "Education"}:
+                    # Standalone line / table row (e.g. Extracurricular achievements, awards, skills)
+                    sublabel, payload = _detect_sublabel(norm_text)
+                    bullet_counter += 1
+                    bid = _stable_id("b", pno, line.bbox[1], norm_text)
+
+                    bullet = Bullet(
+                        id=bid,
+                        text=payload if sublabel else norm_text,
+                        raw_text=text,
+                        normalized_text=norm_text,
+                        section=current_section.name,
+                        entry_id=current_entry.id if current_entry else None,
+                        page=pno,
+                        bbox=line_bbox,
+                        spans=span_objs,
+                        hyperlinks=bullet_links,
+                        subsection_label=sublabel,
+                    )
+
+                    if current_entry and current_entry.section == current_section.name:
+                        current_entry.bullets.append(bullet)
+                    else:
+                        entry_counter += 1
+                        eid = _stable_id("e", pno, line.bbox[1], norm_text)
+                        current_entry = Entry(
+                            id=eid,
+                            section=current_section.name,
+                            page_start=pno,
+                            bbox=line_bbox,
+                        )
+                        current_section.entries.append(current_entry)
+                        current_entry.bullets.append(bullet)
+
+                    current_section.bullets.append(bullet)
 
     # ── Continuation merging (B9 fix) ─────────────────────────────────────
     # Merge wrapped bullet lines that are continuations of the previous bullet

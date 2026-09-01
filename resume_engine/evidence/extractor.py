@@ -621,9 +621,9 @@ class EvidenceExtractor:
         if re.search(leadership_patterns, text_lower):
             evidence_types.append(EvidenceType.LEADERSHIP)
             
-        # ── COMMUNICATION EVIDENCE (IMPROVED) ──────────────────────────────────────────
-        # Focus on actual stakeholder/presentation evidence
-        comm_patterns = r"\b(presented.*to|presented.*recommendations|interviewed|chaired.*interviews|coordinated with|academic mentor|represented|stakeholder|facilitated.*meetings|negotiated|communicated with|mentored.*students|taught.*sessions|delivered.*presentation)\b"
+        # ── COMMUNICATION EVIDENCE (IMPROVED & EXPANDED) ──────────────────────────────────────────
+        # Focus on actual stakeholder/presentation, debating, adjudicating, and public speaking evidence
+        comm_patterns = r"\b(presented|interviewed|chaired|coordinated with|academic mentor|represented|stakeholder|facilitated|negotiated|communicated|mentored|taught|delivered|speaker|adjudicator|debating|debate|oratorix|rmlpd|chief adjudicator|semi-finalist|adjudicating|orator|trinity college|public speaking)\b"
         
         if re.search(comm_patterns, text_lower):
             evidence_types.append(EvidenceType.COMMUNICATION)
