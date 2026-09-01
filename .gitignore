@@ -62,3 +62,8 @@ desktop.ini
 # Logs
 *.log
 logs/
+
+# Impeccable Design System Config
+!.impeccable/
+!.impeccable/**
+
