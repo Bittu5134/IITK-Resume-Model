@@ -50,22 +50,26 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     -->
 
     <!-- Header / Navbar -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <header class="border-b border-slate-800 dark:border-slate-800 bg-slate-900/90 dark:bg-slate-900/90 light:bg-white/90 backdrop-blur sticky top-0 z-50 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-500/20 text-white">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#002147] to-blue-700 flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-900/20 text-[#FFC72C] border border-[#FFC72C]/30">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                    <h1 class="text-lg font-bold text-slate-100 dark:text-slate-100 light:text-slate-900 tracking-tight flex items-center gap-2">
                         IITK Resume Diagnostic Engine
-                        <span class="bg-blue-500/10 text-blue-400 text-xs font-semibold px-2 py-0.5 rounded-full border border-blue-500/20">v0.2.0</span>
+                        <span class="bg-[#FFC72C]/20 text-[#FFC72C] text-xs font-semibold px-2 py-0.5 rounded-full border border-[#FFC72C]/40">PS Aligned</span>
                     </h1>
-                    <p class="text-xs text-slate-400">Academics & Career Council | Career Development Wing</p>
+                    <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">Academics & Career Council | Career Development Wing</p>
                 </div>
             </div>
             
             <div class="flex items-center gap-3">
+                <button type="button" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Light and Dark Theme" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:bg-slate-700 transition px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                    <i id="themeToggleIcon" class="fa-solid fa-moon text-amber-400"></i>
+                    <span id="themeToggleText">Dark</span>
+                </button>
                 <button type="button" id="toggleViewBtn" onclick="toggleMainView()" class="text-xs font-bold text-blue-300 bg-blue-600/20 hover:bg-blue-600/30 transition px-3.5 py-1.5 rounded-lg border border-blue-500/40 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-solid fa-chart-pie text-blue-400"></i>
                     <span id="toggleViewBtnText">Switch to SPO Batch Analytics</span>
@@ -73,15 +77,23 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <a href="/docs" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-solid fa-code text-blue-400 mr-1.5"></i>API Specs
                 </a>
-                <a href="https://github.com" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                    <i class="fa-brands fa-github text-slate-300 mr-1.5"></i>Repo
-                </a>
             </div>
         </div>
     </header>
 
     <!-- Main Workspace -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- Inline Accessible Error Banner -->
+        <div id="errorBanner" class="hidden bg-red-500/10 border border-red-500/30 rounded-2xl p-4 flex items-center justify-between gap-3 text-red-300 text-xs shadow-lg transition-all">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-triangle-exclamation text-red-400 text-lg"></i>
+                <span id="errorMessageText" class="font-medium">An error occurred during processing.</span>
+            </div>
+            <button type="button" onclick="hideErrorBanner()" aria-label="Dismiss error banner" class="text-red-400 hover:text-red-200 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
 
         <!-- Upload & Control Panel -->
         <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
@@ -91,7 +103,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <!-- Dropzone -->
                 <div class="lg:col-span-7">
                     <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">1. Upload SPO LaTeX Resume (PDF)</label>
-                    <div id="dropzone" class="border-2 border-dashed border-slate-700 hover:border-blue-500 transition-colors rounded-xl p-5 text-center bg-slate-950/50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px]">
+                    <div id="dropzone" tabindex="0" role="button" aria-label="Upload SPO LaTeX PDF Resume" class="border-2 border-dashed border-slate-700 hover:border-blue-500 transition-colors rounded-xl p-5 text-center bg-slate-950/50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                         <input type="file" id="pdfFileInput" accept=".pdf" class="hidden">
                         <div id="uploadPrompt" class="space-y-1">
                             <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-500 group-hover:text-blue-400 transition-colors mb-1"></i>
@@ -601,10 +613,55 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         const loadingOverlay = document.getElementById('loadingOverlay');
         const resultsDashboard = document.getElementById('resultsDashboard');
 
+        // Inline Error Banner Handlers
+        function showErrorBanner(message) {
+            const banner = document.getElementById('errorBanner');
+            const msgText = document.getElementById('errorMessageText');
+            if (banner && msgText) {
+                msgText.textContent = message;
+                banner.classList.remove('hidden');
+                banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function hideErrorBanner() {
+            const banner = document.getElementById('errorBanner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+        // Theme Toggle Handler
+        let currentTheme = 'dark';
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const htmlEl = document.documentElement;
+            const iconEl = document.getElementById('themeToggleIcon');
+            const textEl = document.getElementById('themeToggleText');
+
+            if (currentTheme === 'light') {
+                htmlEl.classList.remove('bg-slate-950', 'text-slate-100');
+                htmlEl.classList.add('bg-slate-50', 'text-slate-900');
+                if (iconEl) iconEl.className = 'fa-solid fa-sun text-amber-500';
+                if (textEl) textEl.textContent = 'Light';
+            } else {
+                htmlEl.classList.remove('bg-slate-50', 'text-slate-900');
+                htmlEl.classList.add('bg-slate-950', 'text-slate-100');
+                if (iconEl) iconEl.className = 'fa-solid fa-moon text-amber-400';
+                if (textEl) textEl.textContent = 'Dark';
+            }
+        }
+
         // Setup dropzone events
         dropzone.addEventListener('click', (e) => {
             if (e.target.closest('#removeFileBtn')) return;
             pdfFileInput.click();
+        });
+
+        // Dropzone Keyboard Accessibility
+        dropzone.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                pdfFileInput.click();
+            }
         });
 
         pdfFileInput.addEventListener('change', (e) => {
@@ -629,12 +686,13 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     pdfFileInput.files = e.dataTransfer.files;
                     handleFileSelect(file);
                 } else {
-                    alert('Please upload a PDF file.');
+                    showErrorBanner('Please select or drop a valid PDF resume file.');
                 }
             }
         });
 
         function handleFileSelect(file) {
+            hideErrorBanner();
             currentFile = file;
             fileNameEl.textContent = file.name;
             fileSizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
@@ -648,6 +706,29 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             pdfFileInput.value = '';
             uploadPrompt.classList.remove('hidden');
             fileSelectedInfo.classList.add('hidden');
+        });
+
+        // WAI-ARIA Tablist Arrow Navigation & Role Buttons
+        document.querySelectorAll('[role="tablist"]').forEach(tablist => {
+            const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+            tablist.addEventListener('keydown', (e) => {
+                const index = tabs.indexOf(document.activeElement);
+                if (index < 0) return;
+
+                let nextIndex = index;
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    nextIndex = (index + 1) % tabs.length;
+                    e.preventDefault();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    nextIndex = (index - 1 + tabs.length) % tabs.length;
+                    e.preventDefault();
+                }
+
+                if (nextIndex !== index) {
+                    tabs[nextIndex].focus();
+                    tabs[nextIndex].click();
+                }
+            });
         });
 
         // Role button selector
@@ -693,8 +774,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         // Form Submit -> Run Analysis
         analyzeForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            hideErrorBanner();
+
             if (!currentFile && pdfFileInput.files.length === 0) {
-                alert('Please select or drop a PDF resume first.');
+                showErrorBanner('Please select or drop a PDF resume first before diagnosing.');
                 return;
             }
 
@@ -714,7 +797,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
                 if (!res.ok) {
                     const err = await res.json();
-                    throw new Error(err.detail || 'Analysis failed.');
+                    throw new Error(err.detail || 'Analysis request failed.');
                 }
 
                 multiRoleResults = await res.json();
@@ -755,7 +838,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
                 resultsDashboard.classList.remove('hidden');
             } catch (err) {
-                alert('Error analyzing resume: ' + err.message);
+                showErrorBanner('Error analyzing resume: ' + err.message);
             } finally {
                 loadingOverlay.classList.add('hidden');
             }
