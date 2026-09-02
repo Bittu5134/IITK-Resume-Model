@@ -204,12 +204,46 @@ _GATES: dict[str, dict] = {
         "allowed_sections": {"Publications", "Research"},
         "negative_sections": {"Projects", "Experience", "Positions of Responsibility"},
     },
-    "ml_engineering": {
-        "required_skills": {"tensorflow", "pytorch", "scikit_learn", "keras",
-                            "machine_learning", "deep_learning", "nlp", "computer_vision"},
-        "required_signals": {"ml_engineering": 0.3},
+    # Analyst competencies
+    "data_analytics": {
+        "required_skills": {"python", "sql", "pandas", "numpy", "r_lang", "tableau", "powerbi", "rshiny", "excel"},
+        "required_signals": {"data_analytics": 0.3, "statistics": 0.3},
+        "negative_sections": {"Positions of Responsibility", "Social Impact"},
+    },
+    # Product competencies
+    "product_sense": {
+        "required_skills": {"figma", "ui_ux", "wireframing", "a_b_testing", "mixpanel", "amplitude", "segment"},
+        "product_keywords": True,
+        "allowed_sections": {"Projects", "Experience", "Positions of Responsibility", "Research"},
+    },
+    "user_impact": {
+        "required_signals": {"quantified_impact": 0.3},
+        "user_impact_keywords": True,
+        "allowed_sections": {"Experience", "Projects", "Positions of Responsibility"},
+    },
+    "data_driven_decisions": {
+        "required_skills": {"sql", "pandas", "python", "a_b_testing", "mixpanel", "google_analytics", "tableau"},
+        "allowed_sections": {"Experience", "Projects", "Research"},
+    },
+    "technical_understanding": {
+        "required_skills": {"python", "sql", "api", "rest_api", "system_design", "git", "aws", "cpp", "java", "javascript"},
+        "allowed_sections": {"Experience", "Projects", "Research", "Skills"},
     },
 }
+
+# Keywords required for product_sense gate
+_PRODUCT_KW = re.compile(
+    r"\b(product|prd|user journey|user story|wireframe|mockup|figma|ux|ui|"
+    r"feature|roadmap|backlog|prioritization|teardown|launch|onboarding|funnel|retention|churn|dau|mau|nps)\b",
+    re.IGNORECASE,
+)
+
+# Keywords required for user_impact gate
+_USER_IMPACT_KW = re.compile(
+    r"\b(user|users|adoption|active users|dau|mau|retention|conversion|growth|"
+    r"engagement|subscribers|downloads|traffic|ctr|churn|nps|customers|audience)\b",
+    re.IGNORECASE,
+)
 
 # Keywords that are required for open_source gate
 _OPEN_SOURCE_KW = re.compile(
@@ -367,6 +401,18 @@ def _compute_gate_score(claim: AtomicClaim, comp_name: str, gate: dict) -> tuple
             return False, 0.0, ["no_problem_solving_keywords"]
         positive_score = max(positive_score, 0.75)
         reasons.append("problem_solving_keyword")
+
+    if gate.get("product_keywords"):
+        if not _PRODUCT_KW.search(claim.text):
+            return False, 0.0, ["no_product_keywords"]
+        positive_score = max(positive_score, 0.75)
+        reasons.append("product_keyword")
+
+    if gate.get("user_impact_keywords"):
+        if not _USER_IMPACT_KW.search(claim.text):
+            return False, 0.0, ["no_user_impact_keywords"]
+        positive_score = max(positive_score, 0.75)
+        reasons.append("user_impact_keyword")
     
     # Software project bonus (for SDE projects competency)
     if gate.get("software_project_bonus"):

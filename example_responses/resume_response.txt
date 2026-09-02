@@ -2,7 +2,7 @@
   "analyst": {
     "role": "analyst",
     "document": {
-      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "source_file": "/tmp/tmpd4mim539.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -30,17 +30,21 @@
     "score": {
       "role_id": "analyst",
       "label": "Data & Business Analytics",
-      "score": 25.71,
-      "confidence": 0.625,
-      "coverage": 0.375,
+      "score": 36.84,
+      "confidence": 0.7,
+      "coverage": 0.5,
       "competency_scores": [
         {
           "competency": "data_analytics",
           "weight": 0.2,
-          "strength": 0.0,
-          "contribution": 0.0,
-          "supporting_claims": [],
-          "reason_codes": []
+          "strength": 0.5564,
+          "contribution": 11.13,
+          "supporting_claims": [
+            "c0001"
+          ],
+          "reason_codes": [
+            "skill_match"
+          ]
         },
         {
           "competency": "statistics",
@@ -132,6 +136,14 @@
           "reason": "Strong benchmark performance in Business Impact with 2 verified claim(s)."
         },
         {
+          "competency": "data_analytics",
+          "strength": 0.5564,
+          "claims": [
+            "c0001"
+          ],
+          "reason": "Strong benchmark performance in Data Analytics with 1 verified claim(s)."
+        },
+        {
           "competency": "programming",
           "strength": 0.7007,
           "claims": [
@@ -139,25 +151,9 @@
             "c0002"
           ],
           "reason": "Strong benchmark performance in Programming with 2 verified claim(s)."
-        },
-        {
-          "competency": "projects",
-          "strength": 0.7564,
-          "claims": [
-            "c0001",
-            "c0002"
-          ],
-          "reason": "Strong benchmark performance in Projects with 2 verified claim(s)."
         }
       ],
       "critical_gaps": [
-        {
-          "competency": "data_analytics",
-          "strength": 0.0,
-          "missing_weighted_signal": 0.2,
-          "weight": 0.2,
-          "diagnosis": "Missing explicit evidence or project work in Data Analytics for target role."
-        },
         {
           "competency": "statistics",
           "strength": 0.0,
@@ -171,22 +167,16 @@
           "missing_weighted_signal": 0.14,
           "weight": 0.14,
           "diagnosis": "Missing explicit evidence or project work in Problem Solving for target role."
+        },
+        {
+          "competency": "data_analytics",
+          "strength": 0.5564,
+          "missing_weighted_signal": 0.0887,
+          "weight": 0.2,
+          "diagnosis": "Missing explicit evidence or project work in Data Analytics for target role."
         }
       ],
       "recommendations": [
-        {
-          "priority": "critical",
-          "competency": "data_analytics",
-          "source_claim_id": null,
-          "section": null,
-          "entry_id": null,
-          "page": null,
-          "text_snippet": null,
-          "diagnosis": "No accepted evidence for 'data analytics' was detected.",
-          "action": "If you genuinely have evidence for 'data analytics', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
-          "max_potential_gain_estimate": 6.0,
-          "confidence": 0.7
-        },
         {
           "priority": "critical",
           "competency": "statistics",
@@ -212,6 +202,19 @@
           "action": "If you genuinely have evidence for 'problem solving', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
           "max_potential_gain_estimate": 4.2,
           "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "data_analytics",
+          "source_claim_id": "c0001",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "diagnosis": "Existing evidence for 'data analytics' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry unknown): 'Developed Python REST API with 99.9% uptime serving 100k users\u2026' \u2014 add clearer evidence connecting this work to the target competency. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 6.0,
+          "confidence": 0.78
         },
         {
           "priority": "important",
@@ -273,7 +276,7 @@
   "consulting": {
     "role": "consulting",
     "document": {
-      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "source_file": "/tmp/tmpd4mim539.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -519,7 +522,7 @@
   "core": {
     "role": "core",
     "document": {
-      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "source_file": "/tmp/tmpd4mim539.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -793,7 +796,7 @@
   "product": {
     "role": "product",
     "document": {
-      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "source_file": "/tmp/tmpd4mim539.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -821,9 +824,9 @@
     "score": {
       "role_id": "product",
       "label": "Product Management",
-      "score": 6.05,
-      "confidence": 0.486,
-      "coverage": 0.143,
+      "score": 34.22,
+      "confidence": 0.743,
+      "coverage": 0.571,
       "competency_scores": [
         {
           "competency": "product_sense",
@@ -844,26 +847,44 @@
         {
           "competency": "user_impact",
           "weight": 0.16,
-          "strength": 0.0,
-          "contribution": 0.0,
-          "supporting_claims": [],
-          "reason_codes": []
+          "strength": 0.5961,
+          "contribution": 9.54,
+          "supporting_claims": [
+            "c0001"
+          ],
+          "reason_codes": [
+            "user_impact_keyword",
+            "section_match",
+            "signal_match"
+          ]
         },
         {
           "competency": "data_driven_decisions",
           "weight": 0.14,
-          "strength": 0.0,
-          "contribution": 0.0,
-          "supporting_claims": [],
-          "reason_codes": []
+          "strength": 0.7167,
+          "contribution": 10.03,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "section_match"
+          ]
         },
         {
           "competency": "technical_understanding",
           "weight": 0.12,
-          "strength": 0.0,
-          "contribution": 0.0,
-          "supporting_claims": [],
-          "reason_codes": []
+          "strength": 0.7167,
+          "contribution": 8.6,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "section_match"
+          ]
         },
         {
           "competency": "communication",
@@ -894,13 +915,30 @@
     "advisory": {
       "top_strengths": [
         {
-          "competency": "projects",
-          "strength": 0.7564,
+          "competency": "data_driven_decisions",
+          "strength": 0.7167,
           "claims": [
             "c0001",
             "c0002"
           ],
-          "reason": "Strong benchmark performance in Projects with 2 verified claim(s)."
+          "reason": "Strong benchmark performance in Data Driven Decisions with 2 verified claim(s)."
+        },
+        {
+          "competency": "user_impact",
+          "strength": 0.5961,
+          "claims": [
+            "c0001"
+          ],
+          "reason": "Strong benchmark performance in User Impact with 1 verified claim(s)."
+        },
+        {
+          "competency": "technical_understanding",
+          "strength": 0.7167,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Technical Understanding with 2 verified claim(s)."
         }
       ],
       "critical_gaps": [
@@ -919,11 +957,11 @@
           "diagnosis": "Missing explicit evidence or project work in Leadership for target role."
         },
         {
-          "competency": "user_impact",
+          "competency": "communication",
           "strength": 0.0,
-          "missing_weighted_signal": 0.16,
-          "weight": 0.16,
-          "diagnosis": "Missing explicit evidence or project work in User Impact for target role."
+          "missing_weighted_signal": 0.1,
+          "weight": 0.1,
+          "diagnosis": "Missing explicit evidence or project work in Communication for target role."
         }
       ],
       "recommendations": [
@@ -955,42 +993,42 @@
         },
         {
           "priority": "critical",
-          "competency": "user_impact",
+          "competency": "communication",
           "source_claim_id": null,
           "section": null,
           "entry_id": null,
           "page": null,
           "text_snippet": null,
-          "diagnosis": "No accepted evidence for 'user impact' was detected.",
-          "action": "If you genuinely have evidence for 'user impact', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
-          "max_potential_gain_estimate": 4.8,
+          "diagnosis": "No accepted evidence for 'communication' was detected.",
+          "action": "If you genuinely have evidence for 'communication', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 3.0,
           "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "user_impact",
+          "source_claim_id": "c0001",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "diagnosis": "Existing evidence for 'user impact' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry unknown): 'Developed Python REST API with 99.9% uptime serving 100k users\u2026' \u2014 add clearer evidence connecting this work to the target competency. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 4.8,
+          "confidence": 0.76
         },
         {
           "priority": "important",
           "competency": "data_driven_decisions",
-          "source_claim_id": null,
-          "section": null,
-          "entry_id": null,
-          "page": null,
-          "text_snippet": null,
-          "diagnosis": "No accepted evidence for 'data driven decisions' was detected.",
-          "action": "If you genuinely have evidence for 'data driven decisions', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
-          "max_potential_gain_estimate": 4.2,
-          "confidence": 0.7
-        },
-        {
-          "priority": "important",
-          "competency": "technical_understanding",
-          "source_claim_id": null,
-          "section": null,
-          "entry_id": null,
-          "page": null,
-          "text_snippet": null,
-          "diagnosis": "No accepted evidence for 'technical understanding' was detected.",
-          "action": "If you genuinely have evidence for 'technical understanding', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
-          "max_potential_gain_estimate": 3.6,
-          "confidence": 0.7
+          "source_claim_id": "c0002",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "diagnosis": "Existing evidence for 'data driven decisions' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_050f3e): 'Ranked Codeforces Candidate Master 1900 rating\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 3.97,
+          "confidence": 0.71
         }
       ],
       "line_diagnostics": [
@@ -1026,7 +1064,7 @@
   "quant": {
     "role": "quant",
     "document": {
-      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "source_file": "/tmp/tmpd4mim539.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -1303,7 +1341,7 @@
   "sde": {
     "role": "sde",
     "document": {
-      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "source_file": "/tmp/tmpd4mim539.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -1408,8 +1446,8 @@
             "c0002"
           ],
           "reason_codes": [
-            "entity_match",
             "skill_match",
+            "entity_match",
             "cp_keyword"
           ]
         },

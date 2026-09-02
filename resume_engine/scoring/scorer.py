@@ -263,19 +263,47 @@ class RoleScorer:
                     "code": "missing_por_spike",
                 })
             elif has_leadership_budget or has_extracurricular_spike:
-                bonus_total += 14.0
-            elif has_por_spike or lead_strength >= 0.60:
                 bonus_total += 6.0
+            elif has_por_spike or lead_strength >= 0.60:
+                bonus_total += 4.0
+
+            # Pure technical SDE profile penalty for consulting
+            has_sde_tech = any(
+                bool(re.search(r"\b(software engineering|backend|frontend|fullstack|react|node|docker|kubernetes|aws|django|flask|fastapi)\b", cl.text.lower()))
+                for cl in evidence.claims
+            )
+            if has_sde_tech and not has_por_spike and not has_leadership_budget:
+                penalties.append({
+                    "reason": "Profile heavily leans towards Technical/SDE rather than Management Consulting",
+                    "points": 10.0,
+                    "code": "sde_bias_for_consulting",
+                })
+
+        elif role.role_id == "analyst":
+            has_analytics_tech = any(
+                bool(re.search(r"\b(sql|pandas|tableau|powerbi|rshiny|r-lang|etl|data mining|scikit|regression|econometric|census|data analytics|analytics|dashboard)\b", cl.text.lower()))
+                for cl in evidence.claims
+            )
+            if has_analytics_tech:
+                bonus_total += 12.0
+
+        elif role.role_id == "product":
+            has_product_tech = any(
+                bool(re.search(r"\b(product|prd|wireframe|figma|dau|mau|retention|funnel|a/b testing|user growth|teardown|roadmap|user journey|user story)\b", cl.text.lower()))
+                for cl in evidence.claims
+            )
+            if has_product_tech:
+                bonus_total += 12.0
 
         elif role.role_id == "core":
             has_hardware_research = any(
-                bool(re.search(r"\b(lna|28nm|cadence|matlab|simulink|circuit|verilog|vhdl|vlsi|fpga|cad|rf|surge|takneek)\b", cl.text.lower()))
+                bool(re.search(r"\b(lna|28nm|cadence|matlab|simulink|circuit|verilog|vhdl|vlsi|fpga|cad|rf|surge|takneek|ansys|solidworks|catia|autocad|finite element|cfd|thermodynamics|fluid mechanics|mechatronics)\b", cl.text.lower()))
                 for cl in evidence.claims
             )
             if has_hardware_research:
-                bonus_total += 14.0
+                bonus_total += 16.0
             elif has_surge or has_pub:
-                bonus_total += 6.0
+                bonus_total += 8.0
 
         # Multi-page SPO resume violation penalty
         for cl in evidence.claims:

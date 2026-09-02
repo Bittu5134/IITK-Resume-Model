@@ -479,5 +479,31 @@
     ],
     "incorrect_diagnostics": [],
     "comments": "Accurate assessment"
+  },
+  {
+    "id": "7954bd92",
+    "timestamp": "2026-09-02T17:22:09.113196+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
+  },
+  {
+    "id": "b2a10b2a",
+    "timestamp": "2026-09-02T17:22:53.392744+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
   }
 ]
