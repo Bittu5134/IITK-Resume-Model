@@ -248,6 +248,21 @@ SKILL_TAXONOMY = {
     "user personas": "product", "mvp": "product", "rice framework": "product",
 }
 
+try:
+    from resume_engine.ontology.courses import IITK_COURSES
+    for code, info in IITK_COURSES.items():
+        cat = info.get("category", "core")
+        code_low = code.lower()
+        SKILL_TAXONOMY[code_low] = cat
+        spaced = re.sub(r"^([a-z]+)(\d+)", r"\1 \2", code_low)
+        if spaced != code_low:
+            SKILL_TAXONOMY[spaced] = cat
+        name_low = info.get("name", "").lower()
+        if name_low and len(name_low) >= 6 and name_low not in SKILL_TAXONOMY:
+            SKILL_TAXONOMY[name_low] = cat
+except ImportError:
+    pass
+
 STRONG_VERBS = {
     "architected", "spearheaded", "engineered", "designed", "developed", "built", "implemented",
     "optimized", "accelerated", "orchestrated", "automated", "formulated", "deployed", "scaled",

@@ -193,22 +193,18 @@ class RoleScorer:
                         raw_val = 0.0
                     elif evidence.cpi is not None:
                         comp_claims = [f"Undergraduate CPI: {evidence.cpi:.2f}/10.0"]
-                        if evidence.cpi >= 9.5:
+                        if evidence.cpi >= 9.2:
                             raw_val = 1.0
-                        elif evidence.cpi >= 9.0:
-                            raw_val = 0.90
                         elif evidence.cpi >= 8.5:
-                            raw_val = 0.78
-                        elif evidence.cpi >= 8.0:
-                            raw_val = 0.65
-                        elif evidence.cpi >= 7.0:
-                            raw_val = 0.50
-                        elif evidence.cpi >= 6.0:
-                            raw_val = 0.30
+                            raw_val = 0.88
+                        elif evidence.cpi >= 7.5:
+                            raw_val = 0.75
+                        elif evidence.cpi >= 6.5:
+                            raw_val = 0.60
                         elif evidence.cpi >= 5.0:
-                            raw_val = 0.15
+                            raw_val = 0.45
                         else:
-                            raw_val = 0.05
+                            raw_val = 0.15
                     else:
                         for m in evidence.academic_metrics:
                             comp_claims.append(f"{m.name}: {m.value}")
@@ -823,13 +819,13 @@ class RoleScorer:
                     if evidence.cpi >= 9.0:
                         raw_val = 0.90
                     elif evidence.cpi >= role.min_cpi_benchmark:
-                        raw_val = 0.70
-                    elif evidence.cpi >= 6.0:
-                        raw_val = 0.35
+                        raw_val = 0.75
+                    elif evidence.cpi >= 6.5:
+                        raw_val = 0.60
                     elif evidence.cpi >= 5.0:
-                        raw_val = 0.15
+                        raw_val = 0.45
                     else:
-                        raw_val = 0.05
+                        raw_val = 0.15
                 else:
                     for m in evidence.academic_metrics:
                         comp_claims.append(f"{m.name}: {m.value}")
@@ -989,20 +985,13 @@ class RoleScorer:
         penalties: List[str] = []
         final_score = base_score + outlier_bonus
 
-        # Universal CPI & Scrap Penalties
+        # Universal CPI & Scrap Penalties (Simplified: Only deduct if TOO BAD)
         if evidence.is_scrap or (evidence.cpi is not None and evidence.cpi == 0.0):
-            final_score -= 35.0
-            penalties.append("Zero CPI / Scrap Academic Record detected (-35 pts)")
-        elif evidence.cpi is not None:
-            if evidence.cpi < 5.0:
-                final_score -= 20.0
-                penalties.append(f"Critical academic deficiency: CPI {evidence.cpi:.2f}/10.0 (-20 pts)")
-            elif evidence.cpi < 6.0:
-                final_score -= 12.0
-                penalties.append(f"Low academic standing: CPI {evidence.cpi:.2f}/10.0 below 6.0 benchmark (-12 pts)")
-            elif evidence.cpi < 7.0:
-                final_score -= 6.0
-                penalties.append(f"CPI {evidence.cpi:.2f}/10.0 below standard 7.0 benchmark (-6 pts)")
+            final_score -= 30.0
+            penalties.append("Zero CPI / Scrap Academic Record detected (-30 pts)")
+        elif evidence.cpi is not None and evidence.cpi < 5.0:
+            final_score -= 15.0
+            penalties.append(f"Severe academic deficit: CPI {evidence.cpi:.2f}/10.0 below 5.0 probation cutoff (-15 pts)")
 
         if role.role_id == "sde":
             if not has_github_link:

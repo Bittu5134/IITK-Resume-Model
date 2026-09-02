@@ -62,30 +62,42 @@ def test_progressive_cpi_penalties():
     scorer = RoleScorer()
     role_sde = get_role_requirement("sde")
 
-    # Candidate with CPI 4.5
+    # Candidate with CPI 4.5 (Too bad: < 5.0 probation cutoff)
     ev_critical = EvidenceBundle(cpi=4.5, claims=[
         AtomicClaim(claim_id="1", bullet_id="1", section="Projects", text_snippet="Built REST API in Python Flask")
     ])
     sc_critical = scorer.score(ev_critical, role_sde)
-    assert any("Critical academic deficiency" in p for p in sc_critical.penalties_applied)
+    assert any("Severe academic deficit" in p for p in sc_critical.penalties_applied)
 
-    # Candidate with CPI 5.5
+    # Candidate with CPI 5.5 (Normal: >= 5.0) -> No CPI penalty
     ev_low = EvidenceBundle(cpi=5.5, claims=[
         AtomicClaim(claim_id="1", bullet_id="1", section="Projects", text_snippet="Built REST API in Python Flask")
     ])
     sc_low = scorer.score(ev_low, role_sde)
-    assert any("Low academic standing" in p for p in sc_low.penalties_applied)
+    assert not any("CPI" in p for p in sc_low.penalties_applied)
 
-    # Candidate with CPI 6.5
+    # Candidate with CPI 6.5 (Normal: >= 5.0) -> No CPI penalty
     ev_sub7 = EvidenceBundle(cpi=6.5, claims=[
         AtomicClaim(claim_id="1", bullet_id="1", section="Projects", text_snippet="Built REST API in Python Flask")
     ])
     sc_sub7 = scorer.score(ev_sub7, role_sde)
-    assert any("below standard 7.0 benchmark" in p for p in sc_sub7.penalties_applied)
+    assert not any("CPI" in p for p in sc_sub7.penalties_applied)
 
-    # Candidate with CPI 8.5
+    # Candidate with CPI 8.5 -> No CPI penalty
     ev_good = EvidenceBundle(cpi=8.5, claims=[
         AtomicClaim(claim_id="1", bullet_id="1", section="Projects", text_snippet="Built REST API in Python Flask")
     ])
     sc_good = scorer.score(ev_good, role_sde)
     assert not any("CPI" in p for p in sc_good.penalties_applied)
+
+
+def test_iitk_courses_catalog_recognition():
+    from resume_engine.evidence.extractor import SKILL_TAXONOMY
+    from resume_engine.ontology.courses import IITK_COURSES
+
+    assert len(IITK_COURSES) >= 700
+    assert "cs330" in SKILL_TAXONOMY
+    assert "cs 330" in SKILL_TAXONOMY
+    assert "ee380" in SKILL_TAXONOMY
+    assert "mth101a" in SKILL_TAXONOMY
+    assert "des601" in SKILL_TAXONOMY
