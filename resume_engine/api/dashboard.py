@@ -58,8 +58,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-slate-100 dark:text-slate-100 light:text-slate-900 tracking-tight flex items-center gap-2">
-                        IITK Resume Diagnostic Engine
-                        <span class="bg-[#FFC72C]/20 text-[#FFC72C] text-xs font-semibold px-2 py-0.5 rounded-full border border-[#FFC72C]/40">PS Aligned</span>
+                        IIT Kanpur Resume Engine
+                        <span class="bg-[#FFC72C]/20 text-[#FFC72C] text-xs font-semibold px-2 py-0.5 rounded-full border border-[#FFC72C]/40">SPO Advisory</span>
                     </h1>
                     <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">Academics & Career Council | Career Development Wing</p>
                 </div>
@@ -72,7 +72,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 </button>
                 <button type="button" id="toggleViewBtn" onclick="toggleMainView()" class="text-xs font-bold text-blue-300 bg-blue-600/20 hover:bg-blue-600/30 transition px-3.5 py-1.5 rounded-lg border border-blue-500/40 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-solid fa-chart-pie text-blue-400"></i>
-                    <span id="toggleViewBtnText">Switch to SPO Batch Analytics</span>
+                    <span id="toggleViewBtnText">Batch Analytics</span>
                 </button>
                 <a href="/docs" target="_blank" class="text-xs font-medium text-slate-400 hover:text-slate-200 transition px-3 py-1.5 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-solid fa-code text-blue-400 mr-1.5"></i>API Specs
@@ -102,13 +102,13 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             <form id="analyzeForm" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <!-- Dropzone -->
                 <div class="lg:col-span-7">
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">1. Upload SPO LaTeX Resume (PDF)</label>
-                    <div id="dropzone" tabindex="0" role="button" aria-label="Upload SPO LaTeX PDF Resume" class="border-2 border-dashed border-slate-700 hover:border-blue-500 transition-colors rounded-xl p-5 text-center bg-slate-950/50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">1. Upload Resume (PDF)</label>
+                    <div id="dropzone" tabindex="0" role="button" aria-label="Upload PDF Resume" class="border-2 border-dashed border-slate-700 hover:border-blue-500 transition-colors rounded-xl p-5 text-center bg-slate-950/50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                         <input type="file" id="pdfFileInput" accept=".pdf" class="hidden">
                         <div id="uploadPrompt" class="space-y-1">
                             <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-500 group-hover:text-blue-400 transition-colors mb-1"></i>
-                            <p class="text-sm font-medium text-slate-300">Click to browse or drop your SPO PDF here</p>
-                            <p class="text-xs text-slate-500">Supports single-page SPO standard LaTeX format (Max 10 MB)</p>
+                            <p class="text-sm font-medium text-slate-300">Click to browse or drop your PDF resume here</p>
+                            <p class="text-xs text-slate-500">Single-page PDF format supported (Max 10 MB)</p>
                         </div>
                         <div id="fileSelectedInfo" class="hidden flex items-center gap-3 text-left w-full bg-slate-800/80 p-3 rounded-lg border border-slate-700">
                             <i class="fa-solid fa-file-pdf text-red-400 text-2xl"></i>
@@ -149,7 +149,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
                     <button type="submit" id="submitBtn" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-lg shadow-blue-500/25 transition disabled:opacity-50 flex items-center justify-center gap-2">
                         <i class="fa-solid fa-microchip"></i>
-                        <span>Diagnose Resume</span>
+                        <span>Analyze Resume</span>
                     </button>
                 </div>
             </form>
@@ -161,8 +161,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="w-16 h-16 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin"></div>
                 <i class="fa-solid fa-brain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-400 text-xl"></i>
             </div>
-            <h3 class="text-lg font-semibold text-white">Analyzing LaTeX Layout & Semantic Signals...</h3>
-            <p class="text-xs text-slate-400 max-w-md mx-auto">Extracting multi-column text, validating embedded links, checking IITK jargon, and matching achievements against track baseline metrics.</p>
+            <h3 class="text-lg font-semibold text-white">Analyzing Resume Structure & Metrics...</h3>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">Parsing resume sections, validating links, and matching achievements against role benchmarks.</p>
         </div>
 
         <!-- Dashboard Content (Visible after analysis) -->
@@ -176,8 +176,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Auto-Detected Target Track</span>
-                            <span class="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">Strongest Resume Match</span>
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Recommended Target Role</span>
+                            <span class="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">Best Profile Alignment</span>
                         </div>
                         <h3 class="text-base font-extrabold text-white">
                             Best Fit: <span id="autoDetectRoleText" class="text-emerald-400 underline font-black">Software Engineering</span>
@@ -186,7 +186,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 </div>
                 <div class="text-xs text-slate-300 bg-slate-950/80 px-3.5 py-2 rounded-xl border border-slate-800">
                     <i class="fa-solid fa-bullseye text-emerald-400 mr-1.5"></i>
-                    <span>The engine automatically selected your highest scoring profile track. You can click any role tab to switch views.</span>
+                    <span>Selected based on profile strength. Click any track below to compare.</span>
                 </div>
             </div>
 
@@ -218,11 +218,11 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                                 <span id="statClaims" class="font-bold text-slate-200">0</span>
                             </div>
                             <div class="flex justify-between items-center text-slate-400">
-                                <span>IITK Entities:</span>
+                                <span>Recognized Entities:</span>
                                 <span id="statEntities" class="font-bold text-slate-200">0</span>
                             </div>
                             <div class="flex justify-between items-center text-slate-400">
-                                <span>Parsed Links:</span>
+                                <span>Extracted Links:</span>
                                 <span id="statLinks" class="font-bold text-slate-200">0</span>
                             </div>
                             <div class="flex justify-between items-center text-slate-400">
@@ -243,9 +243,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-chart-column text-blue-400 text-sm"></i>
-                            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Multi-Track Fit Comparison</h3>
+                            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Role Track Alignment</h3>
                         </div>
-                        <span class="text-xs text-slate-400">Scores across 4 core tracks</span>
+                        <span class="text-xs text-slate-400">Cross-track readiness comparison</span>
                     </div>
                     
                     <div class="h-44 relative w-full">
@@ -426,14 +426,14 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div>
                     <div class="flex items-center gap-2 mb-1">
                         <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded-full border border-blue-500/30">Placement Season 2026</span>
-                        <span class="text-xs text-slate-400">SPO Executive Macro Intelligence</span>
+                        <span class="text-xs text-slate-400">Batch Placement Readiness</span>
                     </div>
-                    <h2 class="text-xl font-extrabold text-white">Batch Placement Readiness & Track Analytics</h2>
-                    <p class="text-xs text-slate-300 max-w-2xl mt-1">Aggregate resume diagnostic insights across all IITK departments and 4 core industry placement tracks.</p>
+                    <h2 class="text-xl font-extrabold text-white">Batch Analytics & Placement Readiness</h2>
+                    <p class="text-xs text-slate-300 max-w-2xl mt-1">Aggregate insights across departments and industry placement tracks.</p>
                 </div>
                 <button type="button" onclick="fetchBatchAnalyticsData()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i class="fa-solid fa-arrows-rotate"></i>
-                    <span>Refresh Batch Metrics</span>
+                    <span>Refresh Metrics</span>
                 </button>
             </div>
 
@@ -441,7 +441,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex items-center justify-between">
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Total SPO Uploads</span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Total Analyzed</span>
                         <h3 id="kpiTotalResumes" class="text-2xl font-extrabold text-white mt-1">1,240</h3>
                         <p class="text-[10px] text-emerald-400 mt-1 font-semibold"><i class="fa-solid fa-arrow-trend-up mr-1"></i>+14% vs last season</p>
                     </div>
@@ -465,7 +465,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Top Track Preference</span>
                         <h3 id="kpiTopTrack" class="text-2xl font-extrabold text-blue-400 mt-1">58% <span class="text-xs text-slate-400">SDE</span></h3>
-                        <p class="text-[10px] text-slate-400 mt-1">719 Students applying SDE</p>
+                        <p class="text-[10px] text-slate-400 mt-1">719 Candidates applying SDE</p>
                     </div>
                     <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl border border-indigo-500/20">
                         <i class="fa-solid fa-code"></i>
@@ -490,7 +490,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div>
                         <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                             <i class="fa-solid fa-table-cells text-blue-400"></i>
-                            Department vs Track Readiness Heatmap Matrix
+                            Department vs Track Alignment Heatmap Matrix
                         </h3>
                         <p class="text-xs text-slate-400 mt-0.5">Average match scores across departments and target industry roles.</p>
                     </div>
@@ -526,7 +526,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
                     <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
                         <i class="fa-solid fa-list-check text-amber-400"></i>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Top Batch Formatting Non-Compliance</h3>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Format Audit & Compliance</h3>
                     </div>
                     <div id="batchFormatIssuesList" class="space-y-3">
                         <!-- Dynamic issues -->
@@ -537,7 +537,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
                     <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
                         <i class="fa-solid fa-tags text-blue-400"></i>
-                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Top Recognized IITK Jargon & Skills</h3>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Campus Entity & Skill Clusters</h3>
                     </div>
                     <div id="batchJargonContainer" class="flex flex-wrap gap-2.5">
                         <!-- Dynamic jargon tags -->
@@ -551,9 +551,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div>
                         <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                             <i class="fa-solid fa-users text-blue-400"></i>
-                            Anonymized Student Readiness Roster
+                            Candidate Roster Overview
                         </h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Sample candidate profiles diagnostic overview.</p>
+                        <p class="text-xs text-slate-400 mt-0.5">Diagnostic overview of candidate profiles.</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <input type="text" id="rosterSearchInput" oninput="filterRosterTable()" placeholder="Filter roll or dept..." class="bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-lg px-3 py-1.5 focus:border-blue-500 focus:outline-none">
