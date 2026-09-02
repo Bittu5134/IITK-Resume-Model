@@ -985,13 +985,13 @@ class RoleScorer:
         penalties: List[str] = []
         final_score = base_score + outlier_bonus
 
-        # Universal CPI & Scrap Penalties (Simplified: Only deduct if TOO BAD)
+        # Universal CPI & Scrap Penalties (Reduced / Milder Deduction)
         if evidence.is_scrap or (evidence.cpi is not None and evidence.cpi == 0.0):
-            final_score -= 30.0
-            penalties.append("Zero CPI / Scrap Academic Record detected (-30 pts)")
-        elif evidence.cpi is not None and evidence.cpi < 5.0:
             final_score -= 15.0
-            penalties.append(f"Severe academic deficit: CPI {evidence.cpi:.2f}/10.0 below 5.0 probation cutoff (-15 pts)")
+            penalties.append("Zero CPI / Scrap Academic Record detected (-15 pts)")
+        elif evidence.cpi is not None and evidence.cpi < 5.0:
+            final_score -= 8.0
+            penalties.append(f"Academic deficit: CPI {evidence.cpi:.2f}/10.0 below 5.0 probation cutoff (-8 pts)")
 
         if role.role_id == "sde":
             if not has_github_link:
@@ -1000,8 +1000,8 @@ class RoleScorer:
 
         elif role.role_id == "quant":
             if evidence.cpi and evidence.cpi < 8.0 and not has_cf_expert and not has_optiver_1st:
-                final_score -= 8.0
-                penalties.append(f"CPI below Quant benchmark of 8.0 (current: {evidence.cpi:.2f}) (-8 pts)")
+                final_score -= 5.0
+                penalties.append(f"CPI below Quant benchmark of 8.0 (current: {evidence.cpi:.2f}) (-5 pts)")
 
         elif role.role_id == "consulting":
             if not has_pors:

@@ -67,7 +67,7 @@ def test_progressive_cpi_penalties():
         AtomicClaim(claim_id="1", bullet_id="1", section="Projects", text_snippet="Built REST API in Python Flask")
     ])
     sc_critical = scorer.score(ev_critical, role_sde)
-    assert any("Severe academic deficit" in p for p in sc_critical.penalties_applied)
+    assert any("Academic deficit" in p for p in sc_critical.penalties_applied)
 
     # Candidate with CPI 5.5 (Normal: >= 5.0) -> No CPI penalty
     ev_low = EvidenceBundle(cpi=5.5, claims=[
