@@ -83,15 +83,19 @@ _NON_ACTION_SECTIONS = {
     "key courses", "skills", "technical skills", "skills & expertise",
     "skills & interests", "key skills", "tools", "languages", "programming languages",
     "interests", "extracurricular achievements", "extra curricular achievements",
-    "achievements", "awards", "honors", "scholastic achievements", "certifications"
+    "extracurricular", "extra-curricular", "extra curricular activities",
+    "achievements", "awards", "honors", "scholastic achievements", "certifications",
+    "social impact", "social work", "positions of responsibility", "por"
 }
 
 _COMMON_NON_VERB_LEADERS = {
     "the", "a", "an", "in", "on", "for", "with", "by", "to", "of", "and", "or",
-    "objective", "approach", "results", "social", "impact", "leadership",
+    "objective", "approach", "results", "result", "social", "impact", "leadership",
     "initiative", "initiatives", "overview", "summary", "project", "projects",
     "title", "role", "programming", "languages", "database", "databases", "tools",
-    "frameworks", "libraries", "web", "cloud", "operating", "systems", "core"
+    "frameworks", "libraries", "web", "cloud", "operating", "systems", "core",
+    "category", "level", "event", "detail", "context", "outcome", "method", "methodology",
+    "cult", "meet", "music", "debating", "oratorix", "sports", "eurship"
 }
 
 _BULLET_RE = re.compile(r"^\s*(?:[•●▪◦‣·\*\+\-–—]|\d+[.)]\s?|\([a-z0-9]+\)\s?)\s*", re.IGNORECASE)
@@ -107,11 +111,11 @@ def _first_word(text: str) -> str:
     if not clean:
         return ""
     
-    # 2. Strip title/category prefix before colon if present (e.g. "Programming Languages : C, C++")
+    # 2. Strip title/category prefix before colon if present (e.g. "Programming Languages : C, C++", "Objective : ...")
     if ":" in clean:
         parts = clean.split(":", 1)
         left = parts[0].strip().lower()
-        if len(left.split()) <= 4 and any(w in left for w in ["languages", "skills", "tools", "project", "cs2", "cs7", "objective", "frameworks", "database", "social"]):
+        if len(left.split()) <= 4 and any(w in left for w in ["languages", "skills", "tools", "project", "cs2", "cs7", "objective", "approach", "impact", "result", "frameworks", "database", "social", "category", "level", "event", "detail"]):
             if len(parts) > 1 and parts[1].strip():
                 clean = parts[1].strip()
 
@@ -142,9 +146,33 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
 
     section_name = claim.section or "Section"
     sec_lower = section_name.lower().strip()
+    text_lower = text.lower().strip()
     
     # Ignore Education, Coursework, Skills, Achievements, Awards from action verb & metric checks
-    if sec_lower in _NON_ACTION_SECTIONS or any(k in sec_lower for k in ["skill", "course", "education", "academic", "achievement", "award", "honor", "interest"]) or any(k in text.lower() for k in ["year", "degree/certificate", "cpi/%", "institute", "programming languages"]):
+    if sec_lower in _NON_ACTION_SECTIONS or any(k in sec_lower for k in ["skill", "course", "education", "academic", "achievement", "award", "honor", "interest", "extracurricular", "social"]) or any(k in text_lower for k in ["year", "degree/certificate", "cpi/%", "institute", "programming languages"]):
+        return BulletDiagnostic(
+            claim_id=claim.claim_id,
+            bullet_id=claim.bullet_id or claim.claim_id,
+            section=section_name,
+            entry_id=claim.entry_id,
+            page=claim.page,
+            text_snippet=snippet,
+            issues=[],
+            suggestions=[],
+            severity="info"
+        )
+
+    # Check for short header/table cell lines or qualitative award text
+    has_qualitative_award = any(k in text_lower for k in [
+        "air", "rank", "medalist", "medal", "stars", "top", "percentile", "cleared", "qualified",
+        "certificate", "distinction", "semi-finalist", "quarter-finalist", "finalist", "best speaker",
+        "best adjudicator", "chief adjudicator", "adjudicator", "winner", "runner up", "champion",
+        "gold", "silver", "bronze", "first place", "second place", "third place", "cult meet", "oratorix"
+    ])
+    
+    word_count = len(text.split())
+    if word_count < 4 or text_lower in _COMMON_NON_VERB_LEADERS or text_lower.rstrip(":") in _COMMON_NON_VERB_LEADERS:
+        # Don't flag table headers or structural labels as empty bullets
         return BulletDiagnostic(
             claim_id=claim.claim_id,
             bullet_id=claim.bullet_id or claim.claim_id,
@@ -178,8 +206,7 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
         )
 
     # Metric / quantification check — Hyper-Specific Suggestions
-    has_rank_or_medal = any(k in text.lower() for k in ["air", "rank", "medalist", "medal", "stars", "top", "percentile", "cleared", "qualified"])
-    if not claim.metrics and not has_rank_or_medal:
+    if not claim.metrics and not has_qualitative_award:
         issues.append("No quantifiable metric detected.")
         if "project" in section_name.lower() or "research" in section_name.lower():
             suggestions.append(f"Quantify user base growth, accuracy (%), or speedup (x) in {section_name} ({snippet[:35]}...).")
@@ -189,7 +216,7 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
             suggestions.append("Quantify max rating or global rank (e.g., 'Codeforces Candidate Master 1900+ rating').")
         else:
             suggestions.append(f"Quantify the performance improvement or scale metric in bullet: '{snippet[:40]}...'.")
-    elif not claim.impact_metrics and not has_rank_or_medal:
+    elif not claim.impact_metrics and not has_qualitative_award:
         issues.append("Numbers present but none classified as outcome/impact metrics.")
         suggestions.append(
             f"Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."

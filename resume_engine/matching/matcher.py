@@ -229,7 +229,8 @@ _CP_KW = re.compile(
 # Keywords required for probability gate
 _PROBABILITY_KW = re.compile(
     r"\b(probabilit|stochastic|bayesian|monte carlo|markov|random variable|"
-    r"distribution|likelihood|prior|posterior|sampling|mcmc)\b",
+    r"distribution|likelihood|prior|posterior|sampling|mcmc|statistics|statistical|"
+    r"inference|bivariate|multivariate|geary|moran|rshiny|data science|hypothesis)\b",
     re.IGNORECASE,
 )
 

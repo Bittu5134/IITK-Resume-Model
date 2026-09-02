@@ -124,6 +124,7 @@ _SECTION_ALIASES: dict[str, str] = {
 }
 
 # Subsection / row-label vocabulary
+# Subsection / row-label vocabulary
 _SUBLABELS: dict[str, str] = {
     "objective": "objective",
     "approach": "approach",
@@ -143,6 +144,19 @@ _SUBLABELS: dict[str, str] = {
     "summary": "summary",
     "contribution": "contribution",
     "contributions": "contribution",
+    "overview": "overview",
+    "category": "category",
+    "level": "level",
+    "event": "event",
+    "detail": "detail",
+    "role": "role",
+    "context": "context",
+    "outcome": "outcome",
+    "method": "method",
+    "methodology": "methodology",
+    "key learning": "key learning",
+    "takeaway": "takeaway",
+    "findings": "findings",
 }
 
 # Bullet glyph patterns
@@ -183,11 +197,14 @@ def _norm_heading(text: str) -> str:
 
 
 def _normalize_text(text: str) -> str:
-    """Unicode-normalize text: NFC, replace common ligatures, normalize whitespace."""
+    """Unicode-normalize text: NFC, replace common ligatures, stitch hyphenation, normalize whitespace."""
     text = unicodedata.normalize("NFC", text)
     # Common ligatures
     text = text.replace("\ufb01", "fi").replace("\ufb02", "fl")
     text = text.replace("\u00a0", " ").replace("\u200b", "")
+    # Stitch hyphenated words across line breaks or soft spaces (e.g. "Entrepren-\nneurship" -> "Entrepreneurship")
+    text = re.sub(r'(\b[A-Za-z]{2,})[\u2010\u2011\u2012\u2013\u2014\u2015\-]\s*[\r\n]+\s*([a-z]{2,}\b)', r'\1\2', text)
+    text = re.sub(r'(\b[A-Za-z]{3,})[\u2010\u2011\u2012\u2013\u2014\u2015\-]\s+([a-z]{3,}\b)', r'\1\2', text)
     # Normalize dashes to en-dash for display
     text = re.sub(r"[\u2010\u2011\u2012\u2013\u2014\u2015]", "\u2013", text)
     # Normalize quotes
