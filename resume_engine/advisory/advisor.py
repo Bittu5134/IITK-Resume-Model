@@ -78,20 +78,58 @@ _STRONG_VERBS = {
     "created", "scaled"
 }
 
-_BULLET_RE = re.compile(r"^\s*(?:[•●▪◦‣·\-–—]|\d+[.)]\s?)\s*")
+_NON_ACTION_SECTIONS = {
+    "education", "academics", "coursework", "courses", "relevant coursework",
+    "key courses", "skills", "technical skills", "skills & expertise",
+    "skills & interests", "key skills", "tools", "languages", "programming languages",
+    "interests", "extracurricular achievements", "extra curricular achievements",
+    "achievements", "awards", "honors", "scholastic achievements", "certifications"
+}
+
+_COMMON_NON_VERB_LEADERS = {
+    "the", "a", "an", "in", "on", "for", "with", "by", "to", "of", "and", "or",
+    "objective", "approach", "results", "social", "impact", "leadership",
+    "initiative", "initiatives", "overview", "summary", "project", "projects",
+    "title", "role", "programming", "languages", "database", "databases", "tools",
+    "frameworks", "libraries", "web", "cloud", "operating", "systems", "core"
+}
+
+_BULLET_RE = re.compile(r"^\s*(?:[•●▪◦‣·\*\+\-–—]|\d+[.)]\s?|\([a-z0-9]+\)\s?)\s*", re.IGNORECASE)
 _DATE_RE = re.compile(r"\b(?:19|20)\d{2}\b")
 
 
 def _first_word(text: str) -> str:
-    clean = _BULLET_RE.sub("", text).strip()
+    # 1. Clean non-alphanumeric bullet prefix symbols
+    clean = re.sub(r"^[^\w\s]+", "", text).strip()
+    clean = _BULLET_RE.sub("", clean).strip()
+    clean = re.sub(r"^[^\w\s]+", "", clean).strip()
+    
     if not clean:
         return ""
-    # Strip project title prefix before colon if present (e.g., "Text-to-Image Generation: Trained...")
-    if ":" in clean and len(clean.split(":")[0].split()) <= 4:
+    
+    # 2. Strip title/category prefix before colon if present (e.g. "Programming Languages : C, C++")
+    if ":" in clean:
         parts = clean.split(":", 1)
-        if len(parts) > 1 and parts[1].strip():
-            clean = parts[1].strip()
-    return clean.split()[0].lower().rstrip(".,;:")
+        left = parts[0].strip().lower()
+        if len(left.split()) <= 4 and any(w in left for w in ["languages", "skills", "tools", "project", "cs2", "cs7", "objective", "frameworks", "database", "social"]):
+            if len(parts) > 1 and parts[1].strip():
+                clean = parts[1].strip()
+
+    # 3. Strip leading dates or month abbreviations like (Oct'22, Oct 2022, 2021, 2022)
+    clean = re.sub(r"^\(?\s*(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|[0-9]{2,4}|\s|[\-–—/'\.]){2,}\)?\s*", "", clean, flags=re.IGNORECASE).strip()
+    clean = re.sub(r"^[^\w\s]+", "", clean).strip()
+    
+    if not clean:
+        return ""
+        
+    first = clean.split()[0].lower().rstrip(".,;:!?'\")}]")
+    first = re.sub(r"^[^\w]+", "", first)
+    
+    # Ignore numbers/years, short symbols, or non-verb stopwords
+    if re.match(r"^\d+$", first) or len(first) <= 1 or first in _COMMON_NON_VERB_LEADERS:
+        return ""
+        
+    return first
 
 
 def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
@@ -103,9 +141,10 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
     severity = "info"
 
     section_name = claim.section or "Section"
+    sec_lower = section_name.lower().strip()
     
-    # Ignore Education & Coursework sections from action verb & metric checks
-    if section_name.lower() in ("education", "academics", "coursework", "courses", "relevant coursework", "key courses") or any(k in text.lower() for k in ["year", "degree/certificate", "cpi/%", "institute"]):
+    # Ignore Education, Coursework, Skills, Achievements, Awards from action verb & metric checks
+    if sec_lower in _NON_ACTION_SECTIONS or any(k in sec_lower for k in ["skill", "course", "education", "academic", "achievement", "award", "honor", "interest"]) or any(k in text.lower() for k in ["year", "degree/certificate", "cpi/%", "institute", "programming languages"]):
         return BulletDiagnostic(
             claim_id=claim.claim_id,
             bullet_id=claim.bullet_id or claim.claim_id,
@@ -122,8 +161,10 @@ def _diagnose_bullet(claim: AtomicClaim) -> BulletDiagnostic:
 
     # Action verb check
     if not first:
-        issues.append("Bullet appears empty or has no action verb.")
-        severity = "warning"
+        # If line has valid technical words or project details, don't flag as missing verb
+        if len(text.split()) < 4:
+            issues.append("Bullet appears empty or short header line.")
+            severity = "info"
     elif first in _WEAK_VERBS:
         issues.append(f"Weak action verb '{first}' in {section_name}.")
         suggestions.append(

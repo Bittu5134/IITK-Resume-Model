@@ -186,13 +186,36 @@ class RoleScorer:
                 for cl in evidence.claims
             )
             
+            # Practical experience audit: check if candidate has industry internships,
+            # open-source contributions, or competitive programming history
+            has_internship = any(
+                m.competency == "internships" and m.final_score >= 0.25
+                for m in matches
+            )
+            has_open_source = has_gsoc or any(
+                m.competency == "open_source" and m.final_score >= 0.25
+                for m in matches
+            )
+            has_comp_prog = has_codeforces or any(
+                m.competency == "competitive_programming" and m.final_score >= 0.25
+                for m in matches
+            )
+
+            # If the profile relies purely on academic coursework with 0 internships, 0 open source, and 0 competitive programming:
+            if not has_internship and not has_open_source and not has_comp_prog:
+                penalties.append({
+                    "reason": "Academic-only SDE profile: missing industry internships, open-source contributions, or competitive programming",
+                    "points": 12.0,
+                    "code": "lacks_practical_sde_experience",
+                })
+
             if cpi_value is not None and (cpi_value / cpi_scale) >= 0.95:
-                bonus_total += 6.0
+                bonus_total += 4.0
             
             if has_github:
                 bonus_total += 3.0
             if has_systems_code and not has_codeforces:
-                bonus_total += 12.0
+                bonus_total += 4.0
 
         elif role.role_id == "quant":
             # High CPI boost (9.5+ CPI) & Rigorous Math/Probability coursework (Generic regex)
@@ -267,6 +290,10 @@ class RoleScorer:
         # ── Final score ────────────────────────────────────────────────────
         penalty_total = sum(p["points"] for p in penalties)
         total = round(max(0.0, min(100.0, raw_score + bonus_total - penalty_total)), 2)
+
+        # Cap academic-only SDE profile score to max 79.50 (reflecting lack of industry experience)
+        if role.role_id == "sde" and not has_internship and not has_open_source and not has_comp_prog:
+            total = min(79.50, total)
 
         # Coverage: fraction of competencies with at least one accepted match
         n_comps = len(role.competencies)
