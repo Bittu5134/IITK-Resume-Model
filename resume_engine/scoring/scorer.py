@@ -755,6 +755,16 @@ class RoleScorer:
                 final_score -= 4.0
                 penalties.append("Insufficient quantified business metrics across bullets (-4 pts)")
 
+        elif role.role_id == "core":
+            if role.penalizes_generic_webdev:
+                webdev_skills = {"react", "vue", "angular", "node.js", "django", "flask", "fastapi", "bootstrap", "tailwind", "html", "css"}
+                matched_webdev = candidate_skills.intersection(webdev_skills)
+                core_tools = {"ansys", "matlab", "solidworks", "autocad", "simulink", "verilog", "cfd", "fea", "catia", "creo", "comsol"}
+                matched_core = candidate_skills.intersection(core_tools)
+                if len(matched_webdev) >= 2 and len(matched_core) < 2 and not has_surge:
+                    final_score -= 5.0
+                    penalties.append("Generic web dev projects displacing core engineering electives/lab experience (-5 pts)")
+
         final_score = round(max(0.0, min(final_score, 100.0)), 1)
 
         if final_score >= 75.0:

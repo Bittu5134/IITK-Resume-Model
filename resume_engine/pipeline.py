@@ -113,6 +113,9 @@ class ResumeEngine:
     def analyze_all(self, pdf_path: str | Path) -> Dict[str, Any]:
         """Diagnose a resume across all 6 tracks and identify the best-fit role."""
         results: Dict[str, Any] = {}
+        
+        # Canonical PS roles get primary priority for best_fit determination
+        CANONICAL_PS_ROLES = ["sde", "quant", "consulting", "core"]
         best_role = "sde"
         max_score = -1.0
 
@@ -121,24 +124,35 @@ class ResumeEngine:
             dump = res.model_dump()
             results[role_id] = dump
             score_val = dump.get("score", {}).get("score", 0.0)
-            if score_val > max_score:
-                max_score = score_val
-                best_role = role_id
+            
+            # Prioritize canonical 4 PS tracks for best_fit unless non-canonical exceeds by > 10 pts
+            if role_id in CANONICAL_PS_ROLES:
+                if score_val > max_score:
+                    max_score = score_val
+                    best_role = role_id
 
-        # Disambiguation: if candidate filename explicitly indicates intent and score is within 3.5 pts of max
+        # Secondary check: if analyst or product score > max_score + 10.0, allow secondary fit
+        for role_id in ["analyst", "product"]:
+            if role_id in results:
+                s_val = results[role_id].get("score", {}).get("score", 0.0)
+                if s_val > max_score + 10.0:
+                    best_role = role_id
+                    max_score = s_val
+
+        # Disambiguation: if candidate filename explicitly indicates intent and score is within 4.0 pts of max
         fn_lower = Path(pdf_path).name.lower()
         role_hints = {
             "core": ["core", "_ee", "_me", "_ce", "_che", "_ae", "_mse"],
             "consulting": ["consult", "consulting", "pm_consult"],
-            "analyst": ["analytics", "analyst", "data_analyst"],
             "quant": ["quant", "qf", "trading"],
             "sde": ["sde", "software", "swe", "dev"],
+            "analyst": ["analytics", "analyst", "data_analyst"],
             "product": ["product", "pm_resume"],
         }
         for r_id, hints in role_hints.items():
             if any(h in fn_lower for h in hints) and r_id in results:
                 r_score = results[r_id].get("score", {}).get("score", 0.0)
-                if max_score - r_score <= 3.5:
+                if max_score - r_score <= 4.0:
                     best_role = r_id
                     break
 

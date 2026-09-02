@@ -74,55 +74,16 @@ def classify_link_uri(uri: str) -> str:
     return "portfolio" if any(x in u for x in ["io", "me", "dev", "portfolio"]) else "web"
 
 
-def parse_pdf(pdf_path: str | Path) -> ResumeAST:
-    """Parse an SPO PDF resume into a spatial AST preserving 2-column layout & hyperlinks."""
-    path = Path(pdf_path)
-    if not path.exists():
-        raise FileNotFoundError(f"PDF resume not found: {path}")
-
-    doc = pymupdf.open(str(path))
-    warnings: List[str] = []
-    page_count = len(doc)
-
-    link_objects: List[LinkObject] = []
-    extracted_text_blocks: List[Tuple[int, float, float, float, float, str]] = []
-    fonts_seen = set()
-    full_text_pages = []
-
-    for page_num in range(page_count):
-        page = doc[page_num]
-        full_text_pages.append(page.get_text("text"))
-        
-        # 1. Extract Links (Stateless, fresh list per run)
-        for link in page.get_links():
-            uri = link.get("uri")
-            if uri:
-                rect = link.get("from")
-                bbox = [rect.x0, rect.y0, rect.x1, rect.y1] if rect else None
-                near_text = ""
-                if rect:
-                    near_text = page.get_text("text", clip=rect).strip()
-                link_type = classify_link_uri(uri)
-                link_objects.append(
-                    LinkObject(
-                        uri=uri,
-                        link_type=link_type,
-                        page=page_num + 1,
-                        associated_text=near_text,
-                        bbox=bbox,
-                    )
-                )
-
 def _stitch_table_rows(
     blocks: List[Tuple],
     page_num: int,
     y_tolerance: float = 8.0,
+    max_gap: float = 30.0,
 ) -> List[Tuple[int, float, float, float, float, str]]:
     """Stitch horizontally-adjacent blocks into full row strings.
     
-    Groups blocks whose y-midpoints fall within y_tolerance of each other,
-    sorts each group left-to-right, and concatenates text with ' | ' separator
-    for multi-column rows.
+    Only stitches blocks whose y-midpoints fall within y_tolerance AND horizontal gap <= max_gap,
+    preventing distinct multi-column sections (left vs right columns) from merging into one string.
     """
     valid_blocks = [b for b in blocks if len(b) >= 5 and b[4] and b[4].strip()]
     if not valid_blocks:
@@ -152,29 +113,41 @@ def _stitch_table_rows(
     if current_row:
         rows.append(current_row)
 
-    # For each row: sort blocks left-to-right, concatenate, emit as lines
+    # For each row: partition by horizontal gap, sort left-to-right, concatenate
     result = []
     for row in rows:
         row.sort(key=lambda item: item[1][0])  # sort by x0
         
-        merged_text_parts = [b[4].strip() for _, b in row]
-        
-        x0 = min(b[0] for _, b in row)
-        y0 = min(b[1] for _, b in row)
-        x1 = max(b[2] for _, b in row)
-        y1 = max(b[3] for _, b in row)
-        
-        # Join multi-column cells on the same horizontal line with ' | '
-        full_text = " | ".join(merged_text_parts)
-        
-        lines = full_text.splitlines()
-        y_step = (y1 - y0) / max(len(lines), 1)
-        for idx, line in enumerate(lines):
-            line_str = line.strip()
-            if line_str:
-                cur_y0 = y0 + idx * y_step
-                cur_y1 = cur_y0 + y_step
-                result.append((page_num + 1, x0, cur_y0, x1, cur_y1, line_str))
+        # Sub-group by horizontal gaps
+        sub_clusters: List[List[Tuple]] = []
+        cur_cluster = [row[0]]
+        for item in row[1:]:
+            prev_x1 = cur_cluster[-1][1][2]
+            cur_x0 = item[1][0]
+            if (cur_x0 - prev_x1) <= max_gap:
+                cur_cluster.append(item)
+            else:
+                sub_clusters.append(cur_cluster)
+                cur_cluster = [item]
+        if cur_cluster:
+            sub_clusters.append(cur_cluster)
+
+        for cluster in sub_clusters:
+            merged_text_parts = [b[4].strip() for _, b in cluster]
+            x0 = min(b[0] for _, b in cluster)
+            y0 = min(b[1] for _, b in cluster)
+            x1 = max(b[2] for _, b in cluster)
+            y1 = max(b[3] for _, b in cluster)
+            
+            full_text = " | ".join(merged_text_parts)
+            lines = full_text.splitlines()
+            y_step = (y1 - y0) / max(len(lines), 1)
+            for idx, line in enumerate(lines):
+                line_str = line.strip()
+                if line_str:
+                    cur_y0 = y0 + idx * y_step
+                    cur_y1 = cur_y0 + y_step
+                    result.append((page_num + 1, x0, cur_y0, x1, cur_y1, line_str))
 
     return result
 
@@ -253,7 +226,7 @@ def parse_pdf(pdf_path: str | Path) -> ResumeAST:
 
         is_bullet = False
         bullet_text = line
-        bullet_prefixes = ["•", "-", "–", "*", "▪", "►", "✓"]
+        bullet_prefixes = ["•", "·", "-", "–", "—", "*", "▪", "►", "✓", "o", "u"]
         for pfx in bullet_prefixes:
             if line.startswith(pfx):
                 is_bullet = True
@@ -307,9 +280,12 @@ def parse_pdf(pdf_path: str | Path) -> ResumeAST:
         if not link.section:
             link.section = "Header"
 
+    if page_count > 1:
+        warnings.append(f"Resume spans {page_count} pages. SPO requires a strict 1-page template.")
+
     diagnostics = LayoutDiagnostics(
         page_count=page_count,
-        is_single_page_compliant=True,
+        is_single_page_compliant=(page_count == 1),
         has_multicolumn_layout=True,
         estimated_word_count=len(full_text.split()),
         font_count=len(fonts_seen),

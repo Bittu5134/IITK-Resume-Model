@@ -398,9 +398,18 @@ class EvidenceExtractor:
                     if start_phrase.startswith(wv) or b_text.lower().startswith(wv):
                         verb_strength = "weak"
                         severity = "warning"
-                        issues.append(f"Weak action verb detected ('{wv}'). Lacks authoritative leadership signal.")
+                        issues.append(f"Weak action verb detected ('{wv}'). Lacks authoritative impact signal.")
+                        
+                        sec_lower = section.name.lower()
+                        if any(k in sec_lower for k in ["leadership", "responsibility", "por", "extra"]):
+                            rec_verbs = "'Spearheaded', 'Directed', 'Mentored', or 'Orchestrated'"
+                        elif any(k in sec_lower for k in ["project", "technical"]):
+                            rec_verbs = "'Architected', 'Engineered', 'Optimized', or 'Developed'"
+                        else:
+                            rec_verbs = "'Spearheaded', 'Architected', 'Optimized', or 'Mentored'"
+                            
                         suggestions.append(
-                            f"Replace '{wv}' with a strong active verb like 'Architected', 'Spearheaded', 'Optimized', or 'Engineered'."
+                            f"Replace '{wv}' with a strong domain-specific verb such as {rec_verbs}."
                         )
                         break
 
