@@ -6,7 +6,7 @@ from resume_engine.pipeline import ResumeEngine
 def main():
     ap = argparse.ArgumentParser(description="IITK Context-Aware Resume Diagnostic Engine")
     ap.add_argument("pdf", nargs="?", help="Path to SPO PDF resume file")
-    ap.add_argument("--role", choices=["sde", "quant", "consulting", "core"], help="Target industry track")
+    ap.add_argument("--role", choices=["sde", "quant", "consulting", "core", "analyst", "product"], help="Target industry track")
     ap.add_argument("-o", "--output", help="Save analysis JSON output to file")
     ap.add_argument("--serve", action="store_true", help="Launch the Web Advisory Dashboard server")
     ap.add_argument("--reload", action="store_true", default=True, help="Enable auto hot reload for development")

@@ -122,7 +122,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">2. Target Industry Track</label>
-                        <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-2 gap-2.5">
+                        <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-3 gap-2.5">
                             <button type="button" role="tab" id="role-tab-sde" aria-selected="true" aria-controls="resultsDashboard" data-role="sde" class="role-btn active px-3.5 py-3 rounded-lg border text-xs font-bold transition flex items-center justify-between border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <span><i class="fa-solid fa-code mr-2 text-sm"></i>SDE</span>
                                 <i class="fa-solid fa-circle-check text-blue-600 dark:text-blue-400 text-sm"></i>
@@ -137,6 +137,14 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                             </button>
                             <button type="button" role="tab" id="role-tab-core" aria-selected="false" aria-controls="resultsDashboard" data-role="core" class="role-btn px-3.5 py-3 rounded-lg border text-xs font-bold transition flex items-center justify-between border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                                 <span><i class="fa-solid fa-gear mr-2 text-sm"></i>Core Eng.</span>
+                                <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
+                            </button>
+                            <button type="button" role="tab" id="role-tab-analyst" aria-selected="false" aria-controls="resultsDashboard" data-role="analyst" class="role-btn px-3.5 py-3 rounded-lg border text-xs font-bold transition flex items-center justify-between border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-chart-pie mr-2 text-sm"></i>Analyst</span>
+                                <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
+                            </button>
+                            <button type="button" role="tab" id="role-tab-product" aria-selected="false" aria-controls="resultsDashboard" data-role="product" class="role-btn px-3.5 py-3 rounded-lg border text-xs font-bold transition flex items-center justify-between border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-rocket mr-2 text-sm"></i>Product</span>
                                 <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
                             </button>
                         </div>
@@ -246,7 +254,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         <canvas id="multiTrackChart"></canvas>
                     </div>
 
-                    <div class="grid grid-cols-4 gap-2.5 pt-3.5 border-t border-slate-200 dark:border-slate-800 text-center">
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 pt-3.5 border-t border-slate-200 dark:border-slate-800 text-center">
                         <button onclick="switchRole('sde')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
                             <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">SDE</span>
                             <span id="sdeScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
@@ -262,6 +270,14 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         <button onclick="switchRole('core')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
                             <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Core</span>
                             <span id="coreScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
+                        </button>
+                        <button onclick="switchRole('analyst')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Analyst</span>
+                            <span id="analystScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
+                        </button>
+                        <button onclick="switchRole('product')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Product</span>
+                            <span id="productScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
                         </button>
                     </div>
                 </div>
@@ -579,26 +595,29 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         });
 
         // Role button selector
-        document.querySelectorAll('.role-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.role-btn').forEach(b => {
-                    b.classList.remove('border-blue-500', 'bg-blue-600/20', 'text-blue-300');
-                    b.classList.add('border-slate-800', 'bg-slate-950', 'text-slate-400');
-                    b.setAttribute('aria-selected', 'false');
-                    b.querySelector('.fa-circle-check')?.classList.add('hidden');
+        function initRoleButtons() {
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.role-btn').forEach(b => {
+                        b.classList.remove('border-blue-500', 'bg-blue-600/20', 'text-blue-700', 'text-blue-300', 'bg-blue-50', 'bg-blue-950/50');
+                        b.classList.add('border-slate-300', 'dark:border-slate-800', 'bg-slate-50', 'dark:bg-slate-950', 'text-slate-700', 'dark:text-slate-400');
+                        b.setAttribute('aria-selected', 'false');
+                        b.querySelector('.fa-circle-check')?.classList.add('hidden');
+                    });
+                    btn.classList.remove('border-slate-300', 'bg-slate-50', 'text-slate-700');
+                    btn.classList.add('border-blue-500', 'bg-blue-600/20', 'text-blue-700', 'dark:text-blue-300');
+                    btn.setAttribute('aria-selected', 'true');
+                    btn.querySelector('.fa-circle-check')?.classList.remove('hidden');
+
+                    selectedRole = btn.dataset.role;
+
+                    if (multiRoleResults[selectedRole]) {
+                        renderDashboardForRole(selectedRole);
+                    }
                 });
-                btn.classList.remove('border-slate-800', 'bg-slate-950', 'text-slate-400');
-                btn.classList.add('border-blue-500', 'bg-blue-600/20', 'text-blue-300');
-                btn.setAttribute('aria-selected', 'true');
-                btn.querySelector('.fa-circle-check')?.classList.remove('hidden');
-
-                selectedRole = btn.dataset.role;
-
-                if (multiRoleResults[selectedRole]) {
-                    renderDashboardForRole(selectedRole);
-                }
             });
-        });
+        }
+        initRoleButtons();
 
         // Tab Navigation
         document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -653,7 +672,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 let autoRole = multiRoleResults.best_fit_role;
                 if (!autoRole) {
                     let maxS = -1;
-                    for (const r of ['sde', 'quant', 'consulting', 'core']) {
+                    for (const r of ['sde', 'quant', 'consulting', 'core', 'analyst', 'product']) {
                         const sc = multiRoleResults[r]?.score?.score ?? 0;
                         if (sc > maxS) {
                             maxS = sc;
@@ -669,7 +688,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         'sde': 'Software Engineering (SDE)',
                         'quant': 'Quantitative Finance',
                         'consulting': 'Management Consulting',
-                        'core': 'Core Engineering'
+                        'core': 'Core Engineering',
+                        'analyst': 'Business / Data Analyst',
+                        'product': 'Product Management'
                     };
                     const topScore = Math.round(multiRoleResults[autoRole]?.score?.score ?? 0);
                     document.getElementById('autoDetectRoleText').textContent = `${roleFullNames[autoRole]} (${topScore}/100)`;
@@ -705,7 +726,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 'sde': 'Software Engineering',
                 'quant': 'Quantitative Finance',
                 'consulting': 'Management Consulting',
-                'core': 'Core Engineering'
+                'core': 'Core Engineering',
+                'analyst': 'Business / Data Analyst',
+                'product': 'Product Management'
             };
 
             document.getElementById('activeRoleTitle').textContent = roleNames[roleId] || roleId.toUpperCase();
@@ -719,13 +742,17 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             if (multiRoleResults.quant) document.getElementById('quantScoreMini').textContent = Math.round(multiRoleResults.quant.score?.score ?? 0);
             if (multiRoleResults.consulting) document.getElementById('consultingScoreMini').textContent = Math.round(multiRoleResults.consulting.score?.score ?? 0);
             if (multiRoleResults.core) document.getElementById('coreScoreMini').textContent = Math.round(multiRoleResults.core.score?.score ?? 0);
+            if (multiRoleResults.analyst) { const el = document.getElementById('analystScoreMini'); if (el) el.textContent = Math.round(multiRoleResults.analyst.score?.score ?? 0); }
+            if (multiRoleResults.product) { const el = document.getElementById('productScoreMini'); if (el) el.textContent = Math.round(multiRoleResults.product.score?.score ?? 0); }
 
             // Dynamic score notice
             const roleNotices = {
                 'sde': 'Matches DSA, competitive programming, and GitHub project signals against SDE baselines.',
                 'quant': 'Matches high CPI (8.0+), mathematical coursework, and analytical problem-solving against Quant baselines.',
                 'consulting': 'Matches business impact, leadership PoRs, and communication spikes against Consulting baselines.',
-                'core': 'Matches SURGE research internships, core engineering electives, and technical projects against Core baselines.'
+                'core': 'Matches SURGE research internships, core engineering electives, and technical projects against Core baselines.',
+                'analyst': 'Matches SQL/data tools, business analysis internships, dashboarding projects, and analytical coursework against Analyst baselines.',
+                'product': 'Matches product internships, user research, roadmap/strategy evidence, and cross-functional PoRs against Product baselines.'
             };
             document.getElementById('scoreSummaryNotice').textContent = roleNotices[roleId] || '';
 
@@ -807,24 +834,26 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 Math.round(multiRoleResults.sde?.score?.score ?? multiRoleResults.sde?.score?.overall_score ?? 0),
                 Math.round(multiRoleResults.quant?.score?.score ?? multiRoleResults.quant?.score?.overall_score ?? 0),
                 Math.round(multiRoleResults.consulting?.score?.score ?? multiRoleResults.consulting?.score?.overall_score ?? 0),
-                Math.round(multiRoleResults.core?.score?.score ?? multiRoleResults.core?.score?.overall_score ?? 0)
+                Math.round(multiRoleResults.core?.score?.score ?? multiRoleResults.core?.score?.overall_score ?? 0),
+                Math.round(multiRoleResults.analyst?.score?.score ?? multiRoleResults.analyst?.score?.overall_score ?? 0),
+                Math.round(multiRoleResults.product?.score?.score ?? multiRoleResults.product?.score?.overall_score ?? 0)
             ];
 
             const inactiveBarColor = currentTheme === 'light' ? '#cbd5e1' : '#334155';
             const gridColor = currentTheme === 'light' ? '#e2e8f0' : '#1e293b';
             const tickColor = currentTheme === 'light' ? '#64748b' : '#94a3b8';
 
-            const bgColors = ['sde', 'quant', 'consulting', 'core'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
+            const bgColors = ['sde', 'quant', 'consulting', 'core', 'analyst', 'product'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
 
             multiTrackChartObj = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['SDE', 'Quant Fin', 'Consulting', 'Core Eng.'],
+                    labels: ['SDE', 'Quant Fin', 'Consulting', 'Core Eng.', 'Analyst', 'Product'],
                     datasets: [{
                         data: scores,
                         backgroundColor: bgColors,
                         borderRadius: 6,
-                        barThickness: 32
+                        barThickness: 28
                     }]
                 },
                 options: {
@@ -839,7 +868,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         },
                         x: {
                             grid: { display: false },
-                            ticks: { color: tickColor, font: { size: 11, weight: 'bold' } }
+                            ticks: { color: tickColor, font: { size: 10, weight: 'bold' } }
                         }
                     },
                     plugins: { legend: { display: false } }
