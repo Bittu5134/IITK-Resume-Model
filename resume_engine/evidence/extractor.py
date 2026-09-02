@@ -353,9 +353,9 @@ class EvidenceExtractor:
         raw_text = ast.raw_text
 
         # 1. CPI detection
-        cpi_match = re.search(r"(\b[0-9]\.[0-9]{1,2})\s*/\s*10(?:\.0)?", raw_text, re.I)
+        cpi_match = re.search(r"(\b[0-9](?:\.[0-9]{1,2})?)\s*/\s*10(?:\.0)?", raw_text, re.I)
         if not cpi_match:
-            cpi_match = re.search(r"(?:CPI|CGPA|GPA)[\s:]*([0-9]\.[0-9]{1,2})", raw_text, re.I)
+            cpi_match = re.search(r"(?:CPI|CGPA|GPA)[\s:]*([0-9](?:\.[0-9]{1,2})?)", raw_text, re.I)
 
         if cpi_match:
             try:
@@ -572,6 +572,14 @@ class EvidenceExtractor:
                 )
                 bullet_diagnostics.append(diag_obj)
 
+        word_count = len(re.findall(r"\w+", ast.raw_text))
+        raw_low = ast.raw_text.lower()
+        is_scrap = (
+            (cpi_val is not None and cpi_val == 0.0) or
+            (len(claims) < 3 and word_count < 60) or
+            any(k in raw_low for k in ["lorem ipsum", "scrap data", "sample text", "placeholder"])
+        )
+
         return EvidenceBundle(
             academic_metrics=academic_metrics,
             cpi=cpi_val,
@@ -581,4 +589,5 @@ class EvidenceExtractor:
             claims=claims,
             bullet_diagnostics=bullet_diagnostics,
             raw_text=ast.raw_text,
+            is_scrap=is_scrap,
         )

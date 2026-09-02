@@ -63,3 +63,4 @@ class EvidenceBundle(BaseModel):
     claims: List[AtomicClaim] = Field(default_factory=list)
     bullet_diagnostics: List[BulletDiagnostic] = Field(default_factory=list)
     raw_text: str = ""
+    is_scrap: bool = False

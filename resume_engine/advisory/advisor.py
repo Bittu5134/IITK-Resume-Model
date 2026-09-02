@@ -133,6 +133,18 @@ class CounterfactualAdvisor:
                 action = "Include clickable GitHub and portfolio links in the header and pin 2 production-ready repositories."
                 suggested_template = "Verified GitHub: github.com/username (2 pinned production repositories, CI/CD automated test workflows)."
 
+            elif "cpi" in gap.competency or "academic" in gap.competency:
+                target_entry = "Header & Education"
+                if evidence.is_scrap or (evidence.cpi is not None and evidence.cpi == 0.0):
+                    diagnosis = "Zero CPI / Scrap Academic Record detected, resulting in severe baseline score penalties."
+                    action = "Ensure valid academic qualifications (CPI/CGPA on 10.0 scale) and non-scrap text content are provided."
+                    suggested_template = "B.Tech Undergraduate Student | CPI: 8.50/10.0 | Relevant Coursework: CS210, MTH415, ME352"
+                else:
+                    cpi_str = f"{evidence.cpi:.2f}" if evidence.cpi is not None else "Unlisted"
+                    diagnosis = f"Undergraduate CPI ({cpi_str}/10.0) is performing below target role benchmark."
+                    action = "Highlight high semester SGPA trends, departmental rank, or national contest honours to offset academic penalties."
+                    suggested_template = "Demonstrated academic excellence with 9.0+ SGPA in core upper-level electives and AIR < 250."
+
             elif "leadership" in gap.competency or "pors" in gap.competency:
                 target_entry = primary_por
                 diagnosis = f"In '{primary_por}': Bullets describe administrative coordination rather than high-stakes campus leadership outcomes."
