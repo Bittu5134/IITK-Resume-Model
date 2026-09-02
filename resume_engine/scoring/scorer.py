@@ -70,16 +70,16 @@ class RoleScorer:
             if role.role_id == "sde":
                 if "algorithms" in comp_name or "dsa" in comp_name:
                     CP_SIGNALS = [
-                        r"\b(codeforces|leetcode|codechef|starters|div\.?\s*2|expert|rating|contest|icpc)\b",
-                        r"\b(dsa|algorithms?|data structures?|dijkstra|huffman|sorting|insertion sort|graphs?|trees?|dynamic programming|greedy)\b",
-                        r"\b(mips|processor|assembler|isa|cyclegan|gan|generative|react|web app)\b",
+                        r"\b(codeforces|leetcode|codechef|starters|div\.?\s*2|expert|rating|contest|icpc|atcoder)\b",
+                        r"\b(dsa|algorithms?|data structures?|dijkstra|huffman|sorting|insertion sort|graphs?|trees?|dynamic programming|greedy|bfs|dfs|shortest path|mst|binary search|trie|segment tree)\b",
+                        r"\b(mips|processor|assembler|custom isa|interpreter|compiler)\b",
                     ]
-                    matched = candidate_skills.intersection({"algorithms", "dsa", "data structures", "c++", "cpp", "python", "mips", "react", "gan"})
+                    matched = candidate_skills.intersection({"algorithms", "dsa", "data structures", "c++", "cpp", "python", "mips", "assembly"})
                     cp_claims = []
                     proj_algo_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
-                        is_cp = bool(re.search(r"\b(codeforces|leetcode|codechef|starters|div\.?\s*2|expert|rating|contest|icpc)\b", text_lower, re.I))
+                        is_cp = bool(re.search(r"\b(codeforces|leetcode|codechef|starters|div\.?\s*2|expert|rating|contest|icpc|atcoder)\b", text_lower, re.I))
                         is_algo = any(re.search(pat, text_lower, re.I) for pat in CP_SIGNALS) or any(s in c.skills_matched for s in matched)
                         if is_cp:
                             cp_claims.append(c.text_snippet)
@@ -91,9 +91,9 @@ class RoleScorer:
                         # Gradient: 1.0 for CF Expert / ICPC; 0.75 for CF Specialist/Custom ISA; 0.50 for standard academic BFS/sorting; 0.25 coursework
                         if re.search(r"\b(expert|candidate master|icpc|round \d+|global rank [1-9]\d{0,2}\b|optiver)\b", text_all):
                             raw_val = 1.0
-                        elif re.search(r"\b(codeforces|codechef|atcoder|mips|processor|custom isa|interpreter|cyclegan)\b", text_all):
-                            raw_val = 0.78
-                        elif re.search(r"\b(dijkstra|bfs|dfs|sorting|huffman|shortest path|mst)\b", text_all):
+                        elif re.search(r"\b(codeforces|codechef|atcoder|mips|processor|custom isa|interpreter|compiler)\b", text_all):
+                            raw_val = 0.75
+                        elif re.search(r"\b(dijkstra|bfs|dfs|sorting|huffman|shortest path|mst|binary search)\b", text_all):
                             raw_val = 0.55
                         else:
                             raw_val = 0.35
@@ -128,7 +128,7 @@ class RoleScorer:
 
                 elif "system_design" in comp_name or "architecture" in comp_name:
                     SD_SIGNALS = [
-                        r"\b(system design|architecture|real[- ]time|table reservations?|role-based access|seamless ordering|dashboard analytics|rest api|microservices|distributed|database|postgresql|express|node\.?js|react|docker)\b"
+                        r"\b(system design|architecture|real[- ]time|caching|indexing|load balancing|rest api|microservices|distributed|database|postgresql|express|node\.?js|docker|kubernetes|kafka|redis|high availability|concurrency)\b"
                     ]
                     matched = candidate_skills.intersection({"system design", "docker", "kubernetes", "aws", "fastapi", "django", "react", "node.js", "express", "postgresql", "rest api"})
                     comp_claims = []
@@ -151,7 +151,7 @@ class RoleScorer:
 
                 elif "project_complexity" in comp_name or "projects" in comp_name:
                     PROJ_SIGNALS = [
-                        r"\b(processor|single-cycle|custom isa|assembler|react|full[- ]stack|cyclegan|gan|conditional gan|huffman|dijkstra|library management|team of \d+)\b"
+                        r"\b(processor|single-cycle|custom isa|assembler|full[- ]stack|backend|pipeline|distributed|concurrency|database|rest api|team of \d+)\b"
                     ]
                     comp_claims = []
                     for c in evidence.claims:
@@ -165,8 +165,8 @@ class RoleScorer:
                         text_all = " ".join(comp_claims).lower()
                         if re.search(r"\b(deployed|production|scale|real-time alerts?|active users|team of \d+|custom isa|processor)\b", text_all):
                             raw_val = 0.85
-                        elif re.search(r"\b(full[- ]stack|cyclegan|gan|app|database)\b", text_all):
-                            raw_val = 0.70
+                        elif re.search(r"\b(full[- ]stack|app|database|pipeline|backend)\b", text_all):
+                            raw_val = 0.65
                         elif re.search(r"\b(course project|mini[- ]project|simulation)\b", text_all):
                             raw_val = 0.50
                         else:
@@ -212,7 +212,7 @@ class RoleScorer:
             elif role.role_id == "quant":
                 if "mathematical" in comp_name or "rigor" in comp_name:
                     MATH_SIGNALS = [
-                        r"\b(inmo|rmo|ioqm|inpho|incho|isi|kvpy|jee advanced|olympiad|mathematical olympiad)\b",
+                        r"\b(inmo|rmo|ioqm|inpho|incho|isi|kvpy|jee advanced|mathematical olympiad)\b",
                         r"\b(probability|linear algebra|stochastic|calculus|differential equations|game complexity|quantum query|co-integration|augmented-dickey-fuller|stationary|statistics|real analysis)\b"
                     ]
                     comp_claims = []
@@ -227,11 +227,26 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        # Gradient: 1.0 for INMO/ISI/Olympiad; 0.75 for KVPY/JEE Adv; 0.50 for Probability/DE courses; 0.25 basic
-                        if re.search(r"\b(inmo|rmo|ioqm|isi|olympiad|air [1-9]\d?\b|air [1-2]\d{2}\b)\b", text_all):
+                        # Strict Olympiad: INMO, RMO, IOQM, IMO, Putnam, or top ISI rank
+                        if re.search(r"\b(inmo|rmo|ioqm|imo|putnam)\b", text_all) or re.search(r"\bisi\b.*\b(rank|top \d+|entrance|b\.?stat|m\.?stat)\b", text_all) or "INMO" in [e.upper() for c in evidence.claims for e in c.entities_matched]:
                             raw_val = 1.0
-                        elif re.search(r"\b(kvpy|jee advanced|inpho|incho)\b", text_all):
-                            raw_val = 0.78
+                        elif re.search(r"\b(kvpy|inpho|incho)\b", text_all):
+                            raw_val = 0.85
+                        elif "jee advanced" in text_all:
+                            # Check JEE Advanced rank
+                            rank_match = re.search(r"air\s*(\d+)", text_all) or re.search(r"rank\s*(\d+)", text_all)
+                            if rank_match:
+                                r_val = int(rank_match.group(1))
+                                if r_val <= 250:
+                                    raw_val = 0.90
+                                elif r_val <= 1000:
+                                    raw_val = 0.78
+                                elif r_val <= 3000:
+                                    raw_val = 0.65
+                                else:
+                                    raw_val = 0.45
+                            else:
+                                raw_val = 0.65
                         elif re.search(r"\b(probability|stochastic|differential equations|discrete math|game complexity)\b", text_all):
                             raw_val = 0.55
                         else:
@@ -249,10 +264,14 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        if re.search(r"\b(expert|candidate master|optiver|rank 1|trade-a-thon|atcoder regular|div\.?\s*2 rank [1-9]\d{0,2}\b)\b", text_all):
+                        has_cf_exp = re.search(r"\b(candidate master|grandmaster|international grandmaster|optiver|rank 1|trade-a-thon)\b", text_all) or (
+                            re.search(r"\bexpert\b", text_all) and not re.search(r"\b(subject matter expert|domain expert)\b", text_all)
+                        ) or bool(re.search(r"\brating\s*(?:of|:)?\s*(1[6-9]\d{2}|[2-3]\d{3})\b", text_all))
+                        
+                        if has_cf_exp:
                             raw_val = 1.0
                         elif re.search(r"\b(codeforces|codechef|algorithmic trading|nifty|sharpe|pairs trading)\b", text_all):
-                            raw_val = 0.78
+                            raw_val = 0.75
                         elif re.search(r"\b(dsa|algorithms?|data structures?|hackathon)\b", text_all):
                             raw_val = 0.50
                         else:
@@ -260,23 +279,23 @@ class RoleScorer:
 
                 elif "quantitative" in comp_name or "modeling" in comp_name:
                     MODEL_SIGNALS = [
-                        r"\b(pairs trading|mean reversal|augmented-dickey-fuller|backtested|blueshift|co-integration|yolov5|machine learning|deep learning|neural networks?|cyclegan|gan|linear regression|logistic regression|svm|linear classifier|simulation|lightgcn|stochastic|probability|game complexity|congestion control|tcp|throughput|latency|bottleneck|network modeling|experimental|l4s|dcf|sensitivity|macd|rsi|bollinger)\b"
+                        r"\b(pairs trading|mean reversal|augmented-dickey-fuller|backtested|blueshift|co-integration|stochastic|probability|linear algebra|monte carlo|black scholes|time series|arima|garch|volatility|sharpe ratio|sortino|portfolio optimization|markowitz|statistical arbitrage|derivatives|hedging|econometric|nifty|risk modeling)\b"
                     ]
                     comp_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in MODEL_SIGNALS) or any(s in c.skills_matched for s in {"pairs trading", "backtesting", "machine learning", "deep learning", "probability", "statistics"}):
+                        if any(re.search(pat, text_lower, re.I) for pat in MODEL_SIGNALS) or any(s in c.skills_matched for s in {"pairs trading", "backtesting", "probability", "statistics", "stochastic calculus", "linear algebra"}):
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        # Gradient: 0.95 for real backtested quant models or advanced proofs; 0.75 for DL/CV models; 0.50 for junior mentorship/linear models; 0.25 basic
-                        if re.search(r"\b(pairs trading|augmented-dickey-fuller|backtested|blueshift|sharpe ratio|nifty|quantum query|game complexity|l4s|congestion control)\b", text_all):
+                        # Gradient: 0.95 for real backtested quant models or mathematical proofs; 0.70 for statistical/econometric modeling; 0.40 for basic probability
+                        if re.search(r"\b(pairs trading|augmented-dickey-fuller|backtested|blueshift|sharpe ratio|nifty|quantum query|game complexity|black scholes|monte carlo|portfolio optimization|statistical arbitrage)\b", text_all):
                             raw_val = 0.95
-                        elif re.search(r"\b(cyclegan|gan|yolov5|lightgcn|gnn|lstm|transformers|neural networks?|deep learning|svm|linear classifier)\b", text_all):
-                            raw_val = 0.75
-                        elif re.search(r"\b(mentor|mentored|camp|linear regression|logistic regression|scikit-learn|sklearn|dcf|sensitivity)\b", text_all):
-                            raw_val = 0.50
+                        elif re.search(r"\b(time series|arima|garch|stochastic|markowitz|volatility|linear regression|econometrics|derivatives)\b", text_all):
+                            raw_val = 0.70
+                        elif re.search(r"\b(probability|statistics|linear algebra|hypothesis testing)\b", text_all):
+                            raw_val = 0.45
                         else:
                             raw_val = 0.30
 
@@ -317,7 +336,7 @@ class RoleScorer:
             elif role.role_id == "core":
                 if "core_domain" in comp_name or "domain" in comp_name:
                     CORE_DOMAIN_SIGNALS = [
-                        r"\b(industry 4\.0|ordnance|manufacturing|fabrication|lathing|milling|3d printing|cnc|torque|assembly|machining|hardware|robotics|circuits?|vlsi|cadence|matlab|solidworks|ansys|autocad|simulink|verilog|cfd|fea|ros)\b"
+                        r"\b(manufacturing|fabrication|lathing|milling|3d printing|cnc|torque|assembly|machining|hardware|robotics|circuits?|vlsi|cadence|matlab|solidworks|ansys|autocad|simulink|verilog|cfd|fea|ros|aerodynamics|finite element|kinematics|thermodynamics|propulsion|structures?)\b"
                     ]
                     matched = candidate_skills.intersection({"matlab", "solidworks", "ansys", "autocad", "simulink", "verilog", "cfd", "fea", "ros", "labview", "embedded c", "pcb design", "vhdl", "fpga"})
                     comp_claims = []
@@ -328,7 +347,7 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        if re.search(r"\b(industry 4\.0|ordnance|manufacturing|surge|vlsi|cadence)\b", text_all):
+                        if re.search(r"\b(surge|vlsi|cadence|ansys|solidworks|cfd|fea|aerodynamics|robotics)\b", text_all):
                             raw_val = 0.85
                         elif len(matched) >= 2 or len(comp_claims) >= 2:
                             raw_val = 0.70
@@ -339,21 +358,23 @@ class RoleScorer:
                     comp_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
-                        if any(k in text_lower for k in ["surge", "research", "intern", "internship", "production", "industry 4.0", "r&d", "laboratory"]):
+                        is_intern_section = c.section in ("Work Experience", "Experience", "Internship", "Internships", "Research Experience", "Key Projects", "Projects")
+                        has_intern_keyword = any(k in text_lower for k in ["surge", "research", "intern", "internship", "r&d", "laboratory", "ugp", "btp", "course project", "b.tech project", "publication", "patent"])
+                        if is_intern_section or has_intern_keyword:
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        if "surge" in text_all or "r&d" in text_all:
+                        if re.search(r"\b(surge|intern|internship|r&d|publication|patent)\b", text_all):
                             raw_val = 0.85
                         elif len(comp_claims) >= 2:
-                            raw_val = 0.70
+                            raw_val = 0.65
                         else:
                             raw_val = 0.45
 
-                elif "tools" in comp_name or "cad" in comp_name:
-                    matched = candidate_skills.intersection({"matlab", "solidworks", "ansys", "autocad", "simulink", "verilog", "cfd", "fea", "ros", "labview", "altium", "catia"})
-                    TOOL_SIGNALS = [r"\b(labview|ni-opc|solidworks|autocad|catia|ansys|simulink|matlab|cnc|3d printing|xilinx|spartan|verilog|vhdl)\b"]
+                elif "engineering_tools" in comp_name or comp_name == "engineering_tools_cad_matlab":
+                    matched = candidate_skills.intersection({"matlab", "solidworks", "ansys", "autocad", "simulink", "verilog", "cfd", "fea", "ros", "labview", "altium", "catia", "kicad", "creo", "fusion 360", "abaqus", "comsol"})
+                    TOOL_SIGNALS = [r"\b(labview|ni-opc|solidworks|autocad|catia|ansys|simulink|matlab|cnc|3d printing|xilinx|spartan|verilog|vhdl|altium|kicad|creo|abaqus|comsol)\b"]
                     comp_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
@@ -367,7 +388,7 @@ class RoleScorer:
                             raw_val = 0.50
 
                 elif "prototyping" in comp_name or "hands_on" in comp_name:
-                    PROTO_SIGNALS = [r"\b(fabrication|lathing|milling|3d printing|cnc|assembly|automation|prototyping|hardware|motor|sensor|trolley|chessboard|circuit)\b"]
+                    PROTO_SIGNALS = [r"\b(fabrication|lathing|milling|3d printing|cnc|assembly|automation|prototyping|hardware|motor|actuator|sensor|circuit|pcb|breadboard|soldering|chassis|dynamometer)\b"]
                     comp_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
@@ -457,7 +478,11 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        if re.search(r"\b(sql|mysql|postgresql|database|queries|query)\b", text_all):
+                        is_toy = bool(re.search(r"\b(basic|simple|menu-based|small changes|csv files?|beginner|sample data|tried|attended meetings|did not qualify|introductory)\b", text_all))
+                        has_prod = bool(re.search(r"\b(production|pipeline|etl|warehouse|indexing|concurrency|distributed|cross-validation|hyperparameter|deployed|annual reports)\b", text_all))
+                        if is_toy and not has_prod:
+                            raw_val = 0.25
+                        elif re.search(r"\b(sql|mysql|postgresql|database|queries|query)\b", text_all):
                             raw_val = 0.85
                         elif len(comp_claims) >= 2 or len(matched) >= 2:
                             raw_val = 0.70
@@ -465,7 +490,7 @@ class RoleScorer:
                             raw_val = 0.45
 
                 elif "dashboarding" in comp_name or "bi" in comp_name:
-                    DASH_SIGNALS = [r"\b(tableau|power bi|dashboard|visualization|visualized|matplotlib|seaborn|rshiny|bi tool|notion|jira|trello)\b"]
+                    DASH_SIGNALS = [r"\b(tableau|power bi|dashboard|visualization|visualized|matplotlib|seaborn|plotly|rshiny|bi tool|notion|jira|trello|charts?|plots?|data visualization|reporting|exploratory)\b"]
                     matched = candidate_skills.intersection({"tableau", "power bi", "matplotlib", "seaborn", "rshiny"})
                     comp_claims = []
                     for c in evidence.claims:
@@ -475,10 +500,12 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         text_all = " ".join(comp_claims).lower()
-                        if re.search(r"\b(tableau|power bi|dashboard|visualization|rshiny)\b", text_all):
+                        if re.search(r"\b(tableau|power bi|dashboard|rshiny)\b", text_all):
                             raw_val = 0.80
+                        elif len(comp_claims) >= 2 or len(matched) >= 2:
+                            raw_val = 0.65
                         else:
-                            raw_val = 0.55
+                            raw_val = 0.45
 
                 elif "statistical" in comp_name or "modeling" in comp_name:
                     STAT_SIGNALS = [r"\b(statistics|statistical|probability|regression|clustering|a/b testing|hypothesis testing|scipy|sklearn|machine learning|prediction|predictive|mathematical fundamentals)\b"]
@@ -490,7 +517,13 @@ class RoleScorer:
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
-                        raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
+                        text_all = " ".join(comp_claims).lower()
+                        is_toy = bool(re.search(r"\b(basic|simple|menu-based|small changes|csv files?|beginner|sample data|tried|attended meetings|did not qualify|introductory)\b", text_all))
+                        has_prod = bool(re.search(r"\b(production|pipeline|etl|warehouse|indexing|concurrency|distributed|cross-validation|hyperparameter|deployed|walk-forward|cointegration|backtested)\b", text_all))
+                        if is_toy and not has_prod:
+                            raw_val = 0.25
+                        else:
+                            raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
 
                 elif "business" in comp_name or "acumen" in comp_name:
                     BIZ_SIGNALS = [r"\b(market size|customer segments|roi|revenue|profitability|business|portfolio|kpi|growth|trading strategy|scholarship)\b"]
@@ -501,7 +534,12 @@ class RoleScorer:
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
-                        raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
+                        text_all = " ".join(comp_claims).lower()
+                        is_toy = bool(re.search(r"\b(basic|simple|menu-based|small changes|csv files?|beginner|sample data|tried|attended meetings|did not qualify|introductory)\b", text_all))
+                        if is_toy and not any(k in text_all for k in ["revenue", "profitability", "roi", "scholarship", "portfolio"]):
+                            raw_val = 0.25
+                        else:
+                            raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
 
                 elif "cpi" in comp_name or "academic" in comp_name or "rigor" in comp_name:
                     if evidence.cpi is not None:
@@ -521,7 +559,7 @@ class RoleScorer:
             # ── 6. Product Management Role ─────────────────────────────────
             elif role.role_id == "product":
                 if "product_thinking" in comp_name or "prds" in comp_name:
-                    PRD_SIGNALS = [r"\b(prd|product requirement|wireframing|figma|roadmap|feature prioritization|user stories)\b"]
+                    PRD_SIGNALS = [r"\b(prd|product requirement|wireframing|figma|roadmap|feature prioritization|user stories|product design|mvp|prototype|user flows?|feature specification|product lifecycle)\b"]
                     comp_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
@@ -530,9 +568,14 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
+                    elif any("project" in c.section.lower() for c in evidence.claims):
+                        proj_claims = [c.text_snippet for c in evidence.claims if "project" in c.section.lower()][:3]
+                        if proj_claims:
+                            comp_claims = proj_claims
+                            raw_val = 0.45
 
                 elif "user_research" in comp_name or "ux" in comp_name:
-                    UX_SIGNALS = [r"\b(user research|usability|interviews?|wireframe|figma|ux|customer segments|feedback)\b"]
+                    UX_SIGNALS = [r"\b(user research|usability|interviews?|wireframe|figma|ux|customer segments|feedback|surveys?|a/b testing|ui/ux|personas?|user testing)\b"]
                     comp_claims = []
                     for c in evidence.claims:
                         text_lower = c.text_snippet.lower()
@@ -541,6 +584,10 @@ class RoleScorer:
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
+                    elif any(s in candidate_skills for s in {"figma", "react", "vue", "tailwind"}):
+                        comp_claims = [c.text_snippet for c in evidence.claims if any(s in c.skills_matched for s in {"figma", "react", "vue", "tailwind"})][:2]
+                        if comp_claims:
+                            raw_val = 0.45
 
                 elif "cpi" in comp_name or "academic" in comp_name or "pedigree" in comp_name:
                     if evidence.cpi is not None:
@@ -616,9 +663,11 @@ class RoleScorer:
                 outlier_bonus += 1.5
                 bonuses.append(f"High CPI ({evidence.cpi:.2f}/10.0) Honor (+1.5 pts)")
 
-        # 2. National / International Olympiad & Top 250 JEE Advanced Outlier
+        # 2. Strict National / International Olympiad & Top 250 JEE Advanced Outlier
         has_national_math_olympiad = any(
-            bool(re.search(r"\b(inmo|rmo|isi|olympiad)\b", c.text_snippet.lower())) or "INMO" in c.entities_matched
+            bool(re.search(r"\b(inmo|rmo|ioqm|international mathematical olympiad|imo|putnam)\b", c.text_snippet.lower()))
+            or bool(re.search(r"\bisi\b.*\b(rank|top \d+|entrance|b\.?stat|m\.?stat)\b", c.text_snippet.lower()))
+            or "INMO" in c.entities_matched
             for c in evidence.claims
         )
         has_top_jee_adv = False
@@ -635,12 +684,22 @@ class RoleScorer:
             outlier_bonus += 4.0
             bonuses.append("JEE Advanced Top 250 All India Rank (+4 pts)")
 
-        # 3. Competitive Programming / Trade-a-thon Outlier
-        has_cf_expert = any(
-            bool(re.search(r"\b(expert|candidate master|grandmaster|1[6-9]\d{2}|[2-3]\d{3})\b", c.text_snippet.lower())) and
-            bool(re.search(r"\b(codeforces|codechef|atcoder)\b", c.text_snippet.lower()))
-            for c in evidence.claims
-        ) or any("expert" in str(getattr(l, "label", "")).lower() for l in links)
+        # 3. Competitive Programming / Trade-a-thon Outlier (Rating-Aware)
+        def is_cf_expert_claim(snippet: str) -> bool:
+            t = snippet.lower()
+            if not any(k in t for k in ["codeforces", "codechef", "atcoder"]):
+                return False
+            if re.search(r"\b(candidate master|grandmaster|international grandmaster)\b", t):
+                return True
+            if re.search(r"\bexpert\b", t) and not re.search(r"\b(subject matter expert|domain expert)\b", t):
+                return True
+            m = re.search(r"\brating\s*(?:of|:)?\s*(\d{4})\b", t)
+            if m:
+                val = int(m.group(1))
+                return 1650 <= val <= 3800
+            return False
+
+        has_cf_expert = any(is_cf_expert_claim(c.text_snippet) for c in evidence.claims) or any("expert" in str(getattr(l, "label", "")).lower() for l in links)
 
         has_optiver_1st = any(
             bool(re.search(r"\b(optiver|trade-a-thon)\b.*\b(rank 1|first position|1st)\b", c.text_snippet.lower()))
@@ -660,8 +719,14 @@ class RoleScorer:
             outlier_bonus += 2.0
             bonuses.append("Production Deployed Systems / Cloud Infrastructure / VC Funding (+2 pts)")
 
-        # 5. Verified GitHub Profile Link (for SDE)
-        if role.role_id == "sde" and has_github:
+        # 5. Verified GitHub Profile Link (for SDE) with Header Text Fallback
+        has_github_link = has_github
+        if not has_github_link and evidence.raw_text:
+            header_chunk = evidence.raw_text[:400].lower()
+            if "github" in header_chunk:
+                has_github_link = True
+
+        if role.role_id == "sde" and has_github_link:
             outlier_bonus += 2.0
             bonuses.append("Verified GitHub profile link present (+2 pts)")
 
@@ -673,7 +738,7 @@ class RoleScorer:
         final_score = base_score + outlier_bonus
 
         if role.role_id == "sde":
-            if not has_github:
+            if not has_github_link:
                 final_score -= 6.0
                 penalties.append("Missing active GitHub profile link in Header (-6 pts)")
 

@@ -59,3 +59,4 @@ class EvidenceBundle(BaseModel):
     campus_entities: List[CampusEntity] = Field(default_factory=list)
     claims: List[AtomicClaim] = Field(default_factory=list)
     bullet_diagnostics: List[BulletDiagnostic] = Field(default_factory=list)
+    raw_text: str = ""

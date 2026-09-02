@@ -75,6 +75,9 @@ class ResumeAST(BaseModel):
                 return s
         return None
 
+    def section_by_name(self, name_pattern: str) -> Optional[Section]:
+        return self.get_section(name_pattern)
+
     def all_bullets(self) -> List[Bullet]:
         bullets = []
         for s in self.sections:
@@ -84,3 +87,6 @@ class ResumeAST(BaseModel):
                 for b in e.bullets:
                     bullets.append(b)
         return bullets
+
+    def bullets(self) -> List[Bullet]:
+        return self.all_bullets()

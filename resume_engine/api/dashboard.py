@@ -103,7 +103,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         <div id="uploadPrompt" class="space-y-1.5">
                             <i class="fa-solid fa-file-arrow-up text-3xl text-slate-400 dark:text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1"></i>
                             <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Click to browse or drop your PDF resume here</p>
-                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400">Single-page PDF format supported (Max 10 MB)</p>
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400">PDF format supported (Max 10 MB)</p>
                         </div>
                         <div id="fileSelectedInfo" class="hidden flex items-center gap-3.5 text-left w-full bg-white dark:bg-slate-800 p-3.5 rounded-lg border border-slate-300 dark:border-slate-700 shadow-sm">
                             <i class="fa-solid fa-file-pdf text-red-600 dark:text-red-400 text-3xl"></i>

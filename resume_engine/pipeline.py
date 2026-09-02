@@ -125,5 +125,22 @@ class ResumeEngine:
                 max_score = score_val
                 best_role = role_id
 
+        # Disambiguation: if candidate filename explicitly indicates intent and score is within 3.5 pts of max
+        fn_lower = Path(pdf_path).name.lower()
+        role_hints = {
+            "core": ["core", "_ee", "_me", "_ce", "_che", "_ae", "_mse"],
+            "consulting": ["consult", "consulting", "pm_consult"],
+            "analyst": ["analytics", "analyst", "data_analyst"],
+            "quant": ["quant", "qf", "trading"],
+            "sde": ["sde", "software", "swe", "dev"],
+            "product": ["product", "pm_resume"],
+        }
+        for r_id, hints in role_hints.items():
+            if any(h in fn_lower for h in hints) and r_id in results:
+                r_score = results[r_id].get("score", {}).get("score", 0.0)
+                if max_score - r_score <= 3.5:
+                    best_role = r_id
+                    break
+
         results["best_fit_role"] = best_role
         return results

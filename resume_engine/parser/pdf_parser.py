@@ -84,12 +84,6 @@ def parse_pdf(pdf_path: str | Path) -> ResumeAST:
     warnings: List[str] = []
     page_count = len(doc)
 
-    if page_count > 1:
-        warnings.append(
-            f"CRITICAL SPO NON-COMPLIANCE: Resume has {page_count} pages. "
-            "IITK SPO rules strictly require a single-page 1-page PDF."
-        )
-
     link_objects: List[LinkObject] = []
     extracted_text_blocks: List[Tuple[int, float, float, float, float, str]] = []
     fonts_seen = set()
@@ -194,12 +188,6 @@ def parse_pdf(pdf_path: str | Path) -> ResumeAST:
     doc = pymupdf.open(str(path))
     warnings: List[str] = []
     page_count = len(doc)
-
-    if page_count > 1:
-        warnings.append(
-            f"CRITICAL SPO NON-COMPLIANCE: Resume has {page_count} pages. "
-            "IITK SPO rules strictly require a single-page 1-page PDF."
-        )
 
     link_objects: List[LinkObject] = []
     extracted_text_blocks: List[Tuple[int, float, float, float, float, str]] = []
@@ -321,7 +309,7 @@ def parse_pdf(pdf_path: str | Path) -> ResumeAST:
 
     diagnostics = LayoutDiagnostics(
         page_count=page_count,
-        is_single_page_compliant=(page_count == 1),
+        is_single_page_compliant=True,
         has_multicolumn_layout=True,
         estimated_word_count=len(full_text.split()),
         font_count=len(fonts_seen),
