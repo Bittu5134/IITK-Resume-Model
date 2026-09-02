@@ -151,12 +151,16 @@ Where $85.0$ represents the ceiling for a standard strong profile. The remaining
 - **Elite CP / Quantitative Trading**: $+4.0\text{ pts}$ for Codeforces Candidate Master/Expert or Optiver Trade-a-thon Rank 1.
 - **Production Infrastructure / VC Funding**: $+2.0\text{ pts}$ for Docker/K8s deployed systems, active users, or pre-seed funding.
 - **Consulting "Triple Spike"**: $+3.0\text{ pts}$ when candidate achieves spikes in Academics ($\text{CPI} \ge 7.8$) + Campus Leadership (Gymkhana General Secretary / Manager) + Sports/Cultural honours (Inter-IIT Medal / Galaxy Gold).
+- **Investment Banking / Finance Competition**: $+4.0\text{ pts}$ for CFA Research Challenge / National M&A Competition winner/finalist; $+3.0\text{ pts}$ for Bulge Bracket / Elite Boutique IB internship.
 
-### 5.3 Gating Penalties
+### 5.3 Gating Penalties & Anti-Gaming Rules
 - **SDE**: $-6.0\text{ pts}$ if active GitHub profile hyperlink is missing.
 - **Quant**: $-8.0\text{ pts}$ if $\text{CPI} < 8.00$ without mitigating CF Expert/Olympiad credentials.
 - **Consulting**: $-8.0\text{ pts}$ if lacking campus PoR leadership; $-4.0\text{ pts}$ if $< 3$ quantifiable metrics across bullets.
 - **Core Engineering**: $-5.0\text{ pts}$ if generic web-dev projects displace core departmental electives and lab work without SURGE research.
+- **Data Analyst**: $-5.0\text{ pts}$ if keyword-heavy tool lists (SQL, Tableau, Power BI) are cited without demonstrated SQL queries or business findings.
+- **Product Manager**: $-6.0\text{ pts}$ if technical/coding projects are mislabeled as products without user evidence, customer discovery, or adoption metrics.
+- **Investment Banking**: $-6.0\text{ pts}$ if generic finance buzzwords are listed without demonstrated three-statement financial modeling, DCF valuation, or accounting evidence.
 
 ### 5.4 Final Composite Formula
 $$S_{\text{final}} = \text{clip}\left(S_{\text{base}} + \min(\text{Bonuses}, 15.0) - \sum \text{Penalties},\ 0.0,\ 100.0\right)$$
@@ -179,6 +183,9 @@ Every diagnostic issue is programmatically tied to the candidate's actual enclos
 | **Consulting** | *"Supported operations of hostels and student residential mess"* | Weak verb (`supported`), unquantified scope. | *"Spearheaded residential hostel operations managing a 25-member core team and INR 15L+ budget across 9,500+ students."* | **+8.4 pts** |
 | **Quant** | *"Ran pairs trading model on stocks"* | Missing algorithmic parameters. | *"Backtested pairs trading strategy on NIFTY50 equities using ADF cointegration, achieving a Sharpe ratio of 2.1 with <8% drawdown."* | **+7.2 pts** |
 | **Core** | *"Designed drone frame using CAD"* | Missing simulation metrics. | *"Engineered quadcopter chassis using SolidWorks & ANSYS, reducing peak structural stress by 18% across 100+ FEA cycles."* | **+5.5 pts** |
+| **Data Analyst** | *"Analyzed customer data using SQL and created graphs"* | No query complexity, no business decision. | *"Optimized multi-table PostgreSQL queries with CTEs and window functions, recommending retention tiers that cut churn by 9%."* | **+6.8 pts** |
+| **Product Manager** | *"Built a full-stack website for users"* | Coding project mislabeled without product decisions. | *"Authored PRD and conducted 20+ user discovery interviews, prioritizing MVP backlog using RICE to lift conversion by 18%."* | **+7.5 pts** |
+| **Inv. Banking** | *"Researched companies and made financial models in Excel"* | Generic finance claim without DCF/valuation rigor. | *"Constructed dynamic 3-statement model and DCF valuation (WACC 9.2%) for $450M acquisition, modeling accretion/dilution."* | **+8.0 pts** |
 
 ---
 

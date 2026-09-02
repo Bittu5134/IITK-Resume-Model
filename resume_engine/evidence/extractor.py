@@ -204,11 +204,25 @@ SKILL_TAXONOMY = {
     "altium": "core", "kicad": "core", "fpga": "core", "arduino": "core", "raspberry pi": "core",
     "ros": "core", "robot operating system": "core", "cadence": "core", "synopsys": "core", "vivado": "core", "xilinx": "core", "spartan": "core",
 
-    # Consulting & Analytics
+    # Data Analyst & Analytics
     "tableau": "analyst", "power bi": "analyst", "powerbi": "analyst", "excel": "analyst",
+    "data analysis": "analyst", "data cleaning": "analyst", "exploratory data analysis": "analyst",
+    "eda": "analyst", "inferential statistics": "analyst", "descriptive statistics": "analyst",
+    "hypothesis testing": "analyst", "window functions": "analyst", "ctes": "analyst", "cte": "analyst",
+    "data wrangling": "analyst", "kpi analysis": "analyst",
+
+    # Consulting
     "market research": "consulting", "financial modeling": "consulting", "guesstimates": "consulting",
     "case study": "consulting", "cost optimization": "consulting", "strategy": "consulting",
     "stakeholder management": "consulting", "kpi tracking": "consulting", "business development": "consulting",
+
+    # Investment Banking (IB)
+    "three-statement model": "ib", "3-statement model": "ib", "dcf": "ib", "discounted cash flow": "ib",
+    "valuation": "ib", "trading comps": "ib", "comparable company analysis": "ib", "precedent transactions": "ib",
+    "lbo": "ib", "leveraged buyout": "ib", "wacc": "ib", "m&a": "ib", "mergers and acquisitions": "ib",
+    "pitch book": "ib", "pitchbook": "ib", "information memorandum": "ib", "working capital": "ib",
+    "financial statement analysis": "ib", "equity research": "ib", "10-k": "ib", "10-q": "ib",
+    "balance sheet": "ib", "cash flow statement": "ib", "income statement": "ib", "ebitda": "ib", "capital structure": "ib",
 
     # Official IITK Coursework Codes
     "cs210": "software", "cs 210": "software", "cs253": "software", "cs 253": "software",
@@ -228,6 +242,10 @@ SKILL_TAXONOMY = {
     "product roadmap": "product", "wireframing": "product", "figma": "product",
     "a/b testing": "product", "user research": "product", "prd": "product",
     "product analytics": "product", "agile": "product", "scrum": "product",
+    "customer interviews": "product", "user interviews": "product", "usability testing": "product",
+    "feature prioritization": "product", "conversion rate": "product", "retention": "product",
+    "funnel analysis": "product", "user journey": "product", "customer discovery": "product",
+    "user personas": "product", "mvp": "product", "rice framework": "product",
 }
 
 STRONG_VERBS = {

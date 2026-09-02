@@ -147,6 +147,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                                 <span><i class="fa-solid fa-rocket mr-2 text-sm"></i>Product</span>
                                 <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
                             </button>
+                            <button type="button" role="tab" id="role-tab-ib" aria-selected="false" aria-controls="resultsDashboard" data-role="ib" class="role-btn px-3.5 py-3 rounded-lg border text-xs font-bold transition flex items-center justify-between border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-landmark mr-2 text-sm"></i>Inv. Banking</span>
+                                <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -278,6 +282,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         <button onclick="switchRole('product')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
                             <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Product</span>
                             <span id="productScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
+                        </button>
+                        <button onclick="switchRole('ib')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Inv. Banking</span>
+                            <span id="ibScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
                         </button>
                     </div>
                 </div>
@@ -675,7 +683,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 let autoRole = multiRoleResults.best_fit_role;
                 if (!autoRole) {
                     let maxS = -1;
-                    for (const r of ['sde', 'quant', 'consulting', 'core', 'analyst', 'product']) {
+                    for (const r of ['sde', 'quant', 'consulting', 'core', 'analyst', 'product', 'ib']) {
                         const sc = multiRoleResults[r]?.score?.score ?? 0;
                         if (sc > maxS) {
                             maxS = sc;
@@ -692,8 +700,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         'quant': 'Quantitative Finance',
                         'consulting': 'Management Consulting',
                         'core': 'Core Engineering',
-                        'analyst': 'Business / Data Analyst',
-                        'product': 'Product Management'
+                        'analyst': 'Data Analyst',
+                        'product': 'Product Manager',
+                        'ib': 'Investment Banking'
                     };
                     const topScore = Math.round(multiRoleResults[autoRole]?.score?.score ?? 0);
                     document.getElementById('autoDetectRoleText').textContent = `${roleFullNames[autoRole]} (${topScore}/100)`;
@@ -730,8 +739,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 'quant': 'Quantitative Finance',
                 'consulting': 'Management Consulting',
                 'core': 'Core Engineering',
-                'analyst': 'Business / Data Analyst',
-                'product': 'Product Management'
+                'analyst': 'Data Analyst',
+                'product': 'Product Manager',
+                'ib': 'Investment Banking'
             };
 
             document.getElementById('activeRoleTitle').textContent = roleNames[roleId] || roleId.toUpperCase();
@@ -747,6 +757,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             if (multiRoleResults.core) document.getElementById('coreScoreMini').textContent = Math.round(multiRoleResults.core.score?.score ?? 0);
             if (multiRoleResults.analyst) { const el = document.getElementById('analystScoreMini'); if (el) el.textContent = Math.round(multiRoleResults.analyst.score?.score ?? 0); }
             if (multiRoleResults.product) { const el = document.getElementById('productScoreMini'); if (el) el.textContent = Math.round(multiRoleResults.product.score?.score ?? 0); }
+            if (multiRoleResults.ib) { const el = document.getElementById('ibScoreMini'); if (el) el.textContent = Math.round(multiRoleResults.ib.score?.score ?? 0); }
 
             // Dynamic score notice
             const roleNotices = {
@@ -754,8 +765,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 'quant': 'Matches high CPI (8.0+), mathematical coursework, and analytical problem-solving against Quant baselines.',
                 'consulting': 'Matches business impact, leadership PoRs, and communication spikes against Consulting baselines.',
                 'core': 'Matches SURGE research internships, core engineering electives, and technical projects against Core baselines.',
-                'analyst': 'Matches SQL/data tools, business analysis internships, dashboarding projects, and analytical coursework against Analyst baselines.',
-                'product': 'Matches product internships, user research, roadmap/strategy evidence, and cross-functional PoRs against Product baselines.'
+                'analyst': 'Matches SQL querying, statistical testing, BI dashboarding, and business insight against Data Analyst baselines.',
+                'product': 'Matches user research, product strategy, prioritization, and product analytics against Product Manager baselines.',
+                'ib': 'Matches 3-statement financial modeling, DCF/comps valuation, accounting schedules, and transaction research against Investment Banking baselines.'
             };
             document.getElementById('scoreSummaryNotice').textContent = roleNotices[roleId] || '';
 
@@ -839,24 +851,25 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 Math.round(multiRoleResults.consulting?.score?.score ?? multiRoleResults.consulting?.score?.overall_score ?? 0),
                 Math.round(multiRoleResults.core?.score?.score ?? multiRoleResults.core?.score?.overall_score ?? 0),
                 Math.round(multiRoleResults.analyst?.score?.score ?? multiRoleResults.analyst?.score?.overall_score ?? 0),
-                Math.round(multiRoleResults.product?.score?.score ?? multiRoleResults.product?.score?.overall_score ?? 0)
+                Math.round(multiRoleResults.product?.score?.score ?? multiRoleResults.product?.score?.overall_score ?? 0),
+                Math.round(multiRoleResults.ib?.score?.score ?? multiRoleResults.ib?.score?.overall_score ?? 0)
             ];
 
             const inactiveBarColor = currentTheme === 'light' ? '#cbd5e1' : '#334155';
             const gridColor = currentTheme === 'light' ? '#e2e8f0' : '#1e293b';
             const tickColor = currentTheme === 'light' ? '#64748b' : '#94a3b8';
 
-            const bgColors = ['sde', 'quant', 'consulting', 'core', 'analyst', 'product'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
+            const bgColors = ['sde', 'quant', 'consulting', 'core', 'analyst', 'product', 'ib'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
 
             multiTrackChartObj = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['SDE', 'Quant Fin', 'Consulting', 'Core Eng.', 'Analyst', 'Product'],
+                    labels: ['SDE', 'Quant Fin', 'Consulting', 'Core Eng.', 'Data Analyst', 'Product', 'Inv. Banking'],
                     datasets: [{
                         data: scores,
                         backgroundColor: bgColors,
                         borderRadius: 6,
-                        barThickness: 28
+                        barThickness: 24
                     }]
                 },
                 options: {

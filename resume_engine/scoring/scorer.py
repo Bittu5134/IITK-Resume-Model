@@ -465,144 +465,346 @@ class RoleScorer:
                     else:
                         raw_val = 0.45
 
-            # ── 5. Analyst Role ─────────────────────────────────────────────
+            # ── 5. Data Analyst Role (Refined 6-Dimension Framework) ────────
             elif role.role_id == "analyst":
-                if "data_analysis" in comp_name or "sql" in comp_name:
-                    SQL_SIGNALS = [r"\b(sql|mysql|postgresql|query|queries|database|pandas|data analysis|web scraping|scraped|excel|vlookup)\b"]
-                    matched = candidate_skills.intersection({"sql", "python", "pandas", "excel", "postgresql", "mysql"})
+                if "sql" in comp_name or "data_manipulation" in comp_name:
+                    SQL_SIGNALS = [
+                        r"\b(sql|mysql|postgresql|sqlite|cte|ctes|window functions?|partition by|row_number|dense_rank|rank\(\)|inner join|left join|group by|having|subquer(?:y|ies)|database queries|complex queries)\b",
+                        r"\b(pandas|dataframe|data manipulation|data cleaning|data wrangling|etl pipeline)\b"
+                    ]
                     comp_claims = []
                     for c in evidence.claims:
-                        text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in SQL_SIGNALS) or any(s in c.skills_matched for s in matched):
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in SQL_SIGNALS) or "sql" in c.skills_matched:
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
-                        text_all = " ".join(comp_claims).lower()
-                        is_toy = bool(re.search(r"\b(basic|simple|menu-based|small changes|csv files?|beginner|sample data|tried|attended meetings|did not qualify|introductory)\b", text_all))
-                        has_prod = bool(re.search(r"\b(production|pipeline|etl|warehouse|indexing|concurrency|distributed|cross-validation|hyperparameter|deployed|annual reports)\b", text_all))
-                        if is_toy and not has_prod:
-                            raw_val = 0.25
-                        elif re.search(r"\b(sql|mysql|postgresql|database|queries|query)\b", text_all):
-                            raw_val = 0.85
-                        elif len(comp_claims) >= 2 or len(matched) >= 2:
-                            raw_val = 0.70
-                        else:
-                            raw_val = 0.45
-
-                elif "dashboarding" in comp_name or "bi" in comp_name:
-                    DASH_SIGNALS = [r"\b(tableau|power bi|dashboard|visualization|visualized|matplotlib|seaborn|plotly|rshiny|bi tool|notion|jira|trello|charts?|plots?|data visualization|reporting|exploratory)\b"]
-                    matched = candidate_skills.intersection({"tableau", "power bi", "matplotlib", "seaborn", "rshiny"})
-                    comp_claims = []
-                    for c in evidence.claims:
-                        text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in DASH_SIGNALS) or any(s in c.skills_matched for s in matched):
-                            comp_claims.append(c.text_snippet)
-                    comp_claims = comp_claims[:4]
-                    if comp_claims:
-                        text_all = " ".join(comp_claims).lower()
-                        if re.search(r"\b(tableau|power bi|dashboard|rshiny)\b", text_all):
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(window functions?|partition by|cte|ctes|row_number|postgresql|complex queries|optimized queries)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(sql|mysql|inner join|left join|group by|having|queries)\b", t_all):
                             raw_val = 0.80
-                        elif len(comp_claims) >= 2 or len(matched) >= 2:
-                            raw_val = 0.65
+                        elif re.search(r"\b(pandas|dataframe|data cleaning|wrangling)\b", t_all):
+                            raw_val = 0.60
+                        else:
+                            raw_val = 0.35
+
+                elif "statistics" in comp_name or "experimentation" in comp_name:
+                    STAT_SIGNALS = [
+                        r"\b(a/b testing|hypothesis test(?:ing)?|t-test|z-test|p-value|chi-square|anova|inferential statistics|descriptive statistics|confidence interval|regression analysis|scipy|statsmodels)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in STAT_SIGNALS) or any(s in c.skills_matched for s in {"statistics", "a/b testing"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(a/b test(?:ing)?|hypothesis test(?:ing)?|p-value|significance|experimentation)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(regression|inferential|chi-square|anova|statsmodels|scipy)\b", t_all):
+                            raw_val = 0.80
+                        elif re.search(r"\b(statistics|descriptive|distributions?|variance|mean)\b", t_all):
+                            raw_val = 0.60
+                        else:
+                            raw_val = 0.35
+
+                elif "visualization" in comp_name or "reporting" in comp_name:
+                    DASH_SIGNALS = [
+                        r"\b(tableau|power bi|powerbi|rshiny|streamlit|dashboard|dashboards|executive reporting|kpi reporting|matplotlib|seaborn|plotly|data visualization)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in DASH_SIGNALS) or any(s in c.skills_matched for s in {"tableau", "power bi", "powerbi", "rshiny"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(tableau|power bi|powerbi|interactive dashboard|drill-down)\b", t_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(dashboard|streamlit|rshiny|reporting)\b", t_all):
+                            raw_val = 0.75
+                        elif re.search(r"\b(matplotlib|seaborn|plotly|visualiz(?:ation|ed))\b", t_all):
+                            raw_val = 0.55
+                        else:
+                            raw_val = 0.35
+
+                elif "python" in comp_name or "analytics_tooling" in comp_name:
+                    TOOL_SIGNALS = [
+                        r"\b(python|pandas|numpy|r language|\br\b|jupyter|etl|data pipeline|scraping|scraped|data wrangling|data cleaning)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in TOOL_SIGNALS) or any(s in c.skills_matched for s in {"python", "pandas", "numpy", "r"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(pipeline|etl|automated|cleaning pipeline|data wrangling)\b", t_all):
+                            raw_val = 0.90
+                        elif re.search(r"\b(pandas|numpy|python|r)\b", t_all):
+                            raw_val = 0.75
                         else:
                             raw_val = 0.45
 
-                elif "statistical" in comp_name or "modeling" in comp_name:
-                    STAT_SIGNALS = [r"\b(statistics|statistical|probability|regression|clustering|a/b testing|hypothesis testing|scipy|sklearn|machine learning|prediction|predictive|mathematical fundamentals)\b"]
-                    matched = candidate_skills.intersection({"statistics", "probability", "scipy", "sklearn", "a/b testing"})
+                elif "business_insight" in comp_name:
+                    BIZ_SIGNALS = [
+                        r"\b(recommendation|strategic decision|root cause|anomaly|business question|actionable insight|kpi drivers|churn reduction|cost reduction|revenue optimization|client findings)\b"
+                    ]
                     comp_claims = []
                     for c in evidence.claims:
-                        text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in STAT_SIGNALS) or any(s in c.skills_matched for s in matched):
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in BIZ_SIGNALS) or (c.has_quantifiable_impact and any(k in t_low for k in ["business", "cost", "revenue", "user", "client"])):
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
-                        text_all = " ".join(comp_claims).lower()
-                        is_toy = bool(re.search(r"\b(basic|simple|menu-based|small changes|csv files?|beginner|sample data|tried|attended meetings|did not qualify|introductory)\b", text_all))
-                        has_prod = bool(re.search(r"\b(production|pipeline|etl|warehouse|indexing|concurrency|distributed|cross-validation|hyperparameter|deployed|walk-forward|cointegration|backtested)\b", text_all))
-                        if is_toy and not has_prod:
-                            raw_val = 0.25
-                        else:
-                            raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
-
-                elif "business" in comp_name or "acumen" in comp_name:
-                    BIZ_SIGNALS = [r"\b(market size|customer segments|roi|revenue|profitability|business|portfolio|kpi|growth|trading strategy|scholarship)\b"]
-                    comp_claims = []
-                    for c in evidence.claims:
-                        text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in BIZ_SIGNALS) or c.has_quantifiable_impact:
-                            comp_claims.append(c.text_snippet)
-                    comp_claims = comp_claims[:4]
-                    if comp_claims:
-                        text_all = " ".join(comp_claims).lower()
-                        is_toy = bool(re.search(r"\b(basic|simple|menu-based|small changes|csv files?|beginner|sample data|tried|attended meetings|did not qualify|introductory)\b", text_all))
-                        if is_toy and not any(k in text_all for k in ["revenue", "profitability", "roi", "scholarship", "portfolio"]):
-                            raw_val = 0.25
-                        else:
-                            raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
-
-                elif "cpi" in comp_name or "academic" in comp_name or "rigor" in comp_name:
-                    if evidence.cpi is not None:
-                        comp_claims = [f"Undergraduate CPI: {evidence.cpi:.2f}/10.0"]
-                        if evidence.cpi >= 9.0:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(decision|recommendation|strategic|churn|actionable)\b", t_all):
                             raw_val = 0.90
-                        elif evidence.cpi >= role.min_cpi_benchmark:
+                        elif re.search(r"\b(kpi|revenue|cost|metric|business)\b", t_all):
                             raw_val = 0.70
                         else:
-                            raw_val = 0.40
-                    else:
-                        for m in evidence.academic_metrics:
-                            comp_claims.append(f"{m.name}: {m.value}")
-                        if comp_claims:
-                            raw_val = 0.60
+                            raw_val = 0.45
 
-            # ── 6. Product Management Role ─────────────────────────────────
+                elif "quantified_impact" in comp_name or "communication" in comp_name:
+                    comp_claims = [c.text_snippet for c in evidence.claims if c.has_quantifiable_impact and any(k in c.text_snippet.lower() for k in ["rows", "records", "users", "dataset", "%", "hours", "inr", "kpi"])][:4]
+                    if comp_claims:
+                        raw_val = 0.90 if len(comp_claims) >= 2 else 0.65
+
+            # ── 6. Product Manager Role (Refined 6-Dimension Framework) ──────
             elif role.role_id == "product":
-                if "product_thinking" in comp_name or "prds" in comp_name:
-                    PRD_SIGNALS = [r"\b(prd|product requirement|wireframing|figma|roadmap|feature prioritization|user stories|product design|mvp|prototype|user flows?|feature specification|product lifecycle)\b"]
+                if "execution" in comp_name or "cross_functional" in comp_name:
+                    EXEC_SIGNALS = [
+                        r"\b(shipped|launched|mvp|cross-functional|engineering and design|founder|co-founder|sprint|agile|scrum|jira|stakeholder management|leadership|managed team)\b"
+                    ]
                     comp_claims = []
                     for c in evidence.claims:
-                        text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in PRD_SIGNALS):
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in EXEC_SIGNALS) or any(ce.category in ["por_role", "council"] for ce in evidence.campus_entities):
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
-                        raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
-                    elif any("project" in c.section.lower() for c in evidence.claims):
-                        proj_claims = [c.text_snippet for c in evidence.claims if "project" in c.section.lower()][:3]
-                        if proj_claims:
-                            comp_claims = proj_claims
-                            raw_val = 0.45
-
-                elif "user_research" in comp_name or "ux" in comp_name:
-                    UX_SIGNALS = [r"\b(user research|usability|interviews?|wireframe|figma|ux|customer segments|feedback|surveys?|a/b testing|ui/ux|personas?|user testing)\b"]
-                    comp_claims = []
-                    for c in evidence.claims:
-                        text_lower = c.text_snippet.lower()
-                        if any(re.search(pat, text_lower, re.I) for pat in UX_SIGNALS):
-                            comp_claims.append(c.text_snippet)
-                    comp_claims = comp_claims[:4]
-                    if comp_claims:
-                        raw_val = 0.75 if len(comp_claims) >= 2 else 0.50
-                    elif any(s in candidate_skills for s in {"figma", "react", "vue", "tailwind"}):
-                        comp_claims = [c.text_snippet for c in evidence.claims if any(s in c.skills_matched for s in {"figma", "react", "vue", "tailwind"})][:2]
-                        if comp_claims:
-                            raw_val = 0.45
-
-                elif "cpi" in comp_name or "academic" in comp_name or "pedigree" in comp_name:
-                    if evidence.cpi is not None:
-                        comp_claims = [f"Undergraduate CPI: {evidence.cpi:.2f}/10.0"]
-                        if evidence.cpi >= 9.0:
-                            raw_val = 0.90
-                        elif evidence.cpi >= role.min_cpi_benchmark:
-                            raw_val = 0.70
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(shipped|launched|mvp|co-founder|founder)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(cross-functional|sprint|agile|scrum|jira|engineering and design)\b", t_all):
+                            raw_val = 0.80
                         else:
-                            raw_val = 0.40
-                    else:
-                        for m in evidence.academic_metrics:
-                            comp_claims.append(f"{m.name}: {m.value}")
-                        if comp_claims:
-                            raw_val = 0.60
+                            raw_val = 0.55
+
+                elif "product_thinking" in comp_name or "problem_framing" in comp_name:
+                    PRD_SIGNALS = [
+                        r"\b(prd|product requirement|problem statement|problem framing|value proposition|user stories|product teardown|customer journey|feature specification|product strategy)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in PRD_SIGNALS) or "prd" in c.skills_matched:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(prd|product requirement|value proposition|problem framing)\b", t_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(user stories|customer journey|product strategy|product teardown)\b", t_all):
+                            raw_val = 0.75
+                        else:
+                            raw_val = 0.45
+
+                elif "user_research" in comp_name or "customer_insights" in comp_name:
+                    UX_SIGNALS = [
+                        r"\b(user research|customer interviews?|user testing|usability testing|customer discovery|surveys?|personas?|wireframing|figma|wireframe|user feedback)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in UX_SIGNALS) or any(s in c.skills_matched for s in {"figma", "wireframing", "user research"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(customer interviews?|user testing|usability testing|customer discovery)\b", t_all) and "figma" in t_all:
+                            raw_val = 1.0
+                        elif re.search(r"\b(user research|interviews?|figma|wireframing)\b", t_all):
+                            raw_val = 0.80
+                        else:
+                            raw_val = 0.50
+
+                elif "prioritization" in comp_name or "roadmapping" in comp_name:
+                    PRIOR_SIGNALS = [
+                        r"\b(prioritization|prioritized|roadmap|roadmapping|rice framework|moscow|value vs effort|backlog|feature roadmap|product milestones)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in PRIOR_SIGNALS) or "product roadmap" in c.skills_matched:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(rice|moscow|value vs effort|prioritization framework)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(roadmap|prioritized|milestones|backlog)\b", t_all):
+                            raw_val = 0.75
+                        else:
+                            raw_val = 0.45
+
+                elif "product_analytics" in comp_name or "experimentation" in comp_name:
+                    ANALYTICS_SIGNALS = [
+                        r"\b(a/b testing|funnel analysis|conversion rate|retention|churn|mixpanel|amplitude|google analytics|posthog|product metrics|activation)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in ANALYTICS_SIGNALS) or "a/b testing" in c.skills_matched:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(funnel analysis|conversion rate|retention|a/b testing)\b", t_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(mixpanel|amplitude|google analytics|product metrics)\b", t_all):
+                            raw_val = 0.75
+                        else:
+                            raw_val = 0.45
+
+                elif "business_impact" in comp_name:
+                    comp_claims = [c.text_snippet for c in evidence.claims if c.has_quantifiable_impact and any(k in c.text_snippet.lower() for k in ["users", "dau", "mau", "adoption", "retention", "conversion", "revenue", "nps", "%"])][:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(adoption|retention|conversion|revenue|dau|mau)\b", t_all):
+                            raw_val = 0.95
+                        else:
+                            raw_val = 0.70
+
+            # ── 7. Investment Banking (NEW 7-Dimension Framework) ───────────
+            elif role.role_id == "ib":
+                if "financial_modeling" in comp_name:
+                    MODEL_SIGNALS = [
+                        r"\b(three-statement|3-statement|financial model|financial modeling|working capital schedule|debt schedule|scenario analysis|sensitivity analysis|forecasted revenue|projections)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in MODEL_SIGNALS) or any(s in c.skills_matched for s in {"three-statement model", "financial modeling"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(three-statement|3-statement|dynamic model|scenario analysis|debt schedule)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(financial model|forecasted|working capital|projections)\b", t_all):
+                            raw_val = 0.80
+                        else:
+                            raw_val = 0.50
+
+                elif "valuation" in comp_name or "dcf" in comp_name:
+                    VAL_SIGNALS = [
+                        r"\b(dcf|discounted cash flow|wacc|terminal value|trading comps|comparable company|precedent transactions?|ev/ebitda|p/e multiple|lbo|gordon growth)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in VAL_SIGNALS) or any(s in c.skills_matched for s in {"dcf", "valuation", "trading comps", "precedent transactions"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(dcf|discounted cash flow)\b", t_all) and re.search(r"\b(comps|comparable|precedent|wacc)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(dcf|discounted cash flow|wacc|trading comps|precedent)\b", t_all):
+                            raw_val = 0.80
+                        elif re.search(r"\b(valuation|ev/ebitda|multiples?)\b", t_all):
+                            raw_val = 0.55
+                        else:
+                            raw_val = 0.35
+
+                elif "accounting" in comp_name or "financial_statements" in comp_name:
+                    ACCT_SIGNALS = [
+                        r"\b(balance sheet|income statement|cash flow statement|10-k|10-q|annual report|ebitda|working capital|capital structure|ratio analysis|sec filings?|us gaap|ifrs)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in ACCT_SIGNALS) or any(s in c.skills_matched for s in {"accounting", "balance sheet", "income statement", "cash flow statement"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(10-k|10-q|sec filing|annual report|capital structure)\b", t_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(balance sheet|income statement|cash flow|ebitda|working capital)\b", t_all):
+                            raw_val = 0.80
+                        else:
+                            raw_val = 0.50
+
+                elif "transaction" in comp_name or "m_and_a" in comp_name:
+                    DEAL_SIGNALS = [
+                        r"\b(m&a|mergers? and acquisitions?|accretion/dilution|merger model|pitch book|pitchbook|information memorandum|cim|fairness opinion|deal structuring|transaction)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in DEAL_SIGNALS) or any(s in c.skills_matched for s in {"m&a", "pitch book"}):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(accretion/dilution|merger model|pitch book|cim|deal structur)\b", t_all):
+                            raw_val = 1.0
+                        elif re.search(r"\b(m&a|mergers? and acquisitions?|transaction)\b", t_all):
+                            raw_val = 0.75
+                        else:
+                            raw_val = 0.45
+
+                elif "excel" in comp_name:
+                    EXCEL_SIGNALS = [
+                        r"\b(advanced excel|financial excel|index/match|xlookup|sensitivity table|data table|vba|macro|financial modeling in excel)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in EXCEL_SIGNALS) or "excel" in c.skills_matched:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(sensitivity table|index/match|data table|dynamic financial model)\b", t_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(excel|vlookup|xlookup|macros?)\b", t_all):
+                            raw_val = 0.75
+                        else:
+                            raw_val = 0.45
+
+                elif "company" in comp_name or "industry_research" in comp_name:
+                    RES_SIGNALS = [
+                        r"\b(equity research|industry report|company profile|competitor benchmarking|macro trends?|market sizing|bloomberg|capiq|factset)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        t_low = c.text_snippet.lower()
+                        if any(re.search(pat, t_low, re.I) for pat in RES_SIGNALS) or "equity research" in c.skills_matched:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        t_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(equity research|published report|bloomberg|capiq)\b", t_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(industry report|competitor benchmarking|company profile)\b", t_all):
+                            raw_val = 0.75
+                        else:
+                            raw_val = 0.50
+
+                elif "communication" in comp_name or "deadline" in comp_name:
+                    COMM_SIGNALS = [
+                        r"\b(pitch deck|board presentation|cfa research challenge|finance competition|investment banking competition|senior bankers|executive presentation)\b"
+                    ]
+                    comp_claims = [c.text_snippet for c in evidence.claims if any(re.search(pat, c.text_snippet.lower(), re.I) for pat in COMM_SIGNALS)][:4]
+                    if comp_claims:
+                        raw_val = 0.90 if len(comp_claims) >= 2 else 0.65
 
             # ── 7. Universal Academic / CPI Fallback ────────────────────────
             elif "cpi" in comp_name or "academic" in comp_name or "pedigree" in comp_name or "rigor" in comp_name or "foundation" in comp_name or "consistency" in comp_name:
@@ -749,6 +951,23 @@ class RoleScorer:
                 outlier_bonus += 3.0
                 bonuses.append("Consulting 'Triple Spike' (Academics + Campus Leadership + Cult/Sports) (+3 pts)")
 
+        # 7. Investment Banking / Finance Competition Outlier
+        if role.role_id == "ib":
+            has_ib_comp = any(
+                bool(re.search(r"\b(cfa research challenge|investment banking challenge|m&a competition|finance challenge)\b.*\b(winner|national finalist|finalist|rank 1|first position)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
+            has_bb_intern = any(
+                bool(re.search(r"\b(goldman sachs|morgan stanley|j\.?p\.? morgan|evercore|lazard|jefferies|avendus)\b.*\b(investment bank|analyst intern|ib intern)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
+            if has_ib_comp:
+                outlier_bonus += 4.0
+                bonuses.append("CFA Research Challenge / National M&A Competition Winner/Finalist (+4 pts)")
+            elif has_bb_intern:
+                outlier_bonus += 3.0
+                bonuses.append("Bulge Bracket / Elite Boutique Investment Banking Internship (+3 pts)")
+
         # Strict capping of outlier bonus at 15.0 pts
         outlier_bonus = min(outlier_bonus, 15.0)
 
@@ -783,6 +1002,33 @@ class RoleScorer:
                 if len(matched_webdev) >= 2 and len(matched_core) < 2 and not has_surge:
                     final_score -= 5.0
                     penalties.append("Generic web dev projects displacing core engineering electives/lab experience (-5 pts)")
+
+        elif role.role_id == "analyst":
+            has_sql_demonstrated = any(
+                bool(re.search(r"\b(sql|mysql|postgresql|sqlite|query|queries|cte|window function|select|join)\b", c.text_snippet.lower()))
+                for c in evidence.claims if "project" in c.section.lower() or "experience" in c.section.lower()
+            )
+            if not has_sql_demonstrated and quant_metric_count == 0:
+                final_score -= 5.0
+                penalties.append("Keyword-heavy tool listing without demonstrated SQL queries or quantifiable business outcomes (-5 pts)")
+
+        elif role.role_id == "product":
+            has_user_evidence = any(
+                bool(re.search(r"\b(user research|interview|feedback|survey|usability|customer|adoption|retention|dau|mau|nps)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
+            if not has_user_evidence:
+                final_score -= 6.0
+                penalties.append("Technical project mislabeled as product without user evidence, customer discovery, or product outcomes (-6 pts)")
+
+        elif role.role_id == "ib":
+            has_modeling_or_val = any(
+                bool(re.search(r"\b(three-statement|3-statement|financial model|dcf|discounted cash flow|valuation|wacc|comps|precedent transaction|lbo|accretion|dilution)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
+            if not has_modeling_or_val:
+                final_score -= 6.0
+                penalties.append("Generic finance terms listed without demonstrated financial modeling, DCF valuation, or accounting evidence (-6 pts)")
 
         final_score = round(max(0.0, min(final_score, 100.0)), 1)
 

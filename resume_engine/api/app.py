@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 engine = ResumeEngine()
-VALID_ROLES = {"sde", "quant", "consulting", "core", "analyst", "product"}
+VALID_ROLES = {"sde", "quant", "consulting", "core", "analyst", "product", "ib"}
 MAX_PDF_BYTES = 10 * 1024 * 1024  # 10 MB
 
 

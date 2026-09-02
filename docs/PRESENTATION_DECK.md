@@ -61,20 +61,22 @@
 
 ---
 
-## Slide 6: 4-Track Dynamic Evaluation Baselines
-*The same resume produces dynamically distinct scores based on industry track:*
+## Slide 6: Comprehensive 7-Track Dynamic Evaluation Baselines
+*Evaluates resumes across 4 canonical PS tracks + 3 industry extensions (CFA Institute, Atlassian, Dataquest):*
 1. **Software Engineering (SDE)**:
-   - Prioritizes DSA (`CS210`), Competitive Programming (Codeforces/LeetCode), and full-stack projects.
-   - Penalizes missing GitHub profile links (-6 pts).
+   - Prioritizes DSA (`CS210`), Competitive Programming (Codeforces/LeetCode), and full-stack projects; penalizes missing GitHub (-6 pts).
 2. **Quantitative Finance**:
-   - Heavily prioritizes CPI $\ge 8.5$, stochastic calculus, probability (`MTH415/515`), and pairs trading models.
-   - Penalizes low CPI (-8 pts).
+   - Heavily prioritizes CPI $\ge 8.5$, stochastic calculus, probability (`MTH415/515`), and pairs trading; penalizes low CPI (-8 pts).
 3. **Management Consulting**:
-   - Rewards "spikes" across multiple areas (CPI + PoRs + Sports/Cult).
-   - Penalizes lack of business metrics (-4 pts) and missing leadership (-8 pts).
+   - Rewards "Triple Spikes" (CPI + PoRs + Sports/Cult); penalizes lack of business metrics (-4 pts) and missing leadership (-8 pts).
 4. **Core Engineering**:
-   - Prioritizes SURGE research, core electives (`ME352`, `EE480`), and CAD/ANSYS/MATLAB simulations.
-   - Penalizes generic web-dev projects displacing core electives (-5 pts).
+   - Prioritizes SURGE research, core electives (`ME352`, `EE480`), and CAD/FEA/CFD simulations; penalizes web-dev displacing core electives (-5 pts).
+5. **Data Analyst** *(Ref: CFA Institute Career Guide & Dataquest)*:
+   - Evaluates SQL querying (CTEs, window functions), statistics & A/B testing, and BI dashboards; penalizes tool-listing without queries/metrics (-5 pts).
+6. **Product Manager** *(Ref: Atlassian PM & Strategy Guides)*:
+   - Evaluates customer discovery, PRDs, prioritization frameworks (RICE), and conversion funnels; penalizes tech projects mislabeled as products (-6 pts).
+7. **Investment Banking** *(Ref: CFA Institute Financial Modeling & SG Analytics)*:
+   - Evaluates linked 3-statement models, DCF with WACC, trading comps, and M&A pitch books; penalizes generic buzzwords lacking modeling (-6 pts).
 
 ---
 

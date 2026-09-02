@@ -145,6 +145,72 @@ class CounterfactualAdvisor:
                 action = f"Apply Google/SPO XYZ format to '{primary_work}': Accomplished [X] measured by [Y] (e.g., +30% revenue / user growth), by doing [Z]."
                 suggested_template = "Optimized client data reconciliation pipeline, reducing manual audit hours by 40% and accelerating reporting turnaround by 3 days."
 
+            elif "sql" in gap.competency or "data_manipulation" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Lacks demonstration of complex SQL querying (joins, CTEs, window functions)."
+                action = f"Add SQL queries with CTEs/window functions or database schema indexing in '{primary_project}' rather than basic filtering."
+                suggested_template = "Optimized complex multi-table SQL queries with CTEs and window functions, reducing report generation latency by 42% on PostgreSQL."
+
+            elif "statistics" in gap.competency or "experimentation" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Limited evidence of statistical hypothesis testing or A/B experimentation."
+                action = f"Feature statistical significance testing (e.g. t-test, p-value, chi-square) or A/B experiment design in '{primary_project}'."
+                suggested_template = "Designed and executed two-tailed A/B test across 50k+ user sessions, establishing statistically significant conversion uplift of 14% (p < 0.01)."
+
+            elif "visualization" in gap.competency or "reporting" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Missing interactive business intelligence dashboards (Tableau, Power BI)."
+                action = f"Construct a published Tableau or Power BI dashboard with executive KPI drilldowns in '{primary_project}'."
+                suggested_template = "Developed interactive Tableau executive dashboard tracking 15+ KPIs across 5 business units with automated daily refreshes."
+
+            elif "business_insight" in gap.competency:
+                target_entry = primary_work
+                diagnosis = f"In '{primary_work}': Bullets present analytical procedures without connecting findings to strategic business decisions."
+                action = f"Tie analytical findings in '{primary_work}' directly to business recommendations or operational actions."
+                suggested_template = "Identified churn risk drivers across 12,000+ subscription accounts, recommending targeted discount tiers that reduced quarterly churn by 9%."
+
+            elif "financial_modeling" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Missing dynamic three-statement financial modeling and forecasting schedules."
+                action = f"Build a linked three-statement financial model (Income Statement, Balance Sheet, Cash Flow) with debt/interest schedules in '{primary_project}'."
+                suggested_template = "Constructed integrated 3-statement financial model with dynamic revenue, working capital, and debt amortization schedules across 5-year forecast."
+
+            elif "valuation" in gap.competency or "dcf" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Lacks multi-method corporate valuation (DCF, Trading Comps, Precedent Transactions)."
+                action = f"Conduct a DCF valuation with WACC sensitivity analysis and trading comparables (EV/EBITDA, P/E) in '{primary_project}'."
+                suggested_template = "Valued target enterprise at $450M using DCF (WACC 9.2%, terminal growth 2.5%) and peer trading comparables (EV/EBITDA 12.4x)."
+
+            elif "transaction" in gap.competency or "m_and_a" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Missing transaction structure analysis or pitch book deliverables."
+                action = f"Analyze an M&A transaction with accretion/dilution modeling or author a 15-page deal pitch book in '{primary_project}'."
+                suggested_template = "Modeled $1.2B cross-border acquisition accretion/dilution in Excel, evaluating EPS impact under 60/40 cash-debt financing structures."
+
+            elif "accounting" in gap.competency or "financial_statements" in gap.competency:
+                target_entry = "Relevant Coursework"
+                diagnosis = "Lacks demonstration of deep financial statement accounting (10-K, working capital, capital structure)."
+                action = "Highlight coursework in Corporate Finance, Financial Accounting, or financial statement analysis of SEC filings."
+                suggested_template = "Analyzed 10-K filings of 5 peer companies, normalizing EBITDA for non-recurring adjustments and assessing working capital cycles."
+
+            elif "user_research" in gap.competency or "customer_insights" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Missing qualitative customer evidence (user interviews, usability testing, Figma wireframes)."
+                action = f"Incorporate customer discovery interview findings and interactive Figma prototype links in '{primary_project}'."
+                suggested_template = "Conducted 25+ structured customer discovery interviews, synthesizing findings into 8 Figma wireframes and prioritizing MVP user journeys."
+
+            elif "prioritization" in gap.competency or "roadmapping" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Lacks explicit feature prioritization frameworks (RICE, MoSCoW, Value vs. Effort)."
+                action = f"Demonstrate trade-off analysis and feature roadmapping using RICE or Value/Effort scoring in '{primary_project}'."
+                suggested_template = "Formulated quarterly product roadmap using RICE prioritization across 30+ backlog items, improving engineering sprint velocity by 20%."
+
+            elif "product_analytics" in gap.competency:
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Limited measurement of user funnels, retention curves, or conversion tracking."
+                action = f"Add conversion funnel metrics or retention analytics (Mixpanel/Amplitude/Google Analytics) in '{primary_project}'."
+                suggested_template = "Analyzed user onboarding funnel in Mixpanel, pinpointing drop-off bottlenecks and redesigning step 3 to lift completion rate by 22%."
+
             elif "core_domain" in gap.competency or "engineering_tools" in gap.competency:
                 target_entry = primary_project
                 diagnosis = f"In '{primary_project}': Missing core departmental engineering simulations (ANSYS, SolidWorks, MATLAB, CFD)."
@@ -156,18 +222,6 @@ class CounterfactualAdvisor:
                 diagnosis = "Sparse evidence of advanced mathematical modeling (Probability, Stochastic Calculus, Linear Algebra)."
                 action = "Explicitly list rigorous coursework (MTH101, MTH415, MTH515) or mathematical modeling projects (Monte Carlo, Black-Scholes)."
                 suggested_template = "Backtested pairs trading strategy across NIFTY50 equities in Python, achieving a Sharpe ratio of 2.1 with <8% maximum drawdown."
-
-            elif "data_analysis" in gap.competency or "dashboarding" in gap.competency:
-                target_entry = primary_project
-                diagnosis = f"In '{primary_project}': Lacks demonstration of end-to-end data pipelines, SQL querying, or interactive BI dashboards."
-                action = f"Add a project showcasing SQL querying, Pandas data wrangling, and a live Tableau/PowerBI dashboard in '{primary_project}'."
-                suggested_template = "Constructed automated ETL pipeline in Python & SQL, processing 250k+ daily transactions with interactive Tableau executive dashboards."
-
-            elif "product_thinking" in gap.competency or "user_research" in gap.competency:
-                target_entry = primary_project
-                diagnosis = f"In '{primary_project}': Missing product artifacts such as user interview findings, PRD documentation, or wireframes."
-                action = f"Include a product teardown or PRD link highlighting customer problem statements, metrics, and wireframes in '{primary_project}'."
-                suggested_template = "Authored 15-page PRD defining MVP user journey and wireframes in Figma, improving onboarding completion rate by 28%."
 
             else:
                 target_entry = primary_project

@@ -6,7 +6,7 @@ from resume_engine.pipeline import ResumeEngine
 def main():
     ap = argparse.ArgumentParser(description="IITK Context-Aware Resume Diagnostic Engine")
     ap.add_argument("pdf", nargs="?", help="Path to SPO PDF resume file")
-    ap.add_argument("--role", choices=["sde", "quant", "consulting", "core", "analyst", "product"], help="Target industry track")
+    ap.add_argument("--role", choices=["sde", "quant", "consulting", "core", "analyst", "product", "ib"], help="Target industry track")
     ap.add_argument("--all", action="store_true", help="Diagnose across all tracks and show multi-track comparison")
     ap.add_argument("-o", "--output", help="Save analysis output (.json or .md) to file")
     ap.add_argument("--serve", action="store_true", help="Launch the Web Advisory Dashboard server")
@@ -47,11 +47,12 @@ def main():
             "quant": "Quantitative Finance",
             "consulting": "Management Consulting",
             "core": "Core Engineering",
-            "analyst": "Business & Data Analyst",
-            "product": "Product Management",
+            "analyst": "Data Analyst",
+            "product": "Product Manager",
+            "ib": "Investment Banking",
         }
 
-        for r_id in ["sde", "quant", "consulting", "core", "analyst", "product"]:
+        for r_id in ["sde", "quant", "consulting", "core", "analyst", "product", "ib"]:
             if r_id in results:
                 sc = results[r_id].get("score", {})
                 score_val = sc.get("score", 0.0)
@@ -84,7 +85,7 @@ def main():
                     f.write(f"# IITK Resume Diagnostic Report: {args.pdf}\n\n")
                     f.write(f"**Best Fit Role**: {best_role}\n\n")
                     f.write("## Multi-Track Scores\n")
-                    for r_id in ["sde", "quant", "consulting", "core"]:
+                    for r_id in ["sde", "quant", "consulting", "core", "analyst", "product", "ib"]:
                         sc = results[r_id]["score"]
                         f.write(f"- **{track_names.get(r_id, r_id)}**: {sc['score']}/100 ({sc['tier']})\n")
                 print(f"Summary report saved to {args.output}")
