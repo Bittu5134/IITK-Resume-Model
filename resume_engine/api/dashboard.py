@@ -10,21 +10,12 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IITK Context-Aware Resume Diagnostic Engine</title>
-    <!-- Google Fonts: Inter & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace']
-                    },
                     colors: {
                         iitk: {
                             navy: '#002147',
@@ -59,23 +50,23 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     -->
 
     <!-- Header / Navbar -->
-    <header class="border-b border-slate-800 dark:border-slate-800 bg-slate-900/90 dark:bg-slate-900/90 light:bg-white/90 backdrop-blur sticky top-0 z-50 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
-            <div class="flex items-center gap-3.5">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#002147] to-blue-700 flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-900/20 text-[#FFC72C] border border-[#FFC72C]/30">
+    <header class="border-b border-slate-800 dark:border-slate-800 bg-slate-900 dark:bg-slate-900 light:bg-white sticky top-0 z-50 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-[#002147] flex items-center justify-center font-bold text-lg text-[#FFC72C] border border-slate-800">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-slate-100 dark:text-slate-100 light:text-slate-900 tracking-tight flex items-center gap-2">
+                    <h1 class="text-base font-bold text-slate-100 dark:text-slate-100 light:text-slate-900 tracking-tight flex items-center gap-2">
                         IIT Kanpur Resume Engine
-                        <span class="bg-[#FFC72C]/20 text-[#FFC72C] text-xs font-semibold px-2 py-0.5 rounded-full border border-[#FFC72C]/40">SPO Advisory</span>
+                        <span class="bg-slate-800 text-slate-300 dark:text-slate-300 light:text-slate-700 text-xs font-semibold px-2 py-0.5 rounded border border-slate-700">SPO Advisory</span>
                     </h1>
-                    <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600">Academics & Career Council | Career Development Wing</p>
+                    <p class="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600">Academics & Career Council | Career Development Wing</p>
                 </div>
             </div>
             
-            <div class="flex items-center gap-3">
-                <button type="button" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Light and Dark Theme" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 bg-slate-800 dark:bg-slate-800 light:bg-slate-200 hover:bg-slate-700 transition px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+            <div class="flex items-center gap-2.5">
+                <button type="button" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Light and Dark Theme" class="text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 bg-slate-800 dark:bg-slate-800 light:bg-slate-100 hover:bg-slate-700 transition px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
                     <i id="themeToggleIcon" class="fa-solid fa-moon text-amber-400"></i>
                     <span id="themeToggleText">Dark</span>
                 </button>
@@ -90,9 +81,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
         <!-- Inline Accessible Error Banner -->
-        <div id="errorBanner" class="hidden bg-red-500/10 border border-red-500/30 rounded-2xl p-4 flex items-center justify-between gap-3 text-red-300 text-xs shadow-lg transition-all">
+        <div id="errorBanner" class="hidden bg-red-950/40 border border-red-800 rounded-xl p-4 flex items-center justify-between gap-3 text-red-300 text-xs transition-all">
             <div class="flex items-center gap-2.5">
-                <i class="fa-solid fa-triangle-exclamation text-red-400 text-lg"></i>
+                <i class="fa-solid fa-circle-exclamation text-red-400 text-base"></i>
                 <span id="errorMessageText" class="font-medium">An error occurred during processing.</span>
             </div>
             <button type="button" onclick="hideErrorBanner()" aria-label="Dismiss error banner" class="text-red-400 hover:text-red-200 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:outline-none">
@@ -101,68 +92,69 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         </div>
 
         <!-- Upload & Control Panel -->
-        <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-            <div class="absolute -right-16 -top-16 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-              <form id="analyzeForm" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                  <div class="lg:col-span-7">
-                      <label class="block text-xs font-semibold text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase tracking-wider mb-2">1. Upload Resume (PDF)</label>
-                      <div id="dropzone" tabindex="0" role="button" aria-label="Upload PDF Resume" class="border-2 border-dashed border-slate-700 dark:border-slate-700 light:border-slate-300 hover:border-blue-500 transition-all duration-200 rounded-xl p-5 text-center bg-slate-950/50 dark:bg-slate-950/50 light:bg-slate-50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                          <input type="file" id="pdfFileInput" accept=".pdf" class="hidden">
-                          <div id="uploadPrompt" class="space-y-1">
-                              <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-500 group-hover:text-blue-400 transition-colors mb-1"></i>
-                              <p class="text-sm font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800">Click to browse or drop your PDF resume here</p>
-                              <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-500">Single-page PDF format supported (Max 10 MB)</p>
-                          </div>
-                          <div id="fileSelectedInfo" class="hidden flex items-center gap-3 text-left w-full bg-slate-800/80 p-3 rounded-lg border border-slate-700">
-                              <i class="fa-solid fa-file-pdf text-red-400 text-2xl"></i>
-                              <div class="flex-1 truncate">
-                                  <p id="fileName" class="text-sm font-semibold text-slate-200 truncate">resume.pdf</p>
-                                  <p id="fileSize" class="text-xs text-slate-400">0 KB</p>
-                              </div>
-                              <button type="button" id="removeFileBtn" aria-label="Remove uploaded PDF resume" class="text-slate-400 hover:text-red-400 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                  <i class="fa-solid fa-xmark"></i>
-                              </button>
-                          </div>
-                      </div>
-                  </div>
+        <section class="bg-slate-900 border border-slate-800 rounded-xl p-6 relative">
+            <form id="analyzeForm" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <!-- Dropzone -->
+                <div class="lg:col-span-7">
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">1. Upload Resume (PDF)</label>
+                    <div id="dropzone" tabindex="0" role="button" aria-label="Upload PDF Resume" class="border-2 border-dashed border-slate-700 hover:border-blue-500 transition-colors rounded-xl p-5 text-center bg-slate-950/60 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                        <input type="file" id="pdfFileInput" accept=".pdf" class="hidden">
+                        <div id="uploadPrompt" class="space-y-1">
+                            <i class="fa-solid fa-file-arrow-up text-2xl text-slate-500 group-hover:text-blue-400 transition-colors mb-1"></i>
+                            <p class="text-sm font-medium text-slate-300">Click to browse or drop your PDF resume here</p>
+                            <p class="text-xs text-slate-500">Single-page PDF format supported (Max 10 MB)</p>
+                        </div>
+                        <div id="fileSelectedInfo" class="hidden flex items-center gap-3 text-left w-full bg-slate-800/80 p-3 rounded-lg border border-slate-700">
+                            <i class="fa-solid fa-file-pdf text-red-400 text-2xl"></i>
+                            <div class="flex-1 truncate">
+                                <p id="fileName" class="text-sm font-semibold text-slate-200 truncate">resume.pdf</p>
+                                <p id="fileSize" class="text-xs text-slate-400">0 KB</p>
+                            </div>
+                            <button type="button" id="removeFileBtn" aria-label="Remove uploaded PDF resume" class="text-slate-400 hover:text-red-400 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-                  <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
-                      <div>
-                          <label class="block text-xs font-semibold text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase tracking-wider mb-2">2. Target Industry Track</label>
-                          <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-2 gap-2">
-                              <button type="button" role="tab" id="role-tab-sde" aria-selected="true" aria-controls="resultsDashboard" data-role="sde" class="role-btn active px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-blue-500 bg-blue-600/20 text-blue-300 shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                  <span><i class="fa-solid fa-code mr-1.5"></i>SDE</span>
-                                  <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
-                              </button>
-                              <button type="button" role="tab" id="role-tab-quant" aria-selected="false" aria-controls="resultsDashboard" data-role="quant" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                  <span><i class="fa-solid fa-chart-line mr-1.5"></i>Quant Fin</span>
-                                  <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
-                              </button>
-                              <button type="button" role="tab" id="role-tab-consulting" aria-selected="false" aria-controls="resultsDashboard" data-role="consulting" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                  <span><i class="fa-solid fa-briefcase mr-1.5"></i>Consulting</span>
-                                  <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
-                              </button>
-                              <button type="button" role="tab" id="role-tab-core" aria-selected="false" aria-controls="resultsDashboard" data-role="core" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                  <span><i class="fa-solid fa-gear mr-1.5"></i>Core Eng.</span>
-                                  <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
-                              </button>
-                          </div>
-                      </div>
+                <!-- Role Selector & Action -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">2. Target Industry Track</label>
+                        <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-2 gap-2">
+                            <button type="button" role="tab" id="role-tab-sde" aria-selected="true" aria-controls="resultsDashboard" data-role="sde" class="role-btn active px-3.5 py-2.5 rounded-lg border text-xs font-semibold transition flex items-center justify-between border-blue-500 bg-blue-950/40 text-blue-300 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-code mr-1.5"></i>SDE</span>
+                                <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
+                            </button>
+                            <button type="button" role="tab" id="role-tab-quant" aria-selected="false" aria-controls="resultsDashboard" data-role="quant" class="role-btn px-3.5 py-2.5 rounded-lg border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-chart-line mr-1.5"></i>Quant Fin</span>
+                                <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
+                            </button>
+                            <button type="button" role="tab" id="role-tab-consulting" aria-selected="false" aria-controls="resultsDashboard" data-role="consulting" class="role-btn px-3.5 py-2.5 rounded-lg border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-briefcase mr-1.5"></i>Consulting</span>
+                                <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
+                            </button>
+                            <button type="button" role="tab" id="role-tab-core" aria-selected="false" aria-controls="resultsDashboard" data-role="core" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                <span><i class="fa-solid fa-gear mr-1.5"></i>Core Eng.</span>
+                                <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
 
-                      <button type="submit" id="submitBtn" class="w-full py-3 bg-slate-800/50 hover:bg-slate-800/80 text-slate-200 hover:text-slate-100 font-semibold text-xs rounded-xl border border-slate-700 hover:border-slate-500 transition-all duration-200 flex items-center justify-center gap-2 shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                          <i class="fa-solid fa-circle-nodes text-slate-400 text-xs"></i>
-                          <span>Analyze Profile</span>
-                      </button>
-                  </div>
-              </form>
-            </section>
+                    <button type="submit" id="submitBtn" class="w-full py-2.5 bg-blue-700 hover:bg-blue-600 text-white font-semibold text-sm rounded-lg border border-blue-600 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                        <span>Analyze Resume</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
         <!-- Loading State -->
-        <div id="loadingOverlay" class="hidden bg-slate-900/90 border border-slate-800 rounded-2xl p-12 text-center space-y-4">
-            <div class="inline-block relative w-16 h-16">
-                <div class="w-16 h-16 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin"></div>
-                <i class="fa-solid fa-brain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-400 text-xl"></i>
+        <div id="loadingOverlay" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-10 text-center space-y-3">
+            <div class="inline-block">
+                <i class="fa-solid fa-circle-notch text-blue-400 text-2xl animate-spin"></i>
             </div>
-            <h3 class="text-lg font-semibold text-white">Analyzing Resume Structure & Metrics...</h3>
+            <h3 class="text-base font-semibold text-white">Analyzing Resume Structure & Metrics...</h3>
             <p class="text-xs text-slate-400 max-w-md mx-auto">Parsing resume sections, validating links, and matching achievements against role benchmarks.</p>
         </div>
 
@@ -170,23 +162,23 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         <div id="resultsDashboard" class="hidden space-y-6">
 
             <!-- Auto-Detected Best Fit Track Banner -->
-            <div id="autoDetectBanner" class="hidden bg-gradient-to-r from-emerald-950/80 via-slate-900 to-blue-950/80 border border-emerald-500/30 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-xl">
-                <div class="flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xl border border-emerald-500/30 shadow-lg shadow-emerald-500/10">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <div id="autoDetectBanner" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-base border border-emerald-500/20">
+                        <i class="fa-solid fa-circle-check"></i>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">Recommended Target Role</span>
-                            <span class="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">Best Profile Alignment</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Recommended Target Role</span>
+                            <span class="bg-emerald-500/10 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/20">Best Fit</span>
                         </div>
-                        <h3 class="text-base font-extrabold text-white">
-                            Best Fit: <span id="autoDetectRoleText" class="text-emerald-400 underline font-black">Software Engineering</span>
+                        <h3 class="text-sm font-bold text-white mt-0.5">
+                            Best Fit: <span id="autoDetectRoleText" class="text-emerald-400 font-bold">Software Engineering</span>
                         </h3>
                     </div>
                 </div>
-                <div class="text-xs text-slate-300 bg-slate-950/80 px-3.5 py-2 rounded-xl border border-slate-800">
-                    <i class="fa-solid fa-bullseye text-emerald-400 mr-1.5"></i>
+                <div class="text-xs text-slate-400 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+                    <i class="fa-solid fa-circle-info text-slate-400 mr-1.5"></i>
                     <span>Selected based on profile strength. Click any track below to compare.</span>
                 </div>
             </div>
@@ -195,21 +187,21 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
                 <!-- Overall Profile Score Card -->
-                <div class="md:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden">
-                    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="md:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between relative">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                         <div>
                             <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Profile Match Score</span>
-                            <h2 id="activeRoleTitle" class="text-base font-bold text-white uppercase tracking-tight">Software Engineering</h2>
+                            <h2 id="activeRoleTitle" class="text-sm font-bold text-white uppercase tracking-tight">Software Engineering</h2>
                         </div>
-                        <span id="scoreBadgeTier" class="px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Strong Alignment</span>
+                        <span id="scoreBadgeTier" class="px-2.5 py-0.5 text-xs font-bold rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Strong Alignment</span>
                     </div>
 
-                    <div class="py-6 flex items-center justify-around gap-4">
-                        <div class="relative w-36 h-36 flex items-center justify-center">
-                            <canvas id="scoreCircleChart" width="144" height="144"></canvas>
+                    <div class="py-5 flex items-center justify-around gap-4">
+                        <div class="relative w-32 h-32 flex items-center justify-center">
+                            <canvas id="scoreCircleChart" width="128" height="128"></canvas>
                             <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                                <span id="overallScoreVal" class="text-4xl font-extrabold text-white tracking-tighter">0</span>
-                                <span class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Out of 100</span>
+                                <span id="overallScoreVal" class="text-3xl font-extrabold text-white tracking-tighter">0</span>
+                                <span class="text-[9px] uppercase font-bold text-slate-400 tracking-widest">Out of 100</span>
                             </div>
                         </div>
 
@@ -233,18 +225,18 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <div class="text-xs text-slate-400 bg-slate-950/60 rounded-xl p-3 border border-slate-800/80">
+                    <div class="text-xs text-slate-400 bg-slate-950 rounded-lg p-2.5 border border-slate-800">
                         <i class="fa-solid fa-circle-info text-blue-400 mr-1.5"></i>
                         <span id="scoreSummaryNotice">Matches DSA, competitive programming, and GitHub project signals against SDE baselines.</span>
                     </div>
                 </div>
 
                 <!-- 4-Track Comparative View -->
-                <div class="md:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+                <div class="md:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-chart-column text-blue-400 text-sm"></i>
-                            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Role Track Alignment</h3>
+                            <h3 class="text-xs font-bold text-white uppercase tracking-wider">Role Track Alignment</h3>
                         </div>
                         <span class="text-xs text-slate-400">Cross-track readiness comparison</span>
                     </div>
@@ -275,21 +267,21 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             </div>
 
             <!-- Tabbed Main Advisory Panel -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
                 <!-- Navigation Tabs -->
-                <div role="tablist" aria-label="Advisory Dashboard Views" class="flex border-b border-slate-800 bg-slate-950/70 overflow-x-auto custom-scrollbar">
-                    <button type="button" role="tab" id="tab-btn-advisory" aria-selected="true" aria-controls="tab-advisory" class="nav-tab active px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-blue-500 text-blue-400 bg-slate-900/50 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="advisory">
+                <div role="tablist" aria-label="Advisory Dashboard Views" class="flex border-b border-slate-800 bg-slate-950 overflow-x-auto custom-scrollbar">
+                    <button type="button" role="tab" id="tab-btn-advisory" aria-selected="true" aria-controls="tab-advisory" class="nav-tab active px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-blue-500 text-blue-400 bg-slate-900 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="advisory">
                         <i class="fa-solid fa-bullseye text-sm"></i>
                         Advisory & Gap Analysis
                     </button>
-                    <button type="button" role="tab" id="tab-btn-formatting" aria-selected="false" aria-controls="tab-formatting" class="nav-tab px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="formatting">
+                    <button type="button" role="tab" id="tab-btn-formatting" aria-selected="false" aria-controls="tab-formatting" class="nav-tab px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="formatting">
                         <i class="fa-solid fa-list-check text-sm"></i>
                         Line-by-Line Formatting Fixes
-                        <span id="formattingFixCountBadge" class="bg-amber-500/20 text-amber-300 text-[10px] px-2 py-0.5 rounded-full font-bold">0</span>
+                        <span id="formattingFixCountBadge" class="bg-slate-800 text-amber-400 text-[10px] px-2 py-0.5 rounded font-bold">0</span>
                     </button>
-                    <button type="button" role="tab" id="tab-btn-entities" aria-selected="false" aria-controls="tab-entities" class="nav-tab px-5 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="entities">
-                        <i class="fa-solid fa-cubes text-sm"></i>
-                        IITK Jargon & Evidence
+                    <button type="button" role="tab" id="tab-btn-entities" aria-selected="false" aria-controls="tab-entities" class="nav-tab px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none" data-tab="entities">
+                        <i class="fa-solid fa-tags text-sm"></i>
+                        Campus Entities & Evidence
                     </button>
                 </div>
 
@@ -300,10 +292,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                         <!-- Top 3 Strengths -->
-                        <div class="bg-slate-950/60 border border-emerald-500/20 rounded-xl p-5 space-y-4">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
                             <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
                                 <i class="fa-solid fa-circle-check text-emerald-400"></i>
-                                <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wider">Top Profile Strengths</h3>
+                                <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Top Profile Strengths</h3>
                             </div>
                             <div id="topStrengthsList" class="space-y-3">
                                 <!-- Dynamic strength cards -->
@@ -311,10 +303,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         </div>
 
                         <!-- Critical Missing Elements -->
-                        <div class="bg-slate-950/60 border border-amber-500/20 rounded-xl p-5 space-y-4">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
                             <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
-                                <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
-                                <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Critical Missing Elements</h3>
+                                <i class="fa-solid fa-circle-exclamation text-amber-400"></i>
+                                <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Critical Missing Elements</h3>
                             </div>
                             <div id="criticalGapsList" class="space-y-3">
                                 <!-- Dynamic gap cards -->
@@ -327,8 +319,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div class="space-y-4">
                         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                             <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-lightbulb text-amber-400 text-base"></i>
-                                <h3 class="text-sm font-bold text-white uppercase tracking-wider">Hyper-Specific Actionable Advice</h3>
+                                <i class="fa-solid fa-list-check text-blue-400"></i>
+                                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Actionable Recommendations</h3>
                             </div>
                             <span class="text-xs text-slate-400">Ranked by potential score improvement</span>
                         </div>
@@ -381,10 +373,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                         <!-- Recognized Entities -->
-                        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
                             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
                                 <i class="fa-solid fa-tags text-blue-400"></i>
-                                Recognized IITK Jargon & Skills
+                                Recognized Campus Entities & Skills
                             </h4>
                             <div id="entityTagsContainer" class="flex flex-wrap gap-2 pt-2">
                                 <!-- Dynamic tags -->
@@ -392,7 +384,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         </div>
 
                         <!-- Parsed Hyperlinks -->
-                        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
                             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
                                 <i class="fa-solid fa-link text-blue-400"></i>
                                 Parsed PDF Hyperlinks
@@ -405,7 +397,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     </div>
 
                     <!-- Academic Metrics & Layout -->
-                    <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
                             <i class="fa-solid fa-graduation-cap text-blue-400"></i>
                             Academic Metrics & Layout Diagnostics
@@ -426,7 +418,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <!-- Footer -->
     <footer class="border-t border-slate-800 bg-slate-950 py-4 text-center text-xs text-slate-500 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p>IITK Context-Aware Resume Diagnostic Engine &copy; 2026 Academics & Career Council</p>
+            <p>IIT Kanpur Resume Engine &copy; 2026 Academics & Career Council</p>
             <p class="text-slate-600">Built exclusively for IIT Kanpur Students</p>
         </div>
     </footer>
@@ -534,10 +526,6 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
         function handleFileSelect(file) {
             hideErrorBanner();
-            if (file.size > 10 * 1024 * 1024) {
-                showErrorBanner('File size exceeds the maximum 10 MB limit. Please select a smaller PDF.');
-                return;
-            }
             currentFile = file;
             fileNameEl.textContent = file.name;
             fileSizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
@@ -1016,6 +1004,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         }
 
     </script>
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=48e6de9c-0a50-4c29-a06a-f0c281aea165"></script>
+<!-- impeccable-live-end -->
 </body>
 </html>
 """
