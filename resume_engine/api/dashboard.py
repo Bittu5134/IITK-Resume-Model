@@ -10,12 +10,21 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IITK Context-Aware Resume Diagnostic Engine</title>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace']
+                    },
                     colors: {
                         iitk: {
                             navy: '#002147',
@@ -529,6 +538,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
         function handleFileSelect(file) {
             hideErrorBanner();
+            if (file.size > 10 * 1024 * 1024) {
+                showErrorBanner('File size exceeds the maximum 10 MB limit. Please select a smaller PDF.');
+                return;
+            }
             currentFile = file;
             fileNameEl.textContent = file.name;
             fileSizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
@@ -1007,6 +1020,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         }
 
     </script>
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=48e6de9c-0a50-4c29-a06a-f0c281aea165"></script>
+<!-- impeccable-live-end -->
 </body>
 </html>
 """

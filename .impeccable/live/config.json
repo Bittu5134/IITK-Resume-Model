@@ -1,0 +1,6 @@
+{
+  "files": ["resume_engine/api/dashboard.py"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

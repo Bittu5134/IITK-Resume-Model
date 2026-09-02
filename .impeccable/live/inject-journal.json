@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "appRoot": "/home/bittu/Developer/projects/IITK-Resume-Engine",
+  "framework": "static-html",
+  "port": 8400,
+  "pid": 13568,
+  "recordedAt": "2026-09-02T13:37:53.577Z",
+  "artifacts": [
+    {
+      "kind": "patched",
+      "path": "resume_engine/api/dashboard.py",
+      "patch": "live-tag",
+      "markers": [
+        "impeccable-live-start",
+        "data-impeccable-csp-original"
+      ]
+    }
+  ]
+}
