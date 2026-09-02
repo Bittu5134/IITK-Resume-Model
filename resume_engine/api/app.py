@@ -244,6 +244,19 @@ async def analyze_all(file: UploadFile = File(...)):
                 best_role = role_id
 
         results["best_fit_role"] = best_role
+
+        # Auto-save response txt file into example_responses/
+        try:
+            import json
+            out_dir = Path("example_responses")
+            out_dir.mkdir(parents=True, exist_ok=True)
+            stem = Path(file.filename or "resume").stem
+            txt_filename = f"{stem}_response.txt"
+            with open(out_dir / txt_filename, "w", encoding="utf-8") as out_f:
+                json.dump(results, out_f, indent=2, default=str)
+        except Exception:
+            pass
+
         return results
 
     except ValueError as e:

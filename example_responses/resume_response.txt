@@ -1,0 +1,1096 @@
+{
+  "consulting": {
+    "role": "consulting",
+    "document": {
+      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "sections": [
+        "Header",
+        "Projects"
+      ],
+      "links": [],
+      "warnings": [
+        "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+      ],
+      "layout_diagnostics": {
+        "page1": "single-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [],
+      "all_skills": [
+        "competitive_programming",
+        "python"
+      ],
+      "all_entities": [
+        "Codeforces"
+      ],
+      "claim_count": 2
+    },
+    "score": {
+      "role_id": "consulting",
+      "label": "Management Consulting",
+      "score": 1.24,
+      "confidence": 0.475,
+      "coverage": 0.125,
+      "competency_scores": [
+        {
+          "competency": "leadership",
+          "weight": 0.24,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "organizational_impact",
+          "weight": 0.18,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "business_impact",
+          "weight": 0.16,
+          "strength": 0.7027,
+          "contribution": 11.24,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "section_match"
+          ]
+        },
+        {
+          "competency": "communication",
+          "weight": 0.14,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "academic_strength",
+          "weight": 0.09,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "breadth",
+          "weight": 0.1,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "problem_solving",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "teamwork",
+          "weight": 0.03,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": [
+        {
+          "reason": "Management Consulting requires explicit PoR leadership spikes or extracurricular achievements",
+          "points": 10.0,
+          "code": "missing_por_spike"
+        }
+      ]
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "business_impact",
+          "strength": 0.7027,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Business Impact with 2 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "leadership",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.24,
+          "weight": 0.24,
+          "diagnosis": "Missing explicit evidence or project work in Leadership for target role."
+        },
+        {
+          "competency": "organizational_impact",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.18,
+          "weight": 0.18,
+          "diagnosis": "Missing explicit evidence or project work in Organizational Impact for target role."
+        },
+        {
+          "competency": "communication",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.14,
+          "weight": 0.14,
+          "diagnosis": "Missing explicit evidence or project work in Communication for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "leadership",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'leadership' was detected.",
+          "action": "If you genuinely have evidence for 'leadership', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 7.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "organizational_impact",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'organizational impact' was detected.",
+          "action": "If you genuinely have evidence for 'organizational impact', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 5.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "communication",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'communication' was detected.",
+          "action": "If you genuinely have evidence for 'communication', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "breadth",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'breadth' was detected.",
+          "action": "If you genuinely have evidence for 'breadth', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 3.0,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "academic_strength",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'academic strength' was detected.",
+          "action": "If you genuinely have evidence for 'academic strength', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 2.7,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_050f3e",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_590945",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 2,
+    "parser_warnings": [
+      "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+    ]
+  },
+  "core": {
+    "role": "core",
+    "document": {
+      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "sections": [
+        "Header",
+        "Projects"
+      ],
+      "links": [],
+      "warnings": [
+        "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+      ],
+      "layout_diagnostics": {
+        "page1": "single-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [],
+      "all_skills": [
+        "competitive_programming",
+        "python"
+      ],
+      "all_entities": [
+        "Codeforces"
+      ],
+      "claim_count": 2
+    },
+    "score": {
+      "role_id": "core",
+      "label": "Core Engineering",
+      "score": 35.06,
+      "confidence": 0.7,
+      "coverage": 0.5,
+      "competency_scores": [
+        {
+          "competency": "technical_depth",
+          "weight": 0.2,
+          "strength": 0.5577,
+          "contribution": 11.15,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "section_match"
+          ]
+        },
+        {
+          "competency": "research",
+          "weight": 0.16,
+          "strength": 0.5577,
+          "contribution": 8.92,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "core_projects",
+          "weight": 0.16,
+          "strength": 0.5577,
+          "contribution": 8.92,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "coursework",
+          "weight": 0.14,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "core_tools",
+          "weight": 0.12,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "publications",
+          "weight": 0.08,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "impact",
+          "weight": 0.08,
+          "strength": 0.7584,
+          "contribution": 6.07,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "technical_impact_bonus",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "internships",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "technical_depth",
+          "strength": 0.5577,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Technical Depth with 2 verified claim(s)."
+        },
+        {
+          "competency": "research",
+          "strength": 0.5577,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Research with 2 verified claim(s)."
+        },
+        {
+          "competency": "core_projects",
+          "strength": 0.5577,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Core Projects with 2 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "coursework",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.14,
+          "weight": 0.14,
+          "diagnosis": "Missing explicit evidence or project work in Coursework for target role."
+        },
+        {
+          "competency": "core_tools",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.12,
+          "weight": 0.12,
+          "diagnosis": "Missing explicit evidence or project work in Core Tools for target role."
+        },
+        {
+          "competency": "technical_depth",
+          "strength": 0.5577,
+          "missing_weighted_signal": 0.0885,
+          "weight": 0.2,
+          "diagnosis": "Missing explicit evidence or project work in Technical Depth for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "coursework",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'coursework' was detected.",
+          "action": "If you genuinely have evidence for 'coursework', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "core_tools",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'core tools' was detected.",
+          "action": "If you genuinely have evidence for 'core tools', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 3.6,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "technical_depth",
+          "source_claim_id": "c0002",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "diagnosis": "Existing evidence for 'technical depth' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_050f3e): 'Ranked Codeforces Candidate Master 1900 rating\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 6.0,
+          "confidence": 0.78
+        },
+        {
+          "priority": "important",
+          "competency": "publications",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'publications' was detected.",
+          "action": "If you genuinely have evidence for 'publications', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "research",
+          "source_claim_id": "c0002",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "diagnosis": "Existing evidence for 'research' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_050f3e): 'Ranked Codeforces Candidate Master 1900 rating\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 4.8,
+          "confidence": 0.78
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_050f3e",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_590945",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 2,
+    "parser_warnings": [
+      "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+    ]
+  },
+  "quant": {
+    "role": "quant",
+    "document": {
+      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "sections": [
+        "Header",
+        "Projects"
+      ],
+      "links": [],
+      "warnings": [
+        "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+      ],
+      "layout_diagnostics": {
+        "page1": "single-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [],
+      "all_skills": [
+        "competitive_programming",
+        "python"
+      ],
+      "all_entities": [
+        "Codeforces"
+      ],
+      "claim_count": 2
+    },
+    "score": {
+      "role_id": "quant",
+      "label": "Quantitative Finance",
+      "score": 23.28,
+      "confidence": 0.6,
+      "coverage": 0.333,
+      "competency_scores": [
+        {
+          "competency": "academic_strength",
+          "weight": 0.18,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "mathematics",
+          "weight": 0.18,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "probability",
+          "weight": 0.14,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "statistics",
+          "weight": 0.12,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "algorithms",
+          "weight": 0.12,
+          "strength": 0.8597,
+          "contribution": 10.32,
+          "supporting_claims": [
+            "c0002",
+            "c0001"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "skill_match"
+          ]
+        },
+        {
+          "competency": "coursework",
+          "weight": 0.08,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "programming",
+          "weight": 0.08,
+          "strength": 0.7007,
+          "contribution": 5.61,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "skill_match"
+          ]
+        },
+        {
+          "competency": "research",
+          "weight": 0.06,
+          "strength": 0.5577,
+          "contribution": 3.35,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "quantitative_projects",
+          "weight": 0.04,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "algorithms",
+          "strength": 0.8597,
+          "claims": [
+            "c0002",
+            "c0001"
+          ],
+          "reason": "Strong benchmark performance in Algorithms with 2 verified claim(s)."
+        },
+        {
+          "competency": "programming",
+          "strength": 0.7007,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Programming with 2 verified claim(s)."
+        },
+        {
+          "competency": "research",
+          "strength": 0.5577,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Research with 2 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "academic_strength",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.18,
+          "weight": 0.18,
+          "diagnosis": "Missing explicit evidence or project work in Academic Strength for target role."
+        },
+        {
+          "competency": "mathematics",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.18,
+          "weight": 0.18,
+          "diagnosis": "Missing explicit evidence or project work in Mathematics for target role."
+        },
+        {
+          "competency": "probability",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.14,
+          "weight": 0.14,
+          "diagnosis": "Missing explicit evidence or project work in Probability for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "academic_strength",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'academic strength' was detected.",
+          "action": "If you genuinely have evidence for 'academic strength', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 5.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "mathematics",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'mathematics' was detected.",
+          "action": "If you genuinely have evidence for 'mathematics', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 5.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "probability",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'probability' was detected.",
+          "action": "If you genuinely have evidence for 'probability', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "statistics",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'statistics' was detected.",
+          "action": "If you genuinely have evidence for 'statistics', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 3.6,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "coursework",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'coursework' was detected.",
+          "action": "If you genuinely have evidence for 'coursework', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_050f3e",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_590945",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 2,
+    "parser_warnings": [
+      "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+    ]
+  },
+  "sde": {
+    "role": "sde",
+    "document": {
+      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "sections": [
+        "Header",
+        "Projects"
+      ],
+      "links": [],
+      "warnings": [
+        "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+      ],
+      "layout_diagnostics": {
+        "page1": "single-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [],
+      "all_skills": [
+        "competitive_programming",
+        "python"
+      ],
+      "all_entities": [
+        "Codeforces"
+      ],
+      "claim_count": 2
+    },
+    "score": {
+      "role_id": "sde",
+      "label": "Software Development Engineering",
+      "score": 62.71,
+      "confidence": 0.8,
+      "coverage": 0.667,
+      "competency_scores": [
+        {
+          "competency": "algorithms",
+          "weight": 0.18,
+          "strength": 0.8597,
+          "contribution": 15.47,
+          "supporting_claims": [
+            "c0002",
+            "c0001"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "skill_match"
+          ]
+        },
+        {
+          "competency": "programming",
+          "weight": 0.15,
+          "strength": 0.7007,
+          "contribution": 10.51,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "skill_match"
+          ]
+        },
+        {
+          "competency": "software_engineering",
+          "weight": 0.18,
+          "strength": 0.5564,
+          "contribution": 10.02,
+          "supporting_claims": [
+            "c0001"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "skill_match"
+          ]
+        },
+        {
+          "competency": "projects",
+          "weight": 0.16,
+          "strength": 0.7564,
+          "contribution": 12.1,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "section_match",
+            "software_project_bonus"
+          ]
+        },
+        {
+          "competency": "coursework",
+          "weight": 0.08,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "competitive_programming",
+          "weight": 0.05,
+          "strength": 0.6057,
+          "contribution": 3.03,
+          "supporting_claims": [
+            "c0002"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "entity_match",
+            "cp_keyword"
+          ]
+        },
+        {
+          "competency": "open_source",
+          "weight": 0.04,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "impact",
+          "weight": 0.1,
+          "strength": 0.7584,
+          "contribution": 7.58,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "technical_impact_bonus",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "internships",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "algorithms",
+          "strength": 0.8597,
+          "claims": [
+            "c0002",
+            "c0001"
+          ],
+          "reason": "Strong benchmark performance in Algorithms with 2 verified claim(s)."
+        },
+        {
+          "competency": "projects",
+          "strength": 0.7564,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Projects with 2 verified claim(s)."
+        },
+        {
+          "competency": "programming",
+          "strength": 0.7007,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Programming with 2 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "coursework",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.08,
+          "weight": 0.08,
+          "diagnosis": "Missing explicit evidence or project work in Coursework for target role."
+        },
+        {
+          "competency": "software_engineering",
+          "strength": 0.5564,
+          "missing_weighted_signal": 0.0798,
+          "weight": 0.18,
+          "diagnosis": "Missing explicit evidence or project work in Software Engineering for target role."
+        },
+        {
+          "competency": "internships",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.06,
+          "weight": 0.06,
+          "diagnosis": "Missing explicit evidence or project work in Internships for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "coursework",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'coursework' was detected.",
+          "action": "If you genuinely have evidence for 'coursework', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "software_engineering",
+          "source_claim_id": "c0001",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "diagnosis": "Existing evidence for 'software engineering' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry unknown): 'Developed Python REST API with 99.9% uptime serving 100k users\u2026' \u2014 add clearer evidence connecting this work to the target competency. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 5.4,
+          "confidence": 0.78
+        },
+        {
+          "priority": "critical",
+          "competency": "internships",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'internships' was detected.",
+          "action": "If you genuinely have evidence for 'internships', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.8,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "programming",
+          "source_claim_id": "c0002",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "diagnosis": "Existing evidence for 'programming' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_050f3e): 'Ranked Codeforces Candidate Master 1900 rating\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 4.49,
+          "confidence": 0.72
+        },
+        {
+          "priority": "important",
+          "competency": "open_source",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'open source' was detected.",
+          "action": "If you genuinely have evidence for 'open source', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.2,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_050f3e",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_590945",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 2,
+    "parser_warnings": [
+      "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+    ]
+  },
+  "best_fit_role": "sde"
+}

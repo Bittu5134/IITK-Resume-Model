@@ -1,0 +1,5469 @@
+{
+  "consulting": {
+    "role": "consulting",
+    "document": {
+      "source_file": "temp/220830_priyanshu_singh.pdf",
+      "sections": [
+        "Header",
+        "Education",
+        "Achievements",
+        "Projects",
+        "Skills",
+        "Coursework",
+        "Positions of Responsibility",
+        "Extracurricular"
+      ],
+      "links": [
+        {
+          "uri": "tel:+91-9506992619",
+          "type": "web",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "Institute / School"
+        },
+        {
+          "uri": "mailto:spriyanshu22@iitk.ac.in",
+          "type": "email",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22",
+          "type": "github_profile",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u00d3 +91-9506992619 | R spriyanshu22@iitk.ac.in"
+        },
+        {
+          "uri": "https://www.linkedin.com/in/priyanshu-singh-528922253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "type": "linkedin",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/ConnVerse.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://www.canva.com/design/DAGCIpT3rhM/y68Rd6MbJ6iQU1bI2KSjpA/edit?utm_content=DAGCIpT3rhM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+          "type": "web",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/companion_arbiter_puff.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Employed mathematical analysis to optimize feature selection and dimensionalit"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/mathematical_simulation_of_probabilitic_concepts.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "(Mar\u201924 - Apr\u201924)"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/Computer_Organization_CS220.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Implemented simulations with the average output closely matching the theoretic"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/networking_of_nodes.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph"
+        }
+      ],
+      "warnings": [],
+      "layout_diagnostics": {
+        "page1": "multi-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [
+        {
+          "metric_type": "cpi",
+          "raw": "9.5/10",
+          "value": 9.5,
+          "scale": 10.0,
+          "year_or_sem": null,
+          "institution": null,
+          "degree": null
+        }
+      ],
+      "all_skills": [
+        "cpp",
+        "dsa",
+        "git",
+        "html_css",
+        "javascript",
+        "machine_learning",
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "probability",
+        "python",
+        "react",
+        "statistics"
+      ],
+      "all_entities": [
+        "IIT Kanpur"
+      ],
+      "claim_count": 79
+    },
+    "score": {
+      "role_id": "consulting",
+      "label": "Management Consulting",
+      "score": 76.69,
+      "confidence": 0.85,
+      "coverage": 0.75,
+      "competency_scores": [
+        {
+          "competency": "leadership",
+          "weight": 0.24,
+          "strength": 0.6571,
+          "contribution": 15.77,
+          "supporting_claims": [
+            "c0064",
+            "c0066",
+            "c0062"
+          ],
+          "reason_codes": [
+            "section_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "organizational_impact",
+          "weight": 0.18,
+          "strength": 0.6571,
+          "contribution": 11.83,
+          "supporting_claims": [
+            "c0064",
+            "c0066",
+            "c0062"
+          ],
+          "reason_codes": [
+            "section_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "business_impact",
+          "weight": 0.16,
+          "strength": 0.9945,
+          "contribution": 15.91,
+          "supporting_claims": [
+            "c0003",
+            "c0005",
+            "c0064"
+          ],
+          "reason_codes": [
+            "section_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "communication",
+          "weight": 0.14,
+          "strength": 0.6217,
+          "contribution": 8.7,
+          "supporting_claims": [
+            "c0062",
+            "c0069"
+          ],
+          "reason_codes": [
+            "section_match",
+            "communication_keyword"
+          ]
+        },
+        {
+          "competency": "academic_strength",
+          "weight": 0.09,
+          "strength": 1.0,
+          "contribution": 9.0,
+          "supporting_claims": [],
+          "reason_codes": [
+            "cpi_direct"
+          ]
+        },
+        {
+          "competency": "breadth",
+          "weight": 0.1,
+          "strength": 0.7512,
+          "contribution": 7.51,
+          "supporting_claims": [
+            "c0003",
+            "c0005",
+            "c0001"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "problem_solving",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "teamwork",
+          "weight": 0.03,
+          "strength": 0.6571,
+          "contribution": 1.97,
+          "supporting_claims": [
+            "c0064",
+            "c0066",
+            "c0062"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "business_impact",
+          "strength": 0.9945,
+          "claims": [
+            "c0003",
+            "c0005",
+            "c0064"
+          ],
+          "reason": "Strong benchmark performance in Business Impact with 3 verified claim(s)."
+        },
+        {
+          "competency": "leadership",
+          "strength": 0.6571,
+          "claims": [
+            "c0064",
+            "c0066",
+            "c0062"
+          ],
+          "reason": "Strong benchmark performance in Leadership with 3 verified claim(s)."
+        },
+        {
+          "competency": "organizational_impact",
+          "strength": 0.6571,
+          "claims": [
+            "c0064",
+            "c0066",
+            "c0062"
+          ],
+          "reason": "Strong benchmark performance in Organizational Impact with 3 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "leadership",
+          "strength": 0.6571,
+          "missing_weighted_signal": 0.0823,
+          "weight": 0.24,
+          "diagnosis": "Missing explicit evidence or project work in Leadership for target role."
+        },
+        {
+          "competency": "organizational_impact",
+          "strength": 0.6571,
+          "missing_weighted_signal": 0.0617,
+          "weight": 0.18,
+          "diagnosis": "Missing explicit evidence or project work in Organizational Impact for target role."
+        },
+        {
+          "competency": "problem_solving",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.06,
+          "weight": 0.06,
+          "diagnosis": "Missing explicit evidence or project work in Problem Solving for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "leadership",
+          "source_claim_id": "c0062",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_47ecdd",
+          "page": 1,
+          "text_snippet": "Academic Mentor Counselling Service, IIT Kanpur",
+          "diagnosis": "Existing evidence for 'leadership' is weak or indirect.",
+          "action": "Revise bullet in Positions of Responsibility (page 1, entry e01_47ecdd): 'Academic Mentor Counselling Service, IIT Kanpur\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 7.2,
+          "confidence": 0.74
+        },
+        {
+          "priority": "critical",
+          "competency": "organizational_impact",
+          "source_claim_id": "c0062",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_47ecdd",
+          "page": 1,
+          "text_snippet": "Academic Mentor Counselling Service, IIT Kanpur",
+          "diagnosis": "Existing evidence for 'organizational impact' is weak or indirect.",
+          "action": "Revise bullet in Positions of Responsibility (page 1, entry e01_47ecdd): 'Academic Mentor Counselling Service, IIT Kanpur\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 5.4,
+          "confidence": 0.74
+        },
+        {
+          "priority": "critical",
+          "competency": "problem_solving",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'problem solving' was detected.",
+          "action": "If you genuinely have evidence for 'problem solving', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.8,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "communication",
+          "source_claim_id": "c0069",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Present)",
+          "diagnosis": "Existing evidence for 'communication' is weak or indirect.",
+          "action": "Revise bullet in Positions of Responsibility (page 1, entry e01_58882c): '(Oct'22 - Present)\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.75
+        },
+        {
+          "priority": "important",
+          "competency": "breadth",
+          "source_claim_id": "c0001",
+          "section": "Achievements",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Awarded the Certificate of Academic Excellence for exceptional academic performance for two consecutive years",
+          "diagnosis": "Existing evidence for 'breadth' is weak or indirect.",
+          "action": "Revise bullet in Achievements (page 1, entry unknown): 'Awarded the Certificate of Academic Excellence for exceptional academic performa\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists). Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 2.49,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0017",
+          "bullet_id": "b01_ff6342",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with backend group on integration tasks, ensuring smooth interaction between frontend and backend",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Collaborated with backend group on ...)."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0019",
+          "bullet_id": "b01_467aac",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with a team of 10 members, maintaining version control and project continuity on GitHub",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_8b54cc",
+          "section": "Achievements",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Awarded the Certificate of Academic Excellence for exceptional academic performance for two consecutive years",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_a45cb2",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "2022,23",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0003",
+          "bullet_id": "b01_1ff9d1",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 865 in JEE Advanced '22 amongst 160,000 candidates who cleared JEE Mains",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0004",
+          "bullet_id": "b01_1daa95",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0005",
+          "bullet_id": "b01_e44816",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 1209 in JEE Mains '22 (99.87 % ile) amongst over 1 million candidates",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0006",
+          "bullet_id": "b01_6e702a",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0007",
+          "bullet_id": "b01_7392f6",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 1508 in Kishore Vaigyanik Protsahana Yojana (KVPY SX) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0008",
+          "bullet_id": "b01_9a4f44",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0009",
+          "bullet_id": "b01_bbbad8",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0010",
+          "bullet_id": "b01_5107f0",
+          "section": "Achievements",
+          "entry_id": "e01_5107f0",
+          "page": 1,
+          "text_snippet": "2021",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0011",
+          "bullet_id": "b01_1aa1a7",
+          "section": "Projects",
+          "entry_id": "e01_1aa1a7",
+          "page": 1,
+          "text_snippet": "Course Project, CS253, Prof. Indranil Saha, CSE Dept - | \u0087 1",
+          "issues": [
+            "Unrecognized action verb 'course' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0012",
+          "bullet_id": "b01_12c2c1",
+          "section": "Projects",
+          "entry_id": "e01_12c2c1",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0013",
+          "bullet_id": "b01_a04f92",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0014",
+          "bullet_id": "b01_ca4faf",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "To develop a social networking platform for connecting 8000+ IIT Kanpur students based on interests, skills, and activit",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0015",
+          "bullet_id": "b01_a2443d",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Led the frontend development group, implementing all pages using React and ensuring a cohesive user interface",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Led the frontend development group,...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0016",
+          "bullet_id": "b01_268dd3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0018",
+          "bullet_id": "b01_9050b3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Implemented features like authentication, blogs, and real-time chat with Group and Direct Messaging capabilities",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Implemented features like authentic...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0020",
+          "bullet_id": "b01_78da27",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0021",
+          "bullet_id": "b01_3a4e4a",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Successfully deployed a fully functional social networking platform accessible to the IIT Kanpur student community",
+          "issues": [
+            "Unrecognized action verb 'successfully' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Successfully deployed a fully funct...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0022",
+          "bullet_id": "b01_4f8fb0",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Cracking the Companion Arbiter PUF\u2013 Course Project, CS771, Prof. Purusshottam Kar, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'cracking' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0023",
+          "bullet_id": "b01_b6cac4",
+          "section": "Projects",
+          "entry_id": "e01_b6cac4",
+          "page": 1,
+          "text_snippet": "(Mar'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0024",
+          "bullet_id": "b01_585148",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0025",
+          "bullet_id": "b01_2e66a9",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "To develop a linear model to mirror the functionality of the Companion Arbiter PUF using feature engineering",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To develop a linear model to mirror...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0026",
+          "bullet_id": "b01_89ce7d",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Employed mathematical analysis to optimize feature selection and dimensionality, mapping 32-bit challenges to feature ve",
+          "issues": [
+            "Unrecognized action verb 'employed' in Projects.",
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0027",
+          "bullet_id": "b01_a5c886",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0028",
+          "bullet_id": "b01_ae79c3",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Implemented the model in Python using LogisticRegression, leveraging a dataset of 50k data points",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0029",
+          "bullet_id": "b01_a10e17",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Compared the results form the LinearSVC, LogisticRegression, and RidgeClassifier models for enhanced efficiency",
+          "issues": [
+            "Unrecognized action verb 'compared' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Compared the results form the Linea...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0030",
+          "bullet_id": "b01_6d9dda",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0031",
+          "bullet_id": "b01_1a96f1",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Achieved an accuracy of 99.32% on LogisticRegression model in mirroring the Companion Arbiter PUF's functionality",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0032",
+          "bullet_id": "b01_ff7ad6",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Mathematical Simulations of Probabilistic Concepts\u2013 Course Project, CS203, Prof. Subhajit Roy, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'mathematical' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0033",
+          "bullet_id": "b01_16fe1e",
+          "section": "Projects",
+          "entry_id": "e01_16fe1e",
+          "page": 1,
+          "text_snippet": "(Mar'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0034",
+          "bullet_id": "b01_981814",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0035",
+          "bullet_id": "b01_561829",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "To design and implement mathematical simulations of probabilistic concepts in Python using Python libraries.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To design and implement mathematica...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0036",
+          "bullet_id": "b01_b6181c",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Utilized Python libraries such as matplotlib, numpy, and random to design simulations in Python. These simulations em-",
+          "issues": [
+            "Unrecognized action verb 'utilized' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Utilized Python libraries such as m...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0037",
+          "bullet_id": "b01_39374e",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0038",
+          "bullet_id": "b01_192d06",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Topics including Bertrand's paradox, Birthday paradox, generalized Monty Hall problem, Inverse CDF function, and ployed ",
+          "issues": [
+            "Unrecognized action verb 'topics' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0039",
+          "bullet_id": "b01_c8914d",
+          "section": "Projects",
+          "entry_id": "e01_c8914d",
+          "page": 1,
+          "text_snippet": "Bayesian statistics were simulated to compare theoretical calculations with simulated results.",
+          "issues": [
+            "Unrecognized action verb 'bayesian' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Bayesian statistics were simulated ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0040",
+          "bullet_id": "b01_4dcbc7",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0041",
+          "bullet_id": "b01_bfa110",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Implemented simulations with the average output closely matching the theoretical calculations with an accuracy of over 9",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0042",
+          "bullet_id": "b01_938037",
+          "section": "Projects",
+          "entry_id": "e01_938037",
+          "page": 1,
+          "text_snippet": "MIPS Processor Design\u2013 Course Project, CS220, Prof. Mainak Chaudhuri, CSE Dept.\u0087",
+          "issues": [
+            "Unrecognized action verb 'mips' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0043",
+          "bullet_id": "b01_998585",
+          "section": "Projects",
+          "entry_id": "e01_998585",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0044",
+          "bullet_id": "b01_5bc701",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0045",
+          "bullet_id": "b01_e25c1a",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "To design and implement a MIPS processor using Verilog, based on the 32-bit MIPS instruction set architecture.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0046",
+          "bullet_id": "b01_44051b",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0047",
+          "bullet_id": "b01_bdf9bb",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Implemented a MIPS processor in Verilog using a 7-state FSM, integrating instruction, data memory, and a register file.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0048",
+          "bullet_id": "b01_87eee7",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Developed and tested MIPS code for Binary Search, executing it on a SPIM Simulator with essential MIPS functions.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developed and tested MIPS code for ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0049",
+          "bullet_id": "b01_51440b",
+          "section": "Projects",
+          "entry_id": "e01_51440b",
+          "page": 1,
+          "text_snippet": "Networking of Nodes\u2013 Stamatics, IIT Kanpur | \u0087",
+          "issues": [
+            "Unrecognized action verb 'networking' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Networking of Nodes\u2013 Stamatics, IIT...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0050",
+          "bullet_id": "b01_317960",
+          "section": "Projects",
+          "entry_id": "e01_317960",
+          "page": 1,
+          "text_snippet": "(May'23 - Jun'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0051",
+          "bullet_id": "b01_2cba32",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0052",
+          "bullet_id": "b01_a4daf9",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "To conduct an in-depth study of Graph Theory focusing on key concepts such as Graph Traversal, Bipartite Graphs, and Sho",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To conduct an in-depth study of Gra...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0053",
+          "bullet_id": "b01_c0b4f2",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph",
+          "issues": [
+            "Unrecognized action verb 'path' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Path Algorithms, Minimum Spanning T...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0054",
+          "bullet_id": "b01_04036e",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Developing and implementing efficient algorithms, including multisource BFS, Bellman-Ford and Dijkstra's for shortest pa",
+          "issues": [
+            "Unrecognized action verb 'developing' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developing and implementing efficie...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0055",
+          "bullet_id": "b01_f69cbf",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0056",
+          "bullet_id": "b01_a7d22a",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated Kruskal's & Prim's algorithm for minimum spanning trees (MSTs) by deriving the cut and cycle property of grap",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated Kruskal's & Prim's algor...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0057",
+          "bullet_id": "b01_566b11",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated and implemented algorithm to find articulation points and bridges in a graph by utilizing the concept of DFS ",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated and implemented algorith...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0058",
+          "bullet_id": "b01_47b7d6",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Devised and implemented the algorithm to check for bipartite graphs using the concepts of BFS tree",
+          "issues": [
+            "Unrecognized action verb 'devised' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Devised and implemented the algorit...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0059",
+          "bullet_id": "b01_94d9f5",
+          "section": "Skills",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Programming Languages : C, C++, HTML, Javascript, CSS",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0060",
+          "bullet_id": "b01_857212",
+          "section": "Skills",
+          "entry_id": "e01_94d9f5",
+          "page": 1,
+          "text_snippet": "Softwares, Libraries and FrameWorks: Numpy, Pandas, LATEX, GitHub",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0061",
+          "bullet_id": "b01_ea30a2",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0062",
+          "bullet_id": "b01_47ecdd",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_47ecdd",
+          "page": 1,
+          "text_snippet": "Academic Mentor Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0063",
+          "bullet_id": "b01_68026d",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Oct'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0064",
+          "bullet_id": "b01_535844",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "Mentoring 1200+ students in their CHM Course includes concepts related to the Physical Chemistry",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0065",
+          "bullet_id": "b01_f234c6",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0066",
+          "bullet_id": "b01_a98200",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Providing academic assistance to 30+ students who are having difficulty understanding the course content",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0067",
+          "bullet_id": "b01_ab9120",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Coordinated with a team of 25 members for the conduct various Institute Level and Hall Level Doubt sessions",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0068",
+          "bullet_id": "b01_1ed6ca",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_1ed6ca",
+          "page": 1,
+          "text_snippet": "Student Guide Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0069",
+          "bullet_id": "b01_58882c",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Present)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0070",
+          "bullet_id": "b01_0275b3",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "Guided and supported a cohort of six students, facilitating a smooth transition into the challenges of college life",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0071",
+          "bullet_id": "b01_c41e48",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0072",
+          "bullet_id": "b01_85a6a2",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Assisted counselling services in organizing various orientation programs and interactive sessions for incoming students",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0073",
+          "bullet_id": "b01_239b89",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Provided one-on-one mentorship and counselling to address personal and academic concerns of the mentees",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0074",
+          "bullet_id": "b01_a867c0",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Social",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0075",
+          "bullet_id": "b01_65a93f",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Did Social Work under NSS, IITK involving planning and executing 2 Healthcare camps with Ayushman Bharat Abhiyan in",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0076",
+          "bullet_id": "b01_3f08fe",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Work | the rural areas around Kanpur and a Blood Donation camps with Raktarpan, IITK in IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0077",
+          "bullet_id": "b01_d66882",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Educational",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0078",
+          "bullet_id": "b01_5ca22c",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Worked with NSS under Prof. HC Verma to collaborate and execute Shikha Sopan (Science Mela) in Sopan Ashram and",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0079",
+          "bullet_id": "b01_a5156a",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Outreach | taught the concept of Coupled Pendulum to 30,000 students and grown-ups",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 79,
+    "parser_warnings": []
+  },
+  "core": {
+    "role": "core",
+    "document": {
+      "source_file": "temp/220830_priyanshu_singh.pdf",
+      "sections": [
+        "Header",
+        "Education",
+        "Achievements",
+        "Projects",
+        "Skills",
+        "Coursework",
+        "Positions of Responsibility",
+        "Extracurricular"
+      ],
+      "links": [
+        {
+          "uri": "tel:+91-9506992619",
+          "type": "web",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "Institute / School"
+        },
+        {
+          "uri": "mailto:spriyanshu22@iitk.ac.in",
+          "type": "email",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22",
+          "type": "github_profile",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u00d3 +91-9506992619 | R spriyanshu22@iitk.ac.in"
+        },
+        {
+          "uri": "https://www.linkedin.com/in/priyanshu-singh-528922253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "type": "linkedin",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/ConnVerse.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://www.canva.com/design/DAGCIpT3rhM/y68Rd6MbJ6iQU1bI2KSjpA/edit?utm_content=DAGCIpT3rhM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+          "type": "web",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/companion_arbiter_puff.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Employed mathematical analysis to optimize feature selection and dimensionalit"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/mathematical_simulation_of_probabilitic_concepts.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "(Mar\u201924 - Apr\u201924)"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/Computer_Organization_CS220.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Implemented simulations with the average output closely matching the theoretic"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/networking_of_nodes.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph"
+        }
+      ],
+      "warnings": [],
+      "layout_diagnostics": {
+        "page1": "multi-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [
+        {
+          "metric_type": "cpi",
+          "raw": "9.5/10",
+          "value": 9.5,
+          "scale": 10.0,
+          "year_or_sem": null,
+          "institution": null,
+          "degree": null
+        }
+      ],
+      "all_skills": [
+        "cpp",
+        "dsa",
+        "git",
+        "html_css",
+        "javascript",
+        "machine_learning",
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "probability",
+        "python",
+        "react",
+        "statistics"
+      ],
+      "all_entities": [
+        "IIT Kanpur"
+      ],
+      "claim_count": 79
+    },
+    "score": {
+      "role_id": "core",
+      "label": "Core Engineering",
+      "score": 62.66,
+      "confidence": 0.85,
+      "coverage": 0.75,
+      "competency_scores": [
+        {
+          "competency": "technical_depth",
+          "weight": 0.2,
+          "strength": 0.6281,
+          "contribution": 12.56,
+          "supporting_claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason_codes": [
+            "section_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "research",
+          "weight": 0.16,
+          "strength": 0.6281,
+          "contribution": 10.05,
+          "supporting_claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "core_projects",
+          "weight": 0.16,
+          "strength": 0.6281,
+          "contribution": 10.05,
+          "supporting_claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "coursework",
+          "weight": 0.14,
+          "strength": 0.309,
+          "contribution": 4.33,
+          "supporting_claims": [
+            "c0061"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "core_tools",
+          "weight": 0.12,
+          "strength": 0.3059,
+          "contribution": 3.67,
+          "supporting_claims": [
+            "c0061"
+          ],
+          "reason_codes": [
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "publications",
+          "weight": 0.08,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "impact",
+          "weight": 0.08,
+          "strength": 1.0,
+          "contribution": 8.0,
+          "supporting_claims": [
+            "c0003",
+            "c0005",
+            "c0015"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "technical_impact_bonus"
+          ]
+        },
+        {
+          "competency": "internships",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "technical_depth",
+          "strength": 0.6281,
+          "claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason": "Strong benchmark performance in Technical Depth with 3 verified claim(s)."
+        },
+        {
+          "competency": "research",
+          "strength": 0.6281,
+          "claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason": "Strong benchmark performance in Research with 3 verified claim(s)."
+        },
+        {
+          "competency": "core_projects",
+          "strength": 0.6281,
+          "claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason": "Strong benchmark performance in Core Projects with 3 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "coursework",
+          "strength": 0.309,
+          "missing_weighted_signal": 0.0967,
+          "weight": 0.14,
+          "diagnosis": "Missing explicit evidence or project work in Coursework for target role."
+        },
+        {
+          "competency": "core_tools",
+          "strength": 0.3059,
+          "missing_weighted_signal": 0.0833,
+          "weight": 0.12,
+          "diagnosis": "Missing explicit evidence or project work in Core Tools for target role."
+        },
+        {
+          "competency": "publications",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.08,
+          "weight": 0.08,
+          "diagnosis": "Missing explicit evidence or project work in Publications for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "coursework",
+          "source_claim_id": "c0061",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "diagnosis": "Existing evidence for 'coursework' is weak or indirect.",
+          "action": "Revise bullet in Coursework (page 1, entry e01_a1e05c): 'Introduction to Machine Learning | Discrete Mathematics for Computer Science | L\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.88
+        },
+        {
+          "priority": "critical",
+          "competency": "core_tools",
+          "source_claim_id": "c0061",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "diagnosis": "Existing evidence for 'core tools' is weak or indirect.",
+          "action": "Revise bullet in Coursework (page 1, entry e01_a1e05c): 'Introduction to Machine Learning | Discrete Mathematics for Computer Science | L\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 3.6,
+          "confidence": 0.88
+        },
+        {
+          "priority": "critical",
+          "competency": "publications",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'publications' was detected.",
+          "action": "If you genuinely have evidence for 'publications', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "technical_depth",
+          "source_claim_id": "c0012",
+          "section": "Projects",
+          "entry_id": "e01_12c2c1",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "diagnosis": "Existing evidence for 'technical depth' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_12c2c1): '(Jan'24 - Apr'24)\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate; specific tools/technologies actually used. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 6.0,
+          "confidence": 0.75
+        },
+        {
+          "priority": "important",
+          "competency": "internships",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'internships' was detected.",
+          "action": "If you genuinely have evidence for 'internships', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.8,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0017",
+          "bullet_id": "b01_ff6342",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with backend group on integration tasks, ensuring smooth interaction between frontend and backend",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Collaborated with backend group on ...)."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0019",
+          "bullet_id": "b01_467aac",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with a team of 10 members, maintaining version control and project continuity on GitHub",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_8b54cc",
+          "section": "Achievements",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Awarded the Certificate of Academic Excellence for exceptional academic performance for two consecutive years",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_a45cb2",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "2022,23",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0003",
+          "bullet_id": "b01_1ff9d1",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 865 in JEE Advanced '22 amongst 160,000 candidates who cleared JEE Mains",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0004",
+          "bullet_id": "b01_1daa95",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0005",
+          "bullet_id": "b01_e44816",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 1209 in JEE Mains '22 (99.87 % ile) amongst over 1 million candidates",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0006",
+          "bullet_id": "b01_6e702a",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0007",
+          "bullet_id": "b01_7392f6",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 1508 in Kishore Vaigyanik Protsahana Yojana (KVPY SX) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0008",
+          "bullet_id": "b01_9a4f44",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0009",
+          "bullet_id": "b01_bbbad8",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0010",
+          "bullet_id": "b01_5107f0",
+          "section": "Achievements",
+          "entry_id": "e01_5107f0",
+          "page": 1,
+          "text_snippet": "2021",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0011",
+          "bullet_id": "b01_1aa1a7",
+          "section": "Projects",
+          "entry_id": "e01_1aa1a7",
+          "page": 1,
+          "text_snippet": "Course Project, CS253, Prof. Indranil Saha, CSE Dept - | \u0087 1",
+          "issues": [
+            "Unrecognized action verb 'course' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0012",
+          "bullet_id": "b01_12c2c1",
+          "section": "Projects",
+          "entry_id": "e01_12c2c1",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0013",
+          "bullet_id": "b01_a04f92",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0014",
+          "bullet_id": "b01_ca4faf",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "To develop a social networking platform for connecting 8000+ IIT Kanpur students based on interests, skills, and activit",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0015",
+          "bullet_id": "b01_a2443d",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Led the frontend development group, implementing all pages using React and ensuring a cohesive user interface",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Led the frontend development group,...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0016",
+          "bullet_id": "b01_268dd3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0018",
+          "bullet_id": "b01_9050b3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Implemented features like authentication, blogs, and real-time chat with Group and Direct Messaging capabilities",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Implemented features like authentic...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0020",
+          "bullet_id": "b01_78da27",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0021",
+          "bullet_id": "b01_3a4e4a",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Successfully deployed a fully functional social networking platform accessible to the IIT Kanpur student community",
+          "issues": [
+            "Unrecognized action verb 'successfully' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Successfully deployed a fully funct...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0022",
+          "bullet_id": "b01_4f8fb0",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Cracking the Companion Arbiter PUF\u2013 Course Project, CS771, Prof. Purusshottam Kar, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'cracking' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0023",
+          "bullet_id": "b01_b6cac4",
+          "section": "Projects",
+          "entry_id": "e01_b6cac4",
+          "page": 1,
+          "text_snippet": "(Mar'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0024",
+          "bullet_id": "b01_585148",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0025",
+          "bullet_id": "b01_2e66a9",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "To develop a linear model to mirror the functionality of the Companion Arbiter PUF using feature engineering",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To develop a linear model to mirror...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0026",
+          "bullet_id": "b01_89ce7d",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Employed mathematical analysis to optimize feature selection and dimensionality, mapping 32-bit challenges to feature ve",
+          "issues": [
+            "Unrecognized action verb 'employed' in Projects.",
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0027",
+          "bullet_id": "b01_a5c886",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0028",
+          "bullet_id": "b01_ae79c3",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Implemented the model in Python using LogisticRegression, leveraging a dataset of 50k data points",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0029",
+          "bullet_id": "b01_a10e17",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Compared the results form the LinearSVC, LogisticRegression, and RidgeClassifier models for enhanced efficiency",
+          "issues": [
+            "Unrecognized action verb 'compared' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Compared the results form the Linea...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0030",
+          "bullet_id": "b01_6d9dda",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0031",
+          "bullet_id": "b01_1a96f1",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Achieved an accuracy of 99.32% on LogisticRegression model in mirroring the Companion Arbiter PUF's functionality",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0032",
+          "bullet_id": "b01_ff7ad6",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Mathematical Simulations of Probabilistic Concepts\u2013 Course Project, CS203, Prof. Subhajit Roy, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'mathematical' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0033",
+          "bullet_id": "b01_16fe1e",
+          "section": "Projects",
+          "entry_id": "e01_16fe1e",
+          "page": 1,
+          "text_snippet": "(Mar'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0034",
+          "bullet_id": "b01_981814",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0035",
+          "bullet_id": "b01_561829",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "To design and implement mathematical simulations of probabilistic concepts in Python using Python libraries.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To design and implement mathematica...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0036",
+          "bullet_id": "b01_b6181c",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Utilized Python libraries such as matplotlib, numpy, and random to design simulations in Python. These simulations em-",
+          "issues": [
+            "Unrecognized action verb 'utilized' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Utilized Python libraries such as m...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0037",
+          "bullet_id": "b01_39374e",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0038",
+          "bullet_id": "b01_192d06",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Topics including Bertrand's paradox, Birthday paradox, generalized Monty Hall problem, Inverse CDF function, and ployed ",
+          "issues": [
+            "Unrecognized action verb 'topics' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0039",
+          "bullet_id": "b01_c8914d",
+          "section": "Projects",
+          "entry_id": "e01_c8914d",
+          "page": 1,
+          "text_snippet": "Bayesian statistics were simulated to compare theoretical calculations with simulated results.",
+          "issues": [
+            "Unrecognized action verb 'bayesian' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Bayesian statistics were simulated ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0040",
+          "bullet_id": "b01_4dcbc7",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0041",
+          "bullet_id": "b01_bfa110",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Implemented simulations with the average output closely matching the theoretical calculations with an accuracy of over 9",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0042",
+          "bullet_id": "b01_938037",
+          "section": "Projects",
+          "entry_id": "e01_938037",
+          "page": 1,
+          "text_snippet": "MIPS Processor Design\u2013 Course Project, CS220, Prof. Mainak Chaudhuri, CSE Dept.\u0087",
+          "issues": [
+            "Unrecognized action verb 'mips' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0043",
+          "bullet_id": "b01_998585",
+          "section": "Projects",
+          "entry_id": "e01_998585",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0044",
+          "bullet_id": "b01_5bc701",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0045",
+          "bullet_id": "b01_e25c1a",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "To design and implement a MIPS processor using Verilog, based on the 32-bit MIPS instruction set architecture.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0046",
+          "bullet_id": "b01_44051b",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0047",
+          "bullet_id": "b01_bdf9bb",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Implemented a MIPS processor in Verilog using a 7-state FSM, integrating instruction, data memory, and a register file.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0048",
+          "bullet_id": "b01_87eee7",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Developed and tested MIPS code for Binary Search, executing it on a SPIM Simulator with essential MIPS functions.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developed and tested MIPS code for ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0049",
+          "bullet_id": "b01_51440b",
+          "section": "Projects",
+          "entry_id": "e01_51440b",
+          "page": 1,
+          "text_snippet": "Networking of Nodes\u2013 Stamatics, IIT Kanpur | \u0087",
+          "issues": [
+            "Unrecognized action verb 'networking' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Networking of Nodes\u2013 Stamatics, IIT...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0050",
+          "bullet_id": "b01_317960",
+          "section": "Projects",
+          "entry_id": "e01_317960",
+          "page": 1,
+          "text_snippet": "(May'23 - Jun'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0051",
+          "bullet_id": "b01_2cba32",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0052",
+          "bullet_id": "b01_a4daf9",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "To conduct an in-depth study of Graph Theory focusing on key concepts such as Graph Traversal, Bipartite Graphs, and Sho",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To conduct an in-depth study of Gra...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0053",
+          "bullet_id": "b01_c0b4f2",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph",
+          "issues": [
+            "Unrecognized action verb 'path' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Path Algorithms, Minimum Spanning T...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0054",
+          "bullet_id": "b01_04036e",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Developing and implementing efficient algorithms, including multisource BFS, Bellman-Ford and Dijkstra's for shortest pa",
+          "issues": [
+            "Unrecognized action verb 'developing' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developing and implementing efficie...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0055",
+          "bullet_id": "b01_f69cbf",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0056",
+          "bullet_id": "b01_a7d22a",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated Kruskal's & Prim's algorithm for minimum spanning trees (MSTs) by deriving the cut and cycle property of grap",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated Kruskal's & Prim's algor...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0057",
+          "bullet_id": "b01_566b11",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated and implemented algorithm to find articulation points and bridges in a graph by utilizing the concept of DFS ",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated and implemented algorith...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0058",
+          "bullet_id": "b01_47b7d6",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Devised and implemented the algorithm to check for bipartite graphs using the concepts of BFS tree",
+          "issues": [
+            "Unrecognized action verb 'devised' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Devised and implemented the algorit...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0059",
+          "bullet_id": "b01_94d9f5",
+          "section": "Skills",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Programming Languages : C, C++, HTML, Javascript, CSS",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0060",
+          "bullet_id": "b01_857212",
+          "section": "Skills",
+          "entry_id": "e01_94d9f5",
+          "page": 1,
+          "text_snippet": "Softwares, Libraries and FrameWorks: Numpy, Pandas, LATEX, GitHub",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0061",
+          "bullet_id": "b01_ea30a2",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0062",
+          "bullet_id": "b01_47ecdd",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_47ecdd",
+          "page": 1,
+          "text_snippet": "Academic Mentor Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0063",
+          "bullet_id": "b01_68026d",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Oct'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0064",
+          "bullet_id": "b01_535844",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "Mentoring 1200+ students in their CHM Course includes concepts related to the Physical Chemistry",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0065",
+          "bullet_id": "b01_f234c6",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0066",
+          "bullet_id": "b01_a98200",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Providing academic assistance to 30+ students who are having difficulty understanding the course content",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0067",
+          "bullet_id": "b01_ab9120",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Coordinated with a team of 25 members for the conduct various Institute Level and Hall Level Doubt sessions",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0068",
+          "bullet_id": "b01_1ed6ca",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_1ed6ca",
+          "page": 1,
+          "text_snippet": "Student Guide Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0069",
+          "bullet_id": "b01_58882c",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Present)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0070",
+          "bullet_id": "b01_0275b3",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "Guided and supported a cohort of six students, facilitating a smooth transition into the challenges of college life",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0071",
+          "bullet_id": "b01_c41e48",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0072",
+          "bullet_id": "b01_85a6a2",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Assisted counselling services in organizing various orientation programs and interactive sessions for incoming students",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0073",
+          "bullet_id": "b01_239b89",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Provided one-on-one mentorship and counselling to address personal and academic concerns of the mentees",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0074",
+          "bullet_id": "b01_a867c0",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Social",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0075",
+          "bullet_id": "b01_65a93f",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Did Social Work under NSS, IITK involving planning and executing 2 Healthcare camps with Ayushman Bharat Abhiyan in",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0076",
+          "bullet_id": "b01_3f08fe",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Work | the rural areas around Kanpur and a Blood Donation camps with Raktarpan, IITK in IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0077",
+          "bullet_id": "b01_d66882",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Educational",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0078",
+          "bullet_id": "b01_5ca22c",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Worked with NSS under Prof. HC Verma to collaborate and execute Shikha Sopan (Science Mela) in Sopan Ashram and",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0079",
+          "bullet_id": "b01_a5156a",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Outreach | taught the concept of Coupled Pendulum to 30,000 students and grown-ups",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 79,
+    "parser_warnings": []
+  },
+  "quant": {
+    "role": "quant",
+    "document": {
+      "source_file": "temp/220830_priyanshu_singh.pdf",
+      "sections": [
+        "Header",
+        "Education",
+        "Achievements",
+        "Projects",
+        "Skills",
+        "Coursework",
+        "Positions of Responsibility",
+        "Extracurricular"
+      ],
+      "links": [
+        {
+          "uri": "tel:+91-9506992619",
+          "type": "web",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "Institute / School"
+        },
+        {
+          "uri": "mailto:spriyanshu22@iitk.ac.in",
+          "type": "email",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22",
+          "type": "github_profile",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u00d3 +91-9506992619 | R spriyanshu22@iitk.ac.in"
+        },
+        {
+          "uri": "https://www.linkedin.com/in/priyanshu-singh-528922253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "type": "linkedin",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/ConnVerse.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://www.canva.com/design/DAGCIpT3rhM/y68Rd6MbJ6iQU1bI2KSjpA/edit?utm_content=DAGCIpT3rhM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+          "type": "web",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/companion_arbiter_puff.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Employed mathematical analysis to optimize feature selection and dimensionalit"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/mathematical_simulation_of_probabilitic_concepts.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "(Mar\u201924 - Apr\u201924)"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/Computer_Organization_CS220.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Implemented simulations with the average output closely matching the theoretic"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/networking_of_nodes.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph"
+        }
+      ],
+      "warnings": [],
+      "layout_diagnostics": {
+        "page1": "multi-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [
+        {
+          "metric_type": "cpi",
+          "raw": "9.5/10",
+          "value": 9.5,
+          "scale": 10.0,
+          "year_or_sem": null,
+          "institution": null,
+          "degree": null
+        }
+      ],
+      "all_skills": [
+        "cpp",
+        "dsa",
+        "git",
+        "html_css",
+        "javascript",
+        "machine_learning",
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "probability",
+        "python",
+        "react",
+        "statistics"
+      ],
+      "all_entities": [
+        "IIT Kanpur"
+      ],
+      "claim_count": 79
+    },
+    "score": {
+      "role_id": "quant",
+      "label": "Quantitative Finance",
+      "score": 95.23,
+      "confidence": 0.933,
+      "coverage": 0.889,
+      "competency_scores": [
+        {
+          "competency": "academic_strength",
+          "weight": 0.18,
+          "strength": 1.0,
+          "contribution": 18.0,
+          "supporting_claims": [],
+          "reason_codes": [
+            "cpi_direct"
+          ]
+        },
+        {
+          "competency": "mathematics",
+          "weight": 0.18,
+          "strength": 0.8901,
+          "contribution": 16.02,
+          "supporting_claims": [
+            "c0056",
+            "c0032",
+            "c0026"
+          ],
+          "reason_codes": [
+            "mathematics_keyword",
+            "skill_match"
+          ]
+        },
+        {
+          "competency": "probability",
+          "weight": 0.14,
+          "strength": 0.4611,
+          "contribution": 6.46,
+          "supporting_claims": [
+            "c0039"
+          ],
+          "reason_codes": [
+            "probability_keyword",
+            "section_match"
+          ]
+        },
+        {
+          "competency": "statistics",
+          "weight": 0.12,
+          "strength": 0.8234,
+          "contribution": 9.88,
+          "supporting_claims": [
+            "c0036",
+            "c0060",
+            "c0061"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "algorithms",
+          "weight": 0.12,
+          "strength": 0.9638,
+          "contribution": 11.57,
+          "supporting_claims": [
+            "c0028",
+            "c0036",
+            "c0054"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "coursework",
+          "weight": 0.08,
+          "strength": 0.309,
+          "contribution": 2.47,
+          "supporting_claims": [
+            "c0061"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "programming",
+          "weight": 0.08,
+          "strength": 0.9651,
+          "contribution": 7.72,
+          "supporting_claims": [
+            "c0028",
+            "c0036",
+            "c0059"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "research",
+          "weight": 0.06,
+          "strength": 0.6281,
+          "contribution": 3.77,
+          "supporting_claims": [
+            "c0014",
+            "c0011",
+            "c0012"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "quantitative_projects",
+          "weight": 0.04,
+          "strength": 0.834,
+          "contribution": 3.34,
+          "supporting_claims": [
+            "c0032",
+            "c0026",
+            "c0035"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "section_match",
+            "quantitative_keyword"
+          ]
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "academic_strength",
+          "strength": 1.0,
+          "claims": [],
+          "reason": "Strong benchmark performance in Academic Strength with 0 verified claim(s)."
+        },
+        {
+          "competency": "mathematics",
+          "strength": 0.8901,
+          "claims": [
+            "c0056",
+            "c0032",
+            "c0026"
+          ],
+          "reason": "Strong benchmark performance in Mathematics with 3 verified claim(s)."
+        },
+        {
+          "competency": "algorithms",
+          "strength": 0.9638,
+          "claims": [
+            "c0028",
+            "c0036",
+            "c0054"
+          ],
+          "reason": "Strong benchmark performance in Algorithms with 3 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "probability",
+          "strength": 0.4611,
+          "missing_weighted_signal": 0.0754,
+          "weight": 0.14,
+          "diagnosis": "Missing explicit evidence or project work in Probability for target role."
+        },
+        {
+          "competency": "coursework",
+          "strength": 0.309,
+          "missing_weighted_signal": 0.0553,
+          "weight": 0.08,
+          "diagnosis": "Missing explicit evidence or project work in Coursework for target role."
+        },
+        {
+          "competency": "research",
+          "strength": 0.6281,
+          "missing_weighted_signal": 0.0223,
+          "weight": 0.06,
+          "diagnosis": "Missing explicit evidence or project work in Research for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "probability",
+          "source_claim_id": "c0039",
+          "section": "Projects",
+          "entry_id": "e01_c8914d",
+          "page": 1,
+          "text_snippet": "Bayesian statistics were simulated to compare theoretical calculations with simulated results.",
+          "diagnosis": "Existing evidence for 'probability' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_c8914d): 'Bayesian statistics were simulated to compare theoretical calculations with simu\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.82
+        },
+        {
+          "priority": "critical",
+          "competency": "coursework",
+          "source_claim_id": "c0061",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "diagnosis": "Existing evidence for 'coursework' is weak or indirect.",
+          "action": "Revise bullet in Coursework (page 1, entry e01_a1e05c): 'Introduction to Machine Learning | Discrete Mathematics for Computer Science | L\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.88
+        },
+        {
+          "priority": "critical",
+          "competency": "research",
+          "source_claim_id": "c0012",
+          "section": "Projects",
+          "entry_id": "e01_12c2c1",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "diagnosis": "Existing evidence for 'research' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_12c2c1): '(Jan'24 - Apr'24)\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 1.8,
+          "confidence": 0.75
+        },
+        {
+          "priority": "important",
+          "competency": "statistics",
+          "source_claim_id": "c0061",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "diagnosis": "Existing evidence for 'statistics' is weak or indirect.",
+          "action": "Revise bullet in Coursework (page 1, entry e01_a1e05c): 'Introduction to Machine Learning | Discrete Mathematics for Computer Science | L\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 2.12,
+          "confidence": 0.67
+        },
+        {
+          "priority": "important",
+          "competency": "mathematics",
+          "source_claim_id": "c0026",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Employed mathematical analysis to optimize feature selection and dimensionality, mapping 32-bit challenges to feature ve",
+          "diagnosis": "Existing evidence for 'mathematics' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_585148): 'Employed mathematical analysis to optimize feature selection and dimensionality,\u2026' \u2014 add a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 1.98,
+          "confidence": 0.64
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0017",
+          "bullet_id": "b01_ff6342",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with backend group on integration tasks, ensuring smooth interaction between frontend and backend",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Collaborated with backend group on ...)."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0019",
+          "bullet_id": "b01_467aac",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with a team of 10 members, maintaining version control and project continuity on GitHub",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_8b54cc",
+          "section": "Achievements",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Awarded the Certificate of Academic Excellence for exceptional academic performance for two consecutive years",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_a45cb2",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "2022,23",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0003",
+          "bullet_id": "b01_1ff9d1",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 865 in JEE Advanced '22 amongst 160,000 candidates who cleared JEE Mains",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0004",
+          "bullet_id": "b01_1daa95",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0005",
+          "bullet_id": "b01_e44816",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 1209 in JEE Mains '22 (99.87 % ile) amongst over 1 million candidates",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0006",
+          "bullet_id": "b01_6e702a",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0007",
+          "bullet_id": "b01_7392f6",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 1508 in Kishore Vaigyanik Protsahana Yojana (KVPY SX) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0008",
+          "bullet_id": "b01_9a4f44",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0009",
+          "bullet_id": "b01_bbbad8",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0010",
+          "bullet_id": "b01_5107f0",
+          "section": "Achievements",
+          "entry_id": "e01_5107f0",
+          "page": 1,
+          "text_snippet": "2021",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0011",
+          "bullet_id": "b01_1aa1a7",
+          "section": "Projects",
+          "entry_id": "e01_1aa1a7",
+          "page": 1,
+          "text_snippet": "Course Project, CS253, Prof. Indranil Saha, CSE Dept - | \u0087 1",
+          "issues": [
+            "Unrecognized action verb 'course' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0012",
+          "bullet_id": "b01_12c2c1",
+          "section": "Projects",
+          "entry_id": "e01_12c2c1",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0013",
+          "bullet_id": "b01_a04f92",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0014",
+          "bullet_id": "b01_ca4faf",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "To develop a social networking platform for connecting 8000+ IIT Kanpur students based on interests, skills, and activit",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0015",
+          "bullet_id": "b01_a2443d",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Led the frontend development group, implementing all pages using React and ensuring a cohesive user interface",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Led the frontend development group,...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0016",
+          "bullet_id": "b01_268dd3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0018",
+          "bullet_id": "b01_9050b3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Implemented features like authentication, blogs, and real-time chat with Group and Direct Messaging capabilities",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Implemented features like authentic...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0020",
+          "bullet_id": "b01_78da27",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0021",
+          "bullet_id": "b01_3a4e4a",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Successfully deployed a fully functional social networking platform accessible to the IIT Kanpur student community",
+          "issues": [
+            "Unrecognized action verb 'successfully' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Successfully deployed a fully funct...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0022",
+          "bullet_id": "b01_4f8fb0",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Cracking the Companion Arbiter PUF\u2013 Course Project, CS771, Prof. Purusshottam Kar, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'cracking' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0023",
+          "bullet_id": "b01_b6cac4",
+          "section": "Projects",
+          "entry_id": "e01_b6cac4",
+          "page": 1,
+          "text_snippet": "(Mar'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0024",
+          "bullet_id": "b01_585148",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0025",
+          "bullet_id": "b01_2e66a9",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "To develop a linear model to mirror the functionality of the Companion Arbiter PUF using feature engineering",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To develop a linear model to mirror...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0026",
+          "bullet_id": "b01_89ce7d",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Employed mathematical analysis to optimize feature selection and dimensionality, mapping 32-bit challenges to feature ve",
+          "issues": [
+            "Unrecognized action verb 'employed' in Projects.",
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0027",
+          "bullet_id": "b01_a5c886",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0028",
+          "bullet_id": "b01_ae79c3",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Implemented the model in Python using LogisticRegression, leveraging a dataset of 50k data points",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0029",
+          "bullet_id": "b01_a10e17",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Compared the results form the LinearSVC, LogisticRegression, and RidgeClassifier models for enhanced efficiency",
+          "issues": [
+            "Unrecognized action verb 'compared' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Compared the results form the Linea...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0030",
+          "bullet_id": "b01_6d9dda",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0031",
+          "bullet_id": "b01_1a96f1",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Achieved an accuracy of 99.32% on LogisticRegression model in mirroring the Companion Arbiter PUF's functionality",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0032",
+          "bullet_id": "b01_ff7ad6",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Mathematical Simulations of Probabilistic Concepts\u2013 Course Project, CS203, Prof. Subhajit Roy, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'mathematical' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0033",
+          "bullet_id": "b01_16fe1e",
+          "section": "Projects",
+          "entry_id": "e01_16fe1e",
+          "page": 1,
+          "text_snippet": "(Mar'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0034",
+          "bullet_id": "b01_981814",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0035",
+          "bullet_id": "b01_561829",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "To design and implement mathematical simulations of probabilistic concepts in Python using Python libraries.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To design and implement mathematica...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0036",
+          "bullet_id": "b01_b6181c",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Utilized Python libraries such as matplotlib, numpy, and random to design simulations in Python. These simulations em-",
+          "issues": [
+            "Unrecognized action verb 'utilized' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Utilized Python libraries such as m...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0037",
+          "bullet_id": "b01_39374e",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0038",
+          "bullet_id": "b01_192d06",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Topics including Bertrand's paradox, Birthday paradox, generalized Monty Hall problem, Inverse CDF function, and ployed ",
+          "issues": [
+            "Unrecognized action verb 'topics' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0039",
+          "bullet_id": "b01_c8914d",
+          "section": "Projects",
+          "entry_id": "e01_c8914d",
+          "page": 1,
+          "text_snippet": "Bayesian statistics were simulated to compare theoretical calculations with simulated results.",
+          "issues": [
+            "Unrecognized action verb 'bayesian' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Bayesian statistics were simulated ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0040",
+          "bullet_id": "b01_4dcbc7",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0041",
+          "bullet_id": "b01_bfa110",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Implemented simulations with the average output closely matching the theoretical calculations with an accuracy of over 9",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0042",
+          "bullet_id": "b01_938037",
+          "section": "Projects",
+          "entry_id": "e01_938037",
+          "page": 1,
+          "text_snippet": "MIPS Processor Design\u2013 Course Project, CS220, Prof. Mainak Chaudhuri, CSE Dept.\u0087",
+          "issues": [
+            "Unrecognized action verb 'mips' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0043",
+          "bullet_id": "b01_998585",
+          "section": "Projects",
+          "entry_id": "e01_998585",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0044",
+          "bullet_id": "b01_5bc701",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0045",
+          "bullet_id": "b01_e25c1a",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "To design and implement a MIPS processor using Verilog, based on the 32-bit MIPS instruction set architecture.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0046",
+          "bullet_id": "b01_44051b",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0047",
+          "bullet_id": "b01_bdf9bb",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Implemented a MIPS processor in Verilog using a 7-state FSM, integrating instruction, data memory, and a register file.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0048",
+          "bullet_id": "b01_87eee7",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Developed and tested MIPS code for Binary Search, executing it on a SPIM Simulator with essential MIPS functions.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developed and tested MIPS code for ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0049",
+          "bullet_id": "b01_51440b",
+          "section": "Projects",
+          "entry_id": "e01_51440b",
+          "page": 1,
+          "text_snippet": "Networking of Nodes\u2013 Stamatics, IIT Kanpur | \u0087",
+          "issues": [
+            "Unrecognized action verb 'networking' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Networking of Nodes\u2013 Stamatics, IIT...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0050",
+          "bullet_id": "b01_317960",
+          "section": "Projects",
+          "entry_id": "e01_317960",
+          "page": 1,
+          "text_snippet": "(May'23 - Jun'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0051",
+          "bullet_id": "b01_2cba32",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0052",
+          "bullet_id": "b01_a4daf9",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "To conduct an in-depth study of Graph Theory focusing on key concepts such as Graph Traversal, Bipartite Graphs, and Sho",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To conduct an in-depth study of Gra...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0053",
+          "bullet_id": "b01_c0b4f2",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph",
+          "issues": [
+            "Unrecognized action verb 'path' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Path Algorithms, Minimum Spanning T...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0054",
+          "bullet_id": "b01_04036e",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Developing and implementing efficient algorithms, including multisource BFS, Bellman-Ford and Dijkstra's for shortest pa",
+          "issues": [
+            "Unrecognized action verb 'developing' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developing and implementing efficie...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0055",
+          "bullet_id": "b01_f69cbf",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0056",
+          "bullet_id": "b01_a7d22a",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated Kruskal's & Prim's algorithm for minimum spanning trees (MSTs) by deriving the cut and cycle property of grap",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated Kruskal's & Prim's algor...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0057",
+          "bullet_id": "b01_566b11",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated and implemented algorithm to find articulation points and bridges in a graph by utilizing the concept of DFS ",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated and implemented algorith...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0058",
+          "bullet_id": "b01_47b7d6",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Devised and implemented the algorithm to check for bipartite graphs using the concepts of BFS tree",
+          "issues": [
+            "Unrecognized action verb 'devised' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Devised and implemented the algorit...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0059",
+          "bullet_id": "b01_94d9f5",
+          "section": "Skills",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Programming Languages : C, C++, HTML, Javascript, CSS",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0060",
+          "bullet_id": "b01_857212",
+          "section": "Skills",
+          "entry_id": "e01_94d9f5",
+          "page": 1,
+          "text_snippet": "Softwares, Libraries and FrameWorks: Numpy, Pandas, LATEX, GitHub",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0061",
+          "bullet_id": "b01_ea30a2",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0062",
+          "bullet_id": "b01_47ecdd",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_47ecdd",
+          "page": 1,
+          "text_snippet": "Academic Mentor Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0063",
+          "bullet_id": "b01_68026d",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Oct'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0064",
+          "bullet_id": "b01_535844",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "Mentoring 1200+ students in their CHM Course includes concepts related to the Physical Chemistry",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0065",
+          "bullet_id": "b01_f234c6",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0066",
+          "bullet_id": "b01_a98200",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Providing academic assistance to 30+ students who are having difficulty understanding the course content",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0067",
+          "bullet_id": "b01_ab9120",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Coordinated with a team of 25 members for the conduct various Institute Level and Hall Level Doubt sessions",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0068",
+          "bullet_id": "b01_1ed6ca",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_1ed6ca",
+          "page": 1,
+          "text_snippet": "Student Guide Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0069",
+          "bullet_id": "b01_58882c",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Present)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0070",
+          "bullet_id": "b01_0275b3",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "Guided and supported a cohort of six students, facilitating a smooth transition into the challenges of college life",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0071",
+          "bullet_id": "b01_c41e48",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0072",
+          "bullet_id": "b01_85a6a2",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Assisted counselling services in organizing various orientation programs and interactive sessions for incoming students",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0073",
+          "bullet_id": "b01_239b89",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Provided one-on-one mentorship and counselling to address personal and academic concerns of the mentees",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0074",
+          "bullet_id": "b01_a867c0",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Social",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0075",
+          "bullet_id": "b01_65a93f",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Did Social Work under NSS, IITK involving planning and executing 2 Healthcare camps with Ayushman Bharat Abhiyan in",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0076",
+          "bullet_id": "b01_3f08fe",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Work | the rural areas around Kanpur and a Blood Donation camps with Raktarpan, IITK in IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0077",
+          "bullet_id": "b01_d66882",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Educational",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0078",
+          "bullet_id": "b01_5ca22c",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Worked with NSS under Prof. HC Verma to collaborate and execute Shikha Sopan (Science Mela) in Sopan Ashram and",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0079",
+          "bullet_id": "b01_a5156a",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Outreach | taught the concept of Coupled Pendulum to 30,000 students and grown-ups",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 79,
+    "parser_warnings": []
+  },
+  "sde": {
+    "role": "sde",
+    "document": {
+      "source_file": "temp/220830_priyanshu_singh.pdf",
+      "sections": [
+        "Header",
+        "Education",
+        "Achievements",
+        "Projects",
+        "Skills",
+        "Coursework",
+        "Positions of Responsibility",
+        "Extracurricular"
+      ],
+      "links": [
+        {
+          "uri": "tel:+91-9506992619",
+          "type": "web",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "Institute / School"
+        },
+        {
+          "uri": "mailto:spriyanshu22@iitk.ac.in",
+          "type": "email",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22",
+          "type": "github_profile",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u00d3 +91-9506992619 | R spriyanshu22@iitk.ac.in"
+        },
+        {
+          "uri": "https://www.linkedin.com/in/priyanshu-singh-528922253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          "type": "linkedin",
+          "page": 1,
+          "section": "Education",
+          "associated_text": "\u0087 spriyanshu22 | \u00af priyanshu-singh"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/ConnVerse.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://www.canva.com/design/DAGCIpT3rhM/y68Rd6MbJ6iQU1bI2KSjpA/edit?utm_content=DAGCIpT3rhM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+          "type": "web",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conduct"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/companion_arbiter_puff.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Employed mathematical analysis to optimize feature selection and dimensionalit"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/mathematical_simulation_of_probabilitic_concepts.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "(Mar\u201924 - Apr\u201924)"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/Computer_Organization_CS220.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "\u2022 Implemented simulations with the average output closely matching the theoretic"
+        },
+        {
+          "uri": "https://github.com/spriyanshu22/networking_of_nodes.git",
+          "type": "github_repo",
+          "page": 1,
+          "section": "Projects",
+          "associated_text": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph"
+        }
+      ],
+      "warnings": [],
+      "layout_diagnostics": {
+        "page1": "multi-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [
+        {
+          "metric_type": "cpi",
+          "raw": "9.5/10",
+          "value": 9.5,
+          "scale": 10.0,
+          "year_or_sem": null,
+          "institution": null,
+          "degree": null
+        }
+      ],
+      "all_skills": [
+        "cpp",
+        "dsa",
+        "git",
+        "html_css",
+        "javascript",
+        "machine_learning",
+        "matplotlib",
+        "numpy",
+        "pandas",
+        "probability",
+        "python",
+        "react",
+        "statistics"
+      ],
+      "all_entities": [
+        "IIT Kanpur"
+      ],
+      "claim_count": 79
+    },
+    "score": {
+      "role_id": "sde",
+      "label": "Software Development Engineering",
+      "score": 73.72,
+      "confidence": 0.8,
+      "coverage": 0.667,
+      "competency_scores": [
+        {
+          "competency": "algorithms",
+          "weight": 0.18,
+          "strength": 0.9638,
+          "contribution": 17.35,
+          "supporting_claims": [
+            "c0028",
+            "c0036",
+            "c0054"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "programming",
+          "weight": 0.15,
+          "strength": 0.9651,
+          "contribution": 14.48,
+          "supporting_claims": [
+            "c0028",
+            "c0036",
+            "c0059"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "software_engineering",
+          "weight": 0.18,
+          "strength": 0.968,
+          "contribution": 17.42,
+          "supporting_claims": [
+            "c0028",
+            "c0015",
+            "c0019"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "projects",
+          "weight": 0.16,
+          "strength": 1.0,
+          "contribution": 16.0,
+          "supporting_claims": [
+            "c0028",
+            "c0015",
+            "c0019"
+          ],
+          "reason_codes": [
+            "section_match",
+            "signal_match",
+            "software_project_bonus"
+          ]
+        },
+        {
+          "competency": "coursework",
+          "weight": 0.08,
+          "strength": 0.309,
+          "contribution": 2.47,
+          "supporting_claims": [
+            "c0061"
+          ],
+          "reason_codes": [
+            "section_match"
+          ]
+        },
+        {
+          "competency": "competitive_programming",
+          "weight": 0.05,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "open_source",
+          "weight": 0.04,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "impact",
+          "weight": 0.1,
+          "strength": 1.0,
+          "contribution": 10.0,
+          "supporting_claims": [
+            "c0003",
+            "c0005",
+            "c0015"
+          ],
+          "reason_codes": [
+            "signal_match",
+            "technical_impact_bonus"
+          ]
+        },
+        {
+          "competency": "internships",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": [
+        {
+          "reason": "Academic-only SDE profile: missing industry internships, open-source contributions, or competitive programming",
+          "points": 12.0,
+          "code": "lacks_practical_sde_experience"
+        }
+      ]
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "software_engineering",
+          "strength": 0.968,
+          "claims": [
+            "c0028",
+            "c0015",
+            "c0019"
+          ],
+          "reason": "Strong benchmark performance in Software Engineering with 3 verified claim(s)."
+        },
+        {
+          "competency": "algorithms",
+          "strength": 0.9638,
+          "claims": [
+            "c0028",
+            "c0036",
+            "c0054"
+          ],
+          "reason": "Strong benchmark performance in Algorithms with 3 verified claim(s)."
+        },
+        {
+          "competency": "projects",
+          "strength": 1.0,
+          "claims": [
+            "c0028",
+            "c0015",
+            "c0019"
+          ],
+          "reason": "Strong benchmark performance in Projects with 3 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "internships",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.06,
+          "weight": 0.06,
+          "diagnosis": "Missing explicit evidence or project work in Internships for target role."
+        },
+        {
+          "competency": "coursework",
+          "strength": 0.309,
+          "missing_weighted_signal": 0.0553,
+          "weight": 0.08,
+          "diagnosis": "Missing explicit evidence or project work in Coursework for target role."
+        },
+        {
+          "competency": "competitive_programming",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.05,
+          "weight": 0.05,
+          "diagnosis": "Missing explicit evidence or project work in Competitive Programming for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "internships",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'internships' was detected.",
+          "action": "If you genuinely have evidence for 'internships', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.8,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "coursework",
+          "source_claim_id": "c0061",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "diagnosis": "Existing evidence for 'coursework' is weak or indirect.",
+          "action": "Revise bullet in Coursework (page 1, entry e01_a1e05c): 'Introduction to Machine Learning | Discrete Mathematics for Computer Science | L\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.88
+        },
+        {
+          "priority": "critical",
+          "competency": "competitive_programming",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'competitive programming' was detected.",
+          "action": "If you genuinely have evidence for 'competitive programming', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.5,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "open_source",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'open source' was detected.",
+          "action": "If you genuinely have evidence for 'open source', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "algorithms",
+          "source_claim_id": "c0054",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Developing and implementing efficient algorithms, including multisource BFS, Bellman-Ford and Dijkstra's for shortest pa",
+          "diagnosis": "Existing evidence for 'algorithms' is weak or indirect.",
+          "action": "Revise bullet in Projects (page 1, entry e01_c0b4f2): 'Developing and implementing efficient algorithms, including multisource BFS, Bel\u2026' \u2014 add a truthful measurable outcome (only if one genuinely exists); a stronger ownership/action verb that remains factually accurate. Do not invent metrics or achievements.",
+          "max_potential_gain_estimate": 0.65,
+          "confidence": 0.61
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0017",
+          "bullet_id": "b01_ff6342",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with backend group on integration tasks, ensuring smooth interaction between frontend and backend",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Collaborated with backend group on ...)."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0019",
+          "bullet_id": "b01_467aac",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Collaborated with a team of 10 members, maintaining version control and project continuity on GitHub",
+          "issues": [
+            "Weak action verb 'collaborated' in Projects."
+          ],
+          "suggestions": [
+            "Replace 'collaborated' with an active ownership verb like 'Architected', 'Engineered', or 'Led' in 'Projects'."
+          ],
+          "severity": "warning"
+        },
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_8b54cc",
+          "section": "Achievements",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Awarded the Certificate of Academic Excellence for exceptional academic performance for two consecutive years",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_a45cb2",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "2022,23",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0003",
+          "bullet_id": "b01_1ff9d1",
+          "section": "Achievements",
+          "entry_id": "e01_a45cb2",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 865 in JEE Advanced '22 amongst 160,000 candidates who cleared JEE Mains",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0004",
+          "bullet_id": "b01_1daa95",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0005",
+          "bullet_id": "b01_e44816",
+          "section": "Achievements",
+          "entry_id": "e01_1daa95",
+          "page": 1,
+          "text_snippet": "Secured an All India Rank of 1209 in JEE Mains '22 (99.87 % ile) amongst over 1 million candidates",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0006",
+          "bullet_id": "b01_6e702a",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0007",
+          "bullet_id": "b01_7392f6",
+          "section": "Achievements",
+          "entry_id": "e01_6e702a",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 1508 in Kishore Vaigyanik Protsahana Yojana (KVPY SX) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0008",
+          "bullet_id": "b01_9a4f44",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "2022",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0009",
+          "bullet_id": "b01_bbbad8",
+          "section": "Achievements",
+          "entry_id": "e01_9a4f44",
+          "page": 1,
+          "text_snippet": "Secured an AIR of 699 in Kishore Vaigyanik Protsahana Yojana (KVPY SA) conducted by IISc Bangalore",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0010",
+          "bullet_id": "b01_5107f0",
+          "section": "Achievements",
+          "entry_id": "e01_5107f0",
+          "page": 1,
+          "text_snippet": "2021",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0011",
+          "bullet_id": "b01_1aa1a7",
+          "section": "Projects",
+          "entry_id": "e01_1aa1a7",
+          "page": 1,
+          "text_snippet": "Course Project, CS253, Prof. Indranil Saha, CSE Dept - | \u0087 1",
+          "issues": [
+            "Unrecognized action verb 'course' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0012",
+          "bullet_id": "b01_12c2c1",
+          "section": "Projects",
+          "entry_id": "e01_12c2c1",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0013",
+          "bullet_id": "b01_a04f92",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0014",
+          "bullet_id": "b01_ca4faf",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "To develop a social networking platform for connecting 8000+ IIT Kanpur students based on interests, skills, and activit",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0015",
+          "bullet_id": "b01_a2443d",
+          "section": "Projects",
+          "entry_id": "e01_a04f92",
+          "page": 1,
+          "text_snippet": "Led the frontend development group, implementing all pages using React and ensuring a cohesive user interface",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Led the frontend development group,...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0016",
+          "bullet_id": "b01_268dd3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0018",
+          "bullet_id": "b01_9050b3",
+          "section": "Projects",
+          "entry_id": "e01_268dd3",
+          "page": 1,
+          "text_snippet": "Implemented features like authentication, blogs, and real-time chat with Group and Direct Messaging capabilities",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Implemented features like authentic...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0020",
+          "bullet_id": "b01_78da27",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0021",
+          "bullet_id": "b01_3a4e4a",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Successfully deployed a fully functional social networking platform accessible to the IIT Kanpur student community",
+          "issues": [
+            "Unrecognized action verb 'successfully' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Successfully deployed a fully funct...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0022",
+          "bullet_id": "b01_4f8fb0",
+          "section": "Projects",
+          "entry_id": "e01_78da27",
+          "page": 1,
+          "text_snippet": "Cracking the Companion Arbiter PUF\u2013 Course Project, CS771, Prof. Purusshottam Kar, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'cracking' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0023",
+          "bullet_id": "b01_b6cac4",
+          "section": "Projects",
+          "entry_id": "e01_b6cac4",
+          "page": 1,
+          "text_snippet": "(Mar'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0024",
+          "bullet_id": "b01_585148",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0025",
+          "bullet_id": "b01_2e66a9",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "To develop a linear model to mirror the functionality of the Companion Arbiter PUF using feature engineering",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To develop a linear model to mirror...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0026",
+          "bullet_id": "b01_89ce7d",
+          "section": "Projects",
+          "entry_id": "e01_585148",
+          "page": 1,
+          "text_snippet": "Employed mathematical analysis to optimize feature selection and dimensionality, mapping 32-bit challenges to feature ve",
+          "issues": [
+            "Unrecognized action verb 'employed' in Projects.",
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0027",
+          "bullet_id": "b01_a5c886",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0028",
+          "bullet_id": "b01_ae79c3",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Implemented the model in Python using LogisticRegression, leveraging a dataset of 50k data points",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0029",
+          "bullet_id": "b01_a10e17",
+          "section": "Projects",
+          "entry_id": "e01_a5c886",
+          "page": 1,
+          "text_snippet": "Compared the results form the LinearSVC, LogisticRegression, and RidgeClassifier models for enhanced efficiency",
+          "issues": [
+            "Unrecognized action verb 'compared' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Compared the results form the Linea...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0030",
+          "bullet_id": "b01_6d9dda",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0031",
+          "bullet_id": "b01_1a96f1",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Achieved an accuracy of 99.32% on LogisticRegression model in mirroring the Companion Arbiter PUF's functionality",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0032",
+          "bullet_id": "b01_ff7ad6",
+          "section": "Projects",
+          "entry_id": "e01_6d9dda",
+          "page": 1,
+          "text_snippet": "Mathematical Simulations of Probabilistic Concepts\u2013 Course Project, CS203, Prof. Subhajit Roy, CSE Dept. | \u0087",
+          "issues": [
+            "Unrecognized action verb 'mathematical' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0033",
+          "bullet_id": "b01_16fe1e",
+          "section": "Projects",
+          "entry_id": "e01_16fe1e",
+          "page": 1,
+          "text_snippet": "(Mar'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0034",
+          "bullet_id": "b01_981814",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0035",
+          "bullet_id": "b01_561829",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "To design and implement mathematical simulations of probabilistic concepts in Python using Python libraries.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To design and implement mathematica...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0036",
+          "bullet_id": "b01_b6181c",
+          "section": "Projects",
+          "entry_id": "e01_981814",
+          "page": 1,
+          "text_snippet": "Utilized Python libraries such as matplotlib, numpy, and random to design simulations in Python. These simulations em-",
+          "issues": [
+            "Unrecognized action verb 'utilized' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Utilized Python libraries such as m...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0037",
+          "bullet_id": "b01_39374e",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0038",
+          "bullet_id": "b01_192d06",
+          "section": "Projects",
+          "entry_id": "e01_39374e",
+          "page": 1,
+          "text_snippet": "Topics including Bertrand's paradox, Birthday paradox, generalized Monty Hall problem, Inverse CDF function, and ployed ",
+          "issues": [
+            "Unrecognized action verb 'topics' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0039",
+          "bullet_id": "b01_c8914d",
+          "section": "Projects",
+          "entry_id": "e01_c8914d",
+          "page": 1,
+          "text_snippet": "Bayesian statistics were simulated to compare theoretical calculations with simulated results.",
+          "issues": [
+            "Unrecognized action verb 'bayesian' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Bayesian statistics were simulated ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0040",
+          "bullet_id": "b01_4dcbc7",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Result",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0041",
+          "bullet_id": "b01_bfa110",
+          "section": "Projects",
+          "entry_id": "e01_4dcbc7",
+          "page": 1,
+          "text_snippet": "Implemented simulations with the average output closely matching the theoretical calculations with an accuracy of over 9",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0042",
+          "bullet_id": "b01_938037",
+          "section": "Projects",
+          "entry_id": "e01_938037",
+          "page": 1,
+          "text_snippet": "MIPS Processor Design\u2013 Course Project, CS220, Prof. Mainak Chaudhuri, CSE Dept.\u0087",
+          "issues": [
+            "Unrecognized action verb 'mips' in Projects."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0043",
+          "bullet_id": "b01_998585",
+          "section": "Projects",
+          "entry_id": "e01_998585",
+          "page": 1,
+          "text_snippet": "(Jan'24 - Apr'24)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0044",
+          "bullet_id": "b01_5bc701",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0045",
+          "bullet_id": "b01_e25c1a",
+          "section": "Projects",
+          "entry_id": "e01_5bc701",
+          "page": 1,
+          "text_snippet": "To design and implement a MIPS processor using Verilog, based on the 32-bit MIPS instruction set architecture.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0046",
+          "bullet_id": "b01_44051b",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0047",
+          "bullet_id": "b01_bdf9bb",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Implemented a MIPS processor in Verilog using a 7-state FSM, integrating instruction, data memory, and a register file.",
+          "issues": [
+            "Numbers present but none classified as outcome/impact metrics."
+          ],
+          "suggestions": [
+            "Convert static count into measurable impact (e.g., 'reduced latency by 35%' or 'served 500+ users')."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0048",
+          "bullet_id": "b01_87eee7",
+          "section": "Projects",
+          "entry_id": "e01_44051b",
+          "page": 1,
+          "text_snippet": "Developed and tested MIPS code for Binary Search, executing it on a SPIM Simulator with essential MIPS functions.",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developed and tested MIPS code for ...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0049",
+          "bullet_id": "b01_51440b",
+          "section": "Projects",
+          "entry_id": "e01_51440b",
+          "page": 1,
+          "text_snippet": "Networking of Nodes\u2013 Stamatics, IIT Kanpur | \u0087",
+          "issues": [
+            "Unrecognized action verb 'networking' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Networking of Nodes\u2013 Stamatics, IIT...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0050",
+          "bullet_id": "b01_317960",
+          "section": "Projects",
+          "entry_id": "e01_317960",
+          "page": 1,
+          "text_snippet": "(May'23 - Jun'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0051",
+          "bullet_id": "b01_2cba32",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "Objective",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0052",
+          "bullet_id": "b01_a4daf9",
+          "section": "Projects",
+          "entry_id": "e01_2cba32",
+          "page": 1,
+          "text_snippet": "To conduct an in-depth study of Graph Theory focusing on key concepts such as Graph Traversal, Bipartite Graphs, and Sho",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (To conduct an in-depth study of Gra...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0053",
+          "bullet_id": "b01_c0b4f2",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Path Algorithms, Minimum Spanning Tree, Bridges and Articulation Points in Graph",
+          "issues": [
+            "Unrecognized action verb 'path' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Path Algorithms, Minimum Spanning T...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0054",
+          "bullet_id": "b01_04036e",
+          "section": "Projects",
+          "entry_id": "e01_c0b4f2",
+          "page": 1,
+          "text_snippet": "Developing and implementing efficient algorithms, including multisource BFS, Bellman-Ford and Dijkstra's for shortest pa",
+          "issues": [
+            "Unrecognized action verb 'developing' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Developing and implementing efficie...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0055",
+          "bullet_id": "b01_f69cbf",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Approach",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0056",
+          "bullet_id": "b01_a7d22a",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated Kruskal's & Prim's algorithm for minimum spanning trees (MSTs) by deriving the cut and cycle property of grap",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated Kruskal's & Prim's algor...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0057",
+          "bullet_id": "b01_566b11",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Formulated and implemented algorithm to find articulation points and bridges in a graph by utilizing the concept of DFS ",
+          "issues": [
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Formulated and implemented algorith...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0058",
+          "bullet_id": "b01_47b7d6",
+          "section": "Projects",
+          "entry_id": "e01_f69cbf",
+          "page": 1,
+          "text_snippet": "Devised and implemented the algorithm to check for bipartite graphs using the concepts of BFS tree",
+          "issues": [
+            "Unrecognized action verb 'devised' in Projects.",
+            "No quantifiable metric detected."
+          ],
+          "suggestions": [
+            "Start bullet in 'Projects' with a strong action verb to signal ownership.",
+            "Quantify user base growth, accuracy (%), or speedup (x) in Projects (Devised and implemented the algorit...)."
+          ],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0059",
+          "bullet_id": "b01_94d9f5",
+          "section": "Skills",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Programming Languages : C, C++, HTML, Javascript, CSS",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0060",
+          "bullet_id": "b01_857212",
+          "section": "Skills",
+          "entry_id": "e01_94d9f5",
+          "page": 1,
+          "text_snippet": "Softwares, Libraries and FrameWorks: Numpy, Pandas, LATEX, GitHub",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0061",
+          "bullet_id": "b01_ea30a2",
+          "section": "Coursework",
+          "entry_id": "e01_a1e05c",
+          "page": 1,
+          "text_snippet": "Introduction to Machine Learning | Discrete Mathematics for Computer Science | Logic & Probability for Computer Science",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0062",
+          "bullet_id": "b01_47ecdd",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_47ecdd",
+          "page": 1,
+          "text_snippet": "Academic Mentor Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0063",
+          "bullet_id": "b01_68026d",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Oct'23)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0064",
+          "bullet_id": "b01_535844",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_68026d",
+          "page": 1,
+          "text_snippet": "Mentoring 1200+ students in their CHM Course includes concepts related to the Physical Chemistry",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0065",
+          "bullet_id": "b01_f234c6",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0066",
+          "bullet_id": "b01_a98200",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Providing academic assistance to 30+ students who are having difficulty understanding the course content",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0067",
+          "bullet_id": "b01_ab9120",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_f234c6",
+          "page": 1,
+          "text_snippet": "Coordinated with a team of 25 members for the conduct various Institute Level and Hall Level Doubt sessions",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0068",
+          "bullet_id": "b01_1ed6ca",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_1ed6ca",
+          "page": 1,
+          "text_snippet": "Student Guide Counselling Service, IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0069",
+          "bullet_id": "b01_58882c",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "(Oct'22 - Present)",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0070",
+          "bullet_id": "b01_0275b3",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_58882c",
+          "page": 1,
+          "text_snippet": "Guided and supported a cohort of six students, facilitating a smooth transition into the challenges of college life",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0071",
+          "bullet_id": "b01_c41e48",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Mentorship",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0072",
+          "bullet_id": "b01_85a6a2",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Assisted counselling services in organizing various orientation programs and interactive sessions for incoming students",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0073",
+          "bullet_id": "b01_239b89",
+          "section": "Positions of Responsibility",
+          "entry_id": "e01_c41e48",
+          "page": 1,
+          "text_snippet": "Provided one-on-one mentorship and counselling to address personal and academic concerns of the mentees",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0074",
+          "bullet_id": "b01_a867c0",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Social",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0075",
+          "bullet_id": "b01_65a93f",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Did Social Work under NSS, IITK involving planning and executing 2 Healthcare camps with Ayushman Bharat Abhiyan in",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0076",
+          "bullet_id": "b01_3f08fe",
+          "section": "Extracurricular",
+          "entry_id": "e01_a867c0",
+          "page": 1,
+          "text_snippet": "Work | the rural areas around Kanpur and a Blood Donation camps with Raktarpan, IITK in IIT Kanpur",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0077",
+          "bullet_id": "b01_d66882",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Educational",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0078",
+          "bullet_id": "b01_5ca22c",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Worked with NSS under Prof. HC Verma to collaborate and execute Shikha Sopan (Science Mela) in Sopan Ashram and",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0079",
+          "bullet_id": "b01_a5156a",
+          "section": "Extracurricular",
+          "entry_id": "e01_d66882",
+          "page": 1,
+          "text_snippet": "Outreach | taught the concept of Coupled Pendulum to 30,000 students and grown-ups",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 79,
+    "parser_warnings": []
+  },
+  "best_fit_role": "quant"
+}
