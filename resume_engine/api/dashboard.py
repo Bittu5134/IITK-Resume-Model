@@ -103,63 +103,59 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         <!-- Upload & Control Panel -->
         <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
             <div class="absolute -right-16 -top-16 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+              <form id="analyzeForm" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  <div class="lg:col-span-7">
+                      <label class="block text-xs font-semibold text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase tracking-wider mb-2">1. Upload Resume (PDF)</label>
+                      <div id="dropzone" tabindex="0" role="button" aria-label="Upload PDF Resume" class="border-2 border-dashed border-slate-700 dark:border-slate-700 light:border-slate-300 hover:border-blue-500 transition-all duration-200 rounded-xl p-5 text-center bg-slate-950/50 dark:bg-slate-950/50 light:bg-slate-50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                          <input type="file" id="pdfFileInput" accept=".pdf" class="hidden">
+                          <div id="uploadPrompt" class="space-y-1">
+                              <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-500 group-hover:text-blue-400 transition-colors mb-1"></i>
+                              <p class="text-sm font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800">Click to browse or drop your PDF resume here</p>
+                              <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-500">Single-page PDF format supported (Max 10 MB)</p>
+                          </div>
+                          <div id="fileSelectedInfo" class="hidden flex items-center gap-3 text-left w-full bg-slate-800/80 p-3 rounded-lg border border-slate-700">
+                              <i class="fa-solid fa-file-pdf text-red-400 text-2xl"></i>
+                              <div class="flex-1 truncate">
+                                  <p id="fileName" class="text-sm font-semibold text-slate-200 truncate">resume.pdf</p>
+                                  <p id="fileSize" class="text-xs text-slate-400">0 KB</p>
+                              </div>
+                              <button type="button" id="removeFileBtn" aria-label="Remove uploaded PDF resume" class="text-slate-400 hover:text-red-400 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                  <i class="fa-solid fa-xmark"></i>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
 
-            <form id="analyzeForm" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                <!-- Dropzone -->
-                <div class="lg:col-span-7">
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">1. Upload Resume (PDF)</label>
-                    <div id="dropzone" tabindex="0" role="button" aria-label="Upload PDF Resume" class="border-2 border-dashed border-slate-700 hover:border-blue-500 transition-colors rounded-xl p-5 text-center bg-slate-950/50 cursor-pointer group flex flex-col items-center justify-center min-h-[110px] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                        <input type="file" id="pdfFileInput" accept=".pdf" class="hidden">
-                        <div id="uploadPrompt" class="space-y-1">
-                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-500 group-hover:text-blue-400 transition-colors mb-1"></i>
-                            <p class="text-sm font-medium text-slate-300">Click to browse or drop your PDF resume here</p>
-                            <p class="text-xs text-slate-500">Single-page PDF format supported (Max 10 MB)</p>
-                        </div>
-                        <div id="fileSelectedInfo" class="hidden flex items-center gap-3 text-left w-full bg-slate-800/80 p-3 rounded-lg border border-slate-700">
-                            <i class="fa-solid fa-file-pdf text-red-400 text-2xl"></i>
-                            <div class="flex-1 truncate">
-                                <p id="fileName" class="text-sm font-semibold text-slate-200 truncate">resume.pdf</p>
-                                <p id="fileSize" class="text-xs text-slate-400">0 KB</p>
-                            </div>
-                            <button type="button" id="removeFileBtn" aria-label="Remove uploaded PDF resume" class="text-slate-400 hover:text-red-400 text-sm p-1 rounded focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                  <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+                      <div>
+                          <label class="block text-xs font-semibold text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase tracking-wider mb-2">2. Target Industry Track</label>
+                          <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-2 gap-2">
+                              <button type="button" role="tab" id="role-tab-sde" aria-selected="true" aria-controls="resultsDashboard" data-role="sde" class="role-btn active px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-blue-500 bg-blue-600/20 text-blue-300 shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                  <span><i class="fa-solid fa-code mr-1.5"></i>SDE</span>
+                                  <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
+                              </button>
+                              <button type="button" role="tab" id="role-tab-quant" aria-selected="false" aria-controls="resultsDashboard" data-role="quant" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                  <span><i class="fa-solid fa-chart-line mr-1.5"></i>Quant Fin</span>
+                                  <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
+                              </button>
+                              <button type="button" role="tab" id="role-tab-consulting" aria-selected="false" aria-controls="resultsDashboard" data-role="consulting" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                  <span><i class="fa-solid fa-briefcase mr-1.5"></i>Consulting</span>
+                                  <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
+                              </button>
+                              <button type="button" role="tab" id="role-tab-core" aria-selected="false" aria-controls="resultsDashboard" data-role="core" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                                  <span><i class="fa-solid fa-gear mr-1.5"></i>Core Eng.</span>
+                                  <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
+                              </button>
+                          </div>
+                      </div>
 
-                <!-- Role Selector & Action -->
-                <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">2. Target Industry Track</label>
-                        <div role="tablist" aria-label="Target Industry Track Selection" class="grid grid-cols-2 gap-2">
-                            <button type="button" role="tab" id="role-tab-sde" aria-selected="true" aria-controls="resultsDashboard" data-role="sde" class="role-btn active px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-blue-500 bg-blue-600/20 text-blue-300 shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                <span><i class="fa-solid fa-code mr-1.5"></i>SDE</span>
-                                <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
-                            </button>
-                            <button type="button" role="tab" id="role-tab-quant" aria-selected="false" aria-controls="resultsDashboard" data-role="quant" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                <span><i class="fa-solid fa-chart-line mr-1.5"></i>Quant Fin</span>
-                                <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
-                            </button>
-                            <button type="button" role="tab" id="role-tab-consulting" aria-selected="false" aria-controls="resultsDashboard" data-role="consulting" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                <span><i class="fa-solid fa-briefcase mr-1.5"></i>Consulting</span>
-                                <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
-                            </button>
-                            <button type="button" role="tab" id="role-tab-core" aria-selected="false" aria-controls="resultsDashboard" data-role="core" class="role-btn px-3.5 py-2.5 rounded-xl border text-xs font-semibold transition flex items-center justify-between border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                <span><i class="fa-solid fa-gear mr-1.5"></i>Core Eng.</span>
-                                <i class="fa-solid fa-circle-check hidden text-blue-400 text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-lg shadow-blue-500/25 transition disabled:opacity-50 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-microchip"></i>
-                        <span>Analyze Resume</span>
-                    </button>
-                </div>
-            </form>
-        </section>
-
+                      <button type="submit" id="submitBtn" class="w-full py-3 bg-slate-800/50 hover:bg-slate-800/80 text-slate-200 hover:text-slate-100 font-semibold text-xs rounded-xl border border-slate-700 hover:border-slate-500 transition-all duration-200 flex items-center justify-center gap-2 shadow-sm focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+                          <i class="fa-solid fa-circle-nodes text-slate-400 text-xs"></i>
+                          <span>Analyze Profile</span>
+                      </button>
+                  </div>
+              </form>
+            </section>
         <!-- Loading State -->
         <div id="loadingOverlay" class="hidden bg-slate-900/90 border border-slate-800 rounded-2xl p-12 text-center space-y-4">
             <div class="inline-block relative w-16 h-16">
@@ -1020,9 +1016,6 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         }
 
     </script>
-<!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js?token=48e6de9c-0a50-4c29-a06a-f0c281aea165"></script>
-<!-- impeccable-live-end -->
 </body>
 </html>
 """

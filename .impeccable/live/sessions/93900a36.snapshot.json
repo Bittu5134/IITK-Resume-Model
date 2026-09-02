@@ -1,0 +1,60 @@
+{
+  "id": "93900a36",
+  "phase": "agent_error",
+  "pageUrl": "/",
+  "sourceFile": "resume_engine/api/dashboard.py",
+  "previewFile": null,
+  "previewMode": null,
+  "expectedVariants": 3,
+  "arrivedVariants": 3,
+  "visibleVariant": 1,
+  "paramValues": {
+    "glow-scale": 0.5
+  },
+  "pendingEventSeq": null,
+  "pendingEvent": null,
+  "deliveryLease": null,
+  "checkpointRevision": 9,
+  "browserCheckpointRevision": 9,
+  "publicationCheckpointRevision": 0,
+  "activeOwner": "071484c9",
+  "sourceMarkers": {},
+  "fallbackMode": null,
+  "generationPhase": "generation_ready",
+  "generationCompletedAt": 1788356959621,
+  "generationTimings": {
+    "picked_up": {
+      "at": 1788356941480,
+      "durationMs": null
+    },
+    "scaffolding": {
+      "at": 1788356941481,
+      "durationMs": null
+    },
+    "scaffold_fallback": {
+      "at": 1788356942006,
+      "durationMs": 522.8250130000524
+    },
+    "generation_ready": {
+      "at": 1788356942006,
+      "durationMs": null
+    }
+  },
+  "variantPlan": null,
+  "generationCanceled": true,
+  "generationCanceledAt": 1788357044907,
+  "cancelReason": "discard",
+  "annotationArtifacts": [],
+  "mountedVariants": [],
+  "mountFailures": [],
+  "renderState": "pending",
+  "diagnostics": [
+    {
+      "error": "agent_error",
+      "message": "Session markers not found for id: 93900a36"
+    }
+  ],
+  "updatedAt": "2026-09-02T13:50:44.983Z",
+  "__journalBytes": 31588,
+  "__nextSeq": 20
+}

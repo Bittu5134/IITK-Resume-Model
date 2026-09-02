@@ -1,0 +1,60 @@
+{
+  "id": "af5f58a2",
+  "phase": "agent_error",
+  "pageUrl": "/",
+  "sourceFile": "resume_engine/api/dashboard.py",
+  "previewFile": null,
+  "previewMode": null,
+  "expectedVariants": 3,
+  "arrivedVariants": 3,
+  "visibleVariant": 1,
+  "paramValues": {
+    "glow-intensity": 0.5
+  },
+  "pendingEventSeq": null,
+  "pendingEvent": null,
+  "deliveryLease": null,
+  "checkpointRevision": 14,
+  "browserCheckpointRevision": 14,
+  "publicationCheckpointRevision": 0,
+  "activeOwner": "de20197a",
+  "sourceMarkers": {},
+  "fallbackMode": null,
+  "generationPhase": "generation_ready",
+  "generationCompletedAt": 1788356683086,
+  "generationTimings": {
+    "picked_up": {
+      "at": 1788356663117,
+      "durationMs": null
+    },
+    "scaffolding": {
+      "at": 1788356663117,
+      "durationMs": null
+    },
+    "scaffold_fallback": {
+      "at": 1788356663483,
+      "durationMs": 361.41384300001664
+    },
+    "generation_ready": {
+      "at": 1788356663487,
+      "durationMs": null
+    }
+  },
+  "variantPlan": null,
+  "generationCanceled": true,
+  "generationCanceledAt": 1788356793813,
+  "cancelReason": "discard",
+  "annotationArtifacts": [],
+  "mountedVariants": [],
+  "mountFailures": [],
+  "renderState": "pending",
+  "diagnostics": [
+    {
+      "error": "agent_error",
+      "message": "Session markers not found for id: af5f58a2"
+    }
+  ],
+  "updatedAt": "2026-09-02T13:46:33.885Z",
+  "__journalBytes": 16036,
+  "__nextSeq": 25
+}
