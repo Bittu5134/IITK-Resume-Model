@@ -5,15 +5,16 @@ FontAwesome icons, and Chart.js for visualization of resume diagnostics.
 """
 
 DASHBOARD_HTML = """<!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<html lang="en" class="dark h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IITK Context-Aware Resume Diagnostic Engine</title>
+    <title>IITK Context-Aware Resume Diagnostic Engine — SPO Advisory</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -463,25 +464,38 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         }
 
         // Theme Toggle Handler
-        let currentTheme = 'dark';
-        function toggleTheme() {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+
+        function applyTheme(theme) {
+            currentTheme = theme;
             const htmlEl = document.documentElement;
             const iconEl = document.getElementById('themeToggleIcon');
             const textEl = document.getElementById('themeToggleText');
 
-            if (currentTheme === 'light') {
-                htmlEl.classList.remove('bg-slate-950', 'text-slate-100');
-                htmlEl.classList.add('bg-slate-50', 'text-slate-900');
+            if (theme === 'light') {
+                htmlEl.classList.remove('dark');
                 if (iconEl) iconEl.className = 'fa-solid fa-sun text-amber-500';
                 if (textEl) textEl.textContent = 'Light';
             } else {
-                htmlEl.classList.remove('bg-slate-50', 'text-slate-900');
-                htmlEl.classList.add('bg-slate-950', 'text-slate-100');
+                htmlEl.classList.add('dark');
                 if (iconEl) iconEl.className = 'fa-solid fa-moon text-amber-400';
                 if (textEl) textEl.textContent = 'Dark';
             }
+            localStorage.setItem('theme', theme);
+
+            if (activeAnalysis) {
+                renderScoreCircle(Math.round(activeAnalysis.score?.score ?? 0));
+                renderMultiTrackBarChart();
+            }
         }
+
+        function toggleTheme() {
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTheme(currentTheme);
+        });
 
         // Setup dropzone events
         dropzone.addEventListener('click', (e) => {
@@ -763,6 +777,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             const ctx = document.getElementById('scoreCircleChart').getContext('2d');
             if (scoreChartObj) scoreChartObj.destroy();
 
+            const trackColor = currentTheme === 'light' ? '#e2e8f0' : '#1e293b';
+
             scoreChartObj = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
@@ -770,7 +786,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         data: [score, 100 - score],
                         backgroundColor: [
                             score >= 75 ? '#10b981' : (score >= 55 ? '#3b82f6' : '#f59e0b'),
-                            '#1e293b'
+                            trackColor
                         ],
                         borderWidth: 0
                     }]
@@ -794,8 +810,11 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 Math.round(multiRoleResults.core?.score?.score ?? multiRoleResults.core?.score?.overall_score ?? 0)
             ];
 
+            const inactiveBarColor = currentTheme === 'light' ? '#cbd5e1' : '#334155';
+            const gridColor = currentTheme === 'light' ? '#e2e8f0' : '#1e293b';
+            const tickColor = currentTheme === 'light' ? '#64748b' : '#94a3b8';
 
-            const bgColors = ['sde', 'quant', 'consulting', 'core'].map(r => r === selectedRole ? '#3b82f6' : '#334155');
+            const bgColors = ['sde', 'quant', 'consulting', 'core'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
 
             multiTrackChartObj = new Chart(ctx, {
                 type: 'bar',
@@ -815,12 +834,12 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         y: {
                             beginAtZero: true,
                             max: 100,
-                            grid: { color: '#1e293b' },
-                            ticks: { color: '#64748b', font: { size: 10 } }
+                            grid: { color: gridColor },
+                            ticks: { color: tickColor, font: { size: 10 } }
                         },
                         x: {
                             grid: { display: false },
-                            ticks: { color: '#94a3b8', font: { size: 11, weight: 'bold' } }
+                            ticks: { color: tickColor, font: { size: 11, weight: 'bold' } }
                         }
                     },
                     plugins: { legend: { display: false } }
