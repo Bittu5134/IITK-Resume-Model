@@ -445,6 +445,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         // State
         let currentFile = null;
         let selectedRole = 'sde';
+        let userPickedRole = false;   // true once the user explicitly clicks a role button
         let multiRoleResults = {};
         let activeAnalysis = null;
         let scoreChartObj = null;
@@ -557,6 +558,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         function handleFileSelect(file) {
             hideErrorBanner();
             currentFile = file;
+            userPickedRole = false;   // new file → forget any prior manual pick
             fileNameEl.textContent = file.name;
             fileSizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
             uploadPrompt.classList.add('hidden');
@@ -610,6 +612,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     btn.querySelector('.fa-circle-check')?.classList.remove('hidden');
 
                     selectedRole = btn.dataset.role;
+                    userPickedRole = true;   // user made an explicit choice
 
                     if (multiRoleResults[selectedRole]) {
                         renderDashboardForRole(selectedRole);
@@ -697,8 +700,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                     banner.classList.remove('hidden');
                 }
 
-                // Auto-switch role selector to best fit track
-                if (autoRole) {
+                // Auto-switch role selector to best fit track — only if user hasn't picked manually
+                if (!userPickedRole && autoRole) {
                     switchRole(autoRole);
                 } else {
                     renderDashboardForRole(selectedRole);
