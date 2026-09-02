@@ -375,5 +375,70 @@
     ],
     "incorrect_diagnostics": [],
     "comments": "Accurate assessment"
+  },
+  {
+    "id": "409be225",
+    "timestamp": "2026-09-02T14:45:49.697473+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
+  },
+  {
+    "id": "f1c1edf3",
+    "timestamp": "2026-09-02T14:46:50.035141+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
+  },
+  {
+    "id": "9bf32525",
+    "timestamp": "2026-09-02T14:47:27.934718+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
+  },
+  {
+    "id": "31773358",
+    "timestamp": "2026-09-02T14:47:53.681610+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
+  },
+  {
+    "id": "d828730d",
+    "timestamp": "2026-09-02T14:48:19.066432+00:00",
+    "role_id": "quant",
+    "score_given": 72.0,
+    "user_rating": 5,
+    "score_adjustment": 3.0,
+    "missing_skills": [
+      "Stochastic Calculus"
+    ],
+    "incorrect_diagnostics": [],
+    "comments": "Accurate assessment"
   }
 ]

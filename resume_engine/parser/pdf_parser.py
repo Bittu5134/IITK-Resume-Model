@@ -294,9 +294,10 @@ _Y_CLUSTER_GAP = 4.0  # px gap to consider same row
 
 
 def _row_major_order(lines: list[_LineInfo]) -> list[_LineInfo]:
-    """Sort lines in reading order: row-band top-to-bottom, within row left-to-right.
+    """Sort lines in reading order and merge horizontal cell fragments in the same y-band row.
 
-    This handles SPO table layouts correctly — no global left/right split.
+    This handles SPO multi-column table layouts correctly by merging same-row column cells
+    into unified logical lines while stitching hyphenated line breaks.
     """
     if not lines:
         return []
@@ -311,7 +312,6 @@ def _row_major_order(lines: list[_LineInfo]) -> list[_LineInfo]:
         # Check if this line y-overlaps with the current row band
         row_y1_max = max(l.bbox[3] for l in current_row)
         row_y0_min = min(l.bbox[1] for l in current_row)
-        row_center = (row_y0_min + row_y1_max) / 2
 
         # A line belongs to the same row if its center y is within the current
         # row band (with a small tolerance gap)
@@ -323,10 +323,68 @@ def _row_major_order(lines: list[_LineInfo]) -> list[_LineInfo]:
             current_row = [line]
     rows.append(current_row)
 
-    # Within each row, sort left to right by x0
+    # Within each row, group horizontally adjacent cells (gap < 80px) and merge them
     result: list[_LineInfo] = []
     for row in rows:
-        result.extend(sorted(row, key=lambda l: l.bbox[0]))
+        sorted_cells = sorted(row, key=lambda l: l.bbox[0])
+        if len(sorted_cells) == 1:
+            result.append(sorted_cells[0])
+            continue
+
+        # Group cells that belong to the same table row / column cluster (gap < 40.0 px)
+        # Bullet lines starting with bullet symbols (•, -, etc.) are preserved separately
+        if any(_BULLET_RE.match(c.text.strip()) for c in sorted_cells):
+            result.extend(sorted_cells)
+            continue
+
+        cell_groups: list[list[_LineInfo]] = []
+        curr_group: list[_LineInfo] = [sorted_cells[0]]
+
+        for cell in sorted_cells[1:]:
+            prev_cell = curr_group[-1]
+            gap = cell.bbox[0] - prev_cell.bbox[2]
+            if gap < 40.0:
+                curr_group.append(cell)
+            else:
+                cell_groups.append(curr_group)
+                curr_group = [cell]
+        cell_groups.append(curr_group)
+
+        for group in cell_groups:
+            if len(group) == 1:
+                result.append(group[0])
+                continue
+
+            combined_text_parts: list[str] = []
+            combined_spans: list[dict] = []
+            x0_min = min(c.bbox[0] for c in group)
+            y0_min = min(c.bbox[1] for c in group)
+            x1_max = max(c.bbox[2] for c in group)
+            y1_max = max(c.bbox[3] for c in group)
+
+            for cell in group:
+                ctext = cell.text.strip()
+                if not ctext:
+                    continue
+
+                # Check for hyphenation stitching with previous cell
+                if combined_text_parts and re.search(r'(\b[A-Za-z]{2,})[\u2010-\u2015\-]$', combined_text_parts[-1]):
+                    combined_text_parts[-1] = re.sub(r'[\u2010-\u2015\-]$', '', combined_text_parts[-1]) + ctext
+                else:
+                    combined_text_parts.append(ctext)
+
+                combined_spans.extend(cell.spans)
+
+            merged_text = " | ".join(combined_text_parts) if len(combined_text_parts) > 1 else (combined_text_parts[0] if combined_text_parts else "")
+            merged_text = _normalize_text(merged_text)
+
+            if merged_text:
+                result.append(_LineInfo(
+                    text=merged_text,
+                    bbox=(x0_min, y0_min, x1_max, y1_max),
+                    spans=combined_spans,
+                    block_type=group[0].block_type,
+                ))
 
     return result
 
