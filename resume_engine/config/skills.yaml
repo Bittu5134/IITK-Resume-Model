@@ -89,9 +89,32 @@ skills:
   dsa: ["dsa", "data structures", "algorithms", "data structures and algorithms"]
   competitive_programming: ["competitive programming", "codeforces", "leetcode", "hackerrank", "codechef"]
 
-  # --- Business / Domain ---
+  # --- Business / Product / UX ---
   fintech: ["fintech", "financial technology", "fin-tech"]
   saas: ["saas", "software as a service"]
   crm: ["crm", "customer relationship management", "salesforce"]
   erp: ["erp", "enterprise resource planning"]
   agile: ["agile", "scrum", "kanban", "sprint"]
+  figma: ["figma", "sketch", "invision", "adobe xd"]
+  wireframing: ["wireframe", "wireframing", "mockup", "prototyping", "ui/ux", "user interface", "user experience"]
+  a_b_testing: ["a/b testing", "ab testing", "split testing", "hypothesis testing"]
+  mixpanel: ["mixpanel", "amplitude", "segment", "google analytics", "hotjar"]
+  product_management: ["product management", "prd", "product roadmap", "backlog prioritization", "user stories", "product strategy"]
+  funnel_analysis: ["funnel analysis", "user retention", "churn analysis", "cohort analysis", "conversion rate"]
+
+  # --- Analytics & Data Warehousing ---
+  rshiny: ["rshiny", "shiny", "dash", "streamlit"]
+  etl: ["etl", "elt", "data pipeline", "data warehousing"]
+  snowflake: ["snowflake", "bigquery", "redshift", "dbt"]
+  data_modeling: ["data modeling", "star schema", "snowflake schema", "dimensional modeling"]
+
+  # --- Advanced SDE & Architecture ---
+  rest_api: ["rest api", "restful", "graphql", "api design", "gRPC"]
+  system_design: ["system design", "microservices", "distributed systems", "load balancing", "caching"]
+  redis: ["redis", "memcached", "elasticsearch"]
+
+  # --- Quant & Mathematical Finance ---
+  monte_carlo: ["monte carlo", "monte-carlo", "simulation"]
+  bayesian: ["bayesian", "bayes", "mcmc", "gibbs sampling"]
+  time_series: ["time series", "arima", "garch", "forecasting", "stationarity"]
+  portfolio_optimization: ["portfolio optimization", "black-scholes", "sharpe ratio", "option pricing", "algorithmic trading"]

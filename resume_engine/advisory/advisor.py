@@ -314,7 +314,8 @@ class CounterfactualAdvisor:
                     )
                 if not best.skills and comp_score.competency in {
                     "programming", "software_engineering", "technical_depth",
-                    "core_tools", "ml_engineering",
+                    "core_tools", "ml_engineering", "data_analytics",
+                    "product_sense", "data_driven_decisions", "technical_understanding"
                 }:
                     missing.append("specific tools/technologies actually used")
 

@@ -1069,9 +1069,9 @@ class EvidenceExtractor:
                             evidence_types=[EvidenceType.COURSEWORK],
                             project_types=[],
                             impact_types=[],
-                            domain_relevance={"sde": 0.7, "quant": 0.8, "consulting": 0.4, "core": 0.8},
+                            domain_relevance={"sde": 0.7, "quant": 0.8, "consulting": 0.4, "core": 0.8, "analyst": 0.7, "product": 0.5},
                             presence_score=0.70,
-                            role_relevance_score={"sde": 0.49, "quant": 0.56, "consulting": 0.28, "core": 0.56},
+                            role_relevance_score={"sde": 0.49, "quant": 0.56, "consulting": 0.28, "core": 0.56, "analyst": 0.49, "product": 0.35},
                         ))
 
             for bullet in section.bullets:
