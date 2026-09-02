@@ -36,6 +36,8 @@ debug_*.py
 PoR-Handbook.pdf
 *.json
 !tests/fixtures/**/*.json
+*.pdf
+tests/fixtures/
 
 # Local model artifacts
 *.bin
