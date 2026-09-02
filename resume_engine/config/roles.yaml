@@ -45,3 +45,24 @@ roles:
       publications: {weight: 0.08, description: "Research publications"}
       impact: {weight: 0.08, description: "Measured technical outcomes"}
       internships: {weight: 0.06, description: "Relevant core internships"}
+  analyst:
+    label: Data & Business Analytics
+    competencies:
+      data_analytics: {weight: 0.20, description: "Data mining, SQL, Pandas, ETL, and data modeling"}
+      statistics: {weight: 0.16, description: "Statistical analysis, hypothesis testing, data visualization"}
+      business_impact: {weight: 0.18, description: "Quantified business metrics, conversion growth, revenue impact"}
+      problem_solving: {weight: 0.14, description: "Structured problem solving, case studies, risk analysis"}
+      programming: {weight: 0.10, description: "Python, R, SQL, spreadsheet modeling"}
+      academic_strength: {weight: 0.08, description: "Solid quantitative academic baseline"}
+      projects: {weight: 0.08, description: "Analytics and business intelligence projects"}
+      internships: {weight: 0.06, description: "Data analytics or business analyst internships"}
+  product:
+    label: Product Management
+    competencies:
+      product_sense: {weight: 0.22, description: "Product strategy, user empathy, wireframing, feature prioritization"}
+      leadership: {weight: 0.18, description: "Cross-functional team leadership, PoR management"}
+      user_impact: {weight: 0.16, description: "Quantified user adoption, DAU/MAU growth, retention impact"}
+      data_driven_decisions: {weight: 0.14, description: "A/B testing, product metrics, analytics, funnel optimization"}
+      technical_understanding: {weight: 0.12, description: "Technical background, system design awareness, APIs"}
+      communication: {weight: 0.10, description: "PRD writing, pitch presentations, stakeholder management"}
+      projects: {weight: 0.08, description: "Product teardowns, app builds, startup initiatives"}

@@ -28,7 +28,7 @@ app.add_middleware(
 
 engine = ResumeEngine(embedding_model=os.getenv("RESUME_EMBEDDING_MODEL") or None)
 
-VALID_ROLES = {"sde", "quant", "consulting", "core"}
+VALID_ROLES = {"sde", "quant", "consulting", "core", "analyst", "product"}
 MAX_PDF_BYTES = 10 * 1024 * 1024  # 10 MB
 
 
@@ -83,7 +83,7 @@ def get_batch_analytics_summary():
     pdf_files = list(temp_dir.glob("*.pdf")) if temp_dir.exists() else []
 
     roster = []
-    scores_acc = {"sde": [], "quant": [], "consulting": [], "core": []}
+    scores_acc = {r: [] for r in VALID_ROLES}
     formatting_deficits = 0
     multi_page_count = 0
 

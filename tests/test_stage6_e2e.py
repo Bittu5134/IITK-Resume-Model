@@ -197,7 +197,7 @@ def test_api_health(api_client):
     data = resp.json()
     assert data["status"] == "ok"
     assert "roles" in data
-    assert sorted(data["roles"]) == ["consulting", "core", "quant", "sde"]
+    assert set(data["roles"]) >= {"consulting", "core", "quant", "sde"}
 
 
 def test_api_valid_pdf(api_client, tmp_path):

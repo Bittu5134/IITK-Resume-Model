@@ -814,9 +814,32 @@ class EvidenceExtractor:
         section: str
     ) -> dict[str, float]:
         """Compute domain relevance scores for each role."""
-        relevance = {"sde": 0.0, "quant": 0.0, "consulting": 0.0, "core": 0.0}
-        
-        # ── SDE Relevance ──────────────────────────────────────────
+        relevance = {"sde": 0.0, "quant": 0.0, "consulting": 0.0, "core": 0.0, "analyst": 0.0, "product": 0.0}
+
+        # ── Analyst Relevance ──────────────────────────────────────
+        if EvidenceType.BUSINESS_ANALYSIS in evidence_types:
+            relevance["analyst"] += 1.0
+        if EvidenceType.STATISTICAL in evidence_types:
+            relevance["analyst"] += 0.9
+        if EvidenceType.MATHEMATICAL in evidence_types:
+            relevance["analyst"] += 0.6
+        if ImpactType.BUSINESS_IMPACT in impact_types:
+            relevance["analyst"] += 0.8
+        if ProjectType.CONSULTING_PROJECT in project_types:
+            relevance["analyst"] += 0.7
+
+        # ── Product Relevance ──────────────────────────────────────
+        if EvidenceType.LEADERSHIP in evidence_types:
+            relevance["product"] += 0.9
+        if EvidenceType.BUSINESS_ANALYSIS in evidence_types:
+            relevance["product"] += 0.8
+        if ImpactType.ORGANIZATIONAL_IMPACT in impact_types:
+            relevance["product"] += 0.8
+        if ImpactType.BUSINESS_IMPACT in impact_types:
+            relevance["product"] += 0.7
+        if EvidenceType.SOFTWARE_ENGINEERING in evidence_types or EvidenceType.PROGRAMMING in evidence_types:
+            relevance["product"] += 0.5
+
         if EvidenceType.SOFTWARE_ENGINEERING in evidence_types:
             relevance["sde"] += 0.9
         if EvidenceType.PROGRAMMING in evidence_types:
@@ -908,6 +931,12 @@ class EvidenceExtractor:
         if (section in {"Research", "Projects"} and 
             EvidenceType.BUSINESS_ANALYSIS not in evidence_types):
             relevance["core"] += 0.3
+            
+        # Cap all scores at 1.0
+        for role in relevance:
+            relevance[role] = min(1.0, relevance[role])
+            
+        return relevance
             
         # Cap all scores at 1.0
         for role in relevance:
@@ -1146,7 +1175,7 @@ class EvidenceExtractor:
                 # Compute presence vs role-relevance scores
                 presence_score = evidence_str
                 role_relevance_scores = {}
-                for role in ["sde", "quant", "consulting", "core"]:
+                for role in ["sde", "quant", "consulting", "core", "analyst", "product"]:
                     role_relevance_scores[role] = presence_score * domain_relevance[role]
 
                 claims.append(AtomicClaim(

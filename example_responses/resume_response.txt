@@ -1,8 +1,279 @@
 {
+  "analyst": {
+    "role": "analyst",
+    "document": {
+      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "sections": [
+        "Header",
+        "Projects"
+      ],
+      "links": [],
+      "warnings": [
+        "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+      ],
+      "layout_diagnostics": {
+        "page1": "single-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [],
+      "all_skills": [
+        "competitive_programming",
+        "python"
+      ],
+      "all_entities": [
+        "Codeforces"
+      ],
+      "claim_count": 2
+    },
+    "score": {
+      "role_id": "analyst",
+      "label": "Data & Business Analytics",
+      "score": 25.71,
+      "confidence": 0.625,
+      "coverage": 0.375,
+      "competency_scores": [
+        {
+          "competency": "data_analytics",
+          "weight": 0.2,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "statistics",
+          "weight": 0.16,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "business_impact",
+          "weight": 0.18,
+          "strength": 0.7027,
+          "contribution": 12.65,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "section_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "problem_solving",
+          "weight": 0.14,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "programming",
+          "weight": 0.1,
+          "strength": 0.7007,
+          "contribution": 7.01,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "skill_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "academic_strength",
+          "weight": 0.08,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "projects",
+          "weight": 0.08,
+          "strength": 0.7564,
+          "contribution": 6.05,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "software_project_bonus",
+            "section_match",
+            "signal_match"
+          ]
+        },
+        {
+          "competency": "internships",
+          "weight": 0.06,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "business_impact",
+          "strength": 0.7027,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Business Impact with 2 verified claim(s)."
+        },
+        {
+          "competency": "programming",
+          "strength": 0.7007,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Programming with 2 verified claim(s)."
+        },
+        {
+          "competency": "projects",
+          "strength": 0.7564,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Projects with 2 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "data_analytics",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.2,
+          "weight": 0.2,
+          "diagnosis": "Missing explicit evidence or project work in Data Analytics for target role."
+        },
+        {
+          "competency": "statistics",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.16,
+          "weight": 0.16,
+          "diagnosis": "Missing explicit evidence or project work in Statistics for target role."
+        },
+        {
+          "competency": "problem_solving",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.14,
+          "weight": 0.14,
+          "diagnosis": "Missing explicit evidence or project work in Problem Solving for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "data_analytics",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'data analytics' was detected.",
+          "action": "If you genuinely have evidence for 'data analytics', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 6.0,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "statistics",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'statistics' was detected.",
+          "action": "If you genuinely have evidence for 'statistics', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.8,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "problem_solving",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'problem solving' was detected.",
+          "action": "If you genuinely have evidence for 'problem solving', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "academic_strength",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'academic strength' was detected.",
+          "action": "If you genuinely have evidence for 'academic strength', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 2.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "internships",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'internships' was detected.",
+          "action": "If you genuinely have evidence for 'internships', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 1.8,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_050f3e",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_590945",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 2,
+    "parser_warnings": [
+      "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+    ]
+  },
   "consulting": {
     "role": "consulting",
     "document": {
-      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "source_file": "/tmp/tmpgyiuywen.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -60,8 +331,8 @@
             "c0002"
           ],
           "reason_codes": [
-            "signal_match",
-            "section_match"
+            "section_match",
+            "signal_match"
           ]
         },
         {
@@ -248,7 +519,7 @@
   "core": {
     "role": "core",
     "document": {
-      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "source_file": "/tmp/tmpgyiuywen.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -290,8 +561,8 @@
             "c0002"
           ],
           "reason_codes": [
-            "signal_match",
-            "section_match"
+            "section_match",
+            "signal_match"
           ]
         },
         {
@@ -519,10 +790,243 @@
       "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
     ]
   },
+  "product": {
+    "role": "product",
+    "document": {
+      "source_file": "/tmp/tmpgyiuywen.pdf",
+      "sections": [
+        "Header",
+        "Projects"
+      ],
+      "links": [],
+      "warnings": [
+        "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+      ],
+      "layout_diagnostics": {
+        "page1": "single-column",
+        "page_count": 1
+      }
+    },
+    "evidence": {
+      "academic_metrics": [],
+      "all_skills": [
+        "competitive_programming",
+        "python"
+      ],
+      "all_entities": [
+        "Codeforces"
+      ],
+      "claim_count": 2
+    },
+    "score": {
+      "role_id": "product",
+      "label": "Product Management",
+      "score": 6.05,
+      "confidence": 0.486,
+      "coverage": 0.143,
+      "competency_scores": [
+        {
+          "competency": "product_sense",
+          "weight": 0.22,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "leadership",
+          "weight": 0.18,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "user_impact",
+          "weight": 0.16,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "data_driven_decisions",
+          "weight": 0.14,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "technical_understanding",
+          "weight": 0.12,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "communication",
+          "weight": 0.1,
+          "strength": 0.0,
+          "contribution": 0.0,
+          "supporting_claims": [],
+          "reason_codes": []
+        },
+        {
+          "competency": "projects",
+          "weight": 0.08,
+          "strength": 0.7564,
+          "contribution": 6.05,
+          "supporting_claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason_codes": [
+            "software_project_bonus",
+            "section_match",
+            "signal_match"
+          ]
+        }
+      ],
+      "penalties": []
+    },
+    "advisory": {
+      "top_strengths": [
+        {
+          "competency": "projects",
+          "strength": 0.7564,
+          "claims": [
+            "c0001",
+            "c0002"
+          ],
+          "reason": "Strong benchmark performance in Projects with 2 verified claim(s)."
+        }
+      ],
+      "critical_gaps": [
+        {
+          "competency": "product_sense",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.22,
+          "weight": 0.22,
+          "diagnosis": "Missing explicit evidence or project work in Product Sense for target role."
+        },
+        {
+          "competency": "leadership",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.18,
+          "weight": 0.18,
+          "diagnosis": "Missing explicit evidence or project work in Leadership for target role."
+        },
+        {
+          "competency": "user_impact",
+          "strength": 0.0,
+          "missing_weighted_signal": 0.16,
+          "weight": 0.16,
+          "diagnosis": "Missing explicit evidence or project work in User Impact for target role."
+        }
+      ],
+      "recommendations": [
+        {
+          "priority": "critical",
+          "competency": "product_sense",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'product sense' was detected.",
+          "action": "If you genuinely have evidence for 'product sense', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 6.6,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "leadership",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'leadership' was detected.",
+          "action": "If you genuinely have evidence for 'leadership', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 5.4,
+          "confidence": 0.7
+        },
+        {
+          "priority": "critical",
+          "competency": "user_impact",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'user impact' was detected.",
+          "action": "If you genuinely have evidence for 'user impact', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.8,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "data_driven_decisions",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'data driven decisions' was detected.",
+          "action": "If you genuinely have evidence for 'data driven decisions', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 4.2,
+          "confidence": 0.7
+        },
+        {
+          "priority": "important",
+          "competency": "technical_understanding",
+          "source_claim_id": null,
+          "section": null,
+          "entry_id": null,
+          "page": null,
+          "text_snippet": null,
+          "diagnosis": "No accepted evidence for 'technical understanding' was detected.",
+          "action": "If you genuinely have evidence for 'technical understanding', add the strongest verifiable example with a specific outcome. If you do not have this experience, do not fabricate it.",
+          "max_potential_gain_estimate": 3.6,
+          "confidence": 0.7
+        }
+      ],
+      "line_diagnostics": [
+        {
+          "claim_id": "c0001",
+          "bullet_id": "b01_050f3e",
+          "section": "Projects",
+          "entry_id": null,
+          "page": 1,
+          "text_snippet": "Developed Python REST API with 99.9% uptime serving 100k users",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        },
+        {
+          "claim_id": "c0002",
+          "bullet_id": "b01_590945",
+          "section": "Projects",
+          "entry_id": "e01_050f3e",
+          "page": 1,
+          "text_snippet": "Ranked Codeforces Candidate Master 1900 rating",
+          "issues": [],
+          "suggestions": [],
+          "severity": "info"
+        }
+      ]
+    },
+    "evidence_claims": 2,
+    "parser_warnings": [
+      "WARN: No 'Education' section detected \u2014 CPI/degree may be unavailable."
+    ]
+  },
   "quant": {
     "role": "quant",
     "document": {
-      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "source_file": "/tmp/tmpgyiuywen.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -596,8 +1100,8 @@
             "c0001"
           ],
           "reason_codes": [
-            "signal_match",
-            "skill_match"
+            "skill_match",
+            "signal_match"
           ]
         },
         {
@@ -618,8 +1122,8 @@
             "c0002"
           ],
           "reason_codes": [
-            "signal_match",
-            "skill_match"
+            "skill_match",
+            "signal_match"
           ]
         },
         {
@@ -799,7 +1303,7 @@
   "sde": {
     "role": "sde",
     "document": {
-      "source_file": "/tmp/tmp0mr_u4jy.pdf",
+      "source_file": "/tmp/tmpgyiuywen.pdf",
       "sections": [
         "Header",
         "Projects"
@@ -841,8 +1345,8 @@
             "c0001"
           ],
           "reason_codes": [
-            "signal_match",
-            "skill_match"
+            "skill_match",
+            "signal_match"
           ]
         },
         {
@@ -855,8 +1359,8 @@
             "c0002"
           ],
           "reason_codes": [
-            "signal_match",
-            "skill_match"
+            "skill_match",
+            "signal_match"
           ]
         },
         {
@@ -868,8 +1372,8 @@
             "c0001"
           ],
           "reason_codes": [
-            "signal_match",
-            "skill_match"
+            "skill_match",
+            "signal_match"
           ]
         },
         {
@@ -882,9 +1386,9 @@
             "c0002"
           ],
           "reason_codes": [
-            "signal_match",
+            "software_project_bonus",
             "section_match",
-            "software_project_bonus"
+            "signal_match"
           ]
         },
         {
@@ -904,8 +1408,8 @@
             "c0002"
           ],
           "reason_codes": [
-            "skill_match",
             "entity_match",
+            "skill_match",
             "cp_keyword"
           ]
         },
