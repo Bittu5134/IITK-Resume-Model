@@ -34,13 +34,13 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; border: 1px solid #1e293b; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
-        ::selection { background-color: rgba(37, 99, 235, 0.3); color: #f8fafc; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; }
+        ::selection { background-color: rgba(37, 99, 235, 0.3); }
     </style>
 </head>
-<body class="h-full flex flex-col font-sans bg-slate-950 text-slate-100 antialiased">
+<body class="h-full flex flex-col font-sans bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased transition-colors">
     <!--
     THESIS: Batch Student Placement Analytics Deck providing macro-level placement readiness intelligence for SPO Chairs and coordinators.
     OWN-WORLD: Deep Slate (#020617 / #0f172a), IITK Navy (#002147), IITK Gold (#FFC72C), Emerald (#10b981).
