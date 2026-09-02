@@ -72,9 +72,9 @@ class RoleScorer:
                     CP_SIGNALS = [
                         r"\b(codeforces|leetcode|codechef|starters|div\.?\s*2|expert|rating|contest|icpc|atcoder)\b",
                         r"\b(dsa|algorithms?|data structures?|dijkstra|huffman|sorting|insertion sort|graphs?|trees?|dynamic programming|greedy|bfs|dfs|shortest path|mst|binary search|trie|segment tree)\b",
-                        r"\b(mips|processor|assembler|custom isa|interpreter|compiler)\b",
+                        r"\b(mips|processor|assembler|custom isa|interpreter|compiler|cs210|cs 210|cs345|cs 345|esc101)\b",
                     ]
-                    matched = candidate_skills.intersection({"algorithms", "dsa", "data structures", "c++", "cpp", "python", "mips", "assembly"})
+                    matched = candidate_skills.intersection({"algorithms", "dsa", "data structures", "c++", "cpp", "python", "mips", "assembly", "cs210", "cs 210", "cs345", "cs 345", "esc101"})
                     cp_claims = []
                     proj_algo_claims = []
                     for c in evidence.claims:
@@ -93,7 +93,7 @@ class RoleScorer:
                             raw_val = 1.0
                         elif re.search(r"\b(codeforces|codechef|atcoder|mips|processor|custom isa|interpreter|compiler)\b", text_all):
                             raw_val = 0.75
-                        elif re.search(r"\b(dijkstra|bfs|dfs|sorting|huffman|shortest path|mst|binary search)\b", text_all):
+                        elif re.search(r"\b(dijkstra|bfs|dfs|sorting|huffman|shortest path|mst|binary search|cs210|cs 210|cs345)\b", text_all):
                             raw_val = 0.55
                         else:
                             raw_val = 0.35
@@ -729,6 +729,25 @@ class RoleScorer:
         if role.role_id == "sde" and has_github_link:
             outlier_bonus += 2.0
             bonuses.append("Verified GitHub profile link present (+2 pts)")
+
+        # 6. Consulting "Triple Spike" Outlier (Academics + High-Impact PoR + Sports/Cultural)
+        if role.role_id == "consulting":
+            has_academic_spike = (evidence.cpi is not None and evidence.cpi >= 7.8) or any(
+                "award" in ce.category for ce in evidence.campus_entities
+            )
+            has_leadership_spike = any(
+                ce.category in ["por_role", "council"] for ce in evidence.campus_entities
+            ) or any(
+                bool(re.search(r"\b(general secretary|overall coordinator|manager|head|convenor|president|senator|secretary)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
+            has_cult_sports_spike = any(
+                bool(re.search(r"\b(inter-iit|galaxy|inferno|antaragni|udghosh|takneek|gold medal|silver medal|bronze medal|debsoc|dramatics|sports|championship)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
+            if has_academic_spike and has_leadership_spike and has_cult_sports_spike:
+                outlier_bonus += 3.0
+                bonuses.append("Consulting 'Triple Spike' (Academics + Campus Leadership + Cult/Sports) (+3 pts)")
 
         # Strict capping of outlier bonus at 15.0 pts
         outlier_bonus = min(outlier_bonus, 15.0)

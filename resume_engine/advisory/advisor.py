@@ -35,6 +35,8 @@ class ActionableRecommendation(BaseModel):
     diagnosis: str
     action: str
     max_potential_gain_estimate: float
+    target_entry: Optional[str] = None
+    suggested_bullet_template: Optional[str] = None
 
 
 class AdvisoryReport(BaseModel):
@@ -83,45 +85,95 @@ class CounterfactualAdvisor:
                     )
                 )
 
-        # 2. Build Specific Actionable Recommendations
+        # Collect candidate's explicit project, work, and leadership entry titles for pinpointing
+        project_entries: List[str] = []
+        work_entries: List[str] = []
+        por_entries: List[str] = []
+        for c in evidence.claims:
+            if c.entry_title:
+                s_low = c.section.lower()
+                if "project" in s_low and c.entry_title not in project_entries:
+                    project_entries.append(c.entry_title)
+                elif any(k in s_low for k in ["experience", "internship", "work"]) and c.entry_title not in work_entries:
+                    work_entries.append(c.entry_title)
+                elif any(k in s_low for k in ["leadership", "responsibility", "por", "extra"]) and c.entry_title not in por_entries:
+                    por_entries.append(c.entry_title)
+
+        primary_project = project_entries[0] if project_entries else "Key Projects"
+        secondary_project = project_entries[1] if len(project_entries) > 1 else primary_project
+        primary_work = work_entries[0] if work_entries else "Professional Experience"
+        primary_por = por_entries[0] if por_entries else "Positions of Responsibility"
+
+        # 2. Build Specific Actionable Recommendations with Named Project Provenance
         recommendations: List[ActionableRecommendation] = []
         for gap in critical_gaps:
             comp_clean = gap.competency.replace("_", " ")
             potential_gain = round((1.0 - gap.strength) * gap.weight * 60.0 + 3.0, 1)
 
+            target_entry = None
+            suggested_template = None
             diagnosis = ""
             action = ""
 
             if "dsa" in gap.competency or "algorithms" in gap.competency:
-                diagnosis = f"Candidate lacks explicit verification of algorithmic depth and competitive programming ratings."
-                action = "Add LeetCode / Codeforces contest ratings or highlight algorithmic complexity (time/space) directly in project bullets."
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Lacks explicit verification of algorithmic depth or competitive programming ratings."
+                action = f"Highlight algorithmic data structures and computational complexity in '{primary_project}', or add active Codeforces/LeetCode ratings."
+                suggested_template = "Engineered custom segment-tree querying module in C++, reducing range-query latency by 45% across 10^6 elements."
+
             elif "system_design" in gap.competency or "architecture" in gap.competency:
-                diagnosis = "Limited evidence of building scalable software architectures, REST APIs, or distributed services."
-                action = "Include a dedicated backend/system project featuring Docker, databases (PostgreSQL/Redis), and API design."
+                target_entry = secondary_project
+                diagnosis = f"In '{secondary_project}': Limited demonstration of scalable microservice architecture, API design, or database optimization."
+                action = f"Add architectural metrics in '{secondary_project}' (e.g. REST API latency, Redis caching throughput, or Docker containerization)."
+                suggested_template = "Architected RESTful microservice backend using FastAPI and PostgreSQL, containerized via Docker with 99.9% uptime."
+
             elif "git" in gap.competency or "open_source" in gap.competency:
+                target_entry = "Header & Links"
                 diagnosis = "No hyperlinked GitHub repository or active open-source contribution found in the header."
                 action = "Include clickable GitHub and portfolio links in the header and pin 2 production-ready repositories."
+                suggested_template = "Verified GitHub: github.com/username (2 pinned production repositories, CI/CD automated test workflows)."
+
             elif "leadership" in gap.competency or "pors" in gap.competency:
-                diagnosis = "Under-representation of campus leadership PoRs (Clubs, Councils, Fests, Gymkhana)."
-                action = "Highlight coordination roles, team size managed, and event execution outcomes in Positions of Responsibility."
+                target_entry = primary_por
+                diagnosis = f"In '{primary_por}': Bullets describe administrative coordination rather than high-stakes campus leadership outcomes."
+                action = f"Quantify operational scope, budget managed, or team coordination outcomes in '{primary_por}'."
+                suggested_template = "Spearheaded campus-wide operations managing a 25-member core team and INR 15L+ operating budget for 8,000+ student attendees."
+
             elif "business" in gap.competency or "impact" in gap.competency:
-                diagnosis = "Bullets focus on tasks performed rather than quantifiable business or user outcomes."
-                action = "Refactor project and PoR bullets using XYZ format: Accomplished [X] measured by [Y] (e.g., +30% speedup, 500+ users) by doing [Z]."
+                target_entry = primary_work
+                diagnosis = f"In '{primary_work}': Bullets focus on task execution without demonstrating measurable business impact or user growth."
+                action = f"Apply Google/SPO XYZ format to '{primary_work}': Accomplished [X] measured by [Y] (e.g., +30% revenue / user growth), by doing [Z]."
+                suggested_template = "Optimized client data reconciliation pipeline, reducing manual audit hours by 40% and accelerating reporting turnaround by 3 days."
+
             elif "core_domain" in gap.competency or "engineering_tools" in gap.competency:
-                diagnosis = "Missing core departmental electives, CAD/MATLAB modeling, or lab experiments."
-                action = "Detail CAD/ANSYS/MATLAB simulations or UGP/SURGE research in place of generic software entries."
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Missing core departmental engineering simulations (ANSYS, SolidWorks, MATLAB, CFD)."
+                action = f"Feature CAD/FEA simulation parameters or UGP/SURGE experimental findings in '{primary_project}' rather than generic software."
+                suggested_template = "Simulated aerodynamic drag coefficients using ANSYS Fluent, optimizing airfoil camber to achieve an 18% lift-to-drag ratio improvement."
+
             elif "mathematical" in gap.competency or "quantitative" in gap.competency:
-                diagnosis = "Sparse evidence of advanced mathematical modeling, probability, or statistical coursework."
-                action = "Feature courses like Probability Theory, Linear Algebra, or Stochastic Calculus under Relevant Coursework."
+                target_entry = "Relevant Coursework"
+                diagnosis = "Sparse evidence of advanced mathematical modeling (Probability, Stochastic Calculus, Linear Algebra)."
+                action = "Explicitly list rigorous coursework (MTH101, MTH415, MTH515) or mathematical modeling projects (Monte Carlo, Black-Scholes)."
+                suggested_template = "Backtested pairs trading strategy across NIFTY50 equities in Python, achieving a Sharpe ratio of 2.1 with <8% maximum drawdown."
+
             elif "data_analysis" in gap.competency or "dashboarding" in gap.competency:
-                diagnosis = "Lacks demonstration of end-to-end data pipelines, SQL querying, or interactive BI dashboards."
-                action = "Add a project showcasing SQL querying, Pandas data wrangling, and a live Tableau/PowerBI dashboard."
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Lacks demonstration of end-to-end data pipelines, SQL querying, or interactive BI dashboards."
+                action = f"Add a project showcasing SQL querying, Pandas data wrangling, and a live Tableau/PowerBI dashboard in '{primary_project}'."
+                suggested_template = "Constructed automated ETL pipeline in Python & SQL, processing 250k+ daily transactions with interactive Tableau executive dashboards."
+
             elif "product_thinking" in gap.competency or "user_research" in gap.competency:
-                diagnosis = "Missing product artifacts such as user interview findings, PRD documentation, or wireframes."
-                action = "Include a product teardown or PRD link highlighting customer problem statements, metrics, and wireframes."
+                target_entry = primary_project
+                diagnosis = f"In '{primary_project}': Missing product artifacts such as user interview findings, PRD documentation, or wireframes."
+                action = f"Include a product teardown or PRD link highlighting customer problem statements, metrics, and wireframes in '{primary_project}'."
+                suggested_template = "Authored 15-page PRD defining MVP user journey and wireframes in Figma, improving onboarding completion rate by 28%."
+
             else:
+                target_entry = primary_project
                 diagnosis = f"Competency '{comp_clean}' is performing below benchmark for {role.display_name}."
-                action = f"Add 1-2 bullet points substantiating hands-on experience and measurable outcomes in {comp_clean}."
+                action = f"Add 1-2 bullet points substantiating hands-on experience and measurable outcomes in {comp_clean} in '{primary_project}'."
+                suggested_template = f"Engineered scalable solution applying {comp_clean}, driving measurable efficiency gains of 25%."
 
             recommendations.append(
                 ActionableRecommendation(
@@ -130,6 +182,8 @@ class CounterfactualAdvisor:
                     diagnosis=diagnosis,
                     action=action,
                     max_potential_gain_estimate=potential_gain,
+                    target_entry=target_entry,
+                    suggested_bullet_template=suggested_template,
                 )
             )
 

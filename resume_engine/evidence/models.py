@@ -26,6 +26,7 @@ class AtomicClaim(BaseModel):
     bullet_id: str
     section: str
     entry_id: Optional[str] = None
+    entry_title: Optional[str] = None
     page: int = 1
     text_snippet: str
     action_verb: Optional[str] = None
@@ -43,10 +44,12 @@ class BulletDiagnostic(BaseModel):
     bullet_id: str
     section: str
     entry_id: Optional[str] = None
+    entry_title: Optional[str] = None
     page: int = 1
     text_snippet: str
     issues: List[str] = Field(default_factory=list)
     suggestions: List[str] = Field(default_factory=list)
+    suggested_rewrite: Optional[str] = None
     severity: str = "info"  # critical, warning, info
 
 
