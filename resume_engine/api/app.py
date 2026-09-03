@@ -33,6 +33,7 @@ MAX_PDF_BYTES = 10 * 1024 * 1024  # 10 MB
 
 
 @app.get("/", response_class=HTMLResponse)
+@app.get("/resume", response_class=HTMLResponse)
 def index():
     """Serve the Web Advisory Dashboard SPA."""
     return HTMLResponse(content=DASHBOARD_HTML)
