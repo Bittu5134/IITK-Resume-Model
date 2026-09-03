@@ -10,8 +10,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IITK Context-Aware Resume Diagnostic Engine — SPO Advisory</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Local Static Assets -->
+    <script src="/static/tailwind.min.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -29,13 +29,11 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             }
         }
     </script>
-    <!-- Fonts: Space Grotesk & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome & Chart.js CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Local Fonts: Space Grotesk & JetBrains Mono -->
+    <link rel="stylesheet" href="/static/fonts/fonts.css">
+    <!-- Local FontAwesome & Chart.js -->
+    <link rel="stylesheet" href="/static/fontawesome/css/all.min.css">
+    <script src="/static/chart.min.js"></script>
     <style>
         body { font-family: 'Space Grotesk', system-ui, sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }

@@ -9,6 +9,7 @@ from typing import Dict, Any
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from resume_engine.pipeline import ResumeEngine
 from resume_engine.api.dashboard import DASHBOARD_HTML
@@ -18,6 +19,10 @@ app = FastAPI(
     version="3.0.0",
     description="Intelligent career diagnostic advisor designed exclusively for IIT Kanpur students.",
 )
+
+STATIC_DIR = Path(__file__).parent / "static"
+if STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 app.add_middleware(
     CORSMiddleware,
