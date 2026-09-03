@@ -10,7 +10,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IITK Context-Aware Resume Diagnostic Engine — SPO Advisory</title>
+    <title>IITK Context-Aware Resume Diagnostic Engine — NAWABS // TAKNEEK</title>
     <!-- Local Static Assets -->
     <script src="/static/tailwind.min.js"></script>
     <script>
@@ -214,12 +214,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         <h1 class="text-lg sm:text-xl font-black uppercase tracking-tight text-current">
                             IIT Kanpur Resume Engine
                         </h1>
-                        <span class="bg-black text-[#FFE600] font-mono font-bold text-xs px-2 py-0.5 border border-black uppercase">
-                            [SPO ADVISORY]
-                        </span>
                     </div>
                     <p class="text-xs font-mono font-bold text-muted uppercase tracking-wider">
-                        Academics & Career Council | Career Development Wing
+                        Academics & Career Council | CDEV
                     </p>
                 </div>
             </div>
@@ -646,11 +643,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
     </main>
 
-    <!-- Footer -->
     <footer class="border-t-4 border-[var(--color-neutral)] bg-black text-[#FFE600] font-mono text-xs py-4 text-center mt-10">
         <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
-            <span class="font-black">[IIT KANPUR ANWESHAN '26 // CDW PROBLEM STATEMENT]</span>
-            <span class="font-bold text-white">AIR-GAPPED // LOCAL PRODUCTION ENGINE v3.0</span>
+            <span class="font-black">[IIT KANPUR ANWESHAN '26 // CDEV PROBLEM STATEMENT]</span>
+            <span class="font-bold text-white">NAWABS // TAKNEEK</span>
         </div>
     </footer>
 
@@ -781,9 +777,15 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         removeFileBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             currentFile = null;
+            userPickedRole = false;
             pdfFileInput.value = '';
             uploadPrompt.classList.remove('hidden');
             fileSelectedInfo.classList.add('hidden');
+            // Hide the results dashboard and auto-detect banner when file is cleared
+            resultsDashboard.classList.add('hidden');
+            const autoDetectBanner = document.getElementById('autoDetectBanner');
+            if (autoDetectBanner) autoDetectBanner.classList.add('hidden');
+            multiRoleResults = {};
         });
 
         // Role button selector
@@ -803,6 +805,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
                     selectedRole = btn.dataset.role;
                     userPickedRole = true;
+
+                    // Hide auto-detect banner when user manually overrides track selection
+                    const autoDetectBanner = document.getElementById('autoDetectBanner');
+                    if (autoDetectBanner) autoDetectBanner.classList.add('hidden');
 
                     if (multiRoleResults[selectedRole]) {
                         renderDashboardForRole(selectedRole);
@@ -910,6 +916,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         function switchRole(roleId) {
             selectedRole = roleId;
             userPickedRole = true;
+            // Hide auto-detect banner on manual role override
+            const autoDetectBannerSR = document.getElementById('autoDetectBanner');
+            if (autoDetectBannerSR) autoDetectBannerSR.classList.add('hidden');
             document.querySelectorAll('.role-btn').forEach(b => {
                 const isTarget = b.dataset.role === roleId;
                 b.classList.toggle('bg-[#FFE600]', isTarget);
