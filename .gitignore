@@ -71,10 +71,5 @@ desktop.ini
 *.log
 logs/
 
-# Impeccable Design System Config
-!.impeccable/
-!.impeccable/**
-
-
 # Disposable scratch and junk files
 junk/

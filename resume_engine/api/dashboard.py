@@ -1133,9 +1133,6 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         }
 
     </script>
-<!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js?token=48e6de9c-0a50-4c29-a06a-f0c281aea165"></script>
-<!-- impeccable-live-end -->
 </body>
 </html>
 """

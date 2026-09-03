@@ -1,6 +1,4 @@
-# Product
-
-<!-- impeccable:product-schema 1 -->
+# Product Requirement Document
 
 ## Platform
 web

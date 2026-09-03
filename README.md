@@ -27,7 +27,7 @@ IITK-Resume-Model/
 ├── pyproject.toml                   # Project Build Configuration & Package Metadata
 ├── requirements.txt                 # Production Dependencies Specification
 ├── README.md                        # Primary CDW PS Submission Documentation
-├── DESIGN.md                        # Impeccable Design System Specification
+├── DESIGN.md                        # UI/UX Design System Specification
 ├── PRODUCT.md                       # Product Requirement Document
 ├── docs/                            # Competition Submission Deliverables
 │   ├── ATR.md                       # Architecture & Testing Report (Max 10 Pages)
