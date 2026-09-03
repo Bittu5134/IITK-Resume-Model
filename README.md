@@ -83,12 +83,12 @@ Save diagnostic JSON output to a file:
 python main.py temp/scrap/01_Quant_Scrap_Resume.pdf --role quant -o output.json
 ```
 
-### 4. Launch Interactive Web Advisory Dashboard
-Start the local web server:
-```bash
-python main.py --serve --port 8000
-```
-Open `http://localhost:8000` in your web browser to upload PDF resumes and interactively view track comparisons, score gauges, and line fixes.
+### 5. Live Production Deployment
+- **Live Production URL**: [https://iitk-resume.bittu.dev](https://iitk-resume.bittu.dev)
+- **Interactive Swagger API Docs**: [https://iitk-resume.bittu.dev/docs](https://iitk-resume.bittu.dev/docs)
+- **Health Check Endpoint**: [https://iitk-resume.bittu.dev/health](https://iitk-resume.bittu.dev/health)
+- **Deployment Platform**: `bittu@hackclub.app` (Hetzner VPS container running systemd daemon on IPv6 port `8002` bound to `[::1]:8002`)
+- **Automated CI/CD**: GitHub Actions workflow ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) triggered on `push` to `bittu` or `main`
 
 ---
 
