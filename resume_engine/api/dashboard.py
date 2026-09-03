@@ -279,10 +279,6 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                             <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Product</span>
                             <span id="productScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
                         </button>
-                        <button onclick="switchRole('ib')" class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-500 text-left transition group">
-                            <span class="text-xs font-bold text-slate-600 dark:text-slate-400 block">Inv. Banking</span>
-                            <span id="ibScoreMini" class="text-base font-extrabold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400">0</span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -308,6 +304,55 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 
                 <!-- TAB 1: Advisory & Gap Analysis -->
                 <div id="tab-advisory" role="tabpanel" aria-labelledby="tab-btn-advisory" class="tab-content p-6 space-y-6">
+
+                    <!-- 4-Quadrant SWOT Analysis Matrix -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2.5">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-table-cells-large text-blue-600 dark:text-blue-400 text-sm"></i>
+                                <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Candidate SWOT Matrix</h3>
+                            </div>
+                            <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Synthesized 4-Quadrant Diagnostic Summary</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Strengths (S) -->
+                            <div class="bg-emerald-500/5 dark:bg-emerald-950/20 border border-emerald-500/20 rounded-xl p-4 space-y-2">
+                                <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider border-b border-emerald-500/20 pb-1.5">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                    <span>Strengths (S)</span>
+                                </div>
+                                <ul id="swotStrengthsList" class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"></ul>
+                            </div>
+
+                            <!-- Weaknesses (W) -->
+                            <div class="bg-amber-500/5 dark:bg-amber-950/20 border border-amber-500/20 rounded-xl p-4 space-y-2">
+                                <div class="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-bold text-xs uppercase tracking-wider border-b border-amber-500/20 pb-1.5">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    <span>Weaknesses (W)</span>
+                                </div>
+                                <ul id="swotWeaknessesList" class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"></ul>
+                            </div>
+
+                            <!-- Opportunities (O) -->
+                            <div class="bg-blue-500/5 dark:bg-blue-950/20 border border-blue-500/20 rounded-xl p-4 space-y-2">
+                                <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-wider border-b border-blue-500/20 pb-1.5">
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                                    <span>Opportunities (O)</span>
+                                </div>
+                                <ul id="swotOpportunitiesList" class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"></ul>
+                            </div>
+
+                            <!-- Threats (T) -->
+                            <div class="bg-rose-500/5 dark:bg-rose-950/20 border border-rose-500/20 rounded-xl p-4 space-y-2">
+                                <div class="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold text-xs uppercase tracking-wider border-b border-rose-500/20 pb-1.5">
+                                    <i class="fa-solid fa-radiation"></i>
+                                    <span>Threats & Penalties (T)</span>
+                                </div>
+                                <ul id="swotThreatsList" class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"></ul>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Strengths vs Critical Gaps -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -792,7 +837,10 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             // Render Ring Chart
             renderScoreCircle(overallScore);
 
-            // Render 4-Track Comparison Chart
+            // Render 4-Quadrant SWOT Matrix
+            renderSWOT(activeAnalysis.advisory.swot_analysis);
+
+            // Render 6-Track Comparison Chart
             renderMultiTrackBarChart();
 
             // Render Strengths & Gaps
@@ -809,6 +857,28 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             renderEntities(activeAnalysis.evidence);
             renderLinks(activeAnalysis.document.links || []);
             renderAcademicMetrics(activeAnalysis.evidence.academic_metrics || []);
+        }
+
+        function renderSWOT(swot) {
+            const renderList = (elementId, items, emptyText) => {
+                const el = document.getElementById(elementId);
+                if (!el) return;
+                if (!items || items.length === 0) {
+                    el.innerHTML = `<li class="italic text-slate-500">${emptyText}</li>`;
+                    return;
+                }
+                el.innerHTML = items.map(item => `
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-angle-right text-xs mt-0.5 opacity-70"></i>
+                        <span>${item}</span>
+                    </li>
+                `).join('');
+            };
+
+            renderList('swotStrengthsList', swot?.strengths, 'No major strengths flagged');
+            renderList('swotWeaknessesList', swot?.weaknesses, 'No major weaknesses flagged');
+            renderList('swotOpportunitiesList', swot?.opportunities, 'No immediate opportunities flagged');
+            renderList('swotThreatsList', swot?.threats, 'No active penalties or threats');
         }
 
         function renderScoreCircle(score) {
@@ -847,20 +917,19 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 Math.round(multiRoleResults.consulting?.score?.score ?? multiRoleResults.consulting?.score?.overall_score ?? 0),
                 Math.round(multiRoleResults.core?.score?.score ?? multiRoleResults.core?.score?.overall_score ?? 0),
                 Math.round(multiRoleResults.analyst?.score?.score ?? multiRoleResults.analyst?.score?.overall_score ?? 0),
-                Math.round(multiRoleResults.product?.score?.score ?? multiRoleResults.product?.score?.overall_score ?? 0),
-                Math.round(multiRoleResults.ib?.score?.score ?? multiRoleResults.ib?.score?.overall_score ?? 0)
+                Math.round(multiRoleResults.product?.score?.score ?? multiRoleResults.product?.score?.overall_score ?? 0)
             ];
 
             const inactiveBarColor = currentTheme === 'light' ? '#cbd5e1' : '#334155';
             const gridColor = currentTheme === 'light' ? '#e2e8f0' : '#1e293b';
             const tickColor = currentTheme === 'light' ? '#64748b' : '#94a3b8';
 
-            const bgColors = ['sde', 'quant', 'consulting', 'core', 'analyst', 'product', 'ib'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
+            const bgColors = ['sde', 'quant', 'consulting', 'core', 'analyst', 'product'].map(r => r === selectedRole ? '#3b82f6' : inactiveBarColor);
 
             multiTrackChartObj = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['SDE', 'Quant Fin', 'Consulting', 'Core Eng.', 'Data Analyst', 'Product', 'Inv. Banking'],
+                    labels: ['SDE', 'Quant Fin', 'Consulting', 'Core Eng.', 'Data Analyst', 'Product'],
                     datasets: [{
                         data: scores,
                         backgroundColor: bgColors,

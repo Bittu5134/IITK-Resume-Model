@@ -39,6 +39,13 @@ class ActionableRecommendation(BaseModel):
     suggested_bullet_template: Optional[str] = None
 
 
+class SWOTAnalysis(BaseModel):
+    strengths: List[str] = Field(default_factory=list)
+    weaknesses: List[str] = Field(default_factory=list)
+    opportunities: List[str] = Field(default_factory=list)
+    threats: List[str] = Field(default_factory=list)
+
+
 class AdvisoryReport(BaseModel):
     overall_fit_for_role: str
     summary: str
@@ -46,10 +53,14 @@ class AdvisoryReport(BaseModel):
     critical_gaps: List[CriticalGap] = Field(default_factory=list)
     recommendations: List[ActionableRecommendation] = Field(default_factory=list)
     line_diagnostics: List[BulletDiagnostic] = Field(default_factory=list)
+    swot_analysis: Optional[SWOTAnalysis] = None
 
 
 class CounterfactualAdvisor:
     """Generates hyper-specific, actionable career uplift advice."""
+
+    def generate_advisory(self, doc: Any, evidence: EvidenceBundle, score: RoleScore, role: RoleRequirement) -> AdvisoryReport:
+        return self.build(evidence, score, role)
 
     def build(
         self,
@@ -260,6 +271,40 @@ class CounterfactualAdvisor:
             f"include {[g.competency.replace('_', ' ') for g in critical_gaps]}."
         )
 
+        # 4. Generate 4-Quadrant SWOT Analysis Matrix
+        swot_strengths = []
+        if evidence.cpi and evidence.cpi >= 8.0:
+            swot_strengths.append(f"Academic Honors: High CPI ({evidence.cpi:.2f}/10.0) meeting candidate benchmark")
+        for s in top_strengths:
+            swot_strengths.append(f"Core Spike: High proficiency in {s.competency.replace('_', ' ').title()}")
+        for b in score.bonuses_applied:
+            swot_strengths.append(f"Competitive Advantage: {b}")
+        if not swot_strengths:
+            swot_strengths.append("Foundational technical exposure across coursework and projects")
+
+        swot_weaknesses = []
+        for g in critical_gaps:
+            swot_weaknesses.append(f"Competency Deficit: Sub-optimal proof of {g.competency.replace('_', ' ').title()}")
+        if any(any("quantif" in str(iss).lower() for iss in d.issues) for d in evidence.bullet_diagnostics):
+            swot_weaknesses.append("Formatting Deficit: Bullet points lack quantifiable metrics (%)")
+
+        swot_opportunities = []
+        for r_item in recommendations[:3]:
+            swot_opportunities.append(f"Score Uplift (+{r_item.max_potential_gain_estimate:.1f} pts): {r_item.action}")
+
+        swot_threats = []
+        for p in score.penalties_applied:
+            swot_threats.append(f"Score Penalty: {p}")
+        if not swot_threats:
+            swot_threats.append("No critical domain penalties or probation flags detected")
+
+        swot_data = SWOTAnalysis(
+            strengths=swot_strengths[:4],
+            weaknesses=swot_weaknesses[:4],
+            opportunities=swot_opportunities[:4],
+            threats=swot_threats[:4],
+        )
+
         return AdvisoryReport(
             overall_fit_for_role=score.tier,
             summary=summary,
@@ -267,4 +312,5 @@ class CounterfactualAdvisor:
             critical_gaps=critical_gaps,
             recommendations=recommendations,
             line_diagnostics=evidence.bullet_diagnostics,
+            swot_analysis=swot_data,
         )
