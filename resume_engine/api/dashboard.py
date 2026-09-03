@@ -29,15 +29,28 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             }
         }
     </script>
+    <!-- Fonts: Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome & Chart.js CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        body { font-family: 'Space Grotesk', system-ui, sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .neo-card { border: 3px solid #0f172a; box-shadow: 5px 5px 0px 0px #0f172a; }
+        .dark .neo-card { border: 3px solid #ffffff; box-shadow: 5px 5px 0px 0px #ffffff; }
+        .neo-btn { border: 3px solid #0f172a; box-shadow: 4px 4px 0px 0px #0f172a; transition: all 0.1s ease; }
+        .dark .neo-btn { border: 3px solid #ffffff; box-shadow: 4px 4px 0px 0px #ffffff; }
+        .neo-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px 0px #0f172a; }
+        .dark .neo-btn:hover { box-shadow: 6px 6px 0px 0px #ffffff; }
+        .neo-btn:active { transform: translate(0px, 0px); box-shadow: 0px 0px 0px 0px #0f172a; }
+        .dark .neo-btn:active { box-shadow: 0px 0px 0px 0px #ffffff; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; }
-        ::selection { background-color: rgba(37, 99, 235, 0.3); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #0f172a; }
+        ::selection { background-color: #FFE600; color: #000; }
     </style>
 </head>
 <body class="h-full flex flex-col font-sans bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased transition-colors">
@@ -92,8 +105,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             </button>
         </div>
 
-        <!-- Upload & Control Panel -->
-        <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 relative shadow-sm transition-colors">
+        <!-- Upload & Control Panel (Neo-Brutalist) -->
+        <section class="bg-white dark:bg-slate-900 neo-card p-6 relative transition-colors font-mono">
             <form id="analyzeForm" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <!-- Dropzone -->
                 <div class="lg:col-span-7">
@@ -150,9 +163,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="w-full py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white font-bold text-sm rounded-lg border border-blue-600 transition flex items-center justify-center gap-2 shadow-sm">
-                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
-                        <span>Analyze Resume</span>
+                    <button type="submit" id="submitBtn" class="w-full py-4 bg-[#FF0055] hover:bg-[#E0004B] text-white font-black text-sm uppercase tracking-widest neo-btn flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt text-amber-300 text-sm"></i>
+                        <span>ANALYZE RESUME [RUN DIAGNOSTIC]</span>
                     </button>
                 </div>
             </form>
