@@ -35,15 +35,22 @@ jobs:
 
       - name: Install Dependencies on Remote Server
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
             "/opt/resume-engine/.venv/bin/pip install --upgrade pip && /opt/resume-engine/.venv/bin/pip install -r /opt/resume-engine/requirements.txt && /opt/resume-engine/.venv/bin/pip install -e /opt/resume-engine/" || true
 
       - name: Restart Service and Reload Caddy
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
             "systemctl restart resume-engine && systemctl reload caddy && systemctl status resume-engine --no-pager" || true
 
       - name: Verify Health Endpoint
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-            "curl -f http://127.0.0.1:8000/api/v1/health"
+          RESPONSE=$(ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+            "curl -s http://127.0.0.1:8000/health" || true)
+          echo "Health Check Response: $RESPONSE"
+          if echo "$RESPONSE" | grep -q '"status":"ok"'; then
+            echo "Health check succeeded!"
+          else
+            echo "::error::Health check failed! Response: $RESPONSE"
+            exit 1
+          fi
