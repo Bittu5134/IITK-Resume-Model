@@ -18,24 +18,24 @@ Campus placement season preparation, resume review sessions, mock interviews, an
 ## Capabilities and Constraints
 - Multi-column SPO LaTeX PDF parsing respecting 2-column grid layout and extracting embedded hyperlinks.
 - Semantic weighting & entity recognition for IITK-specific jargon, quantifiable impact metrics, and action verbs.
-- Dynamic 4-track evaluation (SDE, Quant Finance, Management Consulting, Core Engineering) with auto-detection of best-fit role.
+- Dynamic 6-track evaluation (SDE, Quant Finance, Management Consulting, Core Engineering, Data Analytics, Product Management) with auto-detection of best-fit role.
 - Candidate diagnostic record storage for placement analytics and senior advising trend analysis.
 - Single-page SPO LaTeX template compliance checking and line-by-line formatting fixes.
 
 ## Brand Commitments
 - Official IIT Kanpur Academics & Career Council (AnC) and Career Development Wing (CDW) identity.
-- Visual Theme: Premium Slate Dark UI with official IITK Navy (`#002147`) and Gold (`#FFC72C`) brand accents.
+- Visual Theme: GeoShuffle Solid Pastel Hybrid UI supporting Light (`geoshuffle`) and Dark (`geoshuffle-dark`) modes with flat border-first styling and high-contrast typography.
 
 ## Evidence on Hand
 - Official Problem Statement PDF: `cdev_ps_anweshan26_final.pdf` (CDW 150 Points Problem Statement).
 - Sample SPO resume PDFs in `examples/resume2.pdf` and test fixtures.
-- Test suite with 126 unit & E2E integration test cases in `tests/`.
+- Pytest diagnostic test suite with 44 unit & E2E integration test cases passing in `tests/`.
 
 ## Product Principles
 1. **Candidate Upliftment First**: Focus on actionable guidance and constructive improvement rather than arbitrary rejection.
 2. **Contextual & Grounded Integrity**: Understand IITK context (SURGE, CPI, PoRs) without fabricating achievements or hallucinating metrics.
 3. **Hyper-Specific Actionability**: Pinpoint exact lines, bullet text snippets, and specific rewrites rather than providing generic resume tips.
-4. **Multi-Track Conditioning**: Evaluate candidate profiles dynamically against distinct role baselines (DSA/CP for SDE, CPI/Math for Quant, PoR/Impact for Consulting, Research/CAD for Core).
+4. **Multi-Track Conditioning**: Evaluate candidate profiles dynamically against distinct role baselines (DSA/CP for SDE, CPI/Math for Quant, PoR/Impact for Consulting, Research/CAD for Core, SQL/Stats for Analyst, Discovery/Analytics for Product).
 
 ## Accessibility & Inclusion
-Responsive dark theme with clear visual contrast, legible typography (Inter / JetBrains Mono), keyboard navigation, and color-coded diagnostic severity indicators.
+Responsive dual-mode GeoShuffle UI (light & dark modes) with high visual contrast, legible typography (Fredoka / Space Grotesk / JetBrains Mono), keyboard navigation, and color-coded diagnostic severity indicators.

@@ -25,7 +25,7 @@ Standard commercial Applicant Tracking Systems (ATS) and generic AI resume parse
 2. **Context Blindness**: Generic tools do not understand IITK-specific institutional prestige indicators such as **SURGE fellowships**, **CPI scales**, **Gymkhana Councils (AnC, SnT, MnC, GnS)**, **Hall Executive committees**, or **Inter-IIT Tech/Cult medals**.
 3. **Lack of Grounded Actionability**: Existing tools output generic platitudes (e.g. *"add more keywords"*). Students require hyper-specific, senior-grade counterfactual rewrites pinpointing exact project entries.
 
-Our solution is a production-grade, context-aware diagnostic engine that acts as an automated senior advisor, evaluating SPO PDF resumes dynamically against 4 major industry tracks: **Software Engineering (SDE)**, **Quantitative Finance**, **Management Consulting**, and **Core Engineering**.
+Our solution is a production-grade, context-aware diagnostic engine that acts as an automated senior advisor, evaluating SPO PDF resumes dynamically against 6 major industry tracks: **Software Engineering (SDE)**, **Quantitative Finance**, **Management Consulting**, **Core Engineering**, **Data Analytics**, and **Product Management**.
 
 ---
 
@@ -64,7 +64,7 @@ The engine is engineered as a clean 3-module pipeline with strict separation of 
                                      ▼
 +-------------------------------------------------------------------------+
 |                 ROLE-CONDITIONED COMPETENCY SCORER                      |
-|  • Dynamic 4-Track Baselines (SDE, Quant, Consulting, Core)             |
+|  • Dynamic 6-Track Baselines (SDE, Quant, Consulting, Core, Analyst, Prod)|
 |  • 85-Base Linear-Gradient Competency Evaluation                        |
 |  • Outlier Bonus Allocator (Top CPI, INMO, CF Expert, Triple Spikes)   |
 |  • Gating Penalty Enforcement (Missing GitHub, Low CPI, Web-Dev Waste)  |
@@ -76,7 +76,7 @@ The engine is engineered as a clean 3-module pipeline with strict separation of 
 |  • 100-Point Match Score & Competency Breakdown                         |
 |  • Top 3 Grounded Strengths & Critical Gaps with Weighted Deficit       |
 |  • Google XYZ Bullet Rewriter (Named Project Provenance & Score Gain)   |
-|  • High-Density Dark Mode Web SPA + Terminal Multi-Track Runner         |
+|  • GeoShuffle Solid Pastel Hybrid SPA (Light/Dark) + Terminal Runner     |
 +-------------------------------------------------------------------------+
 ```
 

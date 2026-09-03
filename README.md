@@ -6,7 +6,7 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.141%2B-green.svg)](https://fastapi.tiangolo.com/)
 [![PyMuPDF](https://img.shields.io/badge/PyMuPDF-1.28%2B-orange.svg)](https://pymupdf.readthedocs.io/)
-[![Pytest Passed](https://img.shields.io/badge/Pytest-45%2F45%20Passed-brightgreen.svg)](https://docs.pytest.org/)
+[![Pytest Passed](https://img.shields.io/badge/Pytest-44%2F44%20Passed-brightgreen.svg)](https://docs.pytest.org/)
 [![Live Production](https://img.shields.io/badge/Production-iitk--resume.bittu.dev-success.svg)](https://iitk-resume.bittu.dev)
 
 ---
@@ -92,7 +92,7 @@ graph TD
 - **Impact & Action Verb Evaluator**: Identifies weak action verbs (`worked on`, `assisted in`, `helped`) and verifies quantifiable impact metrics (e.g. `20% speedup`, `INR 75L+ grant`, `9500+ students`).
 
 ### Module C: The Advisory Dashboard & REST API ([`resume_engine/api/`](resume_engine/api/) & [`advisory/`](resume_engine/advisory/))
-- **Single-Page Application**: Premium slate dark mode interface built with Tailwind CSS, FontAwesome, and Chart.js in [`dashboard.py`](resume_engine/api/dashboard.py).
+- **Solid Pastel Hybrid SPA**: Premium GeoShuffle theme interface supporting both Light (`geoshuffle`) and Dark (`geoshuffle-dark`) modes with flat border-first styling, zero offset drop shadows, and a refined pastel logo badge in [`dashboard.py`](resume_engine/api/dashboard.py).
 - **Counterfactual Guidance**: Calculates potential score gain estimates (`+X.X pts`) in [`advisor.py`](resume_engine/advisory/advisor.py) for addressing critical gap areas.
 - **Line-by-Line Formatting Fixes**: Pinpoints specific bullet IDs, page numbers, word count violations (>38 words), and domain-aware verb rewrite suggestions.
 
