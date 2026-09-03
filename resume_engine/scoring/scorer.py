@@ -416,60 +416,119 @@ class RoleScorer:
                         if comp_claims:
                             raw_val = 0.60
 
-            # ── 4. Consulting & Management Role ────────────────────────────
-            elif "leadership" in comp_name or "pors" in comp_name or "cross_functional_leadership" in comp_name:
-                LEADERSHIP_SIGNALS = {
-                    "led", "leading", "managed", "co-convened", "convened", "coordinated", "mentored",
-                    "organized", "organised", "spearheaded", "directed", "founded",
-                    "headed", "oversaw", "supervised", "team of", "budget of", "convenor", "coordinator",
-                }
-                LEADERSHIP_ENTITIES = {
-                    "Debating Society", "NSS", "BCS IITK", "ESummit", "Techkriti",
-                    "Antaragni", "Udghosh", "Gymkhana", "Programming Club",
-                }
-                comp_claims = []
-                for c in evidence.claims:
-                    text_lower = c.text_snippet.lower()
-                    has_leadership_verb = any(sig in text_lower for sig in LEADERSHIP_SIGNALS)
-                    has_leadership_entity = any(e in c.entities_matched for e in LEADERSHIP_ENTITIES)
-                    has_por_section = c.section in ("Positions of Responsibility", "Responsibilities", "Leadership")
-                    if has_leadership_verb or (has_leadership_entity and has_por_section):
-                        comp_claims.append(c.text_snippet)
-                comp_claims = comp_claims[:4]
-                if comp_claims:
-                    por_count = sum(1 for ce in evidence.campus_entities if ce.category in ["por_role", "council", "club"])
-                    text_all = " ".join(comp_claims).lower()
-                    has_top_tier_por = bool(re.search(r"\b(overall coordinator|head|manager|general secretary|gsec|president|convenor|team of (?:[1-9]\d+|\d{2,})|budget of (?:inr|rs\.?|₹)?\s*[5-9]\d*l|budget of (?:inr|rs\.?|₹)?\s*\d+l+)\b", text_all))
-                    if por_count >= 2 and has_top_tier_por:
-                        raw_val = 0.85
-                    elif por_count >= 1 and has_top_tier_por:
-                        raw_val = 0.65
-                    elif por_count >= 1:
-                        raw_val = 0.40
-                    else:
-                        raw_val = 0.25
+            # ── 4. Consulting & Management Role (Dediated & Calibrated) ─────
+            elif role.role_id == "consulting":
+                if "leadership" in comp_name or "pors" in comp_name:
+                    LEADERSHIP_SIGNALS = {
+                        "led", "managed", "co-convened", "convened", "coordinated", "mentored",
+                        "organized", "organised", "spearheaded", "directed", "founded",
+                        "headed", "oversaw", "supervised", "convenor", "coordinator", "president", "gsec"
+                    }
+                    LEADERSHIP_ENTITIES = {
+                        "Debating Society", "NSS", "BCS IITK", "ESummit", "Techkriti",
+                        "Antaragni", "Udghosh", "Gymkhana", "Programming Club", "AnC Council", "SnT Council"
+                    }
+                    comp_claims = []
+                    for c in evidence.claims:
+                        text_lower = c.text_snippet.lower()
+                        has_leadership_verb = any(sig in text_lower for sig in LEADERSHIP_SIGNALS)
+                        has_leadership_entity = any(e in c.entities_matched for e in LEADERSHIP_ENTITIES)
+                        has_por_section = c.section in ("Positions of Responsibility", "Responsibilities", "Leadership")
+                        if has_leadership_verb or (has_leadership_entity and has_por_section) or has_por_section:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        text_all = " ".join(comp_claims).lower()
+                        has_top_tier = bool(re.search(r"\b(overall coordinator|festival head|general secretary|gsec|president|founder|co-founder|team of (?:[2-9]\d+|\d{3,})|budget of (?:inr|rs\.?|₹)?\s*[5-9]\d*l|budget of (?:inr|rs\.?|₹)?\s*\d+l+)\b", text_all))
+                        has_mid_tier = bool(re.search(r"\b(manager|head|convenor|coordinator|lead|chairperson)\b", text_all))
+                        
+                        if has_top_tier:
+                            raw_val = 0.85
+                        elif has_mid_tier:
+                            raw_val = 0.55
+                        elif len(comp_claims) >= 2:
+                            raw_val = 0.35
+                        else:
+                            raw_val = 0.20
 
-            elif "communication" in comp_name or "extracurriculars" in comp_name:
-                COMM_SIGNALS = {"debate", "debating", "speaker", "adjudicator", "music", "piano", "dance", "drama", "quiz", "literary", "sport", "athletics", "tournament", "cultural", "oratorix", "inter-iit"}
-                comp_claims = []
-                for c in evidence.claims:
-                    text_lower = c.text_snippet.lower()
-                    if any(sig in text_lower for sig in COMM_SIGNALS):
-                        comp_claims.append(c.text_snippet)
-                comp_claims = comp_claims[:4]
-                if comp_claims:
-                    raw_val = 0.70 if len(comp_claims) >= 3 else (0.45 if len(comp_claims) >= 2 else 0.30)
-
-            elif "business" in comp_name or "impact" in comp_name or "quantifiable" in comp_name:
-                comp_claims = [c.text_snippet for c in evidence.claims if c.has_quantifiable_impact][:4]
-                if comp_claims:
-                    text_all = " ".join(comp_claims).lower()
-                    if re.search(r"\b(vc|pre[- ]seed|funding|lakh|crore|roi|revenue|drawdown)\b", text_all) and len(comp_claims) >= 3:
-                        raw_val = 0.85
-                    elif len(comp_claims) >= 3:
-                        raw_val = 0.60
+                elif "business" in comp_name or "quantifiable_business_impact" in comp_name:
+                    BIZ_IMPACT_SIGNALS = [
+                        r"\b(revenue|profit|cost reduction|roi|drawdown|growth|monetization|gator|pre[- ]seed|funding|lakh|crore|user acquisition|conversion rate|market entry|valuation|client)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        text_lower = c.text_snippet.lower()
+                        if c.has_quantifiable_impact and any(re.search(pat, text_lower, re.I) for pat in BIZ_IMPACT_SIGNALS):
+                            comp_claims.append(c.text_snippet)
+                    
+                    if comp_claims:
+                        text_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(vc|pre[- ]seed|funding|crore|revenue|profit|roi)\b", text_all) and len(comp_claims) >= 2:
+                            raw_val = 0.85
+                        elif len(comp_claims) >= 2:
+                            raw_val = 0.60
+                        else:
+                            raw_val = 0.40
                     else:
-                        raw_val = 0.35
+                        generic_impact_claims = [c.text_snippet for c in evidence.claims if c.has_quantifiable_impact][:3]
+                        if generic_impact_claims:
+                            comp_claims = generic_impact_claims
+                            raw_val = 0.25
+
+                elif "structured_problem_solving" in comp_name or "strategy" in comp_name:
+                    STRATEGY_SIGNALS = [
+                        r"\b(case competition|case study|guesstimate|mece|market entry|profitability framework|swot|pestel|root cause analysis|mckinsey|bcg|bain|dalberg|kearney|strategy consulting|consulting club|casebook|financial modeling|due diligence|gtm strategy|value chain)\b"
+                    ]
+                    comp_claims = []
+                    for c in evidence.claims:
+                        text_lower = c.text_snippet.lower()
+                        if any(re.search(pat, text_lower, re.I) for pat in STRATEGY_SIGNALS) or "case study" in c.skills_matched:
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        text_all = " ".join(comp_claims).lower()
+                        if re.search(r"\b(case competition|winner|national finalist|mckinsey|bcg|bain|dalberg|kearney|mece|guesstimate)\b", text_all):
+                            raw_val = 0.95
+                        elif re.search(r"\b(market entry|profitability|swot|pestel|case study|gtm|consulting club)\b", text_all):
+                            raw_val = 0.70
+                        else:
+                            raw_val = 0.45
+                    else:
+                        raw_val = 0.15
+
+                elif "communication" in comp_name or "extracurriculars" in comp_name:
+                    COMM_SIGNALS = {"debate", "debating", "speaker", "adjudicator", "music", "piano", "dance", "drama", "quiz", "literary", "sport", "athletics", "tournament", "cultural", "oratorix", "inter-iit"}
+                    comp_claims = []
+                    for c in evidence.claims:
+                        text_lower = c.text_snippet.lower()
+                        if any(sig in text_lower for sig in COMM_SIGNALS):
+                            comp_claims.append(c.text_snippet)
+                    comp_claims = comp_claims[:4]
+                    if comp_claims:
+                        text_all = " ".join(comp_claims).lower()
+                        if "inter-iit" in text_all or "medal" in text_all or "adjudicator" in text_all:
+                            raw_val = 0.75
+                        elif len(comp_claims) >= 2:
+                            raw_val = 0.45
+                        else:
+                            raw_val = 0.25
+
+                elif "academic_consistency" in comp_name or "cpi" in comp_name:
+                    if evidence.cpi is not None:
+                        comp_claims = [f"Undergraduate CPI: {evidence.cpi:.2f}/10.0"]
+                        if evidence.cpi >= 8.5:
+                            raw_val = 0.90
+                        elif evidence.cpi >= 8.0:
+                            raw_val = 0.70
+                        elif evidence.cpi >= 7.0:
+                            raw_val = 0.45
+                        else:
+                            raw_val = 0.20
+                    else:
+                        for m in evidence.academic_metrics:
+                            comp_claims.append(f"{m.name}: {m.value}")
+                        if comp_claims:
+                            raw_val = 0.50
 
             # ── 5. Data Analyst Role (Refined 6-Dimension Framework) ────────
             elif role.role_id == "analyst":
@@ -558,19 +617,19 @@ class RoleScorer:
 
                 elif "business_insight" in comp_name:
                     BIZ_SIGNALS = [
-                        r"\b(recommendation|strategic decision|root cause|anomaly|business question|actionable insight|kpi drivers|churn reduction|cost reduction|revenue optimization|client findings)\b"
+                        r"\b(recommendation|strategic decision|root cause|anomaly|business question|actionable insight|kpi drivers|churn reduction|cost reduction|revenue optimization|client findings|analyzed|evaluated|examined|feedback|trends?|insights?|decision|choices?|outcomes?)\b"
                     ]
                     comp_claims = []
                     for c in evidence.claims:
                         t_low = c.text_snippet.lower()
-                        if any(re.search(pat, t_low, re.I) for pat in BIZ_SIGNALS) or (c.has_quantifiable_impact and any(k in t_low for k in ["business", "cost", "revenue", "user", "client"])):
+                        if any(re.search(pat, t_low, re.I) for pat in BIZ_SIGNALS) or (c.has_quantifiable_impact and any(k in t_low for k in ["business", "cost", "revenue", "user", "client", "student", "program", "feedback"])):
                             comp_claims.append(c.text_snippet)
                     comp_claims = comp_claims[:4]
                     if comp_claims:
                         t_all = " ".join(comp_claims).lower()
-                        if re.search(r"\b(decision|recommendation|strategic|churn|actionable)\b", t_all):
+                        if re.search(r"\b(decision|recommendation|strategic|churn|actionable|root cause|kpi drivers)\b", t_all):
                             raw_val = 0.90
-                        elif re.search(r"\b(kpi|revenue|cost|metric|business)\b", t_all):
+                        elif re.search(r"\b(kpi|revenue|cost|metric|business|analyzed|evaluated|feedback|trends?)\b", t_all):
                             raw_val = 0.70
                         else:
                             raw_val = 0.45
@@ -1009,7 +1068,7 @@ class RoleScorer:
         elif role.role_id == "consulting":
             has_high_cpi = (evidence.cpi is not None and evidence.cpi >= 8.0)
             has_top_por = any(
-                bool(re.search(r"\b(overall coordinator|head|manager|general secretary|gsec|president|convenor|team of (?:[1-9]\d+|\d{2,})|budget of (?:inr|rs\.?|₹)?\s*[5-9]\d*l|case competition|case study winner)\b", c.text_snippet.lower()))
+                bool(re.search(r"\b(overall coordinator|festival head|general secretary|gsec|president|founder|co-founder|team of (?:[2-9]\d+|\d{3,})|budget of (?:inr|rs\.?|₹)?\s*[5-9]\d*l|case competition|case study winner|mckinsey|bcg|bain|dalberg|kearney)\b", c.text_snippet.lower()))
                 for c in evidence.claims
             )
             if not has_pors:
