@@ -75,3 +75,6 @@ logs/
 !.impeccable/
 !.impeccable/**
 
+
+# Disposable scratch and junk files
+junk/
