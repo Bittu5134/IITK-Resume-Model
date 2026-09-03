@@ -131,8 +131,8 @@ class ResumeEngine:
                     max_score = score_val
                     best_role = role_id
 
-        # Secondary check: if analyst, product, or ib score > max_score + 10.0, allow secondary fit
-        for role_id in ["analyst", "product", "ib"]:
+        # Secondary check: if analyst or product score > max_score + 10.0, allow secondary fit
+        for role_id in ["analyst", "product"]:
             if role_id in results:
                 s_val = results[role_id].get("score", {}).get("score", 0.0)
                 if s_val > max_score + 10.0:
@@ -148,7 +148,6 @@ class ResumeEngine:
             "sde": ["sde", "software", "swe", "dev"],
             "analyst": ["analytics", "analyst", "data_analyst"],
             "product": ["product", "pm_resume"],
-            "ib": ["ib", "investment_banking", "banking", "finance", "m_and_a"],
         }
         for r_id, hints in role_hints.items():
             if any(h in fn_lower for h in hints) and r_id in results:

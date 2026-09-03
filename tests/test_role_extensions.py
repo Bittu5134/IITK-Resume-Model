@@ -1,4 +1,4 @@
-"""Tests for Data Analyst, Product Manager, and Investment Banking role extensions."""
+"""Tests for Data Analyst and Product Manager role extensions."""
 import pytest
 from pathlib import Path
 from resume_engine.pipeline import ResumeEngine
@@ -6,15 +6,9 @@ from resume_engine.ontology.roles import get_role_requirement, ROLE_DEFINITIONS
 from resume_engine.evidence.models import EvidenceBundle, AtomicClaim, CampusEntity
 from resume_engine.scoring.scorer import RoleScorer
 
-def test_all_seven_roles_registered():
-    expected_roles = {"sde", "quant", "consulting", "core", "analyst", "product", "ib"}
+def test_all_six_roles_registered():
+    expected_roles = {"sde", "quant", "consulting", "core", "analyst", "product"}
     assert expected_roles.issubset(set(ROLE_DEFINITIONS.keys()))
-    
-    ib = get_role_requirement("ib")
-    assert ib.display_name == "Investment Banking"
-    assert "financial_modeling" in ib.competency_weights
-    assert "valuation_and_dcf_comps" in ib.competency_weights
-    assert sum(ib.competency_weights.values()) == pytest.approx(1.0, 0.01)
 
     analyst = get_role_requirement("analyst")
     assert analyst.display_name == "Data Analyst"
@@ -25,72 +19,6 @@ def test_all_seven_roles_registered():
     assert product.display_name == "Product Manager"
     assert "execution_and_cross_functional_ownership" in product.competency_weights
     assert sum(product.competency_weights.values()) == pytest.approx(1.0, 0.01)
-
-
-def test_investment_banking_scoring_high_evidence():
-    scorer = RoleScorer()
-    role_req = get_role_requirement("ib")
-    
-    ev = EvidenceBundle(
-        cpi=8.5,
-        all_skills=["financial modeling", "dcf", "valuation", "three-statement model", "accounting", "excel", "m&a"],
-        claims=[
-            AtomicClaim(
-                claim_id="c1",
-                bullet_id="b1",
-                section="Projects",
-                entry_title="M&A Valuation Project",
-                text_snippet="Constructed fully linked three-statement financial model in Excel with 5-year revenue, working capital, and debt amortization schedules.",
-                has_quantifiable_impact=True,
-                skills_matched=["three-statement model", "financial modeling"]
-            ),
-            AtomicClaim(
-                claim_id="c2",
-                bullet_id="b2",
-                section="Projects",
-                entry_title="DCF and Comps Valuation",
-                text_snippet="Performed DCF valuation and trading comps (EV/EBITDA, P/E) for $500M enterprise using 9.2% WACC and 2.5% terminal growth.",
-                has_quantifiable_impact=True,
-                skills_matched=["dcf", "valuation", "trading comps"]
-            ),
-            AtomicClaim(
-                claim_id="c3",
-                bullet_id="b3",
-                section="Experience",
-                entry_title="Investment Banking Challenge",
-                text_snippet="CFA Research Challenge National Finalist: Authored 20-page equity research report analyzing 10-K filings and M&A deal structures.",
-                has_quantifiable_impact=True,
-                skills_matched=["equity research", "m&a", "10-k"]
-            ),
-        ]
-    )
-    score = scorer.score(ev, role_req)
-    assert score.score >= 60.0
-    assert score.tier in ["Moderate Fit", "Strong Alignment"]
-    assert any("CFA Research Challenge" in b for b in score.bonuses_applied)
-    assert not any("Generic finance terms" in p for p in score.penalties_applied)
-
-
-def test_investment_banking_penalty_generic_buzzwords():
-    scorer = RoleScorer()
-    role_req = get_role_requirement("ib")
-    
-    ev = EvidenceBundle(
-        cpi=7.8,
-        all_skills=["stocks", "finance", "excel"],
-        claims=[
-            AtomicClaim(
-                claim_id="c1",
-                bullet_id="b1",
-                section="Projects",
-                entry_title="Stock Market App",
-                text_snippet="Invested in stock market using Robinhood app and tracked daily price changes of tech stocks in Excel.",
-                skills_matched=["excel"]
-            ),
-        ]
-    )
-    score = scorer.score(ev, role_req)
-    assert any("Generic finance terms listed without demonstrated financial modeling" in p for p in score.penalties_applied)
 
 
 def test_data_analyst_scoring_and_penalties():
@@ -213,7 +141,7 @@ def test_pipeline_multi_track_execution(tmp_path):
     engine = ResumeEngine()
     results = engine.analyze_all(str(pdf_path))
     
-    for r in ["sde", "quant", "consulting", "core", "analyst", "product", "ib"]:
+    for r in ["sde", "quant", "consulting", "core", "analyst", "product"]:
         assert r in results
         assert "score" in results[r]
         assert "advisory" in results[r]

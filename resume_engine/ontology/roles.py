@@ -132,25 +132,6 @@ ROLE_DEFINITIONS: Dict[str, RoleRequirement] = {
         requires_github=False,
         requires_pors=True,
     ),
-    "ib": RoleRequirement(
-        role_id="ib",
-        display_name="Investment Banking",
-        description="Prioritizes three-statement financial modeling, DCF and trading comps valuation, accounting/financial statements, transaction & M&A analysis, and pitch book creation.",
-        competency_weights={
-            "financial_modeling": 0.25,
-            "valuation_and_dcf_comps": 0.20,
-            "accounting_and_financial_statements": 0.15,
-            "transaction_and_m_and_a_knowledge": 0.15,
-            "excel_and_data_analysis": 0.10,
-            "company_and_industry_research": 0.10,
-            "communication_and_deadline_execution": 0.05,
-        },
-        required_skills=["financial modeling", "dcf", "valuation", "three-statement model", "accounting", "excel", "m&a"],
-        preferred_skills=["trading comps", "precedent transactions", "lbo", "pitch book", "working capital", "wacc", "financial statement analysis", "equity research"],
-        min_cpi_benchmark=7.5,
-        requires_github=False,
-        requires_pors=False,
-    ),
 }
 
 

@@ -147,10 +147,6 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                                 <span><i class="fa-solid fa-rocket mr-2 text-sm"></i>Product</span>
                                 <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
                             </button>
-                            <button type="button" role="tab" id="role-tab-ib" aria-selected="false" aria-controls="resultsDashboard" data-role="ib" class="role-btn px-3.5 py-3 rounded-lg border text-xs font-bold transition flex items-center justify-between border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
-                                <span><i class="fa-solid fa-landmark mr-2 text-sm"></i>Inv. Banking</span>
-                                <i class="fa-solid fa-circle-check hidden text-blue-600 dark:text-blue-400 text-sm"></i>
-                            </button>
                         </div>
                     </div>
 

@@ -45,14 +45,14 @@ graph TD
 
 ## 🎯 Role-Specific Baselines
 
-The engine dynamically conditions evaluation on 4 primary canonical tracks:
+The engine dynamically conditions evaluation on 6 primary placement tracks:
 
 1. **Software Engineering (SDE)**: Prioritizes DSA coursework, competitive programming ratings (Codeforces/LeetCode), open source, and full-stack projects. Penalizes missing GitHub profile links (-6 pts).
-2. **Quantitative Finance**: Heavily prioritizes exceptionally high CPI (8.5+ benchmark), rigorous mathematical coursework (Probability, Linear Algebra, Stochastic Calculus), and quantitative modeling. Penalizes low CPI (-8 pts).
-3. **Management Consulting**: Rewards spikes across multiple domains (CPI + high-impact PoRs + sports/cultural achievements). Requires quantifiable business impact metrics (-4 pts penalty if < 3 metrics).
+2. **Quantitative Finance**: Heavily prioritizes exceptionally high CPI (8.5+ benchmark), rigorous mathematical coursework (Probability, Linear Algebra, Stochastic Calculus), and quantitative modeling. Penalizes low CPI (-5 pts).
+3. **Management Consulting**: Requires high CPI (8.0+) or top-tier leadership spikes (Overall Coordinator, Head, Manager, Team 10+, Budget 5L+). Penalizes lack of consulting academic/leadership spike (-6 pts).
 4. **Core Engineering**: Prioritizes SURGE research internships, core departmental electives, CAD/MATLAB proficiency (ANSYS, SolidWorks, CFD). Penalizes generic web-dev projects displacing core electives (-5 pts).
-
-*(Note: Business Analyst and Product Management tracks are also supported as secondary advisory extensions.)*
+5. **Data Analyst**: Prioritizes SQL querying (joins/CTEs/window functions), statistical analysis, A/B testing, and dashboard reporting (Tableau/Power BI).
+6. **Product Manager**: Prioritizes user research, customer discovery, problem framing, product analytics, and cross-functional shipping.
 
 ---
 
@@ -61,8 +61,8 @@ The engine dynamically conditions evaluation on 4 primary canonical tracks:
 ### 1. Installation
 Clone the repository and set up a Python 3.10+ virtual environment:
 ```bash
-git clone https://github.com/choudharyraj2903-collab/IITK-Resume-Engine.git
-cd IITK-Resume-Engine
+git clone https://github.com/Bittu5134/IITK-Resume-Model.git
+cd IITK-Resume-Model
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .

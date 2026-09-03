@@ -33,7 +33,7 @@ def test_zero_cpi_resumes_score_below_twenty(tmp_path):
     engine = ResumeEngine()
     results = engine.analyze_all(str(p))
 
-    for role_id in ["sde", "quant", "consulting", "core", "analyst", "product", "ib"]:
+    for role_id in ["sde", "quant", "consulting", "core", "analyst", "product"]:
         sc = results[role_id]["score"]["score"]
         assert sc < 20.0, f"Role {role_id} score {sc} is >= 20.0 for 0.0 CPI!"
         penalties = results[role_id]["score"]["penalties_applied"]
@@ -53,7 +53,7 @@ def test_scrap_resume_content_scores_below_twenty(tmp_path):
     engine = ResumeEngine()
     results = engine.analyze_all(str(p))
 
-    for role_id in ["sde", "quant", "consulting", "core", "analyst", "product", "ib"]:
+    for role_id in ["sde", "quant", "consulting", "core", "analyst", "product"]:
         sc = results[role_id]["score"]["score"]
         assert sc < 20.0, f"Role {role_id} score {sc} is >= 20.0 for scrap resume!"
 

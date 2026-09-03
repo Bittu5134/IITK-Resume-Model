@@ -439,12 +439,15 @@ class RoleScorer:
                 if comp_claims:
                     por_count = sum(1 for ce in evidence.campus_entities if ce.category in ["por_role", "council", "club"])
                     text_all = " ".join(comp_claims).lower()
-                    if por_count >= 2 and re.search(r"\b(spearheaded|overall coordinator|head|manager|team of \d+)\b", text_all):
+                    has_top_tier_por = bool(re.search(r"\b(overall coordinator|head|manager|general secretary|gsec|president|convenor|team of (?:[1-9]\d+|\d{2,})|budget of (?:inr|rs\.?|₹)?\s*[5-9]\d*l|budget of (?:inr|rs\.?|₹)?\s*\d+l+)\b", text_all))
+                    if por_count >= 2 and has_top_tier_por:
                         raw_val = 0.85
+                    elif por_count >= 1 and has_top_tier_por:
+                        raw_val = 0.65
                     elif por_count >= 1:
-                        raw_val = 0.70
+                        raw_val = 0.40
                     else:
-                        raw_val = 0.45
+                        raw_val = 0.25
 
             elif "communication" in comp_name or "extracurriculars" in comp_name:
                 COMM_SIGNALS = {"debate", "debating", "speaker", "adjudicator", "music", "piano", "dance", "drama", "quiz", "literary", "sport", "athletics", "tournament", "cultural", "oratorix", "inter-iit"}
@@ -455,18 +458,18 @@ class RoleScorer:
                         comp_claims.append(c.text_snippet)
                 comp_claims = comp_claims[:4]
                 if comp_claims:
-                    raw_val = 0.75 if len(comp_claims) >= 2 else 0.45
+                    raw_val = 0.70 if len(comp_claims) >= 3 else (0.45 if len(comp_claims) >= 2 else 0.30)
 
             elif "business" in comp_name or "impact" in comp_name or "quantifiable" in comp_name:
                 comp_claims = [c.text_snippet for c in evidence.claims if c.has_quantifiable_impact][:4]
                 if comp_claims:
                     text_all = " ".join(comp_claims).lower()
-                    if re.search(r"\b(vc|pre[- ]seed|funding|lakh|crore|roi|revenue|drawdown)\b", text_all):
-                        raw_val = 0.90
+                    if re.search(r"\b(vc|pre[- ]seed|funding|lakh|crore|roi|revenue|drawdown)\b", text_all) and len(comp_claims) >= 3:
+                        raw_val = 0.85
                     elif len(comp_claims) >= 3:
-                        raw_val = 0.70
+                        raw_val = 0.60
                     else:
-                        raw_val = 0.45
+                        raw_val = 0.35
 
             # ── 5. Data Analyst Role (Refined 6-Dimension Framework) ────────
             elif role.role_id == "analyst":
@@ -1004,9 +1007,17 @@ class RoleScorer:
                 penalties.append(f"CPI below Quant benchmark of 8.0 (current: {evidence.cpi:.2f}) (-5 pts)")
 
         elif role.role_id == "consulting":
+            has_high_cpi = (evidence.cpi is not None and evidence.cpi >= 8.0)
+            has_top_por = any(
+                bool(re.search(r"\b(overall coordinator|head|manager|general secretary|gsec|president|convenor|team of (?:[1-9]\d+|\d{2,})|budget of (?:inr|rs\.?|₹)?\s*[5-9]\d*l|case competition|case study winner)\b", c.text_snippet.lower()))
+                for c in evidence.claims
+            )
             if not has_pors:
                 final_score -= 8.0
                 penalties.append("Lack of prominent campus PoRs / Gymkhana leadership (-8 pts)")
+            if not has_high_cpi and not has_top_por:
+                final_score -= 6.0
+                penalties.append("Lack of Consulting Academic Spike (CPI ≥ 8.0) or Top-Tier Leadership / Case Competition Spike (-6 pts)")
             if quant_metric_count < 3:
                 final_score -= 4.0
                 penalties.append("Insufficient quantified business metrics across bullets (-4 pts)")
